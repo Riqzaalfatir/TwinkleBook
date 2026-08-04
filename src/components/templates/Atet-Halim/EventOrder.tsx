@@ -62,7 +62,7 @@ const EventOrder = ({ data }: EventOrderProps) => {
               className="pt-[12.82vw] lg:pt-[0px]"
             >
               <Image
-                src="/images/Atet-Halim/hero/LogoD4.webp"
+                src="/images/Atet-Halim/Hero/LogoD4.webp"
                 alt="logo stamp"
                 width={220}
                 height={220}

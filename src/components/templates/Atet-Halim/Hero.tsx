@@ -21,7 +21,7 @@ const Hero = ({ data, start = false }: HeroProps) => {
       /> */}
 
       <Image
-        src="/images/Atet-Halim/hero/BungaKiriAtasD.webp"
+        src="/images/Atet-Halim/Hero/BungaKiriAtasD.webp"
         alt="flower decoration"
         width={450}
         height={450}
@@ -29,7 +29,7 @@ const Hero = ({ data, start = false }: HeroProps) => {
       />
 
       <Image
-        src="/images/Atet-Halim/hero/BungaKananAtasD.webp"
+        src="/images/Atet-Halim/Hero/BungaKananAtasD.webp"
         alt="flower decoration"
         width={450}
         height={450}
@@ -37,7 +37,7 @@ const Hero = ({ data, start = false }: HeroProps) => {
       />
 
       <Image
-        src="/images/Atet-Halim/hero/BungaKiriBawahD.webp"
+        src="/images/Atet-Halim/Hero/BungaKiriBawahD.webp"
         alt="flower decoration"
         width={300}
         height={300}
@@ -45,7 +45,7 @@ const Hero = ({ data, start = false }: HeroProps) => {
       />
 
       <Image
-        src="/images/Atet-Halim/hero/BungaKananBawahD.webp"
+        src="/images/Atet-Halim/Hero/BungaKananBawahD.webp"
         alt="flower decoration"
         width={350}
         height={350}
@@ -61,7 +61,7 @@ const Hero = ({ data, start = false }: HeroProps) => {
               animate={start ? "show" : "hidden"}
             >
               <Image
-                src="/images/Atet-Halim/hero/LogoD4.webp"
+                src="/images/Atet-Halim/Hero/LogoD4.webp"
                 alt="logo stamp"
                 width={220}
                 height={220}

@@ -84,7 +84,7 @@ const Wishes = () => {
         />
 
         <Image
-          src="/images/Atet-Halim/Wishes/BungaKiritengah.webp"
+          src="/images/Atet-Halim/Wishes/BungaKiriTengah.webp"
           alt="flower decoration"
           width={650}
           height={650}

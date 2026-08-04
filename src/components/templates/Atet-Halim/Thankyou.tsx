@@ -71,7 +71,7 @@ const Thankyou = ({ data }: ThankyouProps) => {
                 transition={{ duration: 3, ease: "easeOut" }}
               >
               <Image
-                src="/images/Atet-Halim/hero/LogoD4.webp"
+                src="/images/Atet-Halim/Hero/LogoD4.webp"
                 alt="logo stamp"
                 width={220}
                 height={220}
