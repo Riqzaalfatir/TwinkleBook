@@ -53,7 +53,7 @@ const Hero = ({ data, start = false }: HeroProps) => {
       />
 
       <div className="relative z-20 flex items-center justify-center pt-[0vw] lg:pt-[91px]">
-        <div className="relative w-full bg-[url('/images/Atet-Halim/hero/LayerKertas4.webp')] bg-no-repeat [background-size:100%_100%] lg:bg-[url('/images/Atet-Halim/Hero/LayerKertasD.svg')] lg:[background-size:100%_100%]">
+        <div className="relative w-full bg-[url('/images/Atet-Halim/Hero/LayerKertas4.webp')] bg-no-repeat [background-size:100%_100%] lg:bg-[url('/images/Atet-Halim/Hero/LayerKertasD.svg')] lg:[background-size:100%_100%]">
           <div className="relative flex flex-col items-center text-center">
             <motion.div
               variants={scaleIn}

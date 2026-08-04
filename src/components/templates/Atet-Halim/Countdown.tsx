@@ -28,7 +28,7 @@ const CountdownSection = ({
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
+        transition={{ duration: 1, ease: "easeOut" }}
         className="font-playfair text-[5.64vw] lg:text-[48px] text-white tracking-wide pt-[7.18vw] lg:pt-[23px]"
       >
         SATURDAY, 26 JULY 2026
@@ -39,7 +39,7 @@ const CountdownSection = ({
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
+        transition={{ duration: 1.1, ease: "easeOut" }}
       >
         <Image
           src="/images/Atet-Halim/Countdown/OrnamentGaris.webp"
@@ -72,7 +72,7 @@ const CountdownSection = ({
                 <motion.div
                   key={box.label}
                   variants={fadeUp}
-                  transition={{ duration: 1.5, ease: "easeOut" }}
+                  transition={{ duration: 1.2, ease: "easeOut" }}
                   className="flex flex-col items-center justify-center w-[18.72vw] lg:w-[144px] h-[18.21vw] lg:h-[142px] bg-white rounded-[6px] lg:rounded-[12px] shadow-md"
                 >
                   <span className="font-lora text-[10.51vw] lg:text-[72px] text-[#402824] leading-none">
