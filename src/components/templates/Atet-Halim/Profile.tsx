@@ -31,7 +31,7 @@ const Profile = ({ data }: ProfileProps) => {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="font-athelas text-[3.59vw] lg:text-[1.45vw] text-[#6C2525] leading-[5.2vw] lg:leading-[1.98vw]"
+          className="font-athelas text-[3.59vw] lg:text-[1.45vw] text-[#402824] leading-[5.2vw] lg:leading-[1.98vw]"
         >
           With grateful hearts and thanks to God, <br />
           we invite you to join us <br />
@@ -58,7 +58,7 @@ const Profile = ({ data }: ProfileProps) => {
                 className="object-cover"
               />
             </div>
-            <h1 className="font-athelas text-[6.67vw] lg:text-[2.38vw] text-[#6C2525] pt-[5.5vw] lg:pt-[1.06vw] leading-none">
+            <h1 className="font-athelas text-[6.67vw] lg:text-[2.38vw] text-[#402824] pt-[5.5vw] lg:pt-[1.06vw] leading-none">
               ATET WIJONO
             </h1>
           </motion.div>
@@ -72,7 +72,7 @@ const Profile = ({ data }: ProfileProps) => {
             transition={{ duration: 1.5, ease: "easeOut" }}
             className="flex items-center justify-center lg:h-[22.66vw] pt-[5vw] lg:pt-0"
           >
-            <p className="font-athelas text-[8.21vw] lg:text-[4.23vw] text-[#6C2525]">
+            <p className="font-athelas text-[8.21vw] lg:text-[4.23vw] text-[#402824]">
               &
             </p>
           </motion.div>
@@ -94,7 +94,7 @@ const Profile = ({ data }: ProfileProps) => {
                 className="object-cover"
               />
             </div>
-            <h1 className="font-athelas text-[6.67vw] lg:text-[2.38vw] text-[#6C2525] pt-[6vw] lg:pt-[1.06vw] leading-none">
+            <h1 className="font-athelas text-[6.67vw] lg:text-[2.38vw] text-[#402824] pt-[6vw] lg:pt-[1.06vw] leading-none">
               TRISNAWATI HALIM
             </h1>
           </motion.div>
@@ -106,7 +106,7 @@ const Profile = ({ data }: ProfileProps) => {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="font-athelas text-[3.59vw] lg:text-[1.45vw] text-[#6C2525] leading-relaxed lg:leading-[1.98vw] pt-[8.46vw] lg:pt-[3.9vw]"
+          className="font-athelas text-[3.59vw] lg:text-[1.45vw] text-[#402824] leading-relaxed lg:leading-[1.98vw] pt-[8.46vw] lg:pt-[3.9vw]"
         >
           Your presence and prayers <br />
           will bring warmth and happiness <br className="lg:hidden" />

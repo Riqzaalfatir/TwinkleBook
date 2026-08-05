@@ -15,12 +15,10 @@ const IMAGES_MOBILE: string[] = [
 ];
 
 const IMAGES_DESKTOP: string[] = [
+  "/images/Atet-Halim/Opening/BungaKiriAtasD.webp",
+  "/images/Atet-Halim/Opening/BungaKananBawahD.webp",
 
-                "/images/Atet-Halim/Opening/BungaKiriAtasD.webp",
-                              "/images/Atet-Halim/Opening/BungaKananBawahD.webp",
-
-
-    "/images/Atet-Halim/Hero/BgKertasD.webp",
+  "/images/Atet-Halim/Hero/BgKertasD.webp",
   "/images/Atet-Halim/Hero/ateskertas.webp", // Hero
   "/images/Atet-Halim/EventOrder/LayerKertasD.svg", // EventOrder
   "/images/Atet-Halim/Wishes/BungaKiriAtas.webp", // Wishes (hidden lg:block)
