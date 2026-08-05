@@ -2,24 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 @layer base {
-  
   html {
     scroll-behavior: smooth;
   }
 
-
-  /* SCROOLBAR */
   html,
   body {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE & Edge lama */
+    overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
   html::-webkit-scrollbar,
   body::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
+  }
+
+  html.no-scroll {
+    overflow-y: hidden;
   }
 }

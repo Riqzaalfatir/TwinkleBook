@@ -57,7 +57,7 @@ const Gallery = () => {
     <>
       <section
         id="gallery"
-        className="w-full  h-[598px] min-h-[598px] max-h-[598px] lg:h-[949px] lg:min-h-[949px] lg:max-h-[949px]"
+        className="relative w-full  h-[598px] min-h-[598px] max-h-[598px] lg:h-[949px] lg:min-h-[949px] lg:max-h-[949px] overflow-hidden z-30"
       >
         <div className="overflow-hidden w-full h-full" ref={emblaRef}>
           <div className="flex h-full">

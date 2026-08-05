@@ -171,12 +171,17 @@ const NotifModal = ({
 }: NotifModalProps) => {
   const config = NOTIF_CONFIG[type];
 
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, []);
+useEffect(() => {
+  document.documentElement.classList.add("no-scroll");
+
+  const preventTouch = (e: TouchEvent) => e.preventDefault();
+  document.addEventListener("touchmove", preventTouch, { passive: false });
+
+  return () => {
+    document.documentElement.classList.remove("no-scroll");
+    document.removeEventListener("touchmove", preventTouch);
+  };
+}, []);
 
   if (!type || !config) return null;
 

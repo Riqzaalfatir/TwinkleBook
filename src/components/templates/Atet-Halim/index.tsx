@@ -4,6 +4,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { athelas, poltawskiNowy, lora, playfairDisplay, cylburn, milyuna } from "./fonts/fonts";
+import  Header  from "./Header";
 import Hero from "./Hero";
 import Profile from "./Profile";
 import Countdown from "./Countdown";
@@ -43,12 +44,13 @@ const AtetHalim = ({ data, isPreview, dataValidation }: AtetHalimProps) => {
         }}
       /> */}
       <div
-  className="absolute inset-0 -z-10 bg-[#F6F6F4] bg-repeat [background-size:390px_auto]
+  className="absolute inset-0 -z-10 bg-[#F6F6F4] bg-repeat [background-size:390px_auto] lg:[background-size:1914px_auto]
     bg-[url('/images/Atet-Halim/Hero/BackgoundKertas.webp')]
     lg:bg-[url('/images/Atet-Halim/Hero/BgKertasD.webp')]"
 />
 
       {/* SEMUA SECTION SELALU DI-RENDER — biar Opening bisa nge-blur konten asli di belakangnya */}
+      <Header />
       <Hero data={data} start={start} />
       <Profile data={data} />
       <Countdown data={data} />

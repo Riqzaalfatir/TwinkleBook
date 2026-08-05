@@ -15,13 +15,17 @@ const IMAGES_MOBILE: string[] = [
 ];
 
 const IMAGES_DESKTOP: string[] = [
+
+                "/images/Atet-Halim/Opening/BungaKiriAtasD.webp",
+                              "/images/Atet-Halim/Opening/BungaKananBawahD.webp",
+
+
     "/images/Atet-Halim/Hero/BgKertasD.webp",
-  "/images/Atet-Halim/Hero/LayerKertasD.svg", // Hero
+  "/images/Atet-Halim/Hero/ateskertas.webp", // Hero
   "/images/Atet-Halim/EventOrder/LayerKertasD.svg", // EventOrder
   "/images/Atet-Halim/Wishes/BungaKiriAtas.webp", // Wishes (hidden lg:block)
   "/images/Atet-Halim/Wishes/BungaKananAtas.webp", // Wishes (hidden lg:block)
   "/images/Atet-Halim/Wishes/BungaKiritengah.webp", // Wishes (hidden lg:block)
-  "/images/Atet-Halim/Thankyou/LayerKertasD.webp", // Thankyou
   "/images/Atet-Halim/Thankyou/BungaKiriBawah.webp", // Thankyou (hidden lg:block)
   "/images/Atet-Halim/Thankyou/BungaKananBawah.webp", // Thankyou (hidden lg:block)
   "/images/Atet-Halim/Gallery/PengantinD.webp", // Gallery
