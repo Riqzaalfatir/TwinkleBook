@@ -83,7 +83,7 @@ const Hero = ({ data, start = false }: HeroProps) => {
               variants={fadeUp}
               initial="hidden"
               animate={start ? "show" : "hidden"}
-              transition={{ duration: 2, ease: "easeOut", delay: 0.2 }}
+              transition={{ duration: 2, ease: "easeOut", delay: 0.3 }}
               className="font-athelas text-[3.59vw] lg:text-[1.45vw] text-[#402824] pt-[22vw] lg:pt-[1.7vw] leading-[4.5vw] lg:leading-[1.8vw]"
             >
               We cordially invite you <br className="lg:hidden" />
