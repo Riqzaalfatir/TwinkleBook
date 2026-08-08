@@ -6,6 +6,10 @@ import { motion, AnimatePresence } from "framer-motion";
 type OpeningProps = {
   setStart: (v: boolean) => void;
   namaTamu?: string;
+  groomName?: string;
+  groomFullName?: string;
+  brideName?: string;
+  brideFullName?: string;
 };
 
 const blurVariants = {
