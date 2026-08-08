@@ -3,19 +3,33 @@ import { motion } from "framer-motion";
 import { fadeUp, fadeIn } from "../../../lib/animation";
 
 type ThankyouProps = {
-  data?: unknown;
+  data?: any;
 };
 
+// ✅ Fallback statis — dipakai selama field API kosong (kondisi saat ini di semua event yang diverifikasi)
+const FALLBACK_FOOTER_NOTE =
+  "Thank you for being part of our 50th Wedding Anniversary celebration.";
+const FALLBACK_FOOTER_IMAGE = null; // null = pakai layer kertas statis, bukan foto
+
 const Thankyou = ({ data }: ThankyouProps) => {
+  const footerNote = data?.dataContent?.footerNote || FALLBACK_FOOTER_NOTE;
+
+  // ✅ Prioritas: footerImageData.url (object, perlu prefix) → footerImage (kalau ternyata string langsung) → fallback null
+  const footerImageUrl = data?.dataContent?.footerImageData?.url
+    ? `https://media.twinklebook.com/${data.dataContent.footerImageData.url}`
+    : data?.dataContent?.footerImage || FALLBACK_FOOTER_IMAGE;
+
   return (
     <section className="relative w-full overflow-hidden pt-[6.5vw] lg:pt-[13vw] pb-[8.97vw] lg:pb-[0.99vw]">
-      {/* BACKGROUND KERTAS */}
-      {/* <Image
-        src="/images/Atet-Halim/Hero/BackgoundKertas.webp"
-        alt="background"
-        fill
-        className="object-cover"
-      /> */}
+      {/* ✅ Background dinamis kalau API ngasih gambar, kalau kosong biarin section pakai LayerKertas statis di bawah (gak perlu render apa-apa di sini) */}
+      {footerImageUrl && (
+        <Image
+          src={footerImageUrl}
+          alt="footer background"
+          fill
+          className="object-cover -z-10"
+        />
+      )}
 
       {/* BUNGA POJOK KANAN ATAS */}
       <Image
@@ -60,57 +74,62 @@ const Thankyou = ({ data }: ThankyouProps) => {
       <div className="relative z-20 flex items-center justify-center">
         <div className="relative w-full bg-[url('/images/Atet-Halim/Thankyou/LayerKertas.webp')] bg-no-repeat [background-size:100%_100%] lg:bg-[url('/images/Atet-Halim/Hero/ateskertas.webp')] lg:[background-size:100%_100%]">
           <div className="relative flex flex-col items-center text-center">
-            {/* KONTEN */}
             <div className="relative z-20 flex flex-col items-center text-center  py-[16.41vw] lg:py-[0vw]">
-              {/* LOGO */}
-              <motion.div 
-              variants={fadeIn}
+              <motion.div
+                variants={fadeIn}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 3, ease: "easeOut" }}
               >
-              <Image
-                src="/images/Atet-Halim/Hero/LogoD4.webp"
-                alt="logo stamp"
-                width={220}
-                height={220}
-                className="w-[24.36vw] lg:w-[13.14vw] h-auto -mt-[3vw] lg:-mt-[1.32vw]"
-              />
+                <Image
+                  src="/images/Atet-Halim/Hero/LogoD4.webp"
+                  alt="logo stamp"
+                  width={220}
+                  height={220}
+                  className="w-[24.36vw] lg:w-[13.14vw] h-auto -mt-[3vw] lg:-mt-[1.32vw]"
+                />
               </motion.div>
 
-              {/* THANK YOU */}
-              <motion.h2 
-              variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-              className="font-poltawski text-[10.26vw] lg:text-[4.23vw] text-[#2B1F05] mt-[21vw] lg:mt-[1.32vw]">
+              <motion.h2
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+                className="font-poltawski text-[10.26vw] lg:text-[4.23vw] text-[#2B1F05] mt-[21vw] lg:mt-[1.32vw]"
+              >
                 Thank You
               </motion.h2>
 
-              {/* PARAGRAF */}
-              <motion.p 
-              variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-              className="font-athelas text-[3.59vw] lg:text-[1.45vw] text-[#573517] mt-[4.36vw] lg:mt-[1.5vw] leading-[1.7] lg:leading-[1.98vw]">
-                Thank you for being part <br />
-                of our 50th Wedding Anniversary <br className="lg:hidden" />
-                celebration.
+              {/* ✅ Dinamis, fallback ke teks hardcode kalau API kosong */}
+              <motion.p
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+                className="font-athelas text-[3.59vw] lg:text-[1.45vw] text-[#573517] mt-[4.36vw] lg:mt-[1.5vw] leading-[1.7] lg:leading-[1.98vw]"
+              >
+                {data?.dataContent?.footerNote ? (
+    footerNote
+  ) : (
+    <>
+      Thank you for being part <br />
+      of our 50th Wedding Anniversary <br className="lg:hidden" />
+      celebration.
+    </>
+  )}
               </motion.p>
 
-              {/* BRANDING VENDOR */}
-              <motion.div 
-              variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-              className="flex flex-col items-center mt-[56vw] lg:mt-[10.5vw] mb-[15.38vw] lg:mb-[7.5vw]">
+              <motion.div
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+                className="flex flex-col items-center mt-[56vw] lg:mt-[10.5vw] mb-[15.38vw] lg:mb-[7.5vw]"
+              >
                 <Image
                   src="/images/Atet-Halim/Thankyou/LogoProvite.webp"
                   alt="Provite"
@@ -129,7 +148,7 @@ const Thankyou = ({ data }: ThankyouProps) => {
 
 export default Thankyou;
 
-
+// Thankyou sebelum di dinamiskan
 // import Image from "next/image";
 // import { motion } from "framer-motion";
 // import { fadeUp, fadeIn } from "../../../lib/animation";
@@ -140,7 +159,7 @@ export default Thankyou;
 
 // const Thankyou = ({ data }: ThankyouProps) => {
 //   return (
-//     <section className="relative w-full overflow-hidden pt-[6.5vw] lg:pt-[205px] pb-[8.97vw] lg:pb-[15px]">
+//     <section className="relative w-full overflow-hidden pt-[6.5vw] lg:pt-[13vw] pb-[8.97vw] lg:pb-[0.99vw]">
 //       {/* BACKGROUND KERTAS */}
 //       {/* <Image
 //         src="/images/Atet-Halim/Hero/BackgoundKertas.webp"
@@ -155,7 +174,7 @@ export default Thankyou;
 //         alt="flower decoration"
 //         width={450}
 //         height={450}
-//         className="absolute -top-[12vw] lg:top-[15px]  -right-[7vw] lg:-right-0 w-[58vw] lg:w-[350px] h-auto pointer-events-none z-30"
+//         className="absolute -top-[12vw] lg:-top-[1vw]  -right-[7vw] lg:-right-0 w-[58vw] lg:w-[26vw] h-auto pointer-events-none z-30"
 //       />
 
 //       <Image
@@ -163,14 +182,14 @@ export default Thankyou;
 //         alt="flower decoration"
 //         width={450}
 //         height={450}
-//         className="absolute bottom-[5px] left-0 w-[320px] h-auto pointer-events-none z-30 hidden lg:block"
+//         className="absolute bottom-[0vw] left-0 w-[21vw] h-auto pointer-events-none z-30 hidden lg:block"
 //       />
 //       <Image
 //         src="/images/Atet-Halim/Thankyou/BungaKananBawah.webp"
 //         alt="flower decoration"
 //         width={450}
 //         height={450}
-//         className="absolute -bottom-[10px] right-0 w-[310px] h-auto pointer-events-none z-30 hidden lg:block"
+//         className="absolute -bottom-[0.3vw] right-0 w-[19vw] h-auto pointer-events-none z-30 hidden lg:block"
 //       />
 
 //       <Image
@@ -190,65 +209,68 @@ export default Thankyou;
 
 //       {/* CONTAINER TENGAH — LAYER KERTAS */}
 //       <div className="relative z-20 flex items-center justify-center">
-//         <div className="relative w-full bg-[url('/images/Atet-Halim/Thankyou/LayerKertas.webp')] bg-no-repeat [background-size:100%_100%] lg:bg-[url('/images/Atet-Halim/Thankyou/LayerKertasD.webp')] lg:[background-size:100%_100%]">
+//         <div className="relative w-full bg-[url('/images/Atet-Halim/Thankyou/LayerKertas.webp')] bg-no-repeat [background-size:100%_100%] lg:bg-[url('/images/Atet-Halim/Hero/ateskertas.webp')] lg:[background-size:100%_100%]">
 //           <div className="relative flex flex-col items-center text-center">
 //             {/* KONTEN */}
-//             <div className="relative z-20 flex flex-col items-center text-center px-[8.21vw] lg:px-[20px] py-[16.41vw] lg:py-[0px]">
+//             <div className="relative z-20 flex flex-col items-center text-center  py-[16.41vw] lg:py-[0vw]">
 //               {/* LOGO */}
-//               <motion.div 
-//               variants={fadeIn}
+//               <motion.div
+//                 variants={fadeIn}
 //                 initial="hidden"
 //                 whileInView="show"
 //                 viewport={{ once: true, amount: 0.3 }}
 //                 transition={{ duration: 3, ease: "easeOut" }}
 //               >
-//               <Image
-//                 src="/images/Atet-Halim/Hero/LogoD4.webp"
-//                 alt="logo stamp"
-//                 width={220}
-//                 height={220}
-//                 className="w-[24.36vw] lg:w-[199px] h-auto -mt-[3vw] lg:-mt-[20px]"
-//               />
+//                 <Image
+//                   src="/images/Atet-Halim/Hero/LogoD4.webp"
+//                   alt="logo stamp"
+//                   width={220}
+//                   height={220}
+//                   className="w-[24.36vw] lg:w-[13.14vw] h-auto -mt-[3vw] lg:-mt-[1.32vw]"
+//                 />
 //               </motion.div>
 
 //               {/* THANK YOU */}
-//               <motion.h2 
-//               variants={fadeUp}
-//             initial="hidden"
-//             whileInView="show"
-//             viewport={{ once: true, amount: 0.3 }}
-//             transition={{ duration: 1.5, ease: "easeOut" }}
-//               className="font-poltawski text-[10.26vw] lg:text-[64px] text-[#2B1F05] tracking-wide mt-[21vw] lg:mt-[20px]">
+//               <motion.h2
+//                 variants={fadeUp}
+//                 initial="hidden"
+//                 whileInView="show"
+//                 viewport={{ once: true, amount: 0.3 }}
+//                 transition={{ duration: 1.5, ease: "easeOut" }}
+//                 className="font-poltawski text-[10.26vw] lg:text-[4.23vw] text-[#2B1F05] mt-[21vw] lg:mt-[1.32vw]"
+//               >
 //                 Thank You
 //               </motion.h2>
 
 //               {/* PARAGRAF */}
-//               <motion.p 
-//               variants={fadeUp}
-//             initial="hidden"
-//             whileInView="show"
-//             viewport={{ once: true, amount: 0.3 }}
-//             transition={{ duration: 1.5, ease: "easeOut" }}
-//               className="font-athelas text-[3.59vw] lg:text-[22px] text-[#573517] mt-[4.36vw] lg:mt-[28px] leading-[1.7] lg:leading-[30px]">
+//               <motion.p
+//                 variants={fadeUp}
+//                 initial="hidden"
+//                 whileInView="show"
+//                 viewport={{ once: true, amount: 0.3 }}
+//                 transition={{ duration: 1.5, ease: "easeOut" }}
+//                 className="font-athelas text-[3.59vw] lg:text-[1.45vw] text-[#573517] mt-[4.36vw] lg:mt-[1.5vw] leading-[1.7] lg:leading-[1.98vw]"
+//               >
 //                 Thank you for being part <br />
 //                 of our 50th Wedding Anniversary <br className="lg:hidden" />
 //                 celebration.
 //               </motion.p>
 
 //               {/* BRANDING VENDOR */}
-//               <motion.div 
-//               variants={fadeUp}
-//             initial="hidden"
-//             whileInView="show"
-//             viewport={{ once: true, amount: 0.3 }}
-//             transition={{ duration: 1.5, ease: "easeOut" }}
-//               className="flex flex-col items-center mt-[56vw] lg:mt-[165px] mb-[15.38vw] lg:mb-[123px]">
+//               <motion.div
+//                 variants={fadeUp}
+//                 initial="hidden"
+//                 whileInView="show"
+//                 viewport={{ once: true, amount: 0.3 }}
+//                 transition={{ duration: 1.5, ease: "easeOut" }}
+//                 className="flex flex-col items-center mt-[56vw] lg:mt-[10.5vw] mb-[15.38vw] lg:mb-[7.5vw]"
+//               >
 //                 <Image
 //                   src="/images/Atet-Halim/Thankyou/LogoProvite.webp"
 //                   alt="Provite"
 //                   width={200}
 //                   height={200}
-//                   className="h-[27.95vw] lg:h-[163px] w-auto"
+//                   className="h-[27.95vw] lg:h-[10.77vw] w-auto"
 //                 />
 //               </motion.div>
 //             </div>

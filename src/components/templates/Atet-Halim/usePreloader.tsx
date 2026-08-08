@@ -5,6 +5,9 @@ import { useEffect, useState } from "react";
 const BREAKPOINT = 1024;
 
 const IMAGES_MOBILE: string[] = [
+  "/images/Atet-Halim/Opening/BungaKiriAtas.webp",
+  "/images/Atet-Halim/Opening/BungaKananBawah.webp",
+
   "/images/Atet-Halim/hero/LayerKertas4.webp", // Hero
   "/images/Atet-Halim/EventOrder/LayerKertas.webp", // EventOrder
   "/images/Atet-Halim/Wishes/OrnamentGaris.webp", // Wishes (lg:hidden)
@@ -32,8 +35,6 @@ const IMAGES_DESKTOP: string[] = [
 const IMAGES_COMMON: string[] = [
   // Opening.tsx
   "/images/Atet-Halim/Hero/BackgoundKertas.webp",
-  "/images/Atet-Halim/Opening/BungaKiriAtas.webp",
-  "/images/Atet-Halim/Opening/BungaKananBawah.webp",
 
   // Hero.tsx
   "/images/Atet-Halim/hero/BungaKiriAtasD.webp",
