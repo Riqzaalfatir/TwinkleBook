@@ -7,9 +7,9 @@ import { usePreloader } from "../../../components/templates/Atet-Halim/usePreloa
 
 /**
  * Route: /{eventUrl}/{pin}
- * 
+ *
  * Fungsi: Nangkep PIN dari URL, simpen ke localStorage, redirect ke URL bersih
- * 
+ *
  * Alur:
  * 1. User klik link: https://provite.id/ervanandadelyn/123456
  * 2. Page ini tangkap: id="ervanandadelyn", pin="123456"
@@ -23,7 +23,6 @@ export default function PinRedirectPage() {
 
   useEffect(() => {
     if (id && pin) {
-      // Simpen PIN ke localStorage dengan key: {eventUrl}-pin
       localStorage.setItem(`${id}-pin`, pin);
 
       // Redirect ke URL bersih (tanpa PIN)
@@ -36,5 +35,3 @@ export default function PinRedirectPage() {
 
   return <LoadingScreen progress={progress} onDone={() => {}} />;
 }
-
-

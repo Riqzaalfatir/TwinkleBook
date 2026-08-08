@@ -17,7 +17,6 @@ export const formatDate = (dateString?: string): string => {
   return `${day} ${month} ${year}`;
 };
 
-// ✅ Baru: "Saturday, 12 September 2026" — buat Countdown section
 export const formatDateWithWeekday = (dateString?: string): string => {
   if (!dateString) return "Day, 00 Month 0000";
   const d = new Date(dateString);

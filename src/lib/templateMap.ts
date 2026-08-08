@@ -12,7 +12,6 @@ export const TEMPLATE_MAP: Record<string, string> = {
   // Atet-Halim template (contoh event Ervan & Adelyn)
   "2b326668-46be-4222-84de-74fcdc43a665": "AtetHalim",
 
-  // Tambahkan template lainnya di sini
   // "uuid-template-2": "TemplateNama2",
   // "uuid-template-3": "TemplateNama3",
 };

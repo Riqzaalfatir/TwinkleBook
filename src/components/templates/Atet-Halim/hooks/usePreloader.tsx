@@ -15,7 +15,7 @@ const IMAGES_MOBILE: string[] = [
 ];
 
 const IMAGES_DESKTOP: string[] = [
-    "/images/Atet-Halim/Hero/BgKertasD.webp",
+  "/images/Atet-Halim/Hero/BgKertasD.webp",
   "/images/Atet-Halim/Hero/LayerKertasD.svg", // Hero
   "/images/Atet-Halim/EventOrder/LayerKertasD.svg", // EventOrder
   "/images/Atet-Halim/Wishes/BungaKiriAtas.webp", // Wishes (hidden lg:block)

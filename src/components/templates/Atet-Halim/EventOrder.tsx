@@ -29,7 +29,7 @@ const receptionSession = validSessions[1] ?? {
   name: "Lunch Reception",
   date: "2026-09-05T11:31:16",
   addressName: "PULLMAN GRAND BALLROOM",
-  address: "Pullman Bandung Grand Central, Jalan Diponegoro, Citarum, Bandung City, West Java, Indonesia",
+  address: "Jalan",
   latLong: "-6.9002323, 107.6174782",
 };
 
@@ -48,7 +48,7 @@ const receptionSession = validSessions[1] ?? {
 
   // ✅ Langsung pake field yang benar, ga perlu split manual
   const venueName = ceremonySession.addressName ?? "Venue";
-  const fullAddress = ceremonySession.address ?? ceremonySession.addressName ?? "";
+  const fullAddress = "Jalan Diponegoro No. 27, Bandung";
 
   // ✅ latLong dari session asli, guard kalau null
   const mapsLink = ceremonySession.mapsUrl ?? "https://maps.app.goo.gl/2iNGFtQ4yKTuH9Gi7";
@@ -171,7 +171,7 @@ const receptionSession = validSessions[1] ?? {
               whileInView="show"
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 1.5, ease: "easeOut" }}
-              className="font-athelas font-bold text-[4.62vw] lg:text-[1.45vw] text-[#2B1F05] pt-[9.49vw] lg:pt-[3.43vw] tracking-wide leading-none max-w-[65vw] lg:max-w-[35vw] break-words"
+              className="font-athelas font-bold text-[4.62vw] lg:text-[1.45vw] text-[#2B1F05] pt-[9.49vw] lg:pt-[3.43vw] tracking-wide leading-none max-w-[70vw] lg:max-w-[35vw] break-words"
             >
                             {venueName.toUpperCase()}
 

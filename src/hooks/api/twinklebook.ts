@@ -1,5 +1,3 @@
-// src/hooks/api/twinklebook.ts
-
 const BASE_URL = "https://api.twinklebook.com/api/Event";
 
 type ApiResponse<T> = {
@@ -10,7 +8,7 @@ type ApiResponse<T> = {
 
 async function apiRequest<T>(
   path: string,
-  options?: RequestInit & { signal?: AbortSignal }
+  options?: RequestInit & { signal?: AbortSignal },
 ): Promise<ApiResponse<T>> {
   try {
     const res = await fetch(`${BASE_URL}${path}`, {
@@ -27,15 +25,16 @@ async function apiRequest<T>(
     if (!res.ok || json?.status === "Error" || json?.messageEN) {
       return {
         data: null,
-        error: json?.message || json?.messageID || `Request gagal (status ${res.status})`,
+        error:
+          json?.message ||
+          json?.messageID ||
+          `Request gagal (status ${res.status})`,
         errorEn: json?.messageEN || null,
       };
     }
 
     return { data: json?.data ?? json, error: null };
   } catch (err) {
-    // fetch yang di-abort juga nge-throw DOMException("AbortError")
-    // jangan diperlakukan sebagai error asli, biar nggak nampilin pesan error palsu ke user
     if (err instanceof DOMException && err.name === "AbortError") {
       return { data: null, error: null };
     }
@@ -49,13 +48,15 @@ async function apiRequest<T>(
 
 // --- GetCurrentEvent ---
 export function getEventByUrl<T = any>(url: string, signal?: AbortSignal) {
-  return apiRequest<T>(`/GetCurrentEvent?url=${encodeURIComponent(url)}`, { signal });
+  return apiRequest<T>(`/GetCurrentEvent?url=${encodeURIComponent(url)}`, {
+    signal,
+  });
 }
 
 // --- GetCurrentGuest ---
 export function getEventGuestByPin<T = any>(url: string, pin: string) {
   return apiRequest<T>(
-    `/GetCurrentGuest?url=${encodeURIComponent(url)}&pin=${encodeURIComponent(pin)}`
+    `/GetCurrentGuest?url=${encodeURIComponent(url)}&pin=${encodeURIComponent(pin)}`,
   );
 }
 
@@ -67,14 +68,14 @@ export function getEventContent<T = any>(id: string) {
 // --- GetGuestEventSessionByPinNew ---
 export function getEventSessionByPin<T = any>(pin: string, eventId: string) {
   return apiRequest<T>(
-    `/GetGuestEventSessionByPinNew?pin=${encodeURIComponent(pin)}&eventId=${encodeURIComponent(eventId)}`
+    `/GetGuestEventSessionByPinNew?pin=${encodeURIComponent(pin)}&eventId=${encodeURIComponent(eventId)}`,
   );
 }
 
 // --- GetSmartRSVPData ---
 export function getSmartRsvpQuestionByPin<T = any>(url: string, pin: string) {
   return apiRequest<T>(
-    `/GetSmartRSVPData?url=${encodeURIComponent(url)}&pin=${encodeURIComponent(pin)}`
+    `/GetSmartRSVPData?url=${encodeURIComponent(url)}&pin=${encodeURIComponent(pin)}`,
   );
 }
 
@@ -122,9 +123,10 @@ export function submitRSVP<T = any>(payload: {
 }
 
 // --- GetAllPersonalGuestMessages ---
-// ganti nama fungsi
 export function getAllPersonalGuestMessages<T = any>(eventId: string) {
-  return apiRequest<T>(`/GetAllPersonalGuestMessages?eventId=${encodeURIComponent(eventId)}`);
+  return apiRequest<T>(
+    `/GetAllPersonalGuestMessages?eventId=${encodeURIComponent(eventId)}`,
+  );
 }
 
 export function submitPersonalGuestMessage<T = any>(payload: {

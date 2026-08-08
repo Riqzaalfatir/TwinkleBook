@@ -17,9 +17,5 @@ export type EventByUrlResponse = {
   hashTag: string;
   eventAccess: number; // 0 = public/tanpa PIN (confirmed dari data asli)
 
-  // Field lain yang ada di response API tapi belum ada kebutuhan pakainya
-  // di kode sekarang — index signature ini biar TypeScript gak protes
-  // kalau suatu saat ada field lain yang mau diakses tanpa perlu declare
-  // ulang semuanya satu-satu (response aslinya 150+ field).
   [key: string]: unknown;
 };

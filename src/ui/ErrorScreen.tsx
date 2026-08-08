@@ -1,4 +1,3 @@
-// src/ui/ErrorScreen.tsx (atau path lu)
 export default function ErrorScreen({ message }: { message?: string }) {
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#F6F6F4]">

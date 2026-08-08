@@ -1,4 +1,3 @@
-// src/hooks/api/useEventContent.ts
 "use client";
 
 import { useState, useCallback, useRef } from "react";

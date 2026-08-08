@@ -48,7 +48,7 @@ export function useEventSessionByPin<T = any>() {
   return {
     getEventSessionByPin: getEventSessionByPinFn,
     eventSessionByPin,
-    eventSessionByPinStatus,  // ⚠️ Note: field status-nya beda nama, sesuai tabel
+    eventSessionByPinStatus,  
     error,
     reset,
   };
