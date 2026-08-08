@@ -2,7 +2,7 @@
 
 import { useCallback, useRef, useState } from "react";
 import { getEventByUrl } from "./twinklebook";
-import type { EventByUrlResponse } from "@/types/api/event";
+import type { EventByUrlResponse } from "../../types/event";
 
 type Status = "idle" | "loading" | "success" | "error";
 
