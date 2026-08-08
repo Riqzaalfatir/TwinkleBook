@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import LoadingScreen from "../../components/templates/Atet-Halim/LoadingScreen";
+import { usePreloader } from "../../components/templates/Atet-Halim/usePreloader";
 import ErrorScreen from "@/ui/ErrorScreen";
 import { useEventUrl } from "@/hooks/api/useEventUrl";
 import { useEventContent } from "@/hooks/api/useEventContent";
@@ -15,6 +16,11 @@ export default function EventPage() {
   const router = useRouter();
   const { id } = useParams<{ id: string }>();
   const hasCheckedAccessRef = useRef(false);
+
+  // ═══════════════════════════════════════════════════════════════
+  // STEP 0: Preload Images (buat kasih makan progress ke LoadingScreen)
+  // ═══════════════════════════════════════════════════════════════
+  const { progress } = usePreloader();
 
   // ═══════════════════════════════════════════════════════════════
   // STEP 1: Fetch Event By URL (GetCurrentEvent)
@@ -102,31 +108,31 @@ export default function EventPage() {
   // STEP 6: Assemble All Data (Flat Structure + Guest)
   // ═══════════════════════════════════════════════════════════════
   const assembledData = useMemo(() => {
-  if (!eventByUrl || !eventContentByEventId) return null;
+    if (!eventByUrl || !eventContentByEventId) return null;
 
-  const pin = localStorage.getItem(`${id}-pin`);
+    const pin = localStorage.getItem(`${id}-pin`);
 
-  return {
-    dataEvent: eventByUrl,               // ✅ wrap, bukan spread
-    dataContent: eventContentByEventId,  // ✅ wrap, bukan spread
-    dataSession: eventSessionByPin || [],// ✅ ganti nama dari "sessions" jadi "dataSession"
-    guest: eventGuestByPin || null,
-    pin: pin || null,
-    url: id,
-  };
-}, [
-  eventByUrl,
-  eventContentByEventId,
-  eventSessionByPin,
-  eventGuestByPin,
-  id,
-]);
+    return {
+      dataEvent: eventByUrl, // ✅ wrap, bukan spread
+      dataContent: eventContentByEventId, // ✅ wrap, bukan spread
+      dataSession: eventSessionByPin || [], // ✅ ganti nama dari "sessions" jadi "dataSession"
+      guest: eventGuestByPin || null,
+      pin: pin || null,
+      url: id,
+    };
+  }, [
+    eventByUrl,
+    eventContentByEventId,
+    eventSessionByPin,
+    eventGuestByPin,
+    id,
+  ]);
 
   // ═══════════════════════════════════════════════════════════════
   // Loading State
   // ═══════════════════════════════════════════════════════════════
   if (status === "loading" || contentStatus === "loading") {
-    return <LoadingScreen />;
+    return <LoadingScreen progress={progress} />;
   }
 
   // ═══════════════════════════════════════════════════════════════
