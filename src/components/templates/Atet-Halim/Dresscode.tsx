@@ -9,13 +9,6 @@ type DresscodeProps = {
 const Dresscode = ({ data }: DresscodeProps) => {
   return (
     <section id="dresscode" className="relative w-full pt-[3vw] lg:pt-[3.30vw] ">
-      {/* BACKGROUND KERTAS */}
-      {/* <Image
-        src="/images/Atet-Halim/Hero/BackgoundKertas.webp"
-        alt="background"
-        fill
-        className="object-cover"
-      /> */}
 
       {/* BUNGA POJOK KIRI BAWAH */}
       <Image

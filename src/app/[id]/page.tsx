@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import LoadingScreen from "../../components/templates/Atet-Halim/LoadingScreen";
-import { usePreloader } from "../../components/templates/Atet-Halim/usePreloader";
+import { usePreloader } from "../../components/templates//Atet-Halim/hooks/usePreloader";
 import ErrorScreen from "@/ui/ErrorScreen";
 import { useEventUrl } from "@/hooks/api/useEventUrl";
 import { useEventContent } from "@/hooks/api/useEventContent";

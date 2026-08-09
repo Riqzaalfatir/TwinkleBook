@@ -5,33 +5,34 @@ import { useEffect, useState } from "react";
 const BREAKPOINT = 1024;
 
 const IMAGES_MOBILE: string[] = [
+  "/images/Atet-Halim/Opening/BungaKiriAtas.webp",
+  "/images/Atet-Halim/Opening/BungaKananBawah.webp",
+
   "/images/Atet-Halim/hero/LayerKertas4.webp", // Hero
   "/images/Atet-Halim/EventOrder/LayerKertas.webp", // EventOrder
   "/images/Atet-Halim/Wishes/OrnamentGaris.webp", // Wishes (lg:hidden)
   "/images/Atet-Halim/Thankyou/LayerKertas.webp", // Thankyou
   "/images/Atet-Halim/Thankyou/BungaKiriM.webp", // Thankyou (lg:hidden)
   "/images/Atet-Halim/Thankyou/BungaKananM.webp", // Thankyou (lg:hidden)
-  "/images/Atet-Halim/Gallery/Pengantin.webp", // Gallery
 ];
 
 const IMAGES_DESKTOP: string[] = [
+  "/images/Atet-Halim/Opening/BungaKiriAtasD.webp",
+  "/images/Atet-Halim/Opening/BungaKananBawahD.webp",
+
   "/images/Atet-Halim/Hero/BgKertasD.webp",
-  "/images/Atet-Halim/Hero/LayerKertasD.svg", // Hero
+  "/images/Atet-Halim/Hero/ateskertas.webp", // Hero
   "/images/Atet-Halim/EventOrder/LayerKertasD.svg", // EventOrder
   "/images/Atet-Halim/Wishes/BungaKiriAtas.webp", // Wishes (hidden lg:block)
   "/images/Atet-Halim/Wishes/BungaKananAtas.webp", // Wishes (hidden lg:block)
   "/images/Atet-Halim/Wishes/BungaKiritengah.webp", // Wishes (hidden lg:block)
-  "/images/Atet-Halim/Thankyou/LayerKertasD.webp", // Thankyou
   "/images/Atet-Halim/Thankyou/BungaKiriBawah.webp", // Thankyou (hidden lg:block)
   "/images/Atet-Halim/Thankyou/BungaKananBawah.webp", // Thankyou (hidden lg:block)
-  "/images/Atet-Halim/Gallery/PengantinD.webp", // Gallery
 ];
 
 const IMAGES_COMMON: string[] = [
   // Opening.tsx
   "/images/Atet-Halim/Hero/BackgoundKertas.webp",
-  "/images/Atet-Halim/Opening/BungaKiriAtas.webp",
-  "/images/Atet-Halim/Opening/BungaKananBawah.webp",
 
   // Hero.tsx
   "/images/Atet-Halim/hero/BungaKiriAtasD.webp",
@@ -72,6 +73,13 @@ const IMAGES_COMMON: string[] = [
   "/images/Atet-Halim/Rsvp/BungaKiriBawahh.webp",
   "/images/Atet-Halim/Rsvp/BungaKananBawahh.webp",
   "/images/Atet-Halim/Rsvp/Wa.png",
+
+  //Gallery
+  "/images/Atet-Halim/Gallery/Pengantin1.webp",
+  "/images/Atet-Halim/Gallery/Pengantin2.webp",
+  "/images/Atet-Halim/Gallery/Pengantin3.webp",
+  "/images/Atet-Halim/Gallery/Pengantin4.webp",
+  "/images/Atet-Halim/Gallery/Pengantin5.webp",
 ];
 
 export function usePreloader() {

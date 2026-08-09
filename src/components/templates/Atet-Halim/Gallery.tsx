@@ -14,23 +14,18 @@ import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import "yet-another-react-lightbox/plugins/counter.css";
 
-type Photo = {
-  mobile: string;
-  desktop: string;
-};
-
 type GalleryProps = {
   data?: any;
 };
 
 const AUTOPLAY_DELAY = 4000;
 
-// ✅ Fallback kalau galleryImageData kosong/belum ada
-const DEFAULT_PHOTOS: Photo[] = [
-  {
-    mobile: "/images/Atet-Halim/Gallery/Pengantin.webp",
-    desktop: "/images/Atet-Halim/Gallery/PengantinD.webp",
-  },
+const DEFAULT_PHOTOS: string[] = [
+  "/images/Atet-Halim/Gallery/Pengantin1.webp",
+  "/images/Atet-Halim/Gallery/Pengantin2.webp",
+  "/images/Atet-Halim/Gallery/Pengantin3.webp",
+  "/images/Atet-Halim/Gallery/Pengantin4.webp",
+  "/images/Atet-Halim/Gallery/Pengantin5.webp",
 ];
 
 const Gallery = ({ data }: GalleryProps) => {
@@ -41,22 +36,16 @@ const Gallery = ({ data }: GalleryProps) => {
   // ✅ Dari dataContent.galleryImageData, sesuai dokumentasi
   const rawGalleryData = data?.dataContent?.galleryImageData ?? [];
 
-  const photos: Photo[] = useMemo(() => {
+  const photos: string[] = useMemo(() => {
     if (!Array.isArray(rawGalleryData) || rawGalleryData.length === 0) {
       return DEFAULT_PHOTOS;
     }
 
-    return rawGalleryData.map((item: any) => {
-      const fullUrl = item?.url
+    return rawGalleryData.map((item: any) =>
+      item?.url
         ? `https://media.twinklebook.com/${item.url}`
-        : "/images/Atet-Halim/Gallery/Pengantin.webp";
-
-      // API kemungkinan cuma ngasih 1 url per foto, dipake buat mobile & desktop
-      return {
-        mobile: fullUrl,
-        desktop: fullUrl,
-      };
-    });
+        : "/images/Atet-Halim/Gallery/Pengantin.webp",
+    );
   }, [rawGalleryData]);
 
   const plugins = useMemo(
@@ -87,24 +76,17 @@ const Gallery = ({ data }: GalleryProps) => {
       >
         <div className="overflow-hidden w-full h-full" ref={emblaRef}>
           <div className="flex h-full">
-            {photos.map((photo, index) => (
+            {photos.map((src, index) => (
               <div
                 key={index}
-                className="relative flex-none w-screen h-full cursor-pointer"
+                className="relative flex-none w-screen lg:w-1/4 h-full cursor-pointer"
                 onClick={() => handlePhotoClick(index)}
               >
                 <Image
-                  src={photo.mobile}
+                  src={src}
                   alt={`Gallery photo ${index + 1}`}
                   fill
-                  className="object-cover block lg:hidden"
-                  priority={index === 0}
-                />
-                <Image
-                  src={photo.desktop}
-                  alt={`Gallery photo ${index + 1}`}
-                  fill
-                  className="object-cover hidden lg:block"
+                  className="object-cover"
                   priority={index === 0}
                 />
               </div>
@@ -117,7 +99,7 @@ const Gallery = ({ data }: GalleryProps) => {
         open={lightboxOpen}
         close={handleClose}
         index={lightboxIndex}
-        slides={photos.map((photo) => ({ src: photo.desktop }))}
+        slides={photos.map((src) => ({ src }))}
         plugins={[Thumbnails, Zoom, Counter]}
         noScroll={{ disabled: true }}
       />
@@ -126,110 +108,3 @@ const Gallery = ({ data }: GalleryProps) => {
 };
 
 export default Gallery;
-
-
-
-
-// GALLERY SEBELUM DI DINAMISKAN
-// "use client";
-
-// import React, { useState, useRef, useCallback, useMemo } from "react";
-// import Image from "next/image";
-// import useEmblaCarousel from "embla-carousel-react";
-// import Autoplay from "embla-carousel-autoplay";
-
-// import Lightbox from "yet-another-react-lightbox";
-// import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
-// import Zoom from "yet-another-react-lightbox/plugins/zoom";
-// import Counter from "yet-another-react-lightbox/plugins/counter";
-
-// import "yet-another-react-lightbox/styles.css";
-// import "yet-another-react-lightbox/plugins/thumbnails.css";
-// import "yet-another-react-lightbox/plugins/counter.css";
-
-// type Photo = {
-//   mobile: string;
-//   desktop: string;
-// };
-
-// const photos: Photo[] = [
-//   {
-//     mobile: "/images/Atet-Halim/Gallery/Pengantin.webp",
-//     desktop: "/images/Atet-Halim/Gallery/PengantinD.webp",
-//   },
-// ];
-
-// const AUTOPLAY_DELAY = 4000;
-
-// const Gallery = () => {
-//   const [lightboxOpen, setLightboxOpen] = useState<boolean>(false);
-//   const [lightboxIndex, setLightboxIndex] = useState<number>(0);
-//   const scrollPosRef = useRef<number>(0);
-
-//   const plugins = useMemo(
-//     () => [Autoplay({ delay: AUTOPLAY_DELAY, stopOnInteraction: false })],
-//     [],
-//   );
-
-//   const [emblaRef] = useEmblaCarousel({ loop: true }, plugins);
-
-//   const handlePhotoClick = useCallback((index: number) => {
-//     scrollPosRef.current = window.scrollY;
-//     setLightboxIndex(index);
-//     setLightboxOpen(true);
-//   }, []);
-
-//   const handleClose = () => {
-//     setLightboxOpen(false);
-//     setTimeout(() => {
-//       window.scrollTo({ top: scrollPosRef.current, behavior: "instant" });
-//     }, 10);
-//   };
-
-//   return (
-//     <>
-//       <section
-//         id="gallery"
-//         className="relative w-full  h-[598px] min-h-[598px] max-h-[598px] lg:h-[949px] lg:min-h-[949px] lg:max-h-[949px] overflow-hidden z-30"
-//       >
-//         <div className="overflow-hidden w-full h-full" ref={emblaRef}>
-//           <div className="flex h-full">
-//             {photos.map((photo, index) => (
-//               <div
-//                 key={index}
-//                 className="relative flex-none w-screen h-full cursor-pointer"
-//                 onClick={() => handlePhotoClick(index)}
-//               >
-//                 <Image
-//                   src={photo.mobile}
-//                   alt={`Gallery photo ${index + 1}`}
-//                   fill
-//                   className="object-cover block lg:hidden"
-//                   priority={index === 0}
-//                 />
-//                 <Image
-//                   src={photo.desktop}
-//                   alt={`Gallery photo ${index + 1}`}
-//                   fill
-//                   className="object-cover hidden lg:block"
-//                   priority={index === 0}
-//                 />
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </section>
-
-//       <Lightbox
-//         open={lightboxOpen}
-//         close={handleClose}
-//         index={lightboxIndex}
-//         slides={photos.map((photo) => ({ src: photo.desktop }))}
-//         plugins={[Thumbnails, Zoom, Counter]}
-//         noScroll={{ disabled: true }}
-//       />
-//     </>
-//   );
-// };
-
-// export default Gallery;

@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useParams } from "next/navigation";
 import LoadingScreen from "../../../components/templates/Atet-Halim/LoadingScreen";
-import { usePreloader } from "../../../components/templates/Atet-Halim/usePreloader";
+import { usePreloader } from "../../../components/templates/Atet-Halim/hooks/usePreloader";
 
 /**
  * Route: /{eventUrl}/{pin}
