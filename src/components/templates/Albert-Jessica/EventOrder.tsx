@@ -78,7 +78,7 @@ const EventOrder = () => {
                 href="https://maps.app.goo.gl/vfD7wKoZg1gEY2M88"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-[160px] h-[33px] text-[14px] font-lora font-bold text-white bg-[#4E4E4E] rounded-[6px] mt-[20px]"
+                className="flex items-center justify-center w-[160px] h-[33px] text-[14px] font-lora font-semibold text-white bg-[#4E4E4E] rounded-[6px] mt-[20px]"
               >
                 GOOGLE MAPS
               </a>
@@ -145,7 +145,7 @@ const EventOrder = () => {
                 href="https://maps.app.goo.gl/grkeAGbFwbAWLY1h8"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-[160px] h-[33px] text-[14px] font-lora font-bold text-white bg-[#4E4E4E] rounded-[6px] mt-[20px]"
+                className="flex items-center justify-center w-[160px] h-[33px] text-[14px] font-lora font-semibold text-white bg-[#4E4E4E] rounded-[6px] mt-[20px]"
               >
                 GOOGLE MAPS
               </a>
@@ -212,7 +212,7 @@ const EventOrder = () => {
                 href="https://maps.app.goo.gl/grkeAGbFwbAWLY1h8"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-[160px] h-[33px] text-[14px] font-lora font-bold text-white bg-[#4E4E4E] rounded-[6px] mt-[20px]"
+                className="flex items-center justify-center w-[160px] h-[33px] text-[14px] font-lora font-semibold text-white bg-[#4E4E4E] rounded-[6px] mt-[20px]"
               >
                 GOOGLE MAPS
               </a>
