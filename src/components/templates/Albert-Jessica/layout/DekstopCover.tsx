@@ -20,8 +20,7 @@
           </p>
           <h1 className="font-marcellus text-[60px] uppercase">Albert & Jessica</h1>
           <p className="font-lora text-[16px] leading-6">
-            Saturday · Sunday,
-            <br />12 · 09 Sep 2026
+            Saturday · 12 Sep 2026
           </p>
         </div>
       </div>
