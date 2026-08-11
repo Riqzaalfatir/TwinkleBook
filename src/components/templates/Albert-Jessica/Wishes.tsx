@@ -214,9 +214,9 @@ const Wishes = () => {
             </motion.div>
 
             <WishesCard
-              data={selectedMessage}
-              onClose={() => setSelectedMessage(null)}
-            />
+  data={selectedMessage ? { ...selectedMessage, id: String(selectedMessage.id) } : null}
+  onClose={() => setSelectedMessage(null)}
+/>
 
             <motion.button
               variants={fadeUp}
