@@ -68,9 +68,7 @@ const AlbertJessica = () => {
         <Opening
           setStart={setStart}
           namaTamu="Tamu Undangan"
-          groomName="Albert"
           groomFullName="Albert Nathaniel"
-          brideName="Jessica"
           brideFullName="Jessica Nathalie Wibowo"
         />
       )}
