@@ -11,6 +11,7 @@ import { useEventSessionByPin } from "@/hooks/api/useEventSessionByPin";
 import { useCurrentGuest } from "@/hooks/api/useCurrentGuest";
 import { getTemplateNameFromId } from "@/lib/templateMap";
 import AtetHalim from "@/components/templates/Atet-Halim";
+import AlbertJessica from "@/components/templates/Albert-Jessica";
 
 export default function EventPage() {
   const router = useRouter();
@@ -172,6 +173,9 @@ export default function EventPage() {
   // Render Template
   // ═══════════════════════════════════════════════════════════════
   return (
+    <>
     <AtetHalim data={assembledData} isPreview={false} dataValidation={null} />
+    <AlbertJessica/>
+    </>
   );
 }
