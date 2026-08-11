@@ -9,7 +9,8 @@
 
   html,
   body {
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
+    overflow-x: clip;
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
@@ -21,5 +22,60 @@
 
   html.no-scroll {
     overflow-y: hidden;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   Split Desktop Layout (Cover + Sections)
+   Dipake hanya kalau template punya elemen dengan class:
+   .desktop-layout / .cover-panel / .sections-panel
+   Kalau nggak ada elemen yang manggil class ini di JSX,
+   style di bawah nggak akan ke-apply ke mana pun.
+   ═══════════════════════════════════════════════════════════════ */
+
+  .desktop-layout {
+    display: block;
+    min-height: 100dvh;
+  }
+
+  .cover-panel {
+    display: none;
+  }
+
+  .sections-panel {
+    width: 100%;
+  }
+
+  @media (min-width: 1024px) {
+    .desktop-layout {
+      display: grid;
+      grid-template-columns: 1fr 435px;
+      height: 100dvh;
+      overflow-x: hidden;
+    }
+
+    .cover-panel {
+      display: block;
+      min-height: 100dvh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: none;
+    }
+
+    .cover-panel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .sections-panel {
+      width: 435px;
+      height: 100dvh;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scroll-behavior: smooth;
+      scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+    }
+  }
+
+  .section-dark {
+    background-color: #4e4e4e;
   }
 }
