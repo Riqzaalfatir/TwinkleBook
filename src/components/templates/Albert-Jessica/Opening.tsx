@@ -111,13 +111,13 @@ const Opening = ({
               </h1>
 
               <p className="font-lora text-[12px] lg:text-[14px] text-black pt-[14px] lg:pt-[21px]">
-                                Dear Mr. /Mrs. / Ms.
+                Dear,
               </p>
               <p className="font-lora text-[14px] lg:text-[18px] text-black pt-[3px]">
                 Sela
               </p>
 
-              <p className="font-lora text-[10px] lg:text-[12px] text-black leading-none lg:leading-[17px] pt-[22px] lg:pt-[27px]">
+              <p className="font-lora text-[10px] lg:text-[12px] text-black leading-[14px] lg:leading-[17px] pt-[27px] lg:pt-[32px]">
                 We sincerely apologize
                 <br />
                 for any misspelling of names or titles.

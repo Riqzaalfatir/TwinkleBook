@@ -128,7 +128,7 @@ const EventOrder = () => {
               transition={{ duration: 1.5, ease: "easeOut" }}
               className="font-lora font-medium text-[14px] text-[#33302D] pt-[17px]"
             >
-              Empire Ballroom <br />
+              Meridien Ballroom <br />
               Holiday Inn Bandung Pasteur
               <span className="block font-normal text-[12px]">
                 Jl. dr. Djundjunan no. 96, Pasteur, Bandung
@@ -142,7 +142,7 @@ const EventOrder = () => {
               transition={{ duration: 1.5, ease: "easeOut" }}
             >
               <a
-                href="https://maps.app.goo.gl/grkeAGbFwbAWLY1h8"
+                href="https://maps.app.goo.gl/6AgxgsgJrdGjDQqp9"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-[160px] h-[33px] text-[14px] font-lora font-semibold text-white bg-[#4E4E4E] rounded-[6px] mt-[20px]"
@@ -195,7 +195,7 @@ const EventOrder = () => {
               transition={{ duration: 1.5, ease: "easeOut" }}
               className="font-lora font-medium text-[14px] text-[#33302D] pt-[17px]"
             >
-              Meridien Room <br />
+              Empire Room <br />
               Holiday Inn Bandung Pasteur
               <span className="block font-normal text-[12px]">
                 Jl. dr. Djundjunan no. 96, Pasteur, Bandung
@@ -209,7 +209,7 @@ const EventOrder = () => {
               transition={{ duration: 1.5, ease: "easeOut" }}
             >
               <a
-                href="https://maps.app.goo.gl/grkeAGbFwbAWLY1h8"
+                href="https://maps.app.goo.gl/6AgxgsgJrdGjDQqp9"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-[160px] h-[33px] text-[14px] font-lora font-semibold text-white bg-[#4E4E4E] rounded-[6px] mt-[20px]"
