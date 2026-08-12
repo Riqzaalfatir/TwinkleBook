@@ -113,7 +113,9 @@ export default function EventPage() {
     return <ErrorScreen message="Event data tidak tersedia" />;
   }
 
-  const templateName = getTemplateNameFromId(eventByUrl?.templateId);
+  const templateName = eventByUrl?.templateId
+  ? getTemplateNameFromId(eventByUrl.templateId as string)
+  : DEFAULT_TEMPLATE;
   const TemplateComponent =
     TEMPLATE_REGISTRY[templateName] ?? TEMPLATE_REGISTRY[DEFAULT_TEMPLATE];
 
