@@ -35,7 +35,6 @@ const Dresscode = ({ data }: DresscodeProps) => {
           DRESS CODE
         </motion.h2>
 
-        {/* ORNAMENT GARIS */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
