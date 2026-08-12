@@ -36,7 +36,7 @@ const RsvpSectionDesign = () => {
 
       <section
         id="rsvp"
-        className="relative w-full overflow-hidden pt-[19vw] lg:pt-[11.6vw] pb-[41.54vw] lg:pb-[10.44vw]"
+        className="relative w-full overflow-hidden pt-[19vw] lg:pt-[10.8vw] pb-[41.54vw] lg:pb-[10.44vw]"
       >
         {/* BUNGA POJOK KANAN ATAS */}
         <Image
@@ -44,7 +44,7 @@ const RsvpSectionDesign = () => {
           alt="flower decoration"
           width={450}
           height={450}
-          className="absolute -top-[3.85vw] lg:-bottom-[0px] right-0 w-[33.08vw] lg:w-[15.85vw] h-auto pointer-events-none z-30"
+          className="absolute top-[4.5vw] lg:-bottom-[0px] right-0 w-[33.08vw] lg:w-[15.85vw] h-auto pointer-events-none z-30"
         />
 
         {/* BUNGA POJOK KIRI BAWAH */}
