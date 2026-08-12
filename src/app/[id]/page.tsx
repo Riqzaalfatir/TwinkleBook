@@ -10,22 +10,15 @@ import { useEventContent } from "@/hooks/api/useEventContent";
 import { useEventSessionByPin } from "@/hooks/api/useEventSessionByPin";
 import { useCurrentGuest } from "@/hooks/api/useCurrentGuest";
 import { getTemplateNameFromId } from "@/lib/templateMap";
-import AtetHalim from "@/components/templates/Atet-Halim";
-import AlbertJessica from "@/components/templates/Albert-Jessica";
+import { TEMPLATE_REGISTRY, DEFAULT_TEMPLATE } from "@/lib/templateRegistry";
 
 export default function EventPage() {
   const router = useRouter();
   const { id } = useParams<{ id: string }>();
   const hasCheckedAccessRef = useRef(false);
 
-  // ═══════════════════════════════════════════════════════════════
-  // STEP 0: Preload Images (buat kasih makan progress ke LoadingScreen)
-  // ═══════════════════════════════════════════════════════════════
   const { progress } = usePreloader();
 
-  // ═══════════════════════════════════════════════════════════════
-  // STEP 1: Fetch Event By URL (GetCurrentEvent)
-  // ═══════════════════════════════════════════════════════════════
   const { getEventByUrl, eventByUrl, status, error } = useEventUrl();
 
   useEffect(() => {
@@ -33,27 +26,17 @@ export default function EventPage() {
     getEventByUrl(id);
   }, [id, getEventByUrl]);
 
-  // ═══════════════════════════════════════════════════════════════
-  // STEP 2: Check PIN Access (Private Event)
-  // ═══════════════════════════════════════════════════════════════
   useEffect(() => {
     if (!eventByUrl || hasCheckedAccessRef.current) return;
-
     hasCheckedAccessRef.current = true;
 
-    // Ambil PIN dari localStorage (disimpen dari [pin]/page.tsx)
     const savedPin = localStorage.getItem(`${id}-pin`);
-
-    // Kalau event private (eventAccess === 0) dan belum ada PIN, redirect ke input PIN
     if (eventByUrl.eventAccess === 0 && !savedPin) {
       window.location.replace(`/${id}/private`);
       return;
     }
   }, [eventByUrl, id]);
 
-  // ═══════════════════════════════════════════════════════════════
-  // STEP 3: Fetch Event Content (GetEventContent)
-  // ═══════════════════════════════════════════════════════════════
   const {
     getEventContent,
     eventContentByEventId,
@@ -66,9 +49,6 @@ export default function EventPage() {
     getEventContent(eventByUrl.id);
   }, [eventByUrl?.id, getEventContent]);
 
-  // ═══════════════════════════════════════════════════════════════
-  // STEP 4: Fetch Guest Data By PIN (GetCurrentGuest)
-  // ═══════════════════════════════════════════════════════════════
   const {
     getEventGuestByPin,
     eventGuestByPin,
@@ -78,104 +58,70 @@ export default function EventPage() {
 
   useEffect(() => {
     if (!id) return;
-
     const pin = localStorage.getItem(`${id}-pin`);
-
-    // Hanya fetch guest kalau ada PIN
     if (pin) {
-      // id di sini adalah URL slug (eventUrl), pin adalah string dari localStorage
       getEventGuestByPin(id, pin);
     }
   }, [id, getEventGuestByPin]);
 
-  // ═══════════════════════════════════════════════════════════════
-  // STEP 5: Fetch Session By PIN (GetGuestEventSessionByPinNew)
-  // ═══════════════════════════════════════════════════════════════
   const { getEventSessionByPin, eventSessionByPin, eventSessionByPinStatus } =
     useEventSessionByPin();
 
   useEffect(() => {
     if (!eventByUrl?.id) return;
-
     const pin = localStorage.getItem(`${id}-pin`);
-
-    // Hanya fetch session kalau ada PIN
     if (pin) {
       getEventSessionByPin(pin, eventByUrl.id);
     }
   }, [eventByUrl?.id, id, getEventSessionByPin]);
 
-  // ═══════════════════════════════════════════════════════════════
-  // STEP 6: Assemble All Data (Flat Structure + Guest)
-  // ═══════════════════════════════════════════════════════════════
   const assembledData = useMemo(() => {
     if (!eventByUrl || !eventContentByEventId) return null;
-
     const pin = localStorage.getItem(`${id}-pin`);
 
     return {
       dataEvent: eventByUrl,
-      dataContent: eventContentByEventId, 
-      dataSession: eventSessionByPin || [], 
+      dataContent: eventContentByEventId,
+      dataSession: eventSessionByPin || [],
       guest: eventGuestByPin || null,
       pin: pin || null,
       url: id,
     };
-  }, [
-    eventByUrl,
-    eventContentByEventId,
-    eventSessionByPin,
-    eventGuestByPin,
-    id,
-  ]);
+  }, [eventByUrl, eventContentByEventId, eventSessionByPin, eventGuestByPin, id]);
 
-  // ═══════════════════════════════════════════════════════════════
-  // Loading State
-  // ═══════════════════════════════════════════════════════════════
   if (status === "loading" || contentStatus === "loading") {
     return <LoadingScreen progress={progress} />;
   }
 
-  // ═══════════════════════════════════════════════════════════════
-  // Error State
-  // ═══════════════════════════════════════════════════════════════
   if (status === "error") {
     return <ErrorScreen message={error || "Event tidak ditemukan"} />;
   }
 
   if (contentStatus === "error") {
-    return (
-      <ErrorScreen message={contentError || "Konten event tidak ditemukan"} />
-    );
+    return <ErrorScreen message={contentError || "Konten event tidak ditemukan"} />;
   }
 
   if (guestStatus === "error") {
-    // Guest error nggak fatal, lanjutin aja dengan guest kosong
-    console.warn(
-      "Guest fetch gagal, lanjutin dengan guest kosong:",
-      guestError,
-    );
+    console.warn("Guest fetch gagal, lanjutin dengan guest kosong:", guestError);
   }
 
   if (eventSessionByPinStatus === "error") {
-    // Session error nggak fatal, lanjutin aja dengan session kosong
     console.warn("Session fetch gagal, lanjutin dengan session kosong");
   }
 
-  // ═══════════════════════════════════════════════════════════════
-  // No Data
-  // ═══════════════════════════════════════════════════════════════
   if (!assembledData) {
     return <ErrorScreen message="Event data tidak tersedia" />;
   }
 
-  // ═══════════════════════════════════════════════════════════════
-  // Render Template
-  // ═══════════════════════════════════════════════════════════════
+  const templateName = getTemplateNameFromId(eventByUrl?.templateId);
+  const TemplateComponent =
+    TEMPLATE_REGISTRY[templateName] ?? TEMPLATE_REGISTRY[DEFAULT_TEMPLATE];
+
   return (
-    <>
-    <AtetHalim data={assembledData} isPreview={false} dataValidation={null} />
-    <AlbertJessica/>
-    </>
+    <TemplateComponent
+      data={assembledData}
+      isPreview={false}
+      dataValidation={null}
+    />
   );
 }
