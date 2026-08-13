@@ -19,6 +19,13 @@ type WishesProps = {
   data?: any;
 };
 
+const decodeHtmlEntities = (text: string): string => {
+  if (typeof window === "undefined") return text; // guard buat SSR
+  const textarea = document.createElement("textarea");
+  textarea.innerHTML = text;
+  return textarea.value;
+};
+
 const dummyAsApiFormat: PersonalGuestMessage[] = dummyPesan.map(
   (item: any) =>
     ({
@@ -172,7 +179,7 @@ const Wishes = ({ data }: WishesProps) => {
                           {item.name}
                         </p>
                         <p className="text-[#4E4E4E] font-lora text-[14px]">
-                          {item.message}
+                            {decodeHtmlEntities(item.message)}
                         </p>
                         {index !== array.length - 1 && (
                           <div className="border-t border-[#4E4E4E] mt-[8px] mb-[15px]" />

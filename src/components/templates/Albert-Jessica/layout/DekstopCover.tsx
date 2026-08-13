@@ -17,7 +17,7 @@ const DesktopCover: React.FC<DesktopCoverProps> = ({ data }) => {
   return (
     <div className="relative w-full overflow-hidden h-screen">
       <Image
-        src="/images/Albert-Jessica/DekstopCover/DekstopCover.webp"
+        src="/images/Albert-Jessica/DekstopCover/pengantindekstop.jpeg"
         alt={`${groomName} & ${brideName} Wedding Cover`}
         fill
         priority
