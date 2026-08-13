@@ -1,14 +1,22 @@
 "use client";
 
 import { useEffect } from "react";
+import moment from "moment";
 
 type Props = {
   progress: number;
   onDone?: () => void;
+  data?: any;
 };
 
-export default function LoadingScreen({ progress, onDone }: Props) {
+export default function LoadingScreen({ progress, onDone, data }: Props) {
   const fading = progress === 100;
+
+  const groomName = data?.dataEvent?.groomName ?? "Albert";
+  const brideName = data?.dataEvent?.brideName ?? "Jessica";
+  const eventDate = data?.dataEvent?.date
+    ? moment(data.dataEvent.date).format("D MMMM YYYY").toUpperCase()
+    : "12 SEPTEMBER 2026";
 
   useEffect(() => {
     if (progress === 100) {
@@ -39,7 +47,7 @@ export default function LoadingScreen({ progress, onDone }: Props) {
         </p>
 
         <h1 className="font-marcellus text-[8vw] lg:text-[38px] text-[#402824] mt-[10px] leading-[1.3] tracking-wide">
-          Albert
+          {groomName}
         </h1>
 
         <p className="font-marcellus text-[6vw] lg:text-[28px] text-[#402824] leading-none my-[4px]">
@@ -47,11 +55,11 @@ export default function LoadingScreen({ progress, onDone }: Props) {
         </p>
 
         <h1 className="font-marcellus text-[8vw] lg:text-[38px] text-[#402824] leading-[1.3] tracking-wide">
-          Jessica
+          {brideName}
         </h1>
 
         <p className="font-lora text-[2.82vw] lg:text-[12px] text-[#402824]/70 mt-[14px] tracking-[0.15em]">
-          12 SEPTEMBER 2026
+          {eventDate}
         </p>
 
         {/* Progress bar */}

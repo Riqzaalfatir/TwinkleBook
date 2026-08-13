@@ -1,3 +1,5 @@
+
+// CONTOH PROFILE ATET HALIM YG SUDAH DI LATCHING 
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeUp, fadeIn, scaleIn } from "../../../lib/animation";

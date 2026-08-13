@@ -15,7 +15,7 @@ const Header = () => {
   const linkMenu: LinkMenu[] = [
     { name: "HOME", link: "#hero" },
     { name: "PROFILE", link: "#profile" },
-    { name: "ADTE", link: "#countdown" },
+    { name: "DATE", link: "#countdown" },
     { name: "TIME & LOCATION", link: "#eventorder" },
     { name: "GALLERY", link: "#gallery" },
     { name: "DRESSCODE", link: "#dresscode" },

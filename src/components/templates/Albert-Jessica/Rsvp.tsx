@@ -121,6 +121,11 @@ const RsvpSectionDesign = () => {
             {attendStatus === 2 ? "ARE YOU SURE?" : "Confirm your selection?"}
           </motion.p>
 
+          {/*
+            SmartRsvpForm.Accordion — dipanggil tapi dikomen, sesuai aturan main dokumentasi.
+            <SmartRsvpForm.Accordion className="w-full mt-[36px]" bgActiveColor="#4E4E4E" />
+          */}
+
           <motion.div variants={fadeUp}
             initial="hidden"
             whileInView="show"

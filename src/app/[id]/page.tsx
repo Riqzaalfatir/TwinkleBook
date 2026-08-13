@@ -89,30 +89,35 @@ export default function EventPage() {
     };
   }, [eventByUrl, eventContentByEventId, eventSessionByPin, eventGuestByPin, id]);
 
-  if (status === "loading" || contentStatus === "loading") {
-    return <LoadingScreen progress={progress} />;
-  }
+ if (status === "loading" || contentStatus === "loading") {
+  return null;
+}
 
-  if (status === "error") {
-    return <ErrorScreen message={error || "Event tidak ditemukan"} />;
-  }
+if (status === "error") {
+  return <ErrorScreen message={error || "Event tidak ditemukan"} />;
+}
 
-  if (contentStatus === "error") {
-    return <ErrorScreen message={contentError || "Konten event tidak ditemukan"} />;
-  }
+if (contentStatus === "error") {
+  return <ErrorScreen message={contentError || "Konten event tidak ditemukan"} />;
+}
 
-  if (guestStatus === "error") {
-    console.warn("Guest fetch gagal, lanjutin dengan guest kosong:", guestError);
-  }
+// Tambahan: kalau eventByUrl atau eventContentByEventId belum ada
+// TAPI juga belum error → ini masih fase awal/loading, bukan error beneran
+if (!eventByUrl || !eventContentByEventId) {
+  return null;
+}
 
-  if (eventSessionByPinStatus === "error") {
-    console.warn("Session fetch gagal, lanjutin dengan session kosong");
-  }
+if (guestStatus === "error") {
+  console.warn("Guest fetch gagal, lanjutin dengan guest kosong:", guestError);
+}
 
-  if (!assembledData) {
-    return <ErrorScreen message="Event data tidak tersedia" />;
-  }
+if (eventSessionByPinStatus === "error") {
+  console.warn("Session fetch gagal, lanjutin dengan session kosong");
+}
 
+if (!assembledData) {
+  return <ErrorScreen message="Event data tidak tersedia" />;
+}
   const templateName = eventByUrl?.templateId
   ? getTemplateNameFromId(eventByUrl.templateId as string)
   : DEFAULT_TEMPLATE;

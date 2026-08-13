@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DesktopCover from "../Albert-Jessica/layout/DekstopCover";
 import Hero from "../Albert-Jessica/Hero";
 import Profile from "../Albert-Jessica/Profile";
@@ -17,6 +17,7 @@ import Opening from "./Opening";
 import Header from "./Header";
 import LoadingScreen from "../Albert-Jessica/LoadingScreen";
 import { usePreloader } from "../Albert-Jessica/hooks/usePreloader";
+import { useCurrentGuest } from "@/hooks/api/useCurrentGuest";
 import VideoBackground from "../Albert-Jessica/layout/VideoBackground";
 import {
   lora,
@@ -26,9 +27,34 @@ import {
 } from "../Albert-Jessica/fonts/fonts";
 import Image from "next/image";
 
-const AlbertJessica = () => {
+type AlbertJessicaProps = {
+  data?: any;
+  isPreview?: boolean;
+  dataValidation?: unknown;
+};
+
+const AlbertJessica = ({
+  data,
+  isPreview,
+  dataValidation,
+}: AlbertJessicaProps) => {
   const [start, setStart] = useState<boolean>(false);
   const [showLoading, setShowLoading] = useState<boolean>(true);
+
+  const { getEventGuestByPin, eventGuestByPin } = useCurrentGuest();
+
+  useEffect(() => {
+    if (data?.url) {
+      const pin = localStorage.getItem(`${data.url}-pin`);
+      if (pin) {
+        getEventGuestByPin(data.url, pin);
+      }
+    }
+  }, [data?.url, getEventGuestByPin]);
+
+  const namaTamu = eventGuestByPin?.name ?? "Sela";
+  const groomName = data?.dataEvent?.groomName ?? "Albert";
+  const brideName = data?.dataEvent?.brideName ?? "Jessica";
 
   const { loaded, progress } = usePreloader();
 
@@ -37,39 +63,40 @@ const AlbertJessica = () => {
       className={`desktop-layout ${lora.variable} ${marcellus.variable} ${cormorantGaramond.variable} ${slight.variable}`}
     >
       <aside className="cover-panel">
-        <DesktopCover />
+        <DesktopCover data={data} />
       </aside>
 
       <main className="sections-panel relative">
         <VideoBackground start={start} />
         <Header />
-<Hero start={start} />
-        <Profile />
-        <Nama />
-        <Countdown />
-        <EventOrder />
-        <Gallery />
+        <Hero start={start} />
+        <Profile data={data} />
+        <Nama data={data} />
+        <Countdown data={data} />
+        <EventOrder data={data} />
+        <Gallery data={data} />
         <div className="relative w-full">
-  <Image
-    src="/images/Albert-Jessica/Profile/BgKertas.webp"
-    alt="Profile Background"
-    fill
-    className="object-cover z-10"
-  />
-  <Dresscode />
-  <Rsvp />
-</div>
-        <WeddingGift />
-        <Wishes />
-        <Thankyou />
+          <Image
+            src="/images/Albert-Jessica/Profile/BgKertas.webp"
+            alt="Profile Background"
+            fill
+            className="object-cover z-10"
+          />
+          <Dresscode  />
+          <Rsvp data={data} />
+        </div>
+        <WeddingGift data={data} />
+        <Wishes data={data} />
+        <Thankyou data={data} />
       </main>
 
       {!start && loaded && (
         <Opening
           setStart={setStart}
-          namaTamu="Tamu Undangan"
-          groomFullName="Albert Nathaniel"
-          brideFullName="Jessica Nathalie Wibowo"
+          namaTamu={namaTamu}
+          groomName={groomName}
+          brideName={brideName}
+          popUpIconImageData={data?.dataContent?.popUpIconImageData}
         />
       )}
 
@@ -77,6 +104,7 @@ const AlbertJessica = () => {
         <LoadingScreen
           progress={progress}
           onDone={() => setShowLoading(false)}
+          data={data}
         />
       )}
     </div>
