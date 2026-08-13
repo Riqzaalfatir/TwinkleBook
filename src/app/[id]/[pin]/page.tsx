@@ -2,8 +2,6 @@
 
 import { useEffect } from "react";
 import { useParams } from "next/navigation";
-import LoadingScreen from "../../../components/templates/Atet-Halim/LoadingScreen";
-import { usePreloader } from "../../../components/templates/Atet-Halim/hooks/usePreloader";
 
 /**
  * Route: /{eventUrl}/{pin}
@@ -15,23 +13,18 @@ import { usePreloader } from "../../../components/templates/Atet-Halim/hooks/use
  * 2. Page ini tangkap: id="ervanandadelyn", pin="123456"
  * 3. Simpen: localStorage["ervanandadelyn-pin"] = "123456"
  * 4. Redirect: window.location.replace("/ervanandadelyn")
- * 5. Browser naik ke app/[id]/page.tsx (URL bersih), yang baca PIN dari localStorage
+ * 5. Browser naik ke app/[id]/page.tsx (URL bersih), yang baca PIN dari localStorage,
+ *    lalu usePreloader() DI DALAM AtetHalim yang bertanggung jawab preload asset + nampilin LoadingScreen
  */
 export default function PinRedirectPage() {
   const { id, pin } = useParams<{ id: string; pin: string }>();
-  const { progress } = usePreloader();
 
   useEffect(() => {
     if (id && pin) {
       localStorage.setItem(`${id}-pin`, pin);
-
-      // Redirect ke URL bersih (tanpa PIN)
-      // Pakai window.location.replace (bukan router.push) supaya:
-      // 1. History browser nggak nyimpen URL ber-PIN
-      // 2. Halaman di-reload penuh dari server
       window.location.replace(`/${id}`);
     }
   }, [id, pin]);
 
-  return <LoadingScreen progress={progress} onDone={() => {}} />;
+  return null;
 }
