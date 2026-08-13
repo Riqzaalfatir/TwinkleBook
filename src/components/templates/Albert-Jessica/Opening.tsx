@@ -21,7 +21,7 @@ type OpeningProps = {
 
 const blurVariants = {
   exit: {
-    backdropFilter: "blur(0px)",
+    backdropFilter: "blur(0 px)",
     backgroundColor: "rgba(0,0,0,0)",
     transition: { duration: 0.9, ease: [0.4, 0, 0.2, 1] as const, delay: 0.1 },
   },
@@ -78,11 +78,11 @@ const Opening = ({
           <motion.div
             variants={blurVariants}
             initial={{
-              backdropFilter: "blur(3px)",
+              backdropFilter: "blur(6px)",
               backgroundColor: "rgba(0,0,0,0.25)",
             }}
             animate={{
-              backdropFilter: "blur(3px)",
+              backdropFilter: "blur(6px)",
               backgroundColor: "rgba(0,0,0,0.25)",
             }}
             exit="exit"
