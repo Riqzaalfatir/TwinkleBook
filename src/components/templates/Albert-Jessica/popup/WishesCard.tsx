@@ -13,6 +13,13 @@ type WishesCardProps = {
   onClose: () => void;
 };
 
+const decodeHtmlEntities = (text: string): string => {
+  if (typeof window === "undefined") return text; // guard buat SSR
+  const textarea = document.createElement("textarea");
+  textarea.innerHTML = text;
+  return textarea.value;
+};
+
 const WishesCard = ({ data, onClose }: WishesCardProps) => {
   if (!data) return null;
 
@@ -67,7 +74,8 @@ const WishesCard = ({ data, onClose }: WishesCardProps) => {
 
           {/* Pesan */}
           <p className="font-lora text-[14px] leading-[1.8] text-[#4E4E4E]/80 line-clamp-6 text-center mb-7">
-            {data.pesan}
+              {decodeHtmlEntities(data.pesan)}
+
           </p>
 
           <button

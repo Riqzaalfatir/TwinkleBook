@@ -14,10 +14,15 @@ const DesktopCover: React.FC<DesktopCoverProps> = ({ data }) => {
     ? moment(data.dataEvent.date).format("dddd · D MMM YYYY")
     : "Saturday · 12 Sep 2026";
 
+  const primaryImage = data?.dataContent?.primaryImageData?.[0]?.url;
+  const coverImageSrc = primaryImage
+    ? `https://media.twinklebook.com/${primaryImage}`
+    : "/images/Albert-Jessica/DekstopCover/pengantindekstop.jpeg";
+
   return (
     <div className="relative w-full overflow-hidden h-screen">
       <Image
-        src="/images/Albert-Jessica/DekstopCover/pengantindekstop.jpeg"
+        src={coverImageSrc}
         alt={`${groomName} & ${brideName} Wedding Cover`}
         fill
         priority
