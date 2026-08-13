@@ -129,23 +129,23 @@ const Opening = ({
               )}
             </div>
 
-            <div className="relative z-20 flex flex-col items-center text-center px-[10px] lg:px-[20px] pt-[20px] lg:pt-[27px] pb-[30px] lg:pb-[40px]">
+            <div className="relative z-20 flex flex-col items-center text-center px-[10px] lg:px-[20px] pt-[27px] lg:pt-[27px] pb-[33px] lg:pb-[40px]">
               <p className="font-lora text-[12px] lg:text-[14px] text-black">
                 The Wedding of
               </p>
 
-              <h1 className="font-marcellus text-[28px] lg:text-[36px] text-[#A4753A] pt-[3px] lg:pt-[5px] tracking-wide leading-none break-words max-w-[250px] lg:max-w-[375px]">
+              <h1 className="font-marcellus text-[24px] lg:text-[36px] text-[#A4753A] pt-[6px] lg:pt-[5px] tracking-wide leading-none break-words max-w-[250px] lg:max-w-[375px]">
                 {groomName.toUpperCase()} & {brideName.toUpperCase()}
               </h1>
 
-              <p className="font-lora text-[12px] lg:text-[14px] text-black pt-[14px] lg:pt-[21px]">
+              <p className="font-lora text-[9px] lg:text-[14px] text-black pt-[18px] lg:pt-[21px]">
                 Dear,
               </p>
-              <p className="font-lora text-[14px] lg:text-[18px] text-black pt-[3px] break-words max-w-[250px] lg:max-w-[375px]">
+              <p className="font-lora text-[13px] lg:text-[18px] text-black pt-[5px] break-words max-w-[250px] lg:max-w-[375px]">
                 {namaTamu}
               </p>
 
-              <p className="font-lora text-[10px] lg:text-[12px] text-black leading-[14px] lg:leading-[17px] pt-[27px] lg:pt-[32px]">
+              <p className="font-lora text-[8px] lg:text-[12px] text-black leading-[14px] lg:leading-[17px] pt-[22px] lg:pt-[32px]">
                 We sincerely apologize
                 <br />
                 for any misspelling of names or titles.
@@ -153,7 +153,7 @@ const Opening = ({
 
               <button
                 onClick={handleOpen}
-                className="bg-[#473B2F] hover:bg-[#402824] transition-colors flex items-center justify-center text-[#F6F6F4] w-[184px] h-[30.25px] lg:w-[220px] lg:h-[40px] rounded-[25px] lg:rounded-[40px] uppercase font-lora text-[14px] lg:text-[18px] tracking-widest mt-[15px] lg:mt-[23px]"
+                className="bg-[#473B2F] hover:bg-[#402824] transition-colors flex items-center justify-center text-[#F6F6F4] w-[184px] h-[30.25px] lg:w-[220px] lg:h-[40px] rounded-[25px] lg:rounded-[40px] uppercase font-lora text-[13px] lg:text-[18px] tracking-widest mt-[15px] lg:mt-[23px]"
               >
                 <span>View Invitation</span>
               </button>

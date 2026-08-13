@@ -19,6 +19,7 @@ import LoadingScreen from "../Albert-Jessica/LoadingScreen";
 import { usePreloader } from "../Albert-Jessica/hooks/usePreloader";
 import { useCurrentGuest } from "@/hooks/api/useCurrentGuest";
 import VideoBackground from "../Albert-Jessica/layout/VideoBackground";
+import PlaySongButton from "../../../ui/PlaySongButton";
 import {
   lora,
   marcellus,
@@ -55,6 +56,10 @@ const AlbertJessica = ({
   const namaTamu = eventGuestByPin?.name ?? "Sela";
   const groomName = data?.dataEvent?.groomName ?? "Albert";
   const brideName = data?.dataEvent?.brideName ?? "Jessica";
+
+  const backgroundSoundUrl = data?.dataContent?.backgroundSoundData?.url
+  ? `https://media.twinklebook.com/${data.dataContent.backgroundSoundData.url}`
+  : "/audio/default-song.mp3"; // fallback statis kalau API kosong
 
   const { loaded, progress } = usePreloader();
 
@@ -99,6 +104,9 @@ const AlbertJessica = ({
           popUpIconImageData={data?.dataContent?.popUpIconImageData}
         />
       )}
+
+          <PlaySongButton src={backgroundSoundUrl} start={start} />
+
 
       {showLoading && (
         <LoadingScreen
