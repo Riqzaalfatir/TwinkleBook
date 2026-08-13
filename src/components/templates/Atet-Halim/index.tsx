@@ -24,6 +24,8 @@ import Opening from "./Opening";
 import LoadingScreen from "./LoadingScreen";
 import { usePreloader } from "./hooks/usePreloader";
 import { useCurrentGuest } from "../../../hooks/api/useCurrentGuest";
+import PlaySongButton from "../../../ui/PlaySongButton";
+
 
 type AtetHalimProps = {
   data?: any;
@@ -52,6 +54,10 @@ const AtetHalim = ({ data, isPreview, dataValidation }: AtetHalimProps) => {
   const groomFullName = data?.dataEvent?.groomFullName ?? "Groom Name";
   const brideName = data?.dataEvent?.brideName ?? "Bride";
   const brideFullName = data?.dataEvent?.brideFullName ?? "Bride Name";
+
+  const backgroundSoundUrl = data?.dataContent?.backgroundSoundData?.url
+  ? `https://media.twinklebook.com/${data.dataContent.backgroundSoundData.url}`
+  : "/audio/default-song.mp3"; // fallback statis kalau API kosong
 
   const eventSessions = data?.dataSession ?? [];
 
@@ -88,6 +94,9 @@ const AtetHalim = ({ data, isPreview, dataValidation }: AtetHalimProps) => {
           brideFullName={brideFullName}
         />
       )}
+
+                <PlaySongButton src={backgroundSoundUrl} start={start} />
+
 
       {showLoading && (
         <LoadingScreen
