@@ -222,7 +222,7 @@ const Wishes = ({ data }: WishesProps) => {
                             </p>
 
                             <p className="font-lora text-[13px] text-[#4E4E4E]/85 text-left line-clamp-4 leading-[18px] mb-4">
-                              {item.message}
+                                {decodeHtmlEntities(item.message)}
                             </p>
 
                             <div className="w-8 h-0.5 bg-[#4E4E4E]/20 rounded-full" />
