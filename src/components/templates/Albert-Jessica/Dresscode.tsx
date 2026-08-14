@@ -9,12 +9,6 @@ const Dresscode = () => {
       id="dresscode"
       className="relative w-full pt-[68px] pb-[103px] px-10 overflow-hidden"
     >
-      {/* <Image
-        src="/images/Albert-Jessica/Profile/BgKertas.webp"
-        alt="Profile Background"
-        fill
-        className="object-cover z-10"
-      /> */}
 
       <div className="relative  flex flex-col items-center text-center justify-center z-20">
         <motion.h2
@@ -50,7 +44,7 @@ const Dresscode = () => {
             alt="Ornament Divider"
             width={350}
             height={350}
-            className="mt-[32px] w-[257px] h-auto"
+            className="mt-[32px] w-[257px] h-auto pointer-events-none"
           />
         </motion.div>
       </div>

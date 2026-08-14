@@ -89,7 +89,7 @@ const RsvpSectionDesign = () => {
               alt="ornament"
               width={250}
               height={250}
-              className="w-[36.41vw] lg:w-[14.99vw] h-auto lg:-mt-[5px]"
+              className="w-[36.41vw] lg:w-[14.99vw] h-auto lg:-mt-[5px] pointer-events-none"
             />
           </motion.div>
 

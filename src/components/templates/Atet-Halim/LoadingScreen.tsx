@@ -47,7 +47,7 @@ export default function LoadingScreen({ progress, onDone }: Props) {
         </p>
 
         <h1 className="font-athelas text-[8vw] lg:text-[38px] text-[#402824] leading-[1.3] tracking-wide">
-          Trisnawati Halim
+          Trisnawati Halimi
         </h1>
 
         <p className="font-athelas text-[2.82vw] lg:text-[12px] text-[#5E5036]/70 mt-[14px] tracking-[0.15em]">

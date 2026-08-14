@@ -12,11 +12,15 @@ type CountdownSectionProps = {
 };
 
 const CountdownSection = ({ data, targetDate }: CountdownSectionProps) => {
-  const eventDate = data?.dataEvent?.date ?? targetDate ?? "2026-09-12T18:00:02";
+  const eventDate =
+    data?.dataEvent?.date ?? targetDate ?? "2026-09-12T18:00:02";
   const dateLabel = formatDateWithWeekday(eventDate);
 
   return (
-    <section id="countdown" className="relative w-full bg-[#845F47] flex flex-col items-center overflow-hidden z-30">
+    <section
+      id="countdown"
+      className="relative w-full bg-[#845F47] flex flex-col items-center overflow-hidden z-30"
+    >
       <motion.h2
         variants={fadeUp}
         initial="hidden"
@@ -40,7 +44,7 @@ const CountdownSection = ({ data, targetDate }: CountdownSectionProps) => {
           alt="ornament"
           width={250}
           height={250}
-          className="w-[38vw] lg:w-[14.99vw] h-auto"
+          className="w-[38vw] lg:w-[14.99vw] h-auto pointer-events-none"
         />
       </motion.div>
 

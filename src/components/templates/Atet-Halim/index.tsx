@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react"; 
+import { useState, useEffect } from "react";
 import {
   athelas,
   poltawskiNowy,
@@ -26,7 +26,6 @@ import { usePreloader } from "./hooks/usePreloader";
 import { useCurrentGuest } from "../../../hooks/api/useCurrentGuest";
 import PlaySongButton from "../../../ui/PlaySongButton";
 
-
 type AtetHalimProps = {
   data?: any;
   isPreview?: boolean;
@@ -35,7 +34,7 @@ type AtetHalimProps = {
 
 const AtetHalim = ({ data, isPreview, dataValidation }: AtetHalimProps) => {
   const [start, setStart] = useState<boolean>(false);
-  const [showLoading, setShowLoading] = useState<boolean>(true); 
+  const [showLoading, setShowLoading] = useState<boolean>(true);
 
   const { getEventGuestByPin, eventGuestByPin } = useCurrentGuest();
 
@@ -56,8 +55,8 @@ const AtetHalim = ({ data, isPreview, dataValidation }: AtetHalimProps) => {
   const brideFullName = data?.dataEvent?.brideFullName ?? "Bride Name";
 
   const backgroundSoundUrl = data?.dataContent?.backgroundSoundData?.url
-  ? `https://media.twinklebook.com/${data.dataContent.backgroundSoundData.url}`
-  : "/audio/default-song.mp3"; // fallback statis kalau API kosong
+    ? `https://media.twinklebook.com/${data.dataContent.backgroundSoundData.url}`
+    : "/audio/default-song.mp3"; // fallback statis kalau API kosong
 
   const eventSessions = data?.dataSession ?? [];
 
@@ -95,13 +94,12 @@ const AtetHalim = ({ data, isPreview, dataValidation }: AtetHalimProps) => {
         />
       )}
 
-                <PlaySongButton src={backgroundSoundUrl} start={start} />
-
+      <PlaySongButton src={backgroundSoundUrl} start={start} />
 
       {showLoading && (
         <LoadingScreen
           progress={progress}
-          onDone={() => setShowLoading(false)} 
+          onDone={() => setShowLoading(false)}
         />
       )}
     </div>
@@ -109,4 +107,3 @@ const AtetHalim = ({ data, isPreview, dataValidation }: AtetHalimProps) => {
 };
 
 export default AtetHalim;
-

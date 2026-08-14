@@ -35,12 +35,6 @@ const RsvpSectionDesign = () => {
       <SmartRsvpForm.Modals />
 
       <section id="rsvp" className="relative w-full px-10 overflow-hidden">
-        {/* <Image
-          src="/images/Albert-Jessica/Profile/BgKertas.webp"
-          alt="Profile Background"
-          fill
-          className="object-cover z-10"
-        /> */}
         <div className="relative flex flex-col items-center justify-center text-center z-20 pb-[79px]">
           <motion.h2
             variants={fadeUp}
@@ -126,13 +120,15 @@ const RsvpSectionDesign = () => {
             <SmartRsvpForm.Accordion className="w-full mt-[36px]" bgActiveColor="#4E4E4E" />
           */}
 
-          <motion.div variants={fadeUp}
+          <motion.div
+            variants={fadeUp}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}>
-          <SmartRsvpForm.SubmitButton className="flex items-center justify-center w-[201px] h-[33px] bg-[#4E4E4E] rounded-[6px] font-lora text-[14px] text-[#FEF8EF] mt-[30px]" />
-</motion.div>
+            transition={{ duration: 1.5, ease: "easeOut" }}
+          >
+            <SmartRsvpForm.SubmitButton className="flex items-center justify-center w-[201px] h-[33px] bg-[#4E4E4E] rounded-[6px] font-lora text-[14px] text-[#FEF8EF] mt-[30px]" />
+          </motion.div>
           <motion.p
             variants={fadeUp}
             initial="hidden"
