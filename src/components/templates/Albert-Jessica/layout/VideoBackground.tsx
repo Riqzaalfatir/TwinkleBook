@@ -33,7 +33,6 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({ start }) => {
       {/* LAYER WARNA OVERLAY (dari Figma: #201202 66%) */}
       <div className="absolute inset-0 bg-[#201202] opacity-[0.66]" />
 
-      {/* LAYER GRADIENT (sudah ada sebelumnya) */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
     </div>
   );

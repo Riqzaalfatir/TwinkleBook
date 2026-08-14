@@ -58,15 +58,15 @@ const AlbertJessica = ({
   const brideName = data?.dataEvent?.brideName ?? "Jessica";
 
   const backgroundSoundUrl = data?.dataContent?.backgroundSoundData?.url
-  ? `https://media.twinklebook.com/${data.dataContent.backgroundSoundData.url}`
-  : "/audio/default-song.mp3"; // fallback statis kalau API kosong
+    ? `https://media.twinklebook.com/${data.dataContent.backgroundSoundData.url}`
+    : "/audio/default-song.mp3"; // fallback statis kalau API kosong
 
   const galleryImageData = data?.dataContent?.galleryImageData ?? [];
-const galleryUrls = galleryImageData
-  .slice(0, 2)
-  .map((item: any) => `https://media.twinklebook.com/${item.url}`);
+  const galleryUrls = galleryImageData
+    .slice(0, 2)
+    .map((item: any) => `https://media.twinklebook.com/${item.url}`);
 
-const { loaded, progress } = usePreloader({ dynamicImages: galleryUrls });
+  const { loaded, progress } = usePreloader({ dynamicImages: galleryUrls });
 
   return (
     <div
@@ -92,7 +92,7 @@ const { loaded, progress } = usePreloader({ dynamicImages: galleryUrls });
             fill
             className="object-cover z-10"
           />
-          <Dresscode  />
+          <Dresscode />
           <Rsvp data={data} />
         </div>
         <WeddingGift data={data} />
@@ -110,8 +110,7 @@ const { loaded, progress } = usePreloader({ dynamicImages: galleryUrls });
         />
       )}
 
-          <PlaySongButton src={backgroundSoundUrl} start={start} />
-
+      <PlaySongButton src={backgroundSoundUrl} start={start} />
 
       {showLoading && (
         <LoadingScreen

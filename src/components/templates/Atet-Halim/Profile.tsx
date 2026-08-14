@@ -1,5 +1,4 @@
-
-// CONTOH PROFILE ATET HALIM YG SUDAH DI LATCHING 
+// CONTOH PROFILE ATET HALIM YG SUDAH DI LATCHING
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeUp, fadeIn, scaleIn } from "../../../lib/animation";
@@ -65,7 +64,7 @@ const Profile = ({ data }: ProfileProps) => {
             transition={{ duration: 1.5, ease: "easeOut" }}
             className="flex flex-col items-center"
           >
-            <div className="relative w-[54vw] lg:w-[18.5vw] h-[79.5vw] lg:h-[24.8vw]">
+            <div className="relative w-[54vw] lg:w-[18.5vw] h-[79.5vw] lg:h-[24.8vw] pointer-events-none">
               <Image
                 src={groomImage}
                 alt={groomFullName}
@@ -100,7 +99,7 @@ const Profile = ({ data }: ProfileProps) => {
             transition={{ duration: 1.5, ease: "easeOut" }}
             className="flex flex-col items-center"
           >
-            <div className="relative w-[54vw] lg:w-[18.5vw] h-[79.5vw] lg:h-[24.8vw] mt-[3vw] lg:mt-0">
+            <div className="relative w-[54vw] lg:w-[18.5vw] h-[79.5vw] lg:h-[24.8vw] mt-[3vw] lg:mt-0 pointer-events-none">
               <Image
                 src={brideImage}
                 alt={brideFullName}

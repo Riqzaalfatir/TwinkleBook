@@ -16,6 +16,5 @@ export type EventByUrlResponse = {
   name: string;
   hashTag: string;
   eventAccess: number; // 0 = public/tanpa PIN (confirmed dari data asli)
-
   [key: string]: unknown;
 };

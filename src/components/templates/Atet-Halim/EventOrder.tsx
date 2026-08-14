@@ -110,7 +110,7 @@ const EventOrder = ({ data }: EventOrderProps) => {
                 alt="logo stamp"
                 width={220}
                 height={220}
-                className="w-[24.36vw] lg:w-[13vw] h-auto"
+                className="w-[24.36vw] lg:w-[13vw] h-auto pointer-events-none"
               />
             </motion.div>
 
@@ -139,7 +139,7 @@ const EventOrder = ({ data }: EventOrderProps) => {
                 alt="ornament"
                 width={250}
                 height={250}
-                className="w-[36.41vw] lg:w-[14.99vw] h-auto lg:-mt-[5px]"
+                className="w-[36.41vw] lg:w-[14.99vw] h-auto lg:-mt-[5px] pointer-events-none"
               />
             </motion.div>
 
@@ -156,7 +156,7 @@ const EventOrder = ({ data }: EventOrderProps) => {
                 src="/images/Atet-Halim/EventOrder/Pullman..webp"
                 alt="Pullman Grand Ballroom"
                 fill
-                className="object-cover"
+                className="object-cover pointer-events-none"
               />
             </motion.div>
 

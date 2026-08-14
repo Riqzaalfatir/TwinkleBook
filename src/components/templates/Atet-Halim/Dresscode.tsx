@@ -47,7 +47,7 @@ const Dresscode = ({ data }: DresscodeProps) => {
             alt="ornament"
             width={350}
             height={350}
-            className="w-[36.41vw] lg:w-[14.99vw] h-auto lg:-mt-[5px]"
+            className="w-[36.41vw] lg:w-[14.99vw] h-auto lg:-mt-[5px] pointer-events-none"
           />
         </motion.div>
 
@@ -77,7 +77,7 @@ const Dresscode = ({ data }: DresscodeProps) => {
             src="/images/Atet-Halim/Dresscode/Human.webp"
             alt="dress code illustration"
             fill
-            className="object-contain"
+            className="object-contain pointer-events-none"
           />
         </motion.div>
 

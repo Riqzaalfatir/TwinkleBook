@@ -66,7 +66,7 @@ const Hero = ({ data, start = false }: HeroProps) => {
                 alt="logo stamp"
                 width={220}
                 height={220}
-                className="w-[24.36vw] h-auto mt-[11vw] lg:w-[13vw] lg:-mt-[0.99vw]"
+                className="w-[24.36vw] h-auto mt-[11vw] lg:w-[13vw] lg:-mt-[0.99vw] pointer-events-none"
               />
             </motion.div>
 

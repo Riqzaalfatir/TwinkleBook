@@ -132,7 +132,7 @@ const Thankyou = ({ data }: ThankyouProps) => {
                   alt="Provite"
                   width={200}
                   height={200}
-                  className="h-[27.95vw] lg:h-[10.77vw] w-auto"
+                  className="h-[27.95vw] lg:h-[10.77vw] w-auto pointer-events-none"
                 />
               </motion.div>
             </div>
