@@ -85,7 +85,7 @@ const Thankyou = ({ data }: ThankyouProps) => {
                   alt="logo stamp"
                   width={220}
                   height={220}
-                  className="w-[24.36vw] lg:w-[13.14vw] h-auto -mt-[3vw] lg:-mt-[1.32vw]"
+                  className="w-[24.36vw] lg:w-[13.14vw] h-auto -mt-[3vw] lg:-mt-[1.32vw] pointer-events-none"
                 />
               </motion.div>
 
