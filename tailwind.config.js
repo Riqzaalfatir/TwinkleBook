@@ -4,7 +4,6 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-
         // Atet Halim
         athelas: ["var(--font-athelas)"],
         poltawski: ["var(--font-poltawski)"],
@@ -14,12 +13,13 @@ module.exports = {
         milyuna: ["var(--font-milyuna)"],
 
         // Albert-Jessica (include: Lora)
-                marcellus: ["var(--font-marcellus)"],
-                  "cormorant-garamond": ["var(--font-cormorant-garamond)"],
-                          slight: ["var(--font-slight)"], // ✅ tambahin ini
+        marcellus: ["var(--font-marcellus)"],
+        "cormorant-garamond": ["var(--font-cormorant-garamond)"],
+        slight: ["var(--font-slight)"], // ✅ tambahin ini
 
-
-
+        // Michael-Vannya
+        kinfolk: ["var(--font-kinfolk)"],
+        "times-new-roman": ["var(--font-times-new-roman)"],
       },
     },
   },
