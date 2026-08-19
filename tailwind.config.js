@@ -11,7 +11,7 @@ module.exports = {
         lora: ["var(--font-lora)"],
         cylburn: ["var(--font-cylburn)"],
         milyuna: ["var(--font-milyuna)"],
-
+        
         // Albert-Jessica (include: Lora)
         marcellus: ["var(--font-marcellus)"],
         "cormorant-garamond": ["var(--font-cormorant-garamond)"],
