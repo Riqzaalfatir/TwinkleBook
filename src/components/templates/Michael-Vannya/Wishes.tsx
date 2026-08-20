@@ -115,7 +115,7 @@ const Wishes = () => {
               transition={{ duration: 1.5, ease: "easeOut" }}
               type="text"
               value={nama}
-              placeholder="Desy (Tester)"
+              placeholder="Desy"
               onChange={(e) => setNama(e.target.value)}
               className="w-full text-white font-times-new-roman bg-transparent border-[0.5px] text-[12px] lg:text-[20px] border-white/70 px-[12px] lg:px-[24px] h-[30px] lg:h-[42px] rounded-[10px] outline-none placeholder:text-white/70"
             />

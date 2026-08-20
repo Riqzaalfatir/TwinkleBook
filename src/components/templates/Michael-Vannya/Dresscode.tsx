@@ -44,7 +44,7 @@ const Dresscode = () => {
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
           <Image
-            src="/images/Michael-Vannya/Dresscode/Ornamentgaris.png"
+            src="/images/Michael-Vannya/Dresscode/OrnamentGaris.png"
             alt="ornament"
             width={500}
             height={500}

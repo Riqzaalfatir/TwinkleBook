@@ -79,7 +79,7 @@ const Header = () => {
             exit={{ opacity: 0, transition: { duration: 0.3 } }}
             transition={{ type: "spring", stiffness: 260, damping: 20 }}
             style={{ originX: 0, originY: 0 }}
-            className="absolute top-[12px] left-[18px] lg:top-[30px] lg:left-[34px] bg-[#7B7B7B]/70 py-4 px-5 lg:pt-[59px] lg:px-[40px] text-white w-[255px] lg:w-[424px]"
+            className="absolute top-[12px] left-[18px] lg:top-[30px] lg:left-[34px] bg-[#7B7B7B]/70 pt-[20px] pb-[31px] px-5 lg:pt-[57px] lg:pb-[42px] lg:px-[40px] text-white w-[255px] lg:w-[424px]"
           >
             {/* CLOSE X */}
             <motion.button

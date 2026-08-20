@@ -85,7 +85,7 @@ const Hero: React.FC<HeroProps> = ({ start = false }) => {
           className="flex justify-center mb-[13px] lg:mb-[32px]"
         >
           <Image
-            src="/gif/Michael-Vannya/PanahKeBawah.gif"
+            src="/gif/Michael-Vannya/PanahBawah.gif"
             alt="Scroll Down"
             width={80}
             height={80}

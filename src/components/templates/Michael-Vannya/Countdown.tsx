@@ -12,7 +12,7 @@ type TimeLeft = {
   seconds: number;
 };
 
-const EVENT_DATE = "2026-09-12T00:00:00";
+const EVENT_DATE = "2026-10-02T00:00:00";
 
 function getTimeLeft(targetDate: Date): TimeLeft {
   const now = new Date().getTime();

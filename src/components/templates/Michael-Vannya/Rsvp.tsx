@@ -101,7 +101,7 @@ const Rsvp = () => {
             transition={{ duration: 1.5, ease: "easeOut" }}
           >
             <Image
-              src="/images/Michael-Vannya/Dresscode/Ornamentgaris.png"
+              src="/images/Michael-Vannya/Dresscode/OrnamentGaris.png"
               alt="ornament"
               width={250}
               height={250}
@@ -148,7 +148,7 @@ const Rsvp = () => {
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 1.5, ease: "easeOut" }}
                 onClick={() => handleAttendClick(1)}
-                className={`w-[113px] lg:w-[203px] h-[42px] rounded-[71px] lg:rounded-[50px] font-times-new-roman text-[12px] lg:text-[16px] text-wrap flex items-center justify-center transition-colors ${
+                className={`w-[113px] font-normal tracking-wide lg:w-[203px] h-[42px] rounded-[71px] lg:rounded-[50px] font-times-new-roman text-[12px] lg:text-[16px] text-wrap flex items-center justify-center transition-colors ${
                   attendStatus === 1
                     ? "bg-[#434341] text-white"
                     : "bg-transparent border border-[#1B1C1D]/50 text-[#292A2B]"
@@ -163,7 +163,7 @@ const Rsvp = () => {
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 1.5, ease: "easeOut" }}
                 onClick={() => handleAttendClick(2)}
-                className={`w-[113px] lg:w-[203px] h-[42px] rounded-[71px] lg:rounded-[50px] font-times-new-roman text-[12px] lg:text-[16px] flex items-center justify-center transition-colors ${
+                className={`w-[113px] font-normal tracking-wide lg:w-[203px] h-[42px] rounded-[71px] lg:rounded-[50px] font-times-new-roman text-[12px] lg:text-[16px] flex items-center justify-center transition-colors ${
                   attendStatus === 2
                     ? "bg-[#434341] text-white"
                     : "border border-[#1B1C1D]/50 text-[#292A2B]"
@@ -190,7 +190,7 @@ const Rsvp = () => {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 1.5, ease: "easeOut" }}
               onClick={handleConfirmClick}
-              className="w-[160px] lg:w-[220px] h-[42px] lg:h-[52px] rounded-[71px] lg:rounded-[50px] bg-[#434341] font-times-new-roman text-[12px] lg:text-[16px] text-white flex items-center justify-center mt-[25px] lg:mt-[36px] leading-[16px] lg:leading-[17px]"
+              className="w-[160px] font-normal tracking-wide lg:w-[220px] h-[42px] lg:h-[52px] rounded-[71px] lg:rounded-[50px] bg-[#434341] font-times-new-roman text-[12px] lg:text-[16px] text-white flex items-center justify-center mt-[25px] lg:mt-[36px] leading-[16px] lg:leading-[17px]"
             >
               CONFIRM {attendStatus === 2 ? "UNABLE" : ""} <br />
               TO ATTEND

@@ -8,48 +8,47 @@ export const dummyPesan: PesanItem[] = [
   {
     id: 1,
     nama: "Yeremia (TESTER)",
-    pesan: "Selamat menempuh Hidup Baru, Gbu",
+    pesan: "Lorem ipsum dolor sit amet, nisi laborum",
   },
   {
     id: 2,
     nama: "Hani",
     pesan:
-      "Darren dan Given Selamat berbahagia Tuhan selalu Memberkati kehidupan kalian🙏",
+      "Lorem ipsum dolor sit amet, non veniam commodoex qui.",
   },
   {
     id: 3,
     nama: "Sinyo",
     pesan:
-      "Happy wedding ya, semoga menjadi keluarga yg harmonis dan selalu dalam penyertaan Tuhan Yesus amin",
+      "Lorem ipsum dolor sit amet, excepteur dolor ut duis nulla velit nostrud ut enim qui esse mollit adipiscing esse duis nulla aliqua proident sed aliquip",
   },
   {
     id: 4,
     nama: "Kel. Ivan Gladwin Harliono",
     pesan:
-      "Selamat ya daren and given Bahagia selalu and happy in new chapters Luv to the moon and back",
+      "Lorem ipsum dolor sit amet, non veniam commodex qui.",
   },
   {
     id: 5,
-    nama: "Andi & Rina",
-    pesan:
-      "Selamat ya Daren dan Given! Semoga perjalanan baru kalian dipenuhi kebahagiaan, cinta, dan momen indah setiap harinya 🤍",
+    nama: "Yeremia (TESTER)",
+    pesan: "Lorem ipsum dolor sit amet, nisi laborum",
   },
   {
     id: 6,
-    nama: "Michael Tan",
+    nama: "Hani",
     pesan:
-      "Congrats untuk Daren & Given! Wishing you both a lifetime of love, laughter, and endless happiness together ✨",
+      "Lorem ipsum dolor sit amet, non veniam commodoex qui.",
   },
   {
     id: 7,
-    nama: "Siska Wijaya",
+    nama: "Sinyo",
     pesan:
-      "Turut berbahagia atas hari spesial kalian! Semoga rumah tangga kalian selalu harmonis dan penuh kasih 💐",
+      "Lorem ipsum dolor sit amet, excepteur dolor ut duis nulla velit nostrud ut enim qui esse mollit adipiscing esse duis nulla aliqua proident sed aliquip",
   },
   {
     id: 8,
-    nama: "Budi Santoso",
+    nama: "Kel. Ivan Gladwin Harliono",
     pesan:
-      "Selamat menempuh hidup baru! Semoga selalu saling menguatkan dan diberkati dalam setiap langkah 🙏",
+      "Lorem ipsum dolor sit amet, non veniam commodex qui.",
   },
 ];

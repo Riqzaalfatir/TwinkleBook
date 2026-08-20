@@ -5,7 +5,7 @@ import { fadeUp } from "../../../lib/animation";
 
 const Thankyou = () => {
   return (
-    <section className="relative w-full min-h-screen">
+    <section className="relative w-full h-screen">
       <Image
         src="/images/Michael-Vannya/Thankyou/Thankyou.webp"
         alt="Thankyou Background"
@@ -20,8 +20,8 @@ const Thankyou = () => {
         className="object-cover object-bottom z-10 pointer-events-none hidden lg:block"
       />
 
-      <div className="relative z-20 flex flex-col items-center justify-between text-center">
-        <div className="pt-[67.5px] lg:pt-[117px] flex flex-col items-center justify-center">
+      <div className="relative z-20 flex flex-col items-center justify-between text-center h-full">
+        <div className="pt-[67.5px] lg:pt-[45px] flex flex-col items-center justify-center">
           <div>
             <motion.div
             variants={fadeUp}
@@ -72,7 +72,7 @@ const Thankyou = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="flex flex-col items-center mt-[470px] mb-[30px]"
+            className="flex flex-col items-center mt-[0px] mb-[28px]"
           >
             <Image
               src="/images/Michael-Vannya/Thankyou/LogoProvite.webp"

@@ -116,7 +116,7 @@ const Gallery = ({ data }: GalleryProps) => {
     <>
       <section
         id="gallery"
-        className="relative w-full h-[538px] min-h-[538px] max-h-[538px] lg:h-[951px] lg:min-h-[951px] lg:max-h-[951px] overflow-hidden z-30"
+       className="relative w-full aspect-[390/538] lg:aspect-[1512/951] overflow-hidden z-30"
       >
         <div className="embla h-full" ref={emblaRef}>
           <div className="embla__container flex h-full">
