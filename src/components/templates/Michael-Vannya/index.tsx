@@ -15,6 +15,8 @@ import Wishes from "./Wishes";
 import Thankyou from "./Thankyou";
 import Header from "./Header";
 import Opening from "./Opening";
+import LoadingScreen from "./LoadingScreen";
+import { usePreloader } from "./hooks/usePreloader"; // sesuaikan path
 import { kinfolk, timesNewRoman } from "./fonts/fonts";
 
 type MichaelVannyaProps = {
@@ -23,10 +25,13 @@ type MichaelVannyaProps = {
 
 const MichaelVannya = ({ data }: MichaelVannyaProps) => {
   const [start, setStart] = useState<boolean>(false); // false = tampilin Opening dulu
+  const [showLoading, setShowLoading] = useState<boolean>(true);
 
   const namaTamu = "Sela"; // sementara statis, ganti kalau udah ada hook guest kayak Albert-Jessica
   const groomName = data?.dataEvent?.groomName ?? "Michael";
   const brideName = data?.dataEvent?.brideName ?? "Vannya";
+
+  const { loaded, progress } = usePreloader(); // tambahin dynamicImages kalau ada gallery dari API
 
   return (
     <div className={`${kinfolk.variable} ${timesNewRoman.variable}`}>
@@ -43,12 +48,20 @@ const MichaelVannya = ({ data }: MichaelVannyaProps) => {
       <Wishes />
       <Thankyou />
 
-      {!start && (
+      {!start && loaded && (
         <Opening
           setStart={setStart}
           namaTamu={namaTamu}
           groomName={groomName}
           brideName={brideName}
+        />
+      )}
+
+      {showLoading && (
+        <LoadingScreen
+          progress={progress}
+          onDone={() => setShowLoading(false)}
+          data={data}
         />
       )}
     </div>

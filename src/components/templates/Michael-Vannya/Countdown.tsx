@@ -76,7 +76,7 @@ const Countdown = () => {
       />
 
       {/* Overlay tipis biar teks tetep kebaca di atas foto */}
-      <div className="absolute inset-0 bg-black/20 -z-10" />
+      <div className="absolute inset-0 bg-black/[0.29] -z-10" />
 
       <div className="relative flex flex-col items-center justify-center pt-[32px] pb-[38px] lg:pt-[53px] lg:pb-[71px]">
         <motion.h2

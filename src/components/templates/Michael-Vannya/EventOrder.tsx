@@ -40,7 +40,7 @@ const EventOrder = () => {
             alt="ornament"
             width={500}
             height={500}
-            className="w-[95px] lg:w-[147px] h-auto pointer-events-none lg:mt-[3px]"
+            className="w-[95px] lg:w-[147px] h-auto pointer-events-none lg:mt-[5px]"
           />
         </motion.div>
         <div className=" flex flex-col items-center justify-center leading-none text-center">
@@ -57,7 +57,7 @@ const EventOrder = () => {
               alt="Ornament"
               width={750}
               height={750}
-              className="mt-[27.5px] lg:-mt-[14px] w-[290px] lg:w-[550px] h-auto pointer-events-none"
+              className="mt-[27.5px] lg:-mt-[17px] w-[290px] lg:w-[550px] h-auto pointer-events-none"
             />
           </motion.div>
           <motion.h2
@@ -66,7 +66,7 @@ const EventOrder = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-times-new-roman text-[20px] lg:text-[30px] font-bold  italic text-white pt-[23px] lg:pt-[43px] tracking-widest lg:tracking-normal"
+            className="font-times-new-roman text-[20px] lg:text-[30px] font-bold  italic text-white pt-[23px] lg:pt-[44px] tracking-widest lg:tracking-normal"
           >
             CANDANI VILLA
           </motion.h2>
@@ -76,7 +76,7 @@ const EventOrder = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-times-new-roman text-[15px] lg:text-[20px] leading-[20px] text-white pt-[19px] lg:pt-[26px] tracking-wide"
+            className="font-times-new-roman text-[15px] lg:text-[20px] leading-[20px] lg:leading-[26px] text-white pt-[19px] lg:pt-[26px] tracking-wide"
           >
             Jl. Pantai Gumicik No.11, Ketewel, Kec.Sukawati, <br />
             Kabupaten Gianyar, Bali 80582

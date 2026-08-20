@@ -7,15 +7,23 @@ const Dresscode = () => {
   return (
     <section
       id="dresscode"
-      className="relative w-full pt-[70px] lg:pt-[125px] pb-[108px] bg-white z-0"
+      className="relative w-full pt-[70px] lg:pt-[133px] pb-[69px] bg-white z-0"
     >
-      {/* Ornament Kiri Atas */}
+      {/* Ornament Kanan Atas Mobile */}
       <Image
         src="/images/Michael-Vannya/Dresscode/BungaKananAtas.webp"
         alt=""
         width={300}
         height={300}
-        className="absolute -top-[36px] -right-[0px] w-[205px] h-auto pointer-events-none z-0"
+        className="absolute -top-[36px] -right-[0px] w-[205px] h-auto pointer-events-none z-0 lg:hidden"
+      />
+      {/* Ornament Kiri Atas Dekstop */}
+      <Image
+        src="/images/Michael-Vannya/Dresscode/BungaKiriAtas.webp"
+        alt=""
+        width={300}
+        height={300}
+        className="absolute -top-[80px] -left-[0px] w-[470px] h-auto pointer-events-none z-0 hidden lg:block"
       />
       <div className="relative flex flex-col items-center justify-center text-center leading-none z-10">
         <motion.h1
@@ -49,7 +57,7 @@ const Dresscode = () => {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="font-times-new-roman text-[14px] lg:text-[20px] text-[#1B1C1D] tracking-wide leading-[20px] pt-[22px] lg:pt-[53px]"
+          className="font-times-new-roman text-[14px] lg:text-[20px] text-[#1B1C1D] tracking-wide leading-[20px] pt-[22px] lg:pt-[45px]"
         >
           We’d love to see you dressed in <br className="lg:hidden" />
           soft summer shades.
@@ -87,7 +95,7 @@ const Dresscode = () => {
               alt="ornament"
               width={450}
               height={450}
-              className="w-[220px] lg:w-[312px] h-auto pointer-events-none mt-[7px] lg:mt-[20px]"
+              className="w-[220px] lg:w-[335px] h-auto pointer-events-none mt-[7px] lg:mt-[20px]"
             />
           </motion.div>
         </div>
@@ -124,7 +132,7 @@ const Dresscode = () => {
               alt="ornament"
               width={450}
               height={450}
-              className="w-[215px] lg:w-[312px] h-auto pointer-events-none mt-[20px]"
+              className="w-[215px] lg:w-[335px] h-auto pointer-events-none mt-[20px]"
             />
           </motion.div>
         </div>
@@ -134,7 +142,7 @@ const Dresscode = () => {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="font-times-new-roman italic text-[14px] lg:text-[20px] text-[#1B1C1D] pt-[27px] lg:pt-[40px] tracking-wide leading-[19px] lg:leading-[26px]"
+          className="font-times-new-roman italic text-[14px] lg:text-[20px] text-[#1B1C1D] pt-[27px] lg:pt-[38px] tracking-wide leading-[19px] lg:leading-[26px]"
         >
           As we’ll be celebrating outdoors, <br />
           comfortable shoes and light, <br className="lg:hidden" />

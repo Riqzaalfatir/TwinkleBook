@@ -31,15 +31,24 @@ const Gift = () => {
   return (
     <section
       id="gift"
-      className="relative w-full pt-[68.5px] lg:pt-[138px] pb-[108px] bg-[#7A883F]"
+      className="relative w-full pt-[68.5px] lg:pt-[115px] pb-[108px] bg-[#7A883F] overflow-hidden"
     >
-      {/* Ornament Kiri Atas */}
+       {/* Ornament Kiri Atas DEKSTOP Mobile*/}
       <Image
         src="/images/Michael-Vannya/Gift/BungaKiriBawah.webp"
         alt=""
-        width={300}
-        height={300}
-        className="absolute -top-[0px] left-[0px] w-[180px] h-auto pointer-events-none z-0"
+        width={550}
+        height={550}
+        className="absolute -top-[10px] lg:-top-[370px] -left-[10px] lg:-left-[0px] w-[200px] lg:w-[700px] h-auto pointer-events-none z-0 lg:hidden"
+      />
+
+      {/* Ornament Kiri Atas DEKSTOP */}
+      <Image
+        src="/images/Michael-Vannya/Gift/BungaKiriAtas.webp"
+        alt=""
+        width={550}
+        height={550}
+        className="absolute -top-[200px] lg:-top-[370px] left-[0px] w-[320px] lg:w-[700px] h-auto pointer-events-none z-0 hidden lg:block"
       />
 
       <div className="relative z-10 flex flex-col items-center text-center px-[24px]">

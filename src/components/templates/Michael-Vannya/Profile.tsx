@@ -7,15 +7,15 @@ const Profile = () => {
   return (
     <section
       id="profile"
-      className="relative w-full pt-[70px] lg:pt-[114px] pb-[72px] lg:pb-[112.5px] bg-white overflow-hidden"
+      className="relative w-full pt-[70px] lg:pt-[115px] pb-[72px] lg:pb-[118.5px] bg-white overflow-hidden"
     >
       {/* Ornament Kiri Atas */}
       <Image
         src="/images/Michael-Vannya/Profile/BungaKiriAtas.webp"
         alt=""
-        width={300}
-        height={300}
-        className="absolute -top-[100px] -left-[10px] w-[205px] lg:-top-[300px] lg:-left-[22px] lg:w-[680px] h-auto pointer-events-none z-0"
+        width={700}
+        height={700}
+        className="absolute -top-[100px] -left-[10px] w-[205px] lg:-top-[300px] lg:-left-[22px] lg:w-[690px] h-auto pointer-events-none z-0"
       />
 
       {/* Ornament Kanan Bawah */}
@@ -24,7 +24,7 @@ const Profile = () => {
         alt=""
         width={300}
         height={300}
-        className="absolute -bottom-[109px] -right-[0px] w-[223px] lg:-bottom-[233px] lg:-right-[47px] lg:w-[515px] h-auto pointer-events-none z-0"
+        className="absolute -bottom-[109px] -right-[0px] w-[223px] lg:-bottom-[308px] lg:-right-[47px] lg:w-[480px] h-auto pointer-events-none z-0"
       />
       <div className="relative z-10 flex flex-col items-center justify-center leading-none text-center">
         <motion.div
@@ -61,7 +61,7 @@ const Profile = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-kinfolk text-[32px] lg:text-[46px] text-[#7A883F] uppercase leading-[31px]"
+            className="font-kinfolk text-[32px] lg:text-[46px] text-[#7A883F] uppercase leading-[31px] lg:tracking-wide"
           >
             Michael Wijaya
           </motion.h2>
@@ -71,7 +71,7 @@ const Profile = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-times-new-roman text-[14px] lg:text-[20px] text-[#1B1C1D] pt-[24px] lg:pt-[42.5px]"
+            className="font-times-new-roman text-[14px] lg:text-[20px] text-[#1B1C1D] pt-[24px] lg:pt-[37.5px]"
           >
             The son of
           </motion.p>
@@ -81,9 +81,10 @@ const Profile = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-times-new-roman text-[14px] lg:text-[20px] text-[#1B1C1D] pt-[17.5px] lg:pt-[34px] leading-[20px] lg:leading-[26px]"
+            className="font-times-new-roman text-[14px] lg:text-[20px] text-[#1B1C1D] pt-[17.5px] lg:pt-[12px] leading-[20px] lg:leading-[26px]"
           >
-            Mr. Thian Fu Tjan (Chandra Harry Mulyanto) and <br />
+            Mr. Thian Fu Tjan (Chandra Harry Mulyanto) and{" "}
+            <br className="lg:hidden" />
             Mrs. Bong Tjhai Sian (†)
           </motion.p>
           <motion.a
@@ -95,7 +96,7 @@ const Profile = () => {
             href="https://www.instagram.com/michaellmw"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-[117px] h-[30px] lg:w-[150px] border border-[#000000]/30 flex items-center justify-center gap-[5px] lg:gap-[7px] font-times-new-roman text-[12px] lg:text-[16px] text-[#1B1C1D] rounded-[52px] mt-[15px] lg:mt-[33px] tracking-wide"
+            className="w-[117px] h-[30px] lg:w-[150px] border border-[#000000]/30 flex items-center justify-center gap-[5px] lg:gap-[7px] font-times-new-roman text-[12px] lg:text-[16px] text-[#1B1C1D] rounded-[52px] mt-[15px] lg:mt-[34px] tracking-wide"
           >
             <Image
               src="/images/Michael-Vannya/Profile/Instagram.webp"
@@ -124,7 +125,7 @@ const Profile = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-kinfolk text-[32px] lg:text-[46px] text-[#7A883F] uppercase leading-[31px]"
+            className="font-kinfolk text-[32px] lg:text-[46px] text-[#7A883F] uppercase leading-[31px] lg:tracking-wide"
           >
             Vannya Velysia Soegiarto
           </motion.h2>
@@ -134,9 +135,9 @@ const Profile = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-times-new-roman text-[14px] lg:text-[20px] text-[#1B1C1D] pt-[24px] lg:pt-[42.5px]"
+            className="font-times-new-roman text-[14px] lg:text-[20px] text-[#1B1C1D] pt-[24px] lg:pt-[37.5px]"
           >
-            The son of
+            The Daughter of
           </motion.p>
           <motion.p
             variants={fadeUp}
@@ -144,9 +145,9 @@ const Profile = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-times-new-roman text-[14px] lg:text-[20px] text-[#1B1C1D] pt-[17.5px] lg:pt-[34px] leading-[20px] lg:leading-[26px]"
+            className="font-times-new-roman text-[14px] lg:text-[20px] text-[#1B1C1D] pt-[17.5px] lg:pt-[12px] leading-[20px] lg:leading-[26px]"
           >
-            Mr. Soegiarto Santo (Tjeng Fuk Yen) and <br />
+            Mr. Soegiarto Santo (Tjeng Fuk Yen) and <br className="lg:hidden" />
             Mrs. Febe Yulia Hezron
           </motion.p>
           <motion.a
@@ -158,7 +159,7 @@ const Profile = () => {
             href="https://www.instagram.com/vannyazhuang"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-[117px] lg:w-[150px] h-[30px] border border-[#000000]/30 flex items-center justify-center gap-[5px] lg:gap-[7px] font-times-new-roman text-[12px] lg:text-[16px] text-[#1B1C1D] rounded-[52px] mt-[15px] lg:mt-[33px] tracking-wide"
+            className="w-[117px] lg:w-[150px] h-[30px] border border-[#000000]/30 flex items-center justify-center gap-[5px] lg:gap-[7px] font-times-new-roman text-[12px] lg:text-[16px] text-[#1B1C1D] rounded-[52px] mt-[15px] lg:mt-[34px] tracking-wide"
           >
             <Image
               src="/images/Michael-Vannya/Profile/Instagram.webp"

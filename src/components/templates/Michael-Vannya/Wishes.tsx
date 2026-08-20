@@ -60,13 +60,23 @@ const Wishes = () => {
 
   return (
     <>
-      <section id="wishes" className="relative w-full pt-[18px] pb-[81.5px] bg-[#7A883F]">
+      <section id="wishes" className="relative w-full pt-[18px] pb-[81.5px] lg:pt-[28px] lg:pb-[120px] bg-[#7A883F]">
+        {/* DEKSTOP */}
+        <Image
+          src="/images/Michael-Vannya/Wishes/BungaKananBawahh.webp"
+          alt=""
+          width={850}
+          height={850}
+          className="absolute -bottom-[100px] lg:-bottom-[150px] -right-[30px] lg:-right-[0px] w-[350px] lg:w-[660px] h-auto pointer-events-none z-0 hidden lg:block"
+        />
+
+        {/* MOBILE */}
         <Image
           src="/images/Michael-Vannya/Wishes/BungaKananBawah.webp"
           alt=""
-          width={550}
-          height={550}
-          className="absolute -bottom-[100px] -right-[0px] w-[320px] h-auto pointer-events-none z-0"
+          width={850}
+          height={850}
+          className="absolute -bottom-[100px] -right-[0px] w-[300px] h-auto pointer-events-none z-0 lg:hidden"
         />
         <div className="relative z-10 flex flex-col items-center justify-center">
           <motion.h1
@@ -105,7 +115,7 @@ const Wishes = () => {
               transition={{ duration: 1.5, ease: "easeOut" }}
               type="text"
               value={nama}
-              placeholder="Nama"
+              placeholder="Desy (Tester)"
               onChange={(e) => setNama(e.target.value)}
               className="w-full text-white font-times-new-roman bg-transparent border-[0.5px] text-[12px] lg:text-[20px] border-white/70 px-[12px] lg:px-[24px] h-[30px] lg:h-[42px] rounded-[10px] outline-none placeholder:text-white/70"
             />

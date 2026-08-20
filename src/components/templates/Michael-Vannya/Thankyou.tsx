@@ -10,7 +10,14 @@ const Thankyou = () => {
         src="/images/Michael-Vannya/Thankyou/Thankyou.webp"
         alt="Thankyou Background"
         fill
-        className="object-cover object-bottom z-10 pointer-events-none"
+        className="object-cover object-bottom z-10 pointer-events-none lg:hidden"
+      />
+
+      <Image
+        src="/images/Michael-Vannya/Thankyou/ThankyouD.webp"
+        alt="Thankyou Background"
+        fill
+        className="object-cover object-bottom z-10 pointer-events-none hidden lg:block"
       />
 
       <div className="relative z-20 flex flex-col items-center justify-between text-center">
@@ -38,7 +45,7 @@ const Thankyou = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-kinfolk text-[34px] lg:text-[48px] text-[#1B1C1D] uppercase pt-[19px] lg:pt-[44px]"
+            className="font-kinfolk text-[34px] lg:text-[48px] text-[#1B1C1D] uppercase pt-[19px] lg:pt-[18px]"
           >
             Thank You
           </motion.h2>
@@ -49,7 +56,7 @@ const Thankyou = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-times-new-roman text-[14px] text-[#1B1C1D] leading-normal lg:leading-[26px] pt-[36.5px] lg:pt-[49px]"
+            className="font-times-new-roman text-[14px] lg:text-[20px] text-[#1B1C1D] leading-normal lg:leading-[26px] pt-[36.5px] lg:pt-[39px]"
           >
             Your presence and blessings have made this <br className="lg:hidden" />
             celebration <br className="hidden lg:block" />
@@ -58,7 +65,7 @@ const Thankyou = () => {
           </motion.p>
         </div>
 
-        <div className="relative px-10 pb-[5.5px] lg:pb-[26px] text-center leading-none">
+        <div className="relative px-10 pb-[5.5px] lg:pb-[0px] text-center leading-none">
           <motion.div
             variants={fadeUp}
             initial="hidden"

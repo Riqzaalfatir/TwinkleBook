@@ -12,6 +12,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { motion } from "framer-motion";
 import { fadeUp } from "../../../lib/animation";
+import { useIsMobile } from "../../../hooks/useIsMobile"; // sesuaikan path hook-nya
 
 import Lightbox from "yet-another-react-lightbox";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
@@ -29,7 +30,7 @@ type GalleryProps = {
 const AUTOPLAY_DELAY = 4000;
 const DOTS_COUNT = 3;
 
-const DEFAULT_PHOTOS: string[] = [
+const DEFAULT_PHOTOS_MOBILE: string[] = [
   "/images/Michael-Vannya/Gallery/MichaelVannyaa.webp",
   "/images/Michael-Vannya/Gallery/MichaelVannyaa.webp",
   "/images/Michael-Vannya/Gallery/MichaelVannyaa.webp",
@@ -37,18 +38,27 @@ const DEFAULT_PHOTOS: string[] = [
   "/images/Michael-Vannya/Gallery/MichaelVannyaa.webp",
 ];
 
+const DEFAULT_PHOTOS_DESKTOP: string[] = [
+  "/images/Michael-Vannya/Gallery/MichaelVannya.webp",
+  "/images/Michael-Vannya/Gallery/MichaelVannya.webp",
+  "/images/Michael-Vannya/Gallery/MichaelVannya.webp",
+  "/images/Michael-Vannya/Gallery/MichaelVannya.webp",
+  "/images/Michael-Vannya/Gallery/MichaelVannya.webp",
+];
+
 const Gallery = ({ data }: GalleryProps) => {
   const [lightboxOpen, setLightboxOpen] = useState<boolean>(false);
   const [lightboxIndex, setLightboxIndex] = useState<number>(0);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const scrollPosRef = useRef<number>(0);
+  const isMobile = useIsMobile(); // asumsi return boolean, sesuaikan kalau beda
 
   // ✅ Dari dataContent.galleryImageData, sesuai dokumentasi
   const rawGalleryData = data?.dataContent?.galleryImageData ?? [];
 
   const photos: string[] = useMemo(() => {
     if (!Array.isArray(rawGalleryData) || rawGalleryData.length === 0) {
-      return DEFAULT_PHOTOS;
+      return isMobile ? DEFAULT_PHOTOS_MOBILE : DEFAULT_PHOTOS_DESKTOP;
     }
 
     return rawGalleryData.map((item: any) =>
@@ -56,7 +66,7 @@ const Gallery = ({ data }: GalleryProps) => {
         ? `https://media.twinklebook.com/${item.url}`
         : "/images/Atet-Halim/Gallery/Pengantin.webp",
     );
-  }, [rawGalleryData]);
+  }, [rawGalleryData, isMobile]);
 
   const plugins = useMemo(
     () => [Autoplay({ delay: AUTOPLAY_DELAY, stopOnInteraction: false })],
