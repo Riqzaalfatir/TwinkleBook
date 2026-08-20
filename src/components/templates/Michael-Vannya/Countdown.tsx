@@ -65,25 +65,32 @@ const Countdown = () => {
         alt="countdown background"
         fill
         priority={false}
-        className="object-cover -z-10"
+        className="object-cover -z-10 lg:hidden object-top"
+      />
+      <Image
+        src="/images/Michael-Vannya/Countdown/BGD.webp"
+        alt="countdown background"
+        fill
+        priority={false}
+        className="object-cover -z-10 hidden lg:block"
       />
 
       {/* Overlay tipis biar teks tetep kebaca di atas foto */}
       <div className="absolute inset-0 bg-black/20 -z-10" />
 
-      <div className="relative flex flex-col items-center justify-center pt-[31px] pb-[38px]">
+      <div className="relative flex flex-col items-center justify-center pt-[32px] pb-[38px] lg:pt-[53px] lg:pb-[71px]">
         <motion.h2
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="font-times-new-roman text-[24px] text-white text-center"
+          className="font-times-new-roman text-[24px] lg:text-[40px] text-white text-center"
         >
           SATURDAY, 02 OCTOBER 2026
         </motion.h2>
 
-        <div className="flex flex-row items-center justify-center gap-[15px] mt-[20px]">
+        <div className="flex flex-row items-center justify-center gap-[15px] lg:gap-[25px] mt-[19px] lg:mt-[15px]">
           {items.map((item, index) => (
             <motion.div
               key={item.label}
@@ -96,12 +103,12 @@ const Countdown = () => {
                 ease: "easeOut",
                 delay: index * 0.15,
               }}
-              className="flex flex-col items-center justify-center w-[75px] h-[72px] border-[2px] border-white/40 rounded-[6px] backdrop-blur-[1.75px]"
+              className="flex flex-col items-center justify-center w-[75px] h-[72px] lg:w-[122.5px] lg:h-[120px] border-[2px] lg:border-[2.5px] border-white/40 rounded-[6px] lg:rounded-[10px] backdrop-blur-[1.75px] lg:backdrop-blur-[2.5px]"
             >
-              <span className="font-times-new-roman text-[41px] text-white leading-none">
+              <span className="font-times-new-roman text-[41px] lg:text-[70px] text-white leading-none">
                 {String(item.value).padStart(2, "0")}
               </span>
-              <span className="font-times-new-roman text-[12px] text-white mt-[0px]">
+              <span className="font-times-new-roman text-[12px] lg:text-[20px] text-white mt-[0px]">
                 {item.label}
               </span>
             </motion.div>

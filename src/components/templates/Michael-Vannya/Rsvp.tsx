@@ -41,15 +41,15 @@ const Rsvp = () => {
   return (
     <section
       id="rsvp"
-      className="relative w-full pt-[109px] pb-[78.5px] bg-white"
+      className="relative w-full pt-[0px] pb-[72px] lg:pt-[76.5px] lg:pb-[115px] bg-white"
     >
       {/* Ornament Kanan Bawah */}
       <Image
-        src="/images/Michael-Vannya/Rsvp/BungaKiriBawah.webp"
+        src="/images/Michael-Vannya/Rsvp/BungaKiriBawahh.webp"
         alt=""
         width={300}
         height={300}
-        className="absolute -bottom-[60px] -left-[5px] w-[190px] h-auto pointer-events-none z-0"
+        className="absolute -bottom-[110px] left-[0px] w-[230px] h-auto pointer-events-none z-0"
       />
       <div className="relative flex flex-col items-center justify-center text-center leading-none">
         <motion.h1
@@ -58,7 +58,7 @@ const Rsvp = () => {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="font-kinfolk text-[34px] text-[#00273E]"
+          className="font-kinfolk text-[34px] lg:text-[48px] text-[#00273E]"
         >
           RSVP
         </motion.h1>
@@ -74,7 +74,7 @@ const Rsvp = () => {
             alt="ornament"
             width={250}
             height={250}
-            className="w-[95px] h-auto pointer-events-none"
+            className="w-[95px] lg:w-[147px] h-auto pointer-events-none"
           />
         </motion.div>
         <div className="flex flex-col items-center justify-center text-center leading-none">
@@ -84,7 +84,7 @@ const Rsvp = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-times-new-roman text-[14px] text-[#1B1C1D] pt-[25px]"
+            className="font-times-new-roman text-[14px] lg:text-[20px] text-[#1B1C1D] pt-[25px] lg:pt-[54px]"
           >
             Dear Mr. /Mrs. / Ms.
           </motion.p>
@@ -94,7 +94,7 @@ const Rsvp = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-times-new-roman text-[14px] text-[#1B1C1D] pt-[10.5px]"
+            className="font-times-new-roman text-[14px] lg:text-[22px] text-[#1B1C1D] pt-[10.5px] lg:pt-[20px]"
           >
             [Guest Name]
           </motion.p>
@@ -104,12 +104,12 @@ const Rsvp = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-times-new-roman text-[12px] text-[#1B1C1D] pt-[18px]"
+            className="font-times-new-roman text-[12px] lg:text-[20px] text-[#1B1C1D] pt-[19.5px] lg:pt-[34px] lg:leading-[26px]"
           >
             Kindly confirm your attendance before <br />
             <span className="block pt-[8px]">[Due Date]</span>
           </motion.p>
-          <div className="flex items-center justify-center gap-[22px] mt-[24px]">
+          <div className="flex items-center justify-center gap-[22px] lg:gap-[28px] mt-[24px] lg:mt-[25px]">
             <motion.button
               variants={fadeLeft}
               initial="hidden"
@@ -117,7 +117,7 @@ const Rsvp = () => {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 1.5, ease: "easeOut" }}
               onClick={() => handleAttendClick(1)}
-              className={`w-[113px] h-[42px] rounded-[71px] font-times-new-roman text-[12px] text-wrap flex items-center justify-center transition-colors ${
+              className={`w-[113px] lg:w-[203px] h-[42px] rounded-[71px] lg:rounded-[50px] font-times-new-roman text-[12px] lg:text-[16px] text-wrap flex items-center justify-center transition-colors ${
                 attendStatus === 1
                   ? "bg-[#434341] text-white"
                   : "bg-transparent border border-[#1B1C1D]/50 text-[#292A2B]"
@@ -132,13 +132,13 @@ const Rsvp = () => {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 1.5, ease: "easeOut" }}
               onClick={() => handleAttendClick(2)}
-              className={`w-[113px] h-[42px] rounded-[71px] font-times-new-roman text-[12px] flex items-center justify-center transition-colors ${
+              className={`w-[113px] lg:w-[203px] h-[42px] rounded-[71px] lg:rounded-[50px] font-times-new-roman text-[12px] lg:text-[16px] flex items-center justify-center transition-colors ${
                 attendStatus === 2
                   ? "bg-[#434341] text-white"
                   : "border border-[#1B1C1D]/50 text-[#292A2B]"
               }`}
             >
-              UNABLE TO <br />
+              UNABLE TO <br className="lg:hidden" />
               ATTEND
             </motion.button>
           </div>
@@ -148,7 +148,7 @@ const Rsvp = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-times-new-roman text-[12px] text-[#1B1C1D] pt-[59px]"
+            className="font-times-new-roman text-[12px] lg:text-[20px] text-[#1B1C1D] pt-[60px] lg:pt-[104px]"
           >
             Confirm Your RSVP
           </motion.p>
@@ -159,7 +159,7 @@ const Rsvp = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
             onClick={handleConfirmClick}
-            className="w-[160px] h-[42px] rounded-[71px] bg-[#434341] font-times-new-roman text-[12px] text-white flex items-center justify-center mt-[25px] leading-[16px]"
+            className="w-[160px] lg:w-[220px] h-[42px] lg:h-[52px] rounded-[71px] lg:rounded-[50px] bg-[#434341] font-times-new-roman text-[12px] lg:text-[16px] text-white flex items-center justify-center mt-[25px] lg:mt-[39px] leading-[16px] lg:leading-[17px]"
           >
             CONFIRM {attendStatus === 2 ? "UNABLE" : ""} <br />
             TO ATTEND
@@ -170,7 +170,7 @@ const Rsvp = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-times-new-roman text-[10px] text-[#1B1C1D] pt-[54.5px] leading-[16px]"
+            className="font-times-new-roman text-[10px] lg:text-[20px] text-[#1B1C1D] pt-[53px] lg:pt-[69px] leading-[16px] lg:leading-[22px]"
           >
             If you need assistance with your RSVP, <br />
             please contact our support team.
@@ -184,14 +184,14 @@ const Rsvp = () => {
             href="https://wa.me/6281234567890"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-[160px] h-[30px] bg-[#12877B] rounded-[55px] font-times-new-roman text-[12px] text-white gap-[6px] mt-[23.2px]"
+            className="flex items-center justify-center w-[160px] lg:w-[220px] h-[30px] lg:h-[42px] bg-[#12877B] rounded-[55px] lg:rounded-[50px] font-times-new-roman text-[12px] lg:text-[16px] text-white gap-[6px] lg:gap-[10px] mt-[23.2px] lg:mt-[39px]"
           >
             <Image
               src="/images/Michael-Vannya/Rsvp/Wa.png"
               alt="whatsapp"
               width={200}
               height={200}
-              className="w-[16px]"
+              className="w-[16px] lg:w-[25px] -mt-[2px]"
             />
             CHAT SUPPORT
           </motion.a>

@@ -14,34 +14,43 @@ import Gift from "./Gift";
 import Wishes from "./Wishes";
 import Thankyou from "./Thankyou";
 import Header from "./Header";
-import VideoBackground from "./layout/VideoBackground";
+import Opening from "./Opening";
 import { kinfolk, timesNewRoman } from "./fonts/fonts";
 
-const MichaelVannya = () => {
-  const [start, setStart] = useState<boolean>(true); // sementara true, biar animasi Hero langsung kelihatan tanpa Opening popup dulu
+type MichaelVannyaProps = {
+  data?: any;
+};
+
+const MichaelVannya = ({ data }: MichaelVannyaProps) => {
+  const [start, setStart] = useState<boolean>(false); // false = tampilin Opening dulu
+
+  const namaTamu = "Sela"; // sementara statis, ganti kalau udah ada hook guest kayak Albert-Jessica
+  const groomName = data?.dataEvent?.groomName ?? "Michael";
+  const brideName = data?.dataEvent?.brideName ?? "Vannya";
 
   return (
-    <div  id="mv-root" className={`desktop-layout ${kinfolk.variable} ${timesNewRoman.variable}`}>
-      <aside className="cover-panel">
-        <DesktopCover />
-      </aside>
+    <div className={`${kinfolk.variable} ${timesNewRoman.variable}`}>
+      <Header />
+      <Hero start={start} />
+      <Profile />
+      <Countdown />
+      <EventOrder />
+      {/* <Foto /> */}
+      <Gallery />
+      <Dresscode />
+      <Rsvp />
+      <Gift />
+      <Wishes />
+      <Thankyou />
 
-      <main className="sections-panel relative">
-        <VideoBackground start={start} />
-        <Header />
-        <Hero start={start} />
-        <Profile />
-        <Countdown />
-        <EventOrder />
-        <Foto />
-        <Dresscode />
-        <Rsvp />
-        <Gallery />
-        <Gift />
-        <Wishes />
-        <Thankyou />
-                        {/* section-section berikutnya nyusul di sini, satu-satu pas udah lo kasih source-nya */}
-      </main>
+      {!start && (
+        <Opening
+          setStart={setStart}
+          namaTamu={namaTamu}
+          groomName={groomName}
+          brideName={brideName}
+        />
+      )}
     </div>
   );
 };

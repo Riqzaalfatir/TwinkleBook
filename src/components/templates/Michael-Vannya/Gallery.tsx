@@ -30,11 +30,11 @@ const AUTOPLAY_DELAY = 4000;
 const DOTS_COUNT = 3;
 
 const DEFAULT_PHOTOS: string[] = [
-  "/images/Michael-Vannya/Gallery/MichaelVannya1.webp",
-  "/images/Michael-Vannya/Gallery/MichaelVannya1.webp",
-  "/images/Michael-Vannya/Gallery/MichaelVannya1.webp",
-  "/images/Michael-Vannya/Gallery/MichaelVannya1.webp",
-  "/images/Michael-Vannya/Gallery/MichaelVannya1.webp",
+  "/images/Michael-Vannya/Gallery/MichaelVannyaa.webp",
+  "/images/Michael-Vannya/Gallery/MichaelVannyaa.webp",
+  "/images/Michael-Vannya/Gallery/MichaelVannyaa.webp",
+  "/images/Michael-Vannya/Gallery/MichaelVannyaa.webp",
+  "/images/Michael-Vannya/Gallery/MichaelVannyaa.webp",
 ];
 
 const Gallery = ({ data }: GalleryProps) => {
@@ -106,7 +106,7 @@ const Gallery = ({ data }: GalleryProps) => {
     <>
       <section
         id="gallery"
-        className="relative w-full h-[538px] min-h-[538px] max-h-[538px] overflow-hidden z-30"
+        className="relative w-full h-[538px] min-h-[538px] max-h-[538px] lg:h-[951px] lg:min-h-[951px] lg:max-h-[951px] overflow-hidden z-30"
       >
         <div className="embla h-full" ref={emblaRef}>
           <div className="embla__container flex h-full">
@@ -120,7 +120,7 @@ const Gallery = ({ data }: GalleryProps) => {
                   src={src}
                   alt={`Michael & Vannya ${index + 1}`}
                   fill
-                  className="object-cover"
+                  className="object-cover "
                 />
               </div>
             ))}

@@ -7,7 +7,7 @@ const Dresscode = () => {
   return (
     <section
       id="dresscode"
-      className="relative w-full pt-[73px] pb-[0px] bg-white z-0"
+      className="relative w-full pt-[70px] lg:pt-[125px] pb-[108px] bg-white z-0"
     >
       {/* Ornament Kiri Atas */}
       <Image
@@ -15,7 +15,7 @@ const Dresscode = () => {
         alt=""
         width={300}
         height={300}
-        className="absolute -top-[36px] -right-[8px] w-[205px] h-auto pointer-events-none z-0"
+        className="absolute -top-[36px] -right-[0px] w-[205px] h-auto pointer-events-none z-0"
       />
       <div className="relative flex flex-col items-center justify-center text-center leading-none z-10">
         <motion.h1
@@ -24,7 +24,7 @@ const Dresscode = () => {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="font-kinfolk text-[34px] text-[#1B1C1D]"
+          className="font-kinfolk text-[34px] lg:text-[48px] text-[#1B1C1D]"
         >
           Dress Code
         </motion.h1>
@@ -38,9 +38,9 @@ const Dresscode = () => {
           <Image
             src="/images/Michael-Vannya/Dresscode/Ornamentgaris.png"
             alt="ornament"
-            width={450}
-            height={450}
-            className="w-[95px] h-auto pointer-events-none"
+            width={500}
+            height={500}
+            className="w-[95px] lg:w-[147px] h-auto pointer-events-none lg:mt-[7px]"
           />
         </motion.div>
         <motion.p
@@ -49,19 +49,19 @@ const Dresscode = () => {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="font-times-new-roman text-[14px] text-[#1B1C1D] tracking-wide leading-[20px] pt-[22px]"
+          className="font-times-new-roman text-[14px] lg:text-[20px] text-[#1B1C1D] tracking-wide leading-[20px] pt-[22px] lg:pt-[53px]"
         >
-          We’d love to see you dressed in <br />
+          We’d love to see you dressed in <br className="lg:hidden" />
           soft summer shades.
         </motion.p>
-        <div className="flex flex-col items-center justify-center pt-[22px]">
+        <div className="flex flex-col items-center justify-center pt-[22px] lg:pt-[35px]">
           <motion.p
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-times-new-roman font-bold text-[14px] text-black"
+            className="font-times-new-roman font-bold text-[14px] lg:text-[20px] text-black"
           >
             MEN: <span className="font-normal">Casual Suit</span>
           </motion.p>
@@ -71,7 +71,7 @@ const Dresscode = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-times-new-roman italic text-[11px] text-black pt-[14.5px]"
+            className="font-times-new-roman italic text-[11px] lg:text-[16px] text-black pt-[14.5px] lg:pt-[23px]"
           >
             COLOUR PALLETE
           </motion.p>
@@ -87,18 +87,18 @@ const Dresscode = () => {
               alt="ornament"
               width={450}
               height={450}
-              className="w-[220px] h-auto pointer-events-none mt-[7px]"
+              className="w-[220px] lg:w-[312px] h-auto pointer-events-none mt-[7px] lg:mt-[20px]"
             />
           </motion.div>
         </div>
-        <div className="flex flex-col items-center justify-center pt-[28.5px]">
+        <div className="flex flex-col items-center justify-center pt-[28.5px] lg:pt-[46px]">
           <motion.p
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-times-new-roman font-bold text-[14px] text-black"
+            className="font-times-new-roman font-bold text-[14px] lg:text-[20px] text-black"
           >
             WOMEN: <span className="font-normal">Effortless Elegance</span>
           </motion.p>
@@ -108,7 +108,7 @@ const Dresscode = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-times-new-roman italic text-[11px] text-black pt-[14.5px]"
+            className="font-times-new-roman italic text-[11px] lg:text-[16px] text-black pt-[23px]"
           >
             COLOUR PALLETE
           </motion.p>
@@ -122,9 +122,9 @@ const Dresscode = () => {
             <Image
               src="/images/Michael-Vannya/Dresscode/DCWomen.webp"
               alt="ornament"
-              width={250}
-              height={250}
-              className="w-[215px] h-auto pointer-events-none mt-[7px]"
+              width={450}
+              height={450}
+              className="w-[215px] lg:w-[312px] h-auto pointer-events-none mt-[20px]"
             />
           </motion.div>
         </div>
@@ -134,10 +134,10 @@ const Dresscode = () => {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="font-times-new-roman italic text-[14px] text-[#1B1C1D] pt-[27px] tracking-wide leading-[19px]"
+          className="font-times-new-roman italic text-[14px] lg:text-[20px] text-[#1B1C1D] pt-[27px] lg:pt-[40px] tracking-wide leading-[19px] lg:leading-[26px]"
         >
           As we’ll be celebrating outdoors, <br />
-          comfortable shoes and light, <br />
+          comfortable shoes and light, <br className="lg:hidden" />
           breathable fabrics are warmly encouraged.
         </motion.p>
       </div>

@@ -16,11 +16,11 @@ const Header = () => {
     { name: "HOME", link: "#hero" },
     { name: "PROFILE", link: "#profile" },
     { name: "DATE", link: "#countdown" },
-    { name: "TIME & LOCATION", link: "#eventorder" },
+    { name: "EVENT DETAIL", link: "#eventorder" },
     { name: "GALLERY", link: "#gallery" },
     { name: "DRESSCODE", link: "#dresscode" },
     { name: "RSVP", link: "#rsvp" },
-    { name: "WEDDING GIFT", link: "#gift" },
+    { name: "GIFT", link: "#gift" },
     { name: "WISHES", link: "#wishes" },
   ];
 

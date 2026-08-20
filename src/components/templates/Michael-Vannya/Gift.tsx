@@ -31,15 +31,15 @@ const Gift = () => {
   return (
     <section
       id="gift"
-      className="relative w-full pt-[67px] pb-[108px] bg-[#7A883F]"
+      className="relative w-full pt-[68.5px] lg:pt-[138px] pb-[108px] bg-[#7A883F]"
     >
       {/* Ornament Kiri Atas */}
       <Image
-        src="/images/Michael-Vannya/Gift/BungaKananAtas.webp"
+        src="/images/Michael-Vannya/Gift/BungaKiriBawah.webp"
         alt=""
         width={300}
         height={300}
-        className="absolute -top-[258px] right-[0px] w-[240px] h-auto pointer-events-none z-0"
+        className="absolute -top-[0px] left-[0px] w-[180px] h-auto pointer-events-none z-0"
       />
 
       <div className="relative z-10 flex flex-col items-center text-center px-[24px]">
@@ -49,7 +49,7 @@ const Gift = () => {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="font-kinfolk text-[34px] text-white  uppercase"
+          className="font-kinfolk text-[34px] lg:text-[48px] text-white  uppercase"
         >
           Wedding Gift
         </motion.h2>
@@ -66,7 +66,7 @@ const Gift = () => {
             alt="ornament"
             width={250}
             height={250}
-            className="w-[95px] h-auto pointer-events-none -mt-[10px]"
+            className="w-[95px] lg:w-[147px] h-auto pointer-events-none -mt-[10px]"
           />
         </motion.div>
 
@@ -76,15 +76,63 @@ const Gift = () => {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="font-times-new-roman text-[14px] text-[#FEFBF0] mt-[21px] leading-[22px]"
+          className="font-times-new-roman text-[14px] lg:text-[20px] text-[#FEFBF0] mt-[21px] lg:mt-[54px] leading-[22px] lg:leading-[26px]"
         >
-          Your presence and prayers are the greatest <br />
-          blessing to us. Should you wish to send a gift, <br />
-          the details are provided below for your <br />
+          Your presence and prayers are the greatest{" "}
+          <br className="lg:hidden" />
+          blessing to us. <br className="hidden lg:block" />
+          Should you wish to send a gift, <br className="lg:hidden" />
+          the details are provided <br className="hidden lg:block" />
+          below for your <br className="lg:hidden" />
           convenience.
         </motion.p>
 
-        <div className="w-full max-w-[241px] flex flex-col gap-6 mt-[36.5px]">
+        <div className="w-full max-w-[270px] lg:max-w-[480px] flex flex-col mt-[31px] lg:mt-[52px]">
+          {gifts.map((gift, index) => (
+            <motion.div
+              key={index}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="w-[270px] h-[66px] lg:w-[480px] lg:h-[120px] rounded-[10px] lg:rounded-[20px] bg-white flex items-center"
+            >
+              <Image
+                src="/images/Michael-Vannya/Gift/BCA.webp"
+                alt="BCA"
+                width={45}
+                height={45}
+                className="w-[34px] h-[34px] lg:w-[45px] lg:h-[45px] object-contain ml-[15px] lg:ml-[34px]"
+              />
+
+              <div className="text-left ml-[20px] lg:ml-[41px] leading-[14px] lg:leading-[25px]">
+                <p className="font-times-new-roman text-[14px] lg:text-[20px] text-black font-bold">
+                  {gift.number}
+                </p>
+
+                <div className="flex items-center gap-2 mt-1">
+                  <p className="font-times-new-roman text-[14px] lg:text-[20px] text-black">
+                    {gift.bank}
+                  </p>
+                </div>
+
+                <p className="font-times-new-roman text-[14px] lg:text-[20px] text-black">
+                  {gift.name}
+                </p>
+              </div>
+
+              <button
+                onClick={() => handleCopy(gift.number, index)}
+                className="font-times-new-roman text-[14px] lg:text-[20px] text-black ml-[37px]  lg:ml-[125px] font-bold"
+              >
+                {copied === index ? "Copied!" : "Copy"}
+              </button>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* <div className="w-full max-w-[241px] flex flex-col gap-6 mt-[36.5px]">
           {gifts.map((gift, index) => (
             <div key={index} className="w-full">
               <div className="flex items-center justify-between leading-[17.5px]">
@@ -130,7 +178,7 @@ const Gift = () => {
               />
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </section>
   );

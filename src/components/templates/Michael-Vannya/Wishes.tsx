@@ -60,13 +60,13 @@ const Wishes = () => {
 
   return (
     <>
-      <section id="wishes" className="relative w-full pb-[75px] bg-[#7A883F]">
+      <section id="wishes" className="relative w-full pt-[18px] pb-[81.5px] bg-[#7A883F]">
         <Image
-          src="/images/Michael-Vannya/Wishes/BungaKiriBawah.webp"
+          src="/images/Michael-Vannya/Wishes/BungaKananBawah.webp"
           alt=""
-          width={300}
-          height={300}
-          className="absolute -bottom-[0px] -left-[0px] w-[220px] h-auto pointer-events-none z-0"
+          width={550}
+          height={550}
+          className="absolute -bottom-[100px] -right-[0px] w-[320px] h-auto pointer-events-none z-0"
         />
         <div className="relative z-10 flex flex-col items-center justify-center">
           <motion.h1
@@ -75,7 +75,7 @@ const Wishes = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-kinfolk text-[34px] text-white"
+            className="font-kinfolk text-[34px] lg:text-[48px] text-white"
           >
             Your Wishes
           </motion.h1>
@@ -92,11 +92,11 @@ const Wishes = () => {
               alt="ornament"
               width={350}
               height={350}
-              className="w-[95px] h-auto pointer-events-none -mt-[7px]"
+              className="w-[95px] lg:w-[147px] h-auto pointer-events-none -mt-[7px]"
             />
           </motion.div>
 
-          <div className="max-w-[285px] w-full flex flex-col gap-[16px] mt-[25px]">
+          <div className="max-w-[285px] lg:max-w-[594px] w-full flex flex-col gap-[16px] lg:gap-[26px] mt-[25px] lg:mt-[56px]">
             <motion.input
               variants={fadeUp}
               initial="hidden"
@@ -107,7 +107,7 @@ const Wishes = () => {
               value={nama}
               placeholder="Nama"
               onChange={(e) => setNama(e.target.value)}
-              className="w-full text-white font-times-new-roman bg-transparent border-[0.5px] text-[12px] border-white/70 px-[12px] h-[30px] rounded-[10px] outline-none placeholder:text-white/70"
+              className="w-full text-white font-times-new-roman bg-transparent border-[0.5px] text-[12px] lg:text-[20px] border-white/70 px-[12px] lg:px-[24px] h-[30px] lg:h-[42px] rounded-[10px] outline-none placeholder:text-white/70"
             />
 
             <motion.textarea
@@ -119,7 +119,7 @@ const Wishes = () => {
               value={pesan}
               placeholder="Leave your wishes here."
               onChange={(e) => setPesan(e.target.value)}
-              className="w-full text-white font-times-new-roman bg-transparent border-[0.5px] text-[12px]  border-white/70 px-[12px] py-[6px] h-[106px] rounded-[10px] outline-none placeholder:text-white/70 resize-none"
+              className="w-full text-white font-times-new-roman bg-transparent border-[0.5px] text-[12px] lg:text-[20px] border-white/70 px-[12px] lg:px-[24px] py-[6px] lg:py-[13px] h-[106px] lg:h-[197px] rounded-[10px] outline-none placeholder:text-white/70 resize-none"
             />
 
             <motion.button
@@ -130,14 +130,14 @@ const Wishes = () => {
               transition={{ duration: 1.5, ease: "easeOut" }}
               type="button"
               onClick={handleSubmit}
-              className="bg-white transition-colors duration-200 rounded-[10px] h-[30px] text-[12px] font-times-new-roman uppercase flex items-center justify-center gap-1.5 text-[#1B1C1D]"
+              className="bg-white transition-colors duration-200 rounded-[10px] h-[30px] lg:h-[42px] text-[12px] lg:text-[14px] font-times-new-roman uppercase flex items-center justify-center gap-1.5 lg:gap-[5px] text-[#1B1C1D]"
             >
               <Image
                 src="/images/Michael-Vannya/Wishes/Panah.png"
                 alt="Kirim"
                 width={15}
                 height={19}
-                className="object-cover w-[16px] h-[17px]"
+                className="object-cover w-[16px] h-[17px] lg:w-[23px] lg:h-[25px]"
               />
               Send
             </motion.button>
@@ -149,31 +149,33 @@ const Wishes = () => {
               whileInView="show"
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 1.5, ease: "easeOut" }}
-              className={`w-full h-[300px] overflow-y-auto rounded-[10px] ${
+              className={`w-full h-[300px] lg:h-[527px] overflow-y-auto rounded-[10px] ${
                 showAll ? "bg-transparent" : " bg-white"
               }`}
             >
               {!showAll ? (
                 <>
-                  <div className="sticky top-0 w-full h-[15px] bg-white z-10" />
+                  <div className="sticky top-0 w-full h-[15px] lg:h-[20px] bg-white z-10" />
 
-                  <div className="px-[12px] pt-[13px] pb-[2px]">
+                  <div className="px-[12px] lg:px-[24px] pt-[13px] lg:pt-[22px] pb-[2px] lg:pb-[5px]">
                     {pesanList.slice(0, 8).map((item, index, array) => (
                       <div key={item.id}>
-                        <p className="text-[#1B1C1D] font-times-new-roman text-[12px] font-bold mb-[3px]">
+                        <p className="text-[#1B1C1D] font-times-new-roman text-[12px] lg:text-[20px] font-bold mb-[3px] lg:mb-[15px]">
                           {item.nama}
                         </p>
 
-                        <p className="text-[#1B1C1D] font-times-new-roman text-[12px]">
+                        <p className="text-[#1B1C1D] font-times-new-roman text-[12px] lg:text-[20px]">
                           {decodeHtmlEntities(item.pesan)}
                         </p>
 
                         {index !== array.length - 1 && (
-                          <div className="border-t-[0.1px] border-[#1B1C1D] mt-[7px] mb-[15px]" />
+                          <div className="border-t-[0.1px] border-[#1B1C1D] mt-[7px] lg:mt-[15px] mb-[15px] lg:mb-[19px]" />
                         )}
                       </div>
                     ))}
                   </div>
+
+                  <div className="sticky bottom-0 w-full h-[15px] lg:h-[20px] bg-white z-10" />
                 </>
               ) : (
                 <div className="w-full px-[2px] py-[6px]">
@@ -250,14 +252,14 @@ const Wishes = () => {
               transition={{ duration: 1.5, ease: "easeOut" }}
               type="button"
               onClick={() => setShowAll((prev) => !prev)}
-              className="bg-white transition-colors duration-200 rounded-[10px] h-[30px] text-[12px] font-times-new-roman uppercase flex items-center justify-center gap-1.5 text-[#1B1C1D]"
+              className="bg-white transition-colors duration-200 rounded-[10px] h-[30px] lg:h-[42px] text-[12px] lg:text-[14px] font-times-new-roman uppercase flex items-center justify-center gap-1.5 lg:gap-[11px] text-[#1B1C1D]"
             >
               <Image
                 src="/images/Michael-Vannya/Wishes/Pesan.png"
                 alt="Pesan"
                 width={18}
                 height={20}
-                className="object-cover w-[15px] h-[19px]"
+                className="object-cover w-[15px] h-[19px] lg:w-[28px] lg:h-[36px]"
               />
 
               {showAll ? "BACK" : "See all message"}
