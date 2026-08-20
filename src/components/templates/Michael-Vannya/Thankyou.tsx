@@ -10,7 +10,7 @@ const Thankyou = () => {
         src="/images/Michael-Vannya/Thankyou/Thankyou.webp"
         alt="Thankyou Background"
         fill
-        className="object-cover object-bottom z-10 pointer-events-none lg:hidden"
+        className="object-cover object-top z-10 pointer-events-none lg:hidden "
       />
 
       <Image
