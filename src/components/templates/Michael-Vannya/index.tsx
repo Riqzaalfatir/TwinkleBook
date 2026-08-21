@@ -70,9 +70,9 @@ const MichaelVannya = ({
       {/* <Foto /> */}
       <Gallery data={data} />
       <Dresscode />
-      <Rsvp data={data} />
+      <Rsvp data={data}  guestData={eventGuestByPin} />
       <Gift data={data} />
-      <Wishes data={data} />
+      <Wishes data={data} guestData={eventGuestByPin} />
       <Thankyou data={data} />
 
       {!start && loaded && (

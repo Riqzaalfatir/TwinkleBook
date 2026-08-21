@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import WishesCard from "../Michael-Vannya/popup/WishesCard";
@@ -34,9 +34,11 @@ const dummyAsApiFormat: PersonalGuestMessage[] = dummyPesan.map(
 
 type WishesProps = {
   data?: any;
+    guestData?: { name?: string } | null; // ⬅️ BARU
+
 };
 
-const Wishes = ({ data }: WishesProps) => {
+const Wishes = ({ data, guestData }: WishesProps) => { // ⬅️ tambah guestData
   const [nama, setNama] = useState<string>("");
   const [pesan, setPesan] = useState<string>("");
   const [showPopup, setShowPopup] = useState<boolean>(false);
@@ -44,6 +46,8 @@ const Wishes = ({ data }: WishesProps) => {
   const [modalType, setModalType] = useState<ModalType>(null);
   const [selectedMessage, setSelectedMessage] =
     useState<PersonalGuestMessage | null>(null);
+      const hasAutofilled = useRef(false); // ⬅️ BARU, flag biar cuma auto-isi sekali
+
 
   const eventId = data?.dataEvent?.id;
 
@@ -55,6 +59,13 @@ const Wishes = ({ data }: WishesProps) => {
   } = useListPMG();
 
   const { submitPMG, statusPMG: pmgStatus, errorPMG: pmgError } = usePMG();
+
+   useEffect(() => {
+    if (guestData?.name && !hasAutofilled.current) {
+      setNama(guestData.name);
+      hasAutofilled.current = true;
+    }
+  }, [guestData?.name]);
 
   useEffect(() => {
     if (eventId) {
@@ -144,8 +155,8 @@ const Wishes = ({ data }: WishesProps) => {
               transition={{ duration: 1.5, ease: "easeOut" }}
               type="text"
               value={nama}
-              placeholder="Desy"
-              onChange={(e) => setNama(e.target.value)}
+  placeholder={guestData?.name || "Masukkan nama Anda"} // ⬅️ diubah, dinamis
+  onChange={(e) => setNama(e.target.value)}
               className="w-full text-white font-times-new-roman bg-transparent border text-[12px] lg:text-[20px] border-white/70 px-[12px] lg:px-[24px] h-[30px] lg:h-[42px] rounded-[10px] outline-none placeholder:text-white/70"
             />
 

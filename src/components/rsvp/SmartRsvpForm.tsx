@@ -35,6 +35,7 @@ type ModalType =
 
 type SmartRsvpFormProps = {
   data?: any;
+  guestData?: { name?: string; closeRSVPDate?: string } | null; // ⬅️ BARU
   paramUrl?: string;
   onSubmitRSVP?: () => void;
   defaultAttendStatus?: number;
@@ -43,6 +44,7 @@ type SmartRsvpFormProps = {
 
 export const SmartRsvpForm = ({
   data,
+  guestData: guestDataProp, // ⬅️ BARU
   paramUrl = "",
   defaultAttendStatus = 1,
   children,
@@ -50,7 +52,7 @@ export const SmartRsvpForm = ({
   const [attendStatus, setAttendStatus] = useState<number>(defaultAttendStatus);
   const [modalType, setModalType] = useState<ModalType>(null);
 
-  const waNumber = "6281998478131"; 
+  const waNumber = "6281998478131";
 
   const handleSubmitClick = () => {
     if (attendStatus === 0) {
@@ -66,8 +68,8 @@ export const SmartRsvpForm = ({
 
   const mockValue: SmartRsvpContextType = {
     guestData: {
-      name: "Sela (Tester)",
-      closeRSVPDate: "2026-09-12T00:00:00.000Z",
+      name: guestDataProp?.name ?? "Sela (Tester)", // ⬅️ diubah, dari guestDataProp
+      closeRSVPDate: guestDataProp?.closeRSVPDate ?? "2026-09-12T00:00:00.000Z", // ⬅️ diubah
     },
     attendStatus,
     invitationUrl: waNumber,

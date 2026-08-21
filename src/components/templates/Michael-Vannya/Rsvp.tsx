@@ -8,11 +8,12 @@ import { fadeUp, fadeLeft, fadeRight } from "../../../lib/animation";
 
 type RsvpProps = {
   data?: any;
+  guestData?: { name?: string; closeRSVPDate?: string } | null; // ⬅️ BARU
   paramUrl?: string;
   onSubmitRSVP?: () => void;
 };
 
-const Rsvp = ({ data, paramUrl, onSubmitRSVP }: RsvpProps) => {
+const Rsvp = ({ data, guestData, paramUrl, onSubmitRSVP }: RsvpProps) => { // ⬅️ diubah, tambah guestData
   const rsvpImageUrl = data?.dataContent?.rsvpImageData?.url
     ? `https://media.twinklebook.com/${data.dataContent.rsvpImageData.url}`
     : "/images/Michael-Vannya/Foto/MichaelVannya.webp";
@@ -20,6 +21,7 @@ const Rsvp = ({ data, paramUrl, onSubmitRSVP }: RsvpProps) => {
   return (
     <SmartRsvpForm
       data={data}
+      guestData={guestData} // ⬅️ BARU, diterusin ke SmartRsvpForm
       paramUrl={paramUrl}
       onSubmitRSVP={onSubmitRSVP}
       defaultAttendStatus={0}
@@ -46,7 +48,6 @@ const RsvpSectionDesign = ({ rsvpImageUrl }: RsvpSectionDesignProps) => {
         id="rsvp"
         className="relative w-full pt-[0px] pb-[72px] lg:pt-[35px] lg:pb-[0px] bg-white lg:flex lg:items-stretch"
       >
-        {/* KOLOM KIRI - FOTO (DESKTOP ONLY) */}
         <div className="hidden lg:block relative lg:w-1/2">
           <Image
             src={rsvpImageUrl}
@@ -56,9 +57,7 @@ const RsvpSectionDesign = ({ rsvpImageUrl }: RsvpSectionDesignProps) => {
           />
         </div>
 
-        {/* KOLOM KANAN - KONTEN RSVP */}
         <div className="relative lg:w-1/2">
-          {/* Ornament Kiri Bawah Mobile */}
           <Image
             src="/images/Michael-Vannya/Rsvp/BungaKiriBawahh.webp"
             alt=""
@@ -67,16 +66,6 @@ const RsvpSectionDesign = ({ rsvpImageUrl }: RsvpSectionDesignProps) => {
             className="absolute -bottom-[182px] left-[0px] w-[230px] h-auto pointer-events-none z-0 lg:hidden"
           />
 
-          {/* Ornament Kanan Atas Desktop */}
-          {/* <Image
-            src="/images/Michael-Vannya/Rsvp/BungaKananAtas.webp"
-            alt=""
-            width={300}
-            height={300}
-            className="hidden lg:block absolute -top-[30px] -right-[10px] w-[280px] h-auto pointer-events-none z-0"
-          /> */}
-
-          {/* Ornament Kanan Atas Desktop */}
           <Image
             src="/images/Michael-Vannya/Dresscode/BungaTengah.webp"
             alt=""
@@ -130,7 +119,7 @@ const RsvpSectionDesign = ({ rsvpImageUrl }: RsvpSectionDesignProps) => {
                 transition={{ duration: 1.5, ease: "easeOut" }}
                 className="font-times-new-roman text-[14px] lg:text-[22px] text-[#1B1C1D] pt-[10.5px] lg:pt-[20px]"
               >
-                {paramUrl !== "" ? paramUrl : (guestData?.name ?? "[Guest Name]")}
+                {guestData?.name ?? "[Guest Name]"}
               </motion.p>
               <motion.p
                 variants={fadeUp}
