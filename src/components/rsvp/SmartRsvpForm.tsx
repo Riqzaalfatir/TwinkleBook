@@ -117,11 +117,17 @@ SmartRsvpForm.SubmitButton = ({ className }: { className?: string }) => {
   const { attendStatus, handleSubmitClick } = useSmartRsvp();
   return (
     <button type="button" onClick={handleSubmitClick} className={className}>
-      {attendStatus === 1
-        ? "CONFIRM ATTEND"
-        : attendStatus === 2
-          ? "CONFIRM NOT ATTEND"
-          : "CONFIRM"}
+      {attendStatus === 1 ? (
+        "CONFIRM ATTEND"
+      ) : attendStatus === 2 ? (
+        <>
+          CONFIRM UNABLE
+          <br />
+          TO ATTEND
+        </>
+      ) : (
+        "CONFIRM"
+      )}
     </button>
   );
 };

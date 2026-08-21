@@ -160,7 +160,7 @@ const RsvpSectionDesign = ({ rsvpImageUrl }: RsvpSectionDesignProps) => {
                   transition={{ duration: 1.5, ease: "easeOut" }}
                 >
                   <SmartRsvpForm.NotAttendToggle
-                    className={`w-[113px] font-normal tracking-wide lg:w-[203px] h-[42px] rounded-[71px] lg:rounded-[50px] font-times-new-roman text-[12px] lg:text-[16px] flex items-center justify-center transition-colors ${
+                    className={`w-[113px] font-normal tracking-wide lg:w-[203px] h-[42px] rounded-[71px] lg:rounded-[50px] font-times-new-roman text-[12px] lg:text-[16px] flex items-center justify-center transition-colors leading-[14px] lg:leading-[17px] ${
                       attendStatus === 2
                         ? "bg-[#434341] text-white"
                         : "border border-[#1B1C1D]/50 text-[#292A2B]"
@@ -185,7 +185,7 @@ const RsvpSectionDesign = ({ rsvpImageUrl }: RsvpSectionDesignProps) => {
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 1.5, ease: "easeOut" }}
               >
-                <SmartRsvpForm.SubmitButton className="w-[160px] font-normal tracking-wide lg:w-[220px] h-[42px] lg:h-[52px] rounded-[71px] lg:rounded-[50px] bg-[#434341] font-times-new-roman text-[12px] lg:text-[16px] text-white flex items-center justify-center mt-[25px] lg:mt-[36px] leading-[16px] lg:leading-[17px]" />
+                <SmartRsvpForm.SubmitButton className="w-[160px] font-normal tracking-wide lg:w-[220px] h-[42px] lg:h-[52px] rounded-[71px] lg:rounded-[50px] bg-[#434341] font-times-new-roman text-[12px] lg:text-[16px] text-white flex items-center justify-center mt-[25px] lg:mt-[36px] leading-[14px] lg:leading-[17px]" />
               </motion.div>
               <motion.p
                 variants={fadeUp}
