@@ -85,12 +85,19 @@ const Hero: React.FC<HeroProps> = ({ start = false, data }) => {
 
       {/* Teks BAWAH */}
       <div className="relative z-10 pb-[64px] lg:pb-[102px] text-center leading-none">
-        <motion.div
+         <motion.a
+          href="#butongif"
+          onClick={(e) => {
+            e.preventDefault();
+            document
+              .getElementById("profile")
+              ?.scrollIntoView({ behavior: "smooth" });
+          }}
           variants={fadeUp}
           initial="hidden"
           animate={start ? "show" : "hidden"}
           transition={{ duration: 2, ease: "easeOut", delay: 0.6 }}
-          className="flex justify-center mb-[13px] lg:mb-[32px]"
+          className="flex justify-center mb-[13px] lg:mb-[32px] cursor-pointer"
         >
           <Image
             src="/gif/Michael-Vannya/PanahBawah.gif"
@@ -98,9 +105,10 @@ const Hero: React.FC<HeroProps> = ({ start = false, data }) => {
             width={80}
             height={80}
             unoptimized
-            className="w-[40px] h-[40px] lg:w-[55px] lg:h-[55px] pointer-events-none"
+            draggable={false}
+            className="w-[40px] h-[40px] lg:w-[55px] lg:h-[55px] select-none [-webkit-touch-callout:none]"
           />
-        </motion.div>
+        </motion.a>
 
         <motion.p
           variants={fadeUp}

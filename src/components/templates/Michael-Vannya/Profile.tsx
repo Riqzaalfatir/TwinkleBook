@@ -65,6 +65,7 @@ const Profile = ({ data }: ProfileProps) => {
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
           <Image
+          
             src="/images/Michael-Vannya/Hero/LogoMV.webp"
             alt="ornament"
             width={350}
@@ -73,6 +74,7 @@ const Profile = ({ data }: ProfileProps) => {
           />
         </motion.div>
         <motion.p
+        id='butongif'
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
