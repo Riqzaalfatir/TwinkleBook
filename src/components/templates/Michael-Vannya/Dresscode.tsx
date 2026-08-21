@@ -9,7 +9,6 @@ const Dresscode = () => {
       id="dresscode"
       className="relative w-full pt-[70px] lg:pt-[133px] pb-[69px] bg-white z-0"
     >
-      {/* Ornament Kanan Atas Mobile */}
       <Image
         src="/images/Michael-Vannya/Dresscode/BungaKananAtas.webp"
         alt=""
@@ -17,7 +16,6 @@ const Dresscode = () => {
         height={300}
         className="absolute -top-[36px] -right-[0px] w-[205px] h-auto pointer-events-none z-0 lg:hidden"
       />
-      {/* Ornament Kiri Atas Dekstop */}
       <Image
         src="/images/Michael-Vannya/Dresscode/BungaKiriAtas.webp"
         alt=""

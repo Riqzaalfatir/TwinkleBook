@@ -30,8 +30,7 @@ async function getAllCodeContent() {
 
 function isUsed(assetPath, codeContent) {
   const normalized = assetPath.replace(/\\/g, "/").replace("./public", "");
-  const filename = path.basename(assetPath);
-  return codeContent.includes(normalized) || codeContent.includes(filename);
+  return codeContent.includes(normalized);
 }
 
 async function main() {

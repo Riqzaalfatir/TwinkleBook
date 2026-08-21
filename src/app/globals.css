@@ -28,8 +28,6 @@
    Split Desktop Layout (Cover + Sections)
    Dipake hanya kalau template punya elemen dengan class:
    .desktop-layout / .cover-panel / .sections-panel
-   Kalau nggak ada elemen yang manggil class ini di JSX,
-   style di bawah nggak akan ke-apply ke mana pun.
    ═══════════════════════════════════════════════════════════════ */
 
   .desktop-layout {

@@ -15,7 +15,7 @@ module.exports = {
         // Albert-Jessica (include: Lora)
         marcellus: ["var(--font-marcellus)"],
         "cormorant-garamond": ["var(--font-cormorant-garamond)"],
-        slight: ["var(--font-slight)"], // ✅ tambahin ini
+        slight: ["var(--font-slight)"], 
 
         // Michael-Vannya
         kinfolk: ["var(--font-kinfolk)"],
