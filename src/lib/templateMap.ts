@@ -18,6 +18,9 @@ export const TEMPLATE_MAP: Record<string, string> = {
   // Albert-Jessica template
   "d54787bd-7101-4767-b901-30360bf6e8f2": "Albert-Jessica",
 
+  // Michael - Vannya Template,
+  "677fbeac-78e2-4f21-9bf0-0ad86a6dea0a" : "Michael-Vannya",
+
   // "uuid-template-3": "TemplateNama3",
 };
 

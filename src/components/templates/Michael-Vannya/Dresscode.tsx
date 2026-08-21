@@ -116,7 +116,7 @@ const Dresscode = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-times-new-roman italic text-[11px] lg:text-[16px] text-black pt-[23px]"
+            className="font-times-new-roman italic text-[11px] lg:text-[16px] text-black pt-[14.5px] lg:pt-[23px]"
           >
             COLOUR PALLETE
           </motion.p>
@@ -132,7 +132,7 @@ const Dresscode = () => {
               alt="ornament"
               width={450}
               height={450}
-              className="w-[215px] lg:w-[335px] h-auto pointer-events-none mt-[20px]"
+              className="w-[215px] lg:w-[335px] h-auto pointer-events-none mt-[7px] lg:mt-[20px]"
             />
           </motion.div>
         </div>
