@@ -1,21 +1,59 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeUp } from "../../../lib/animation";
 
-const items = [
-  { label: "DAYS", value: 59 },
-  { label: "HOUR", value: 59 },
-  { label: "MINUTES", value: 59 },
-  { label: "SECONDS", value: 59 },
-];
+const TARGET_DATE = new Date("2026-10-25T00:00:00");
 
-const dayPart = "Sunday";
-const datePart = "25 October 2026";
+type TimeLeft = {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+};
+
+const calculateTimeLeft = (): TimeLeft => {
+  const difference = TARGET_DATE.getTime() - new Date().getTime();
+
+  if (difference <= 0) {
+    return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+  }
+
+  return {
+    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+    hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+    minutes: Math.floor((difference / 1000 / 60) % 60),
+    seconds: Math.floor((difference / 1000) % 60),
+  };
+};
 
 const Countdown = () => {
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  useEffect(() => {
+    setTimeLeft(calculateTimeLeft()); // langsung set begitu mount, hindari flash "00"
+
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const items = [
+    { label: "DAYS", value: timeLeft.days },
+    { label: "HOUR", value: timeLeft.hours },
+    { label: "MINUTES", value: timeLeft.minutes },
+    { label: "SECONDS", value: timeLeft.seconds },
+  ];
+
   return (
     <div
       id="countdown"

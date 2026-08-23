@@ -19,6 +19,10 @@ const IMAGES_COMMON: string[] = [
   "/images/Notif-Modal/TandaSeru.svg",
   "/images/Notif-Modal/TandaTanya.svg",
 
+  // OPENING
+  "/images/Peter-Helena/Opening/PeterHelenaM.webp",
+  "/images/Peter-Helena/Opening/PeterHelenaD.webp",
+
   // HERO
   "/images/Peter-Helena/Hero/PeterHelenaBG.webp",
 
