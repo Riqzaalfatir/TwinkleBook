@@ -11,15 +11,22 @@ module.exports = {
         lora: ["var(--font-lora)"],
         cylburn: ["var(--font-cylburn)"],
         milyuna: ["var(--font-milyuna)"],
-        
+
         // Albert-Jessica (include: Lora)
         marcellus: ["var(--font-marcellus)"],
         "cormorant-garamond": ["var(--font-cormorant-garamond)"],
-        slight: ["var(--font-slight)"], 
+        slight: ["var(--font-slight)"],
 
         // Michael-Vannya
         kinfolk: ["var(--font-kinfolk)"],
         "times-new-roman": ["var(--font-times-new-roman)"],
+
+        // Peter-Helena
+        "aston-script": ["var(--font-aston-script)"],
+        "times-new-roman-bold": ["var(--font-times-new-roman-bold)"],
+        cinzel: ["var(--font-cinzel)"],
+        "cinzel-decorative": ["var(--font-cinzel-decorative)"],
+        ovo: ["var(--font-ovo)"],
       },
     },
   },
