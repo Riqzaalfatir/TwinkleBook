@@ -5,7 +5,7 @@ const DesktopCover: React.FC = () => {
   return (
     <div className="relative w-full overflow-hidden h-screen">
       <Image
-        src="/images/Peter-Helena/DekstopCover/BGPeterHelena.webp"
+        src="/images/Peter-Helena/DekstopCover/PETERHELENA.webp"
         alt="Peter & Helena Wedding Cover"
         fill
         priority
