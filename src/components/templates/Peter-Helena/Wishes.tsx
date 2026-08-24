@@ -15,7 +15,11 @@ const Wishes = () => {
   const [notifType, setNotifType] = useState<string>("");
   const [selectedMessage, setSelectedMessage] = useState<PesanItem | null>(null);
 
-  const [pesanList] = useState<PesanItem[]>(dummyPesan);
+  // TAMBAHAN: popup pesan berhasil dikirim
+  const [showPopup, setShowPopup] = useState<boolean>(false);
+
+  // TAMBAHAN: setter agar pesan baru dapat dimasukkan ke list
+  const [pesanList, setPesanList] = useState<PesanItem[]>(dummyPesan);
 
   const handleSubmit = () => {
     if (!nama.trim() || !pesan.trim()) {
@@ -23,7 +27,30 @@ const Wishes = () => {
       return;
     }
 
+    const newId = (
+      pesanList[0]?.id !== undefined &&
+      typeof pesanList[0].id === "string"
+        ? String(Date.now())
+        : Date.now()
+    ) as PesanItem["id"];
+
+    const newPesan: PesanItem = {
+      id: newId,
+      nama: nama.trim(),
+      pesan: pesan.trim(),
+    };
+
     console.log("Kirim:", nama, pesan);
+
+    // TAMBAHAN: masukkan pesan baru ke list
+    setPesanList((prev) => [newPesan, ...prev]);
+
+    // TAMBAHAN: kosongkan form
+    setNama("");
+    setPesan("");
+
+    // TAMBAHAN: tampilkan popup berhasil
+    setShowPopup(true);
   };
 
   return (
@@ -113,7 +140,7 @@ const Wishes = () => {
                         {item.nama}
                       </p>
 
-                      <p className="text-white font-cinzel text-[13px] lg:text-[13.16px]">
+                      <p className="text-white font-cinzel text-[13px] lg:text-[13.16px] break-words">
                         {item.pesan}
                       </p>
 
@@ -206,6 +233,58 @@ const Wishes = () => {
           </motion.button>
         </div>
       </div>
+
+      {/* POPUP KETIKA PESAN BERHASIL DIKIRIM */}
+      <AnimatePresence>
+        {showPopup && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50 px-6"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, y: 12 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 12 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="relative bg-[#FBFAF5] rounded-[16px] w-[300px] text-center shadow-2xl overflow-hidden"
+            >
+              <div className="absolute top-0 left-0 right-0 h-[4px] bg-[#430D0D]" />
+
+              <div className="px-[28px] pb-[38px] pt-[42px]">
+                <h3 className="font-aston-script text-[30px] text-[#430D0D] leading-none">
+                  Thank You
+                </h3>
+
+                <p className="font-cinzel font-bold text-[12px] text-[#430D0D]/70 tracking-[0.15em] uppercase mt-[30px]">
+                  Message Sent
+                </p>
+
+                <div className="w-[36px] h-[1px] bg-[#430D0D]/60 mx-auto my-[18px]" />
+
+                <p className="font-cinzel text-[12px] text-[#1B1C1D]/80 leading-[20px]">
+                  Thank you for your warm wishes and prayers.
+                  <br />
+                  We truly appreciate your message.
+                </p>
+
+                <button
+                  type="button"
+                  onClick={() => setShowPopup(false)}
+                  className="w-[140px] h-[36px] mt-[26px] bg-[#430D0D] text-[#EEDBCD] font-cinzel text-[11px] tracking-[0.1em] uppercase rounded-[71px] transition-colors duration-300 hover:bg-[#5A1717]"
+                >
+                  Close
+                </button>
+              </div>
+
+                            <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-[#430D0D]" />
+
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {notifType && (
         <NotifModal type={notifType} onClose={() => setNotifType("")} />

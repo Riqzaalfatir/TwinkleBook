@@ -152,7 +152,7 @@ const Rsvp = () => {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          href="https://wa.me/6281234567890"
+          href="https://wa.me/6281998478131"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center w-[161px] h-[30px] lg:w-[163.04px] lg:h-[36.46px] bg-[#12877B] rounded-[6px] font-cinzel text-[12px] lg:text-[12.15px] text-white gap-[8px] mt-[25.5px] lg:mt-[19px] transition-colors duration-300 hover:bg-[#0f6f65]"
