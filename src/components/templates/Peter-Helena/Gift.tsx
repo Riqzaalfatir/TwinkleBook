@@ -6,15 +6,14 @@ import { motion } from "framer-motion";
 import { fadeUp } from "../../../lib/animation";
 
 const WeddingGift = () => {
-  const accountNumber = "0123456789";
-  const [copied, setCopied] = useState(false);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(accountNumber);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+  const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
+const handleCopy = (text: string, index: number) => {
+  navigator.clipboard.writeText(text);
+  setCopiedIndex(index);
+  setTimeout(() => setCopiedIndex(null), 2000);
+};
   return (
     <section
       id="gift"
@@ -107,10 +106,11 @@ const WeddingGift = () => {
             </div>
 
             <button
-              onClick={handleCopy}
+               onClick={() => handleCopy("2580551311", 0)}
               className="font-times-new-roman text-[12px] text-[#454545] ml-auto mr-[8px] font-bold"
             >
-              {copied ? "Copied!" : "Copy"}
+                {copiedIndex === 0 ? "Copied!" : "Copy"}
+
             </button>
           </motion.div>
 
@@ -144,10 +144,10 @@ const WeddingGift = () => {
             </div>
 
             <button
-              onClick={handleCopy}
+              onClick={() => handleCopy("84047107", 1)}
               className="font-times-new-roman text-[12px] text-[#454545] ml-auto mr-[8px] font-bold"
             >
-              {copied ? "Copied!" : "Copy"}
+  {copiedIndex === 1 ? "Copied!" : "Copy"}
             </button>
           </motion.div>
 
@@ -193,10 +193,10 @@ const WeddingGift = () => {
             </div>
 
             <button
-              onClick={handleCopy}
+              onClick={() => handleCopy("0119012634", 2)}
               className="font-times-new-roman text-[12px] text-[#454545] ml-auto mr-[8px] font-bold -mt-[10px]"
             >
-              {copied ? "Copied!" : "Copy"}
+  {copiedIndex === 2 ? "Copied!" : "Copy"}
             </button>
           </motion.div>
         </div>
