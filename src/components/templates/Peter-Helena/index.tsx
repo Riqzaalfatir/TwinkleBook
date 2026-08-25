@@ -18,6 +18,7 @@ import LoadingScreen from "./LoadingScreen";
 import { usePreloader } from "./hooks/usePreloader";
 import { useCurrentGuest } from "@/hooks/api/useCurrentGuest";
 import { formatDateWithWeekday } from "../../../lib/formatDate";
+import PlaySongButton from "../../../ui/PlaySongButton";
 import {
   astonScript,
   timesNewRoman,
@@ -39,7 +40,6 @@ const PeterHelena = ({ data, isPreview, dataValidation }: PeterHelenaProps) => {
   const [start, setStart] = useState<boolean>(false); // false = tampilin Opening dulu
   const [showLoading, setShowLoading] = useState<boolean>(true);
 
-  const { loaded, progress } = usePreloader();
   const { getEventGuestByPin, eventGuestByPin } = useCurrentGuest();
 
   useEffect(() => {
@@ -63,6 +63,16 @@ const PeterHelena = ({ data, isPreview, dataValidation }: PeterHelenaProps) => {
     ? `https://media.twinklebook.com/${backgroundImage}`
     : undefined;
 
+  const backgroundSoundUrl = data?.dataContent?.backgroundSoundData?.url
+    ? `https://media.twinklebook.com/${data.dataContent.backgroundSoundData.url}`
+    : "/audio/default-song.mp3"; // fallback statis kalau API kosong
+
+  const dynamicImages = [openingBackgroundUrl].filter(
+    (url): url is string => Boolean(url)
+  );
+
+  const { loaded, progress } = usePreloader({ dynamicImages });
+
   return (
     <div
       className={`desktop-layout ${astonScript.variable} ${timesNewRoman.variable} ${timesNewRomanBold.variable} ${ovo.variable} ${cinzel.variable} ${cinzelDecorative.variable}`}
@@ -74,7 +84,7 @@ const PeterHelena = ({ data, isPreview, dataValidation }: PeterHelenaProps) => {
       <main className="sections-panel relative">
         <Header />
         <Hero start={start} data={data} />
-        <Profile />
+        <Profile data={data} />
         <section className="w-full flex justify-center px-[4px] -mt-[1px] bg-[#430D0D]">
           <motion.div
             variants={fadeUp}
@@ -84,16 +94,16 @@ const PeterHelena = ({ data, isPreview, dataValidation }: PeterHelenaProps) => {
             transition={{ duration: 1.5, ease: "easeOut" }}
             className="w-[340px] lg:w-[344.31px] bg-white rounded-[20px] lg:rounded-[20.25px] pt-[5px] px-[5px] overflow-hidden"
           >
-            <Countdown />
-            <EventOrder />
+            <Countdown data={data} />
+            <EventOrder data={data} />
           </motion.div>
         </section>
         <Dresscode />
-        <Rsvp />
-        <Gallery />
+        <Rsvp data={data} guestData={eventGuestByPin} />
+        <Gallery data={data} />
         <Gift />
-        <Wishes />
-        <Thankyou />
+        <Wishes data={data} guestData={eventGuestByPin} />
+        <Thankyou data={data} />
 
         {!start && loaded && (
           <Opening
@@ -107,10 +117,15 @@ const PeterHelena = ({ data, isPreview, dataValidation }: PeterHelenaProps) => {
         )}
       </main>
 
+      <PlaySongButton src={backgroundSoundUrl} start={start} />
+
       {showLoading && (
         <LoadingScreen
           progress={progress}
           onDone={() => setShowLoading(false)}
+          groomName={groomName}
+          brideName={brideName}
+          eventDate={eventDate}
         />
       )}
     </div>
@@ -118,7 +133,6 @@ const PeterHelena = ({ data, isPreview, dataValidation }: PeterHelenaProps) => {
 };
 
 export default PeterHelena;
-
 // SEBELUM DI DINAMISKAN
 // "use client";
 

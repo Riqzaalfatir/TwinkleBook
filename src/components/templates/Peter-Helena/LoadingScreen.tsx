@@ -5,9 +5,18 @@ import { useEffect } from "react";
 type Props = {
   progress: number;
   onDone?: () => void;
+  groomName?: string;
+  brideName?: string;
+  eventDate?: string;
 };
 
-export default function LoadingScreen({ progress, onDone }: Props) {
+export default function LoadingScreen({
+  progress,
+  onDone,
+  groomName = "Peter",
+  brideName = "Helena",
+  eventDate = "SUNDAY, 25 OCTOBER 2026",
+}: Props) {
   const fading = progress === 100;
 
   useEffect(() => {
@@ -39,7 +48,7 @@ export default function LoadingScreen({ progress, onDone }: Props) {
         </p>
 
         <h1 className="font-aston-script text-[8vw] lg:text-[38px] text-[#430D0D] mt-[10px] leading-[1.3]">
-          Peter
+          {groomName}
         </h1>
 
         <p className="font-aston-script text-[6vw] lg:text-[28px] text-[#430D0D] leading-none mt-[15px] mb-[30px]">
@@ -47,11 +56,11 @@ export default function LoadingScreen({ progress, onDone }: Props) {
         </p>
 
         <h1 className="font-aston-script text-[8vw] lg:text-[38px] text-[#430D0D] leading-[1.3]">
-          Helena
+          {brideName}
         </h1>
 
         <p className="font-cinzel text-[2.82vw] lg:text-[12px] text-[#430D0D]/70 mt-[14px] tracking-[0.15em]">
-          SUNDAY, 25 OCTOBER 2026
+          {eventDate}
         </p>
 
         {/* Progress bar */}
