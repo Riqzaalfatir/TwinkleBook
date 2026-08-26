@@ -27,6 +27,8 @@ type GalleryProps = {
   data?: any;
 };
 
+type Orientation = "landscape" | "portrait" | null;
+
 const AUTOPLAY_DELAY = 4000;
 const DOTS_COUNT = 3;
 
@@ -50,8 +52,9 @@ const Gallery = ({ data }: GalleryProps) => {
   const [lightboxOpen, setLightboxOpen] = useState<boolean>(false);
   const [lightboxIndex, setLightboxIndex] = useState<number>(0);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
+  const [orientations, setOrientations] = useState<Orientation[]>([]);
   const scrollPosRef = useRef<number>(0);
-  const isMobile = useIsMobile(); 
+  const isMobile = useIsMobile();
 
   const rawGalleryData = data?.dataContent?.galleryImageData ?? [];
 
@@ -59,7 +62,6 @@ const Gallery = ({ data }: GalleryProps) => {
     if (!Array.isArray(rawGalleryData) || rawGalleryData.length === 0) {
       return isMobile ? DEFAULT_PHOTOS_MOBILE : DEFAULT_PHOTOS_DESKTOP;
     }
-
     return rawGalleryData.map((item: any) =>
       item?.url
         ? `https://media.twinklebook.com/${item.url}`
@@ -67,35 +69,76 @@ const Gallery = ({ data }: GalleryProps) => {
     );
   }, [rawGalleryData, isMobile]);
 
+  // Deteksi orientasi tiap foto (cuma perlu jalan di desktop)
+  useEffect(() => {
+    if (isMobile) return;
+
+    let cancelled = false;
+    setOrientations(new Array(photos.length).fill(null));
+
+    photos.forEach((src, index) => {
+      const img = new window.Image();
+      img.src = src;
+      img.onload = () => {
+        if (cancelled) return;
+        const orientation: Orientation =
+          img.naturalWidth >= img.naturalHeight ? "landscape" : "portrait";
+        setOrientations((prev) => {
+          const next = [...prev];
+          next[index] = orientation;
+          return next;
+        });
+      };
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [photos, isMobile]);
+
   const plugins = useMemo(
     () => [Autoplay({ delay: AUTOPLAY_DELAY, stopOnInteraction: false })],
     [],
   );
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, plugins);
+  const [emblaRefMobile, emblaApiMobile] = useEmblaCarousel(
+    { loop: true },
+    plugins,
+  );
 
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
+  const [emblaRefDesktop, emblaApiDesktop] = useEmblaCarousel({
+    loop: true,
+    align: "start",
+    containScroll: "trimSnaps",
+  });
+
+  const onSelectMobile = useCallback(() => {
+    if (!emblaApiMobile) return;
+    setSelectedIndex(emblaApiMobile.selectedScrollSnap());
+  }, [emblaApiMobile]);
 
   useEffect(() => {
-    if (!emblaApi) return;
-    onSelect();
-    emblaApi.on("select", onSelect);
-    emblaApi.on("reInit", onSelect);
+    if (!emblaApiMobile) return;
+    onSelectMobile();
+    emblaApiMobile.on("select", onSelectMobile);
+    emblaApiMobile.on("reInit", onSelectMobile);
 
     return () => {
-      emblaApi.off("select", onSelect);
-      emblaApi.off("reInit", onSelect);
+      emblaApiMobile.off("select", onSelectMobile);
+      emblaApiMobile.off("reInit", onSelectMobile);
     };
-  }, [emblaApi, onSelect]);
+  }, [emblaApiMobile, onSelectMobile]);
+
+  // Reinit embla desktop tiap kali orientasi selesai kedeteksi (biar lebar slide ke-update)
+  useEffect(() => {
+    emblaApiDesktop?.reInit();
+  }, [orientations, emblaApiDesktop]);
 
   const handleDotClick = useCallback(
     (index: number) => {
-      emblaApi?.scrollTo(index);
+      emblaApiMobile?.scrollTo(index);
     },
-    [emblaApi],
+    [emblaApiMobile],
   );
 
   const handlePhotoClick = useCallback((index: number) => {
@@ -113,62 +156,100 @@ const Gallery = ({ data }: GalleryProps) => {
 
   return (
     <>
-      <section
-        id="gallery"
-        className="relative w-full aspect-[390/538] lg:aspect-[1512/951] overflow-hidden z-30"
-      >
-        <div className="embla h-full" ref={emblaRef}>
-          <div className="embla__container flex h-full">
-            {photos.map((src, index) => (
-              <div
-                key={index}
-                className="embla__slide relative flex-[0_0_100%] h-full cursor-pointer"
-                onClick={() => handlePhotoClick(index)}
-              >
-                <Image
-                  src={src}
-                  alt={`Michael & Vannya ${index + 1}`}
-                  fill
-                  className="object-cover "
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div
-          className="absolute left-1/2 -translate-x-1/2 flex items-center z-40"
-          style={{ bottom: "30px", gap: "17px" }}
+      {isMobile ? (
+        // ================= MOBILE (TIDAK DIUBAH) =================
+        <section
+          id="gallery"
+          className="relative w-full aspect-[390/538] overflow-hidden z-30"
         >
-          {Array.from({ length: DOTS_COUNT }).map((_, index) => {
-            const activeIndex = selectedIndex % DOTS_COUNT;
+          <div className="embla h-full" ref={emblaRefMobile}>
+            <div className="embla__container flex h-full">
+              {photos.map((src, index) => (
+                <div
+                  key={index}
+                  className="embla__slide relative flex-[0_0_100%] h-full cursor-pointer"
+                  onClick={() => handlePhotoClick(index)}
+                >
+                  <Image
+                    src={src}
+                    alt={`Michael & Vannya ${index + 1}`}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
 
-            return (
-              <motion.button
-                key={index}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true, amount: 0 }}
-                transition={{
-                  duration: 1.5,
-                  ease: "easeOut",
-                  delay: index * 0.25,
-                }}
-                type="button"
-                aria-label={`Go to slide ${index + 1}`}
-                onClick={() => handleDotClick(index)}
-                className="rounded-full transition-colors duration-300"
-                style={{
-                  width: "11px",
-                  height: "11px",
-                  backgroundColor:
-                    activeIndex === index ? "#D9D9D9" : "#D9D9D980",
-                }}
-              />
-            );
-          })}
-        </div>
-      </section>
+          <div
+            className="absolute left-1/2 -translate-x-1/2 flex items-center z-40"
+            style={{ bottom: "30px", gap: "17px" }}
+          >
+            {Array.from({ length: DOTS_COUNT }).map((_, index) => {
+              const activeIndex = selectedIndex % DOTS_COUNT;
+              return (
+                <motion.button
+                  key={index}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true, amount: 0 }}
+                  transition={{
+                    duration: 1.5,
+                    ease: "easeOut",
+                    delay: index * 0.25,
+                  }}
+                  type="button"
+                  aria-label={`Go to slide ${index + 1}`}
+                  onClick={() => handleDotClick(index)}
+                  className="rounded-full transition-colors duration-300"
+                  style={{
+                    width: "11px",
+                    height: "11px",
+                    backgroundColor:
+                      activeIndex === index ? "#D9D9D9" : "#D9D9D980",
+                  }}
+                />
+              );
+            })}
+          </div>
+        </section>
+      ) : (
+        // ================= DESKTOP (BARU) =================
+        <section
+          id="gallery"
+          className="relative w-full h-[700px] lg:h-[800px] overflow-hidden z-30"
+        >
+          <div className="embla h-full" ref={emblaRefDesktop}>
+            <div className="embla__container flex h-full">
+              {photos.map((src, index) => {
+                const orientation = orientations[index];
+                // Sebelum orientasi kedeteksi, kasih lebar netral dulu biar nggak "loncat"
+                const widthClass =
+                  orientation === "landscape"
+                    ? "w-[900px]"
+                    : orientation === "portrait"
+                      ? "w-[450px]"
+                      : "w-[600px]";
+
+                return (
+                  <div
+                    key={index}
+                    className={`embla__slide relative flex-[0_0_auto] h-full cursor-pointer ${widthClass}`}
+                    onClick={() => handlePhotoClick(index)}
+                  >
+                    <Image
+                      src={src}
+                      alt={`Michael & Vannya ${index + 1}`}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
 
       <Lightbox
         open={lightboxOpen}
@@ -183,4 +264,3 @@ const Gallery = ({ data }: GalleryProps) => {
 };
 
 export default Gallery;
-
