@@ -22,12 +22,16 @@ type EventOrderProps = {
   data?: any;
 };
 
-const findSessionByName = (
+const findValidSessionByName = (
   sessions: SessionItem[],
   keyword: string,
+  validEventId?: string,
 ): SessionItem | undefined => {
-  return sessions.find((s) =>
-    s.name?.toLowerCase().includes(keyword.toLowerCase()),
+  return sessions.find(
+    (s) =>
+      s.name?.toLowerCase().includes(keyword.toLowerCase()) &&
+      validEventId &&
+      s.eventId === validEventId,
   );
 };
 
@@ -47,11 +51,12 @@ const buildMapsUrl = (session: SessionItem | undefined, fallback: string) => {
 
 const EventOrder = ({ data }: EventOrderProps) => {
   const rawSessions: SessionItem[] = data?.dataSession ?? [];
+  const validEventId: string | undefined = data?.dataEvent?.id;
 
-  const holyMatrimony = findSessionByName(rawSessions, "holy matrimony");
-  const teapai = findSessionByName(rawSessions, "teapai");
-  const reception = findSessionByName(rawSessions, "reception");
-  const afterParty = findSessionByName(rawSessions, "after party");
+  const holyMatrimony = findValidSessionByName(rawSessions, "holy matrimony", validEventId);
+  const teapai = findValidSessionByName(rawSessions, "teapai", validEventId);
+  const reception = findValidSessionByName(rawSessions, "reception", validEventId);
+  const afterParty = findValidSessionByName(rawSessions, "after party", validEventId);
 
   return (
     <section
