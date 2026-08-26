@@ -99,16 +99,20 @@ const Dresscode = ({ guestData }: DresscodeProps) => {
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
           <Image
-            src={
-              isDCGuest
-                ? "/images/Peter-Helena/Dresscode/WOMEN-DC.webp"
-                : "/images/Peter-Helena/Dresscode/WOMEN.webp"
-            }
-            alt="Women Dresscode"
-            width={356}
-            height={354}
-            className="w-[196px] lg:w-[188.84px] h-auto mt-[8px]"
-          />
+  src={
+    isDCGuest
+      ? "/images/Peter-Helena/Dresscode/WOMEN-DC.webp"
+      : "/images/Peter-Helena/Dresscode/WOMEN.webp"
+  }
+  alt="Women Dresscode"
+  width={356}
+  height={354}
+  className={
+    isDCGuest
+      ? "w-[160px] lg:w-[155px] h-auto mt-[8px]"
+      : "w-[196px] lg:w-[188.84px] h-auto mt-[8px]"
+  }
+/>
         </motion.div>
       </div>
     </section>
