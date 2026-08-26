@@ -106,11 +106,14 @@ const Gallery = ({ data }: GalleryProps) => {
     plugins,
   );
 
-  const [emblaRefDesktop, emblaApiDesktop] = useEmblaCarousel({
-    loop: true,
-    align: "start",
-    containScroll: "trimSnaps",
-  });
+  const [emblaRefDesktop, emblaApiDesktop] = useEmblaCarousel(
+    {
+      loop: true,
+      align: "start",
+      containScroll: "trimSnaps",
+    },
+    plugins,
+  );
 
   const onSelectMobile = useCallback(() => {
     if (!emblaApiMobile) return;
@@ -157,7 +160,7 @@ const Gallery = ({ data }: GalleryProps) => {
   return (
     <>
       {isMobile ? (
-        // ================= MOBILE (TIDAK DIUBAH) =================
+        // ================= MOBILE  =================
         <section
           id="gallery"
           className="relative w-full aspect-[390/538] overflow-hidden z-30"
@@ -214,7 +217,7 @@ const Gallery = ({ data }: GalleryProps) => {
           </div>
         </section>
       ) : (
-        // ================= DESKTOP (BARU) =================
+        // ================= DESKTOP =================
         <section
           id="gallery"
           className="relative w-full h-[700px] lg:h-[800px] overflow-hidden z-30"
