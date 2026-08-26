@@ -5,15 +5,68 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeUp } from "../../../lib/animation";
 
-const WeddingGift = () => {
+type Gift = {
+  bank: string;
+  number: string;
+  name: string;
+};
 
+type WeddingGiftProps = {
+  data?: any;
+};
+
+const FALLBACK_GIFTS: Gift[] = [
+  { bank: "BCA", number: "2580551311", name: "Helena Surajiman" },
+  { bank: "Paynow", number: "84047107", name: "Peter Andreas Sutjiatma" },
+  {
+    bank: "Standard Chartered Bank Singapore Limited",
+    number: "0119012634",
+    name: "Peter Andreas Sutjiatma",
+  },
+];
+
+// Mapping icon per nama bank (API belum nyediain field icon)
+const BANK_ICONS: Record<string, string> = {
+  BCA: "/images/Peter-Helena/Gift/BCA.webp",
+  Paynow: "/images/Peter-Helena/Gift/Paynow.webp",
+  "Standard Chartered Bank Singapore Limited":
+    "/images/Peter-Helena/Gift/BS.webp",
+};
+
+// Info tambahan khusus Bank Singapore (API belum nyediain field ini)
+const EXTRA_INFO: Record<string, { address: string[]; swiftCode: string }> = {
+  "Standard Chartered Bank Singapore Limited": {
+    address: [
+      "8 Marina",
+      "Boulevard, #01-01,",
+      "Marina Bay Financial",
+      "Centre Tower 1,",
+      "Singapore 018981",
+    ],
+    swiftCode: "SCBLSG22",
+  },
+};
+
+const WeddingGift = ({ data }: WeddingGiftProps) => {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
-const handleCopy = (text: string, index: number) => {
-  navigator.clipboard.writeText(text);
-  setCopiedIndex(index);
-  setTimeout(() => setCopiedIndex(null), 2000);
-};
+  const electronicGivings = data?.dataContent?.electronicGivings ?? [];
+
+  const gifts: Gift[] =
+    electronicGivings.length > 0
+      ? electronicGivings.map((item: any) => ({
+          bank: item.bankName,
+          number: item.accountNumber,
+          name: item.accountName,
+        }))
+      : FALLBACK_GIFTS;
+
+  const handleCopy = (text: string, index: number) => {
+    navigator.clipboard.writeText(text);
+    setCopiedIndex(index);
+    setTimeout(() => setCopiedIndex(null), 2000);
+  };
+
   return (
     <section
       id="gift"
@@ -76,129 +129,88 @@ const handleCopy = (text: string, index: number) => {
             convenience.
           </motion.p>
 
-          {/* NO REK BCA */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            className="w-[285px] pt-[12.5px] pb-[8.8px] rounded-[10.92px] bg-white shadow-[0_2px_8px_rgba(0,0,0,0.15)] flex items-center mt-[29px]"
-          >
-            <Image
-              src="/images/Peter-Helena/Gift/BCA.webp"
-              alt="BCA"
-              width={34}
-              height={34}
-              className="w-[34px] h-[34px] object-contain ml-[15px]"
-            />
+          {gifts.map((gift, index) => {
+            const extra = EXTRA_INFO[gift.bank];
+            const icon = BANK_ICONS[gift.bank];
+            const isSpecial = Boolean(extra);
 
-            <div className="text-left ml-[14px] leading-[15px]">
-              <p className="font-cinzel text-[12px] text-[#454545] font-bold">
-                2580551311
-              </p>
-              <p className="font-cinzel text-[12px] text-[#454545] ">
-                BCA
-              </p>
-              <p className="font-cinzel text-[12px] text-[#454545] ">
-                Helena Surajiman
-              </p>
-            </div>
+            return (
+              <motion.div
+                key={index}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+                className={`w-[285px] pt-[12.5px] pb-[8.8px] rounded-[10.92px] bg-white shadow-[0_2px_8px_rgba(0,0,0,0.15)] flex items-center ${
+                  index === 0 ? "mt-[29px]" : "mt-[17.8px]"
+                }`}
+              >
+                <Image
+                  src={icon ?? "/images/Peter-Helena/Gift/BCA.webp"}
+                  alt={gift.bank}
+                  width={34}
+                  height={34}
+                  className={
+                    isSpecial
+                      ? "w-[44px] h-[44px] object-contain ml-[10px] -mt-[15px]"
+                      : "w-[34px] h-[34px] object-contain ml-[15px]"
+                  }
+                />
 
-            <button
-               onClick={() => handleCopy("2580551311", 0)}
-              className="font-times-new-roman text-[12px] text-[#454545] ml-auto mr-[8px] font-bold"
-            >
-                {copiedIndex === 0 ? "Copied!" : "Copy"}
+                <div
+                  className={
+                    isSpecial
+                      ? "text-left ml-[8.5px] leading-[15px]"
+                      : "text-left ml-[14px] leading-[15px]"
+                  }
+                >
+                  <p className="font-cinzel text-[12px] text-[#454545] font-bold">
+                    {gift.number}
+                  </p>
+                  <p
+                    className={`font-cinzel text-[12px] text-[#454545] ${
+                      isSpecial ? "pt-[4px]" : ""
+                    }`}
+                  >
+                    {gift.bank}
+                  </p>
+                  <p className="font-cinzel text-[12px] text-[#454545]">
+                    {gift.name}
+                  </p>
 
-            </button>
-          </motion.div>
+                  {extra && (
+                    <>
+                      <p className="font-cinzel text-[12px] text-[#454545] pt-[3.5px]">
+                        <span className="font-bold">Address:</span>{" "}
+                        {extra.address.map((line, i) => (
+                          <React.Fragment key={i}>
+                            {line}
+                            <br />
+                          </React.Fragment>
+                        ))}
+                      </p>
+                      <p className="font-cinzel text-[12px] text-[#454545] pt-[3.5px]">
+                        <span className="font-bold">Swift code:</span>{" "}
+                        {extra.swiftCode}
+                      </p>
+                    </>
+                  )}
+                </div>
 
-          {/* NO REK PAYNOW */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            className="w-[285px] pt-[12.5px] pb-[8.8px] rounded-[10.92px] bg-white shadow-[0_2px_8px_rgba(0,0,0,0.15)] flex items-center mt-[17.8px]"
-          >
-            <Image
-              src="/images/Peter-Helena/Gift/Paynow.webp"
-              alt="BCA"
-              width={34}
-              height={34}
-              className="w-[34px] h-[34px] object-contain ml-[15px]"
-            />
-
-            <div className="text-left ml-[14px] leading-[15px]">
-              <p className="font-cinzel text-[12px] text-[#454545] font-bold">
-                84047107
-              </p>
-              <p className="font-cinzel text-[12px] text-[#454545]">
-                Paynow
-              </p>
-              <p className="font-cinzel text-[12px] text-[#454545]">
-                Peter Andreas Sutjiatma
-              </p>
-            </div>
-
-            <button
-              onClick={() => handleCopy("84047107", 1)}
-              className="font-times-new-roman text-[12px] text-[#454545] ml-auto mr-[8px] font-bold"
-            >
-  {copiedIndex === 1 ? "Copied!" : "Copy"}
-            </button>
-          </motion.div>
-
-
-          {/* BANK SINGAPORE */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            className="w-[285px] pt-[12.5px] pb-[8.8px] rounded-[10.92px] bg-white shadow-[0_2px_8px_rgba(0,0,0,0.15)] flex items-center mt-[17.8px]"
-          >
-            <Image
-              src="/images/Peter-Helena/Gift/BS.webp"
-              alt="BCA"
-              width={34}
-              height={34}
-              className="w-[44px] h-[44px] object-contain ml-[10px] -mt-[15px]"
-            />
-
-            <div className="text-left ml-[8.5px] leading-[15px]">
-              <p className="font-cinzel text-[12px] text-[#454545] font-bold">
-                0119012634
-              </p>
-              <p className="font-cinzel text-[12px] text-[#454545] pt-[4px]">
-                Standard Chartered  <br />
-                Bank Singapore Limited
-              </p>
-              <p className="font-cinzel text-[12px] text-[#454545]">
-                Peter Andreas Sutjiatma
-              </p>
-              <p className="font-cinzel text-[12px] text-[#454545] pt-[3.5px]">
-                <span className="font-bold">Address:</span> 8 Marina <br />
-                Boulevard, #01-01, <br /> 
-                Marina Bay Financial <br />
-                Centre Tower 1, <br /> 
-                Singapore 018981
-              </p>
-              <p className="font-cinzel text-[12px] text-[#454545] pt-[3.5px]">
-                <span className="font-bold">Swift code:</span> SCBLSG22
-              </p>
-            </div>
-
-            <button
-              onClick={() => handleCopy("0119012634", 2)}
-              className="font-times-new-roman text-[12px] text-[#454545] ml-auto mr-[8px] font-bold -mt-[10px]"
-            >
-  {copiedIndex === 2 ? "Copied!" : "Copy"}
-            </button>
-          </motion.div>
+                <button
+                  onClick={() => handleCopy(gift.number, index)}
+                  className={
+                    isSpecial
+                      ? "font-times-new-roman text-[12px] text-[#454545] ml-auto mr-[8px] font-bold -mt-[10px]"
+                      : "font-times-new-roman text-[12px] text-[#454545] ml-auto mr-[8px] font-bold"
+                  }
+                >
+                  {copiedIndex === index ? "Copied!" : "Copy"}
+                </button>
+              </motion.div>
+            );
+          })}
         </div>
       </motion.div>
     </section>
@@ -206,3 +218,4 @@ const handleCopy = (text: string, index: number) => {
 };
 
 export default WeddingGift;
+

@@ -1,9 +1,19 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeUp, fadeRight, fadeLeft } from "../../../lib/animation";
 
-const Dresscode = () => {
+type DresscodeProps = {
+  guestData?: { groups?: { name: string }[] } | null;
+};
+
+const Dresscode = ({ guestData }: DresscodeProps) => {
+  const isDCGuest = guestData?.groups?.some(
+    (g) => g.name === "Dresscode Guest",
+  );
+
   return (
     <section
       id="dresscode"
@@ -28,8 +38,17 @@ const Dresscode = () => {
         transition={{ duration: 1.5, ease: "easeOut" }}
         className="font-cinzel text-[14px] lg:text-[14.18px] text-white leading-[20px] mt-[40px] lg:mt-[40.5px] px-10"
       >
-        We kindly invite you to dress in <br />
-        elegant formal attire.
+        {isDCGuest ? (
+          <>
+            We kindly invite you to dress in <br />
+            formal attire.
+          </>
+        ) : (
+          <>
+            We kindly invite you to dress in <br />
+            elegant formal attire.
+          </>
+        )}
       </motion.p>
 
       <div className="flex flex-col items-center mt-[23px]">
@@ -80,7 +99,11 @@ const Dresscode = () => {
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
           <Image
-            src="/images/Peter-Helena/Dresscode/WOMEN.webp"
+            src={
+              isDCGuest
+                ? "/images/Peter-Helena/Dresscode/WOMEN-DC.webp"
+                : "/images/Peter-Helena/Dresscode/WOMEN.webp"
+            }
             alt="Women Dresscode"
             width={356}
             height={354}
