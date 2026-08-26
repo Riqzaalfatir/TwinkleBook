@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { fadeUp } from "../../../lib/animation";
 
@@ -31,6 +31,9 @@ const splitParentName = (text?: string) => {
 };
 
 const Profile = ({ data }: ProfileProps) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
   const groomName = data?.dataEvent?.groomName ?? "Peter";
   const groomFullName =
     data?.dataEvent?.groomFullName ?? "Peter Andreas Sutjiatma";
@@ -49,6 +52,13 @@ const Profile = ({ data }: ProfileProps) => {
     ? `https://media.twinklebook.com/${compilationVideo}`
     : "/video/Peter-Helena/PeterHelenaCMP.mp4";
 
+  const handlePlayClick = () => {
+    if (videoRef.current) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    }
+  };
+
   return (
     <section
       id="profile"
@@ -61,15 +71,37 @@ const Profile = ({ data }: ProfileProps) => {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
+          className="relative w-[342px] h-[142px] lg:w-[346.09px] lg:h-[143.9px]"
         >
           <video
+            ref={videoRef}
             src={videoSrc}
-            autoPlay
             loop
-            muted
             playsInline
-            className="w-[342px] h-[142px] lg:w-[346.09px] lg:h-[143.9px] object-cover"
+            controls={isPlaying}
+            onPause={() => setIsPlaying(false)}
+            className="w-full h-full object-cover"
           />
+
+          {!isPlaying && (
+            <button
+              type="button"
+              onClick={handlePlayClick}
+              className="absolute inset-0 flex items-center justify-center bg-black/20"
+              aria-label="Play video"
+            >
+              <svg
+                width="56"
+                height="56"
+                viewBox="0 0 56 56"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="28" cy="28" r="28" fill="black" fillOpacity="0.5" />
+                <path d="M22 17L38 28L22 39V17Z" fill="white" />
+              </svg>
+            </button>
+          )}
         </motion.div>
         <motion.p
           variants={fadeUp}
