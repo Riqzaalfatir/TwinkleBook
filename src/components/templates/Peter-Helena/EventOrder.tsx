@@ -182,8 +182,11 @@ const EventOrder = ({ data, guestData }: EventOrderProps) => {
     teapaiGroup?.additionalSessionDescription?.trim() || null;
 
   const isSessionDataLoaded = rawSessions.length > 0;
-  const shouldShowHoly = !isSessionDataLoaded || Boolean(holyMatrimony);
-  const shouldShowReception = !isSessionDataLoaded || Boolean(reception);
+
+  const shouldShowHoly = true;
+  const shouldShowReception = true;
+  const shouldShowHolyTime = !isSessionDataLoaded || Boolean(holyMatrimony);
+  const shouldShowReceptionTime = !isSessionDataLoaded || Boolean(reception);
   const shouldShowAfterParty = !isSessionDataLoaded || Boolean(afterParty);
 
   const isGuestDataLoaded = guestData != null;
@@ -216,7 +219,7 @@ const EventOrder = ({ data, guestData }: EventOrderProps) => {
   );
   const receptionLocation = resolveLocation(
     reception,
-    "Mandarin Oriental Hotel",
+    "Ballroom",
     "Jl. Imam Bonjol, Menteng, Central Jakarta",
     "https://maps.app.goo.gl/7rba66o67yTGGZUy7",
   );
@@ -248,7 +251,7 @@ const EventOrder = ({ data, guestData }: EventOrderProps) => {
           },
         ]
       : []),
-    ...(shouldShowReception
+    ...(shouldShowReceptionTime
       ? [
           {
             key: "reception-list",
@@ -272,12 +275,19 @@ const EventOrder = ({ data, guestData }: EventOrderProps) => {
       : []),
     ...extraSessions.map((s) => {
       const [line1, line2] = splitLabel(s.name, "", "");
+      const dummyMatch = dataLocationDummy.find(
+        (d) => d.name.toLowerCase() === s.name?.toLowerCase(),
+      );
       return {
         key: s.id,
         line1,
         line2,
         time: formatTime(s.date),
-        location: s.addressName?.trim() || s.address?.trim() || "-",
+        location:
+          dummyMatch?.addressName ||
+          s.addressName?.trim() ||
+          s.address?.trim() ||
+          "-",
       };
     }),
   ];
@@ -351,30 +361,32 @@ const EventOrder = ({ data, guestData }: EventOrderProps) => {
               Google Maps
               <span className="absolute left-0 top-[calc(100%+3px)] w-full h-[1px] bg-current transition-transform duration-300 ease-out group-hover:translate-y-[3px]" />
             </motion.a>
-
-            <div className="flex items-center justify-center gap-x-[20px] lg:gap-x-[20.25px] mt-[31.4px] lg:mt-[29px]">
-              <motion.span
-                variants={fadeRight}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
-                className="w-[150px] lg:w-[150px] font-cinzel text-right font-bold text-[14px] lg:text-[14.18px] text-[#430D0D] leading-[16px] lg:leading-[18px]"
-              >
-                {holyLine1} <br /> {holyLine2}
-              </motion.span>
-              <motion.span
-                variants={fadeLeft}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
-                className="w-[150px] lg:w-[150px] font-cinzel text-left text-[14px] lg:text-[14.18px] text-[#454545]"
-              >
-                {holyMatrimony ? formatTime(holyMatrimony.date) : "11.00 WIB"}
-              </motion.span>
-            </div>
           </>
+        )}
+
+        {shouldShowHolyTime && (
+          <div className="flex items-center justify-center gap-x-[20px] lg:gap-x-[20.25px] mt-[31.4px] lg:mt-[29px]">
+            <motion.span
+              variants={fadeRight}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="w-[150px] lg:w-[150px] font-cinzel text-right font-bold text-[14px] lg:text-[14.18px] text-[#430D0D] leading-[16px] lg:leading-[18px]"
+            >
+              {holyLine1} <br /> {holyLine2}
+            </motion.span>
+            <motion.span
+              variants={fadeLeft}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="w-[150px] lg:w-[150px] font-cinzel text-left text-[14px] lg:text-[14.18px] text-[#454545]"
+            >
+              {holyMatrimony ? formatTime(holyMatrimony.date) : "11.00 WIB"}
+            </motion.span>
+          </div>
         )}
 
         {shouldShowReception && (
