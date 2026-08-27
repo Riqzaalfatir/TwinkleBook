@@ -219,7 +219,7 @@ const EventOrder = ({ data, guestData }: EventOrderProps) => {
   );
   const receptionLocation = resolveLocation(
     reception,
-    "Ballroom",
+    "Mandarin Oriental Hotel",
     "Jl. Imam Bonjol, Menteng, Central Jakarta",
     "https://maps.app.goo.gl/7rba66o67yTGGZUy7",
   );
