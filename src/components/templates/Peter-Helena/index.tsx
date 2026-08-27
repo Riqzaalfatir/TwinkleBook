@@ -95,7 +95,7 @@ const PeterHelena = ({ data, isPreview, dataValidation }: PeterHelenaProps) => {
             className="w-[340px] lg:w-[344.31px] bg-white rounded-[20px] lg:rounded-[20.25px] pt-[5px] px-[5px] overflow-hidden"
           >
             <Countdown data={data} />
-            <EventOrder data={data} />
+<EventOrder data={data} guestData={eventGuestByPin} />
           </motion.div>
         </section>
         <Dresscode guestData={eventGuestByPin} />
