@@ -182,15 +182,24 @@ const EventOrder = ({ data, guestData }: EventOrderProps) => {
     teapaiGroup?.additionalSessionDescription?.trim() || null;
 
   const isSessionDataLoaded = rawSessions.length > 0;
+  const isGuestDataLoaded = guestData != null;
 
-  const shouldShowHoly = true;
-  const shouldShowReception = true;
   const shouldShowHolyTime = !isSessionDataLoaded || Boolean(holyMatrimony);
   const shouldShowReceptionTime = !isSessionDataLoaded || Boolean(reception);
   const shouldShowAfterParty = !isSessionDataLoaded || Boolean(afterParty);
-
-  const isGuestDataLoaded = guestData != null;
   const shouldShowTeapai = !isGuestDataLoaded || Boolean(teapaiGroup);
+
+  // chapel section cuma nongol kalau holy matrimony ada (atau data sesi belum ke-load)
+  const shouldShowHoly = shouldShowHolyTime;
+
+  // header mandarin nongol kalau salah satu dari teapai/reception/afterparty ada
+  // (atau salah satu sumber data—session/guest—masih belum ke-load, biar gak flash kosong)
+  const shouldShowReception =
+    !isSessionDataLoaded ||
+    !isGuestDataLoaded ||
+    Boolean(reception) ||
+    Boolean(afterParty) ||
+    Boolean(teapaiGroup);
 
   const [holyLine1, holyLine2] = splitLabel(
     holyMatrimony?.name ?? "",

@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import DesktopCover from "./layout/DekstopCover";
 import Hero from "./Hero";
-import Profile from "./Profile";
+import Profile, { ProfileHandle } from "./Profile";
 import Countdown from "./Countdown";
 import EventOrder from "./EventOrder";
 import Dresscode from "./Dresscode";
@@ -18,7 +18,9 @@ import LoadingScreen from "./LoadingScreen";
 import { usePreloader } from "./hooks/usePreloader";
 import { useCurrentGuest } from "@/hooks/api/useCurrentGuest";
 import { formatDateWithWeekday } from "../../../lib/formatDate";
-import PlaySongButton from "../../../ui/PlaySongButton";
+import PlaySongButton, {
+  PlaySongButtonHandle,
+} from "../../../ui/PlaySongButton";
 import {
   astonScript,
   timesNewRoman,
@@ -39,6 +41,8 @@ type PeterHelenaProps = {
 const PeterHelena = ({ data, isPreview, dataValidation }: PeterHelenaProps) => {
   const [start, setStart] = useState<boolean>(false); // false = tampilin Opening dulu
   const [showLoading, setShowLoading] = useState<boolean>(true);
+  const playSongRef = useRef<PlaySongButtonHandle>(null);
+  const profileRef = useRef<ProfileHandle>(null);
 
   const { getEventGuestByPin, eventGuestByPin } = useCurrentGuest();
 
@@ -84,7 +88,12 @@ const PeterHelena = ({ data, isPreview, dataValidation }: PeterHelenaProps) => {
       <main className="sections-panel relative">
         <Header />
         <Hero start={start} data={data} />
-        <Profile data={data} />
+        <Profile
+          ref={profileRef}
+          data={data}
+          onVideoPlay={() => playSongRef.current?.pause()}
+          onVideoPause={() => playSongRef.current?.play()}
+        />
         <section className="w-full flex justify-center px-[4px] -mt-[1px] bg-[#430D0D]">
           <motion.div
             variants={fadeUp}
@@ -95,7 +104,7 @@ const PeterHelena = ({ data, isPreview, dataValidation }: PeterHelenaProps) => {
             className="w-[340px] lg:w-[344.31px] bg-white rounded-[20px] lg:rounded-[20.25px] pt-[5px] px-[5px] overflow-hidden"
           >
             <Countdown data={data} />
-<EventOrder data={data} guestData={eventGuestByPin} />
+            <EventOrder data={data} guestData={eventGuestByPin} />
           </motion.div>
         </section>
         <Dresscode guestData={eventGuestByPin} />
@@ -117,7 +126,12 @@ const PeterHelena = ({ data, isPreview, dataValidation }: PeterHelenaProps) => {
         )}
       </main>
 
-      <PlaySongButton src={backgroundSoundUrl} start={start} />
+      <PlaySongButton
+        ref={playSongRef}
+        src={backgroundSoundUrl}
+        start={start}
+        onPlay={() => profileRef.current?.pause()}
+      />
 
       {showLoading && (
         <LoadingScreen

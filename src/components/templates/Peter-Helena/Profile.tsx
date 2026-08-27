@@ -1,11 +1,22 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, {
+  useState,
+  useRef,
+  forwardRef,
+  useImperativeHandle,
+} from "react";
 import { motion } from "framer-motion";
 import { fadeUp } from "../../../lib/animation";
 
 type ProfileProps = {
   data?: any;
+  onVideoPlay?: () => void;
+  onVideoPause?: () => void;
+};
+
+export type ProfileHandle = {
+  pause: () => void;
 };
 
 const getMiddleLastName = (fullName?: string, firstName?: string) => {
@@ -30,178 +41,215 @@ const splitParentName = (text?: string) => {
   );
 };
 
-const Profile = ({ data }: ProfileProps) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+const Profile = forwardRef<ProfileHandle, ProfileProps>(
+  ({ data, onVideoPlay, onVideoPause }, ref) => {
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const [isPlaying, setIsPlaying] = useState(false);
 
-  const groomName = data?.dataEvent?.groomName ?? "Peter";
-  const groomFullName =
-    data?.dataEvent?.groomFullName ?? "Peter Andreas Sutjiatma";
-  const brideName = data?.dataEvent?.brideName ?? "Helena";
-  const brideFullName = data?.dataEvent?.brideFullName ?? "Helena Surajiman";
+    useImperativeHandle(
+      ref,
+      () => ({
+        pause: () => {
+          if (videoRef.current && !videoRef.current.paused) {
+            videoRef.current.pause();
+          }
+        },
+      }),
+      [],
+    );
 
-  const groomParent =
-    data?.dataEvent?.groomParent ??
-    "Mr. Lie Andi Kunadi and Mrs. Juliasih Lukanta";
-  const brideParent =
-    data?.dataEvent?.brideParent ??
-    "Mr. Setiyono Wibowo and Mrs. Wini Anggraini";
+    const groomName = data?.dataEvent?.groomName ?? "Peter";
+    const groomFullName =
+      data?.dataEvent?.groomFullName ?? "Peter Andreas Sutjiatma";
+    const brideName = data?.dataEvent?.brideName ?? "Helena";
+    const brideFullName = data?.dataEvent?.brideFullName ?? "Helena Surajiman";
 
-  const compilationVideo = data?.dataContent?.videoUploadData?.[0]?.url;
-  const videoSrc = compilationVideo
-    ? `https://media.twinklebook.com/${compilationVideo}`
-    : "/video/Peter-Helena/PeterHelenaCMPP.mp4";
+    const groomParent =
+      data?.dataEvent?.groomParent ??
+      "Mr. Lie Andi Kunadi and Mrs. Juliasih Lukanta";
+    const brideParent =
+      data?.dataEvent?.brideParent ??
+      "Mr. Setiyono Wibowo and Mrs. Wini Anggraini";
 
-  const handlePlayClick = () => {
-    if (videoRef.current) {
-      videoRef.current.play();
-      setIsPlaying(true);
-    }
-  };
+    const compilationVideo = data?.dataContent?.videoUploadData?.[0]?.url;
+    const videoSrc = compilationVideo
+      ? `https://media.twinklebook.com/${compilationVideo}`
+      : "/video/Peter-Helena/PeterHelenaCMPP.mp4";
 
-  return (
-    <section
-      id="profile"
-      className="w-full bg-[#430D0D] pt-[78px] pb-[76.5px] lg:pt-[76.96px] lg:pb-[73px]"
-    >
-      <div className="flex flex-col items-center text-center justify-center leading-none">
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="relative w-[342px] h-[142px] lg:w-[346.09px] lg:h-[143.9px]"
-        >
-          <video
-            ref={videoRef}
-            src={videoSrc}
-            loop
-            playsInline
-            controls={isPlaying}
-            onPause={() => setIsPlaying(false)}
-            className="w-full h-full object-cover"
-          />
+    const handlePlayClick = () => {
+      if (videoRef.current) {
+        videoRef.current.play();
+      }
+    };
 
-          {!isPlaying && (
-            <button
-              type="button"
-              onClick={handlePlayClick}
-              className="absolute inset-0 flex items-center justify-center bg-black/20"
-              aria-label="Play video"
-            >
-              <svg
-                width="56"
-                height="56"
-                viewBox="0 0 56 56"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+    return (
+      <section
+        id="profile"
+        className="w-full bg-[#430D0D] pt-[78px] pb-[76.5px] lg:pt-[76.96px] lg:pb-[73px]"
+      >
+        <div className="flex flex-col items-center text-center justify-center leading-none">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="relative w-[342px] h-[142px] lg:w-[346.09px] lg:h-[143.9px]"
+          >
+            <video
+              ref={videoRef}
+              src={videoSrc}
+              loop
+              playsInline
+              controls={isPlaying}
+              onPlay={() => {
+                setIsPlaying(true);
+                onVideoPlay?.();
+              }}
+              onPause={() => {
+                setIsPlaying(false);
+                onVideoPause?.();
+              }}
+              className="w-full h-full object-cover"
+            />
+
+            {!isPlaying && (
+              <button
+                type="button"
+                onClick={handlePlayClick}
+                className="absolute inset-0 flex items-center justify-center bg-black/20"
+                aria-label="Play video"
               >
-                <circle cx="28" cy="28" r="28" fill="black" fillOpacity="0.5" />
-                <path d="M22 17L38 28L22 39V17Z" fill="white" />
-              </svg>
-            </button>
-          )}
-        </motion.div>
-        <motion.p
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="font-cinzel text-[14px] lg:text-[14.18px] text-white mt-[41px] lg:mt-[38.5px] leading-[20px]"
-        >
-          Together with their families <br /> invite you to celebrate <br />{" "}
-          their marriage
-        </motion.p>
-        <div className="flex flex-col items-center justify-center leading-none mt-[49px] lg:mt-[47px]">
-          <motion.h2
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-cinzel font-semibold text-[32px] lg:text-[32.41px] text-white uppercase"
-          >
-            {groomName.toUpperCase()}
-          </motion.h2>
-          <motion.h3
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-aston-script text-[20px] lg:text-[20.25px] text-white pt-[5px]"
-          >
-            {getMiddleLastName(groomFullName, groomName)}
-          </motion.h3>
+                <svg
+                  width="56"
+                  height="56"
+                  viewBox="0 0 56 56"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="28"
+                    cy="28"
+                    r="28"
+                    fill="black"
+                    fillOpacity="0.5"
+                  />
+                  <path d="M22 17L38 28L22 39V17Z" fill="white" />
+                </svg>
+              </button>
+            )}
+          </motion.div>
+
           <motion.p
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-cinzel font-medium text-[14px] lg:text-[14.18px] text-white leading-[20px] pt-[35px] lg:pt-[32px]"
+            className="font-cinzel text-[14px] lg:text-[14.18px] text-white mt-[41px] lg:mt-[38.5px] leading-[20px]"
           >
-            {splitParentName(groomParent)}
+            Together with their families <br /> invite you to celebrate <br />{" "}
+            their marriage
           </motion.p>
-        </div>
-        <motion.h3
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="font-cinzel text-[24px] lg:text-[24.3px] text-white py-[28px] lg:py-[29px]"
-        >
-          &
-        </motion.h3>
-        <div className="flex flex-col items-center justify-center leading-none">
-          <motion.h2
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-cinzel font-semibold text-[32px] lg:text-[32.41px] text-white uppercase"
-          >
-            {brideName.toUpperCase()}
-          </motion.h2>
+
+          <div className="flex flex-col items-center justify-center leading-none mt-[49px] lg:mt-[47px]">
+            <motion.h2
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="font-cinzel font-semibold text-[32px] lg:text-[32.41px] text-white uppercase"
+            >
+              {groomName.toUpperCase()}
+            </motion.h2>
+
+            <motion.h3
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="font-aston-script text-[20px] lg:text-[20.25px] text-white pt-[5px]"
+            >
+              {getMiddleLastName(groomFullName, groomName)}
+            </motion.h3>
+
+            <motion.p
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="font-cinzel font-medium text-[14px] lg:text-[14.18px] text-white leading-[20px] pt-[35px] lg:pt-[32px]"
+            >
+              {splitParentName(groomParent)}
+            </motion.p>
+          </div>
+
           <motion.h3
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-aston-script text-[20px] lg:text-[20.25px] text-white pt-[5px]"
+            className="font-cinzel text-[24px] lg:text-[24.3px] text-white py-[28px] lg:py-[29px]"
           >
-            {getMiddleLastName(brideFullName, brideName)}
+            &
           </motion.h3>
+
+          <div className="flex flex-col items-center justify-center leading-none">
+            <motion.h2
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="font-cinzel font-semibold text-[32px] lg:text-[32.41px] text-white uppercase"
+            >
+              {brideName.toUpperCase()}
+            </motion.h2>
+
+            <motion.h3
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="font-aston-script text-[20px] lg:text-[20.25px] text-white pt-[5px]"
+            >
+              {getMiddleLastName(brideFullName, brideName)}
+            </motion.h3>
+
+            <motion.p
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="font-cinzel font-medium text-[14px] lg:text-[14.18px] text-white leading-[20px] pt-[35px] lg:pt-[32px]"
+            >
+              {splitParentName(brideParent)}
+            </motion.p>
+          </div>
+
           <motion.p
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-cinzel font-medium text-[14px] lg:text-[14.18px] text-white leading-[20px] pt-[35px] lg:pt-[32px]"
+            className="font-cinzel text-[14px] lg:text-[14.18px] text-white leading-[20px] pt-[45px]"
           >
-            {splitParentName(brideParent)}
+            Our joy will be complete with <br />
+            your presence and blessings.
           </motion.p>
         </div>
-        <motion.p
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="font-cinzel text-[14px] lg:text-[14.18px] text-white leading-[20px] pt-[45px]"
-        >
-          Our joy will be complete with <br />
-          your presence and blessings.
-        </motion.p>
-      </div>
-    </section>
-  );
-};
+      </section>
+    );
+  },
+);
+
+Profile.displayName = "Profile";
 
 export default Profile;
