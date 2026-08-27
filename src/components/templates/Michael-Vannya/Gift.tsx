@@ -111,50 +111,50 @@ const Gift = ({ data }: GiftProps) => {
           convenience.
         </motion.p>
 
-        <div className="w-full max-w-[270px] lg:max-w-[480px] flex flex-col mt-[31px] lg:mt-[52px]">
-          {gifts.map((gift, index) => (
-            <motion.div
-              key={index}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 1.5, ease: "easeOut" }}
-              className="w-[270px] h-[66px] lg:w-[480px] lg:h-[120px] rounded-[10px] lg:rounded-[20px] bg-white flex items-center"
-            >
-              <Image
-                src="/images/Michael-Vannya/Gift/BCA.webp"
-                alt="BCA"
-                width={45}
-                height={45}
-                className="w-[34px] h-[34px] lg:w-[45px] lg:h-[45px] object-contain ml-[15px] lg:ml-[34px]"
-              />
+<div className="w-full max-w-[270px] lg:max-w-[480px] flex flex-col mt-[31px] lg:mt-[52px]">
+  {gifts.map((gift, index) => (
+    <motion.div
+      key={index}
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 1.5, ease: "easeOut" }}
+      className="w-[270px] min-h-[66px] lg:w-[480px] lg:min-h-[120px] rounded-[10px] lg:rounded-[20px] bg-white flex items-center py-[10px]"
+    >
+      <Image
+        src="/images/Michael-Vannya/Gift/BCA.webp"
+        alt="BCA"
+        width={45}
+        height={45}
+        className="w-[34px] h-[34px] lg:w-[45px] lg:h-[45px] object-contain ml-[15px] lg:ml-[34px] flex-shrink-0"
+      />
 
-              <div className="text-left ml-[20px] lg:ml-[41px] leading-[14px] lg:leading-[25px]">
-                <p className="font-times-new-roman text-[14px] lg:text-[20px] text-black font-bold">
-                  {gift.number}
-                </p>
+      <div className="text-left ml-[20px] lg:ml-[41px] leading-[14px] lg:leading-[25px] min-w-0 flex-1">
+        <p className="font-times-new-roman text-[14px] lg:text-[20px] text-black font-bold truncate">
+          {gift.number}
+        </p>
 
-                <div className="flex items-center gap-2 mt-[0.4px]">
-                  <p className="font-times-new-roman text-[14px] lg:text-[20px] text-black">
-                    {gift.bank}
-                  </p>
-                </div>
-
-                <p className="font-times-new-roman text-[14px] lg:text-[20px] text-black">
-                  {gift.name}
-                </p>
-              </div>
-
-              <button
-                onClick={() => handleCopy(gift.number, index)}
-                className="font-times-new-roman text-[14px] lg:text-[20px] text-black ml-[37px]  lg:ml-[125px] font-bold"
-              >
-                {copied === index ? "Copied!" : "Copy"}
-              </button>
-            </motion.div>
-          ))}
+        <div className="flex items-center gap-2 mt-[0.4px]">
+          <p className="font-times-new-roman text-[14px] lg:text-[20px] text-black truncate">
+            {gift.bank}
+          </p>
         </div>
+
+        <p className="font-times-new-roman text-[14px] lg:text-[20px] text-black break-words">
+          {gift.name}
+        </p>
+      </div>
+
+      <button
+        onClick={() => handleCopy(gift.number, index)}
+        className="font-times-new-roman text-[14px] lg:text-[20px] text-black font-bold flex-shrink-0 ml-auto mr-[6px] lg:mr-[15px]"
+      >
+        {copied === index ? "Copied!" : "Copy"}
+      </button>
+    </motion.div>
+  ))}
+</div>
 
         {/* <div className="w-full max-w-[241px] flex flex-col gap-6 mt-[36.5px]">
           {gifts.map((gift, index) => (

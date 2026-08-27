@@ -21,7 +21,7 @@ const DesktopCover: React.FC<DesktopCoverProps> = ({ data }) => {
         alt={`${groomName} & ${brideName} Wedding Cover`}
         fill
         priority
-        className="object-cover object-[50%_15%]"
+        className="object-cover object-[50%_35%]"
       />
       <div className="absolute inset-0 flex flex-col justify-end items-center text-white text-center px-10 pb-[6%] tracking-wide">
         <h1 className="font-aston-script text-[35px] ">
