@@ -50,7 +50,7 @@ const Profile = ({ data }: ProfileProps) => {
   const compilationVideo = data?.dataContent?.videoUploadData?.[0]?.url;
   const videoSrc = compilationVideo
     ? `https://media.twinklebook.com/${compilationVideo}`
-    : "/video/Peter-Helena/PeterHelenaCMP.mp4";
+    : "/video/Peter-Helena/PeterHelenaCMPP.mp4";
 
   const handlePlayClick = () => {
     if (videoRef.current) {

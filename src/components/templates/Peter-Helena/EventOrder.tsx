@@ -298,7 +298,7 @@ const EventOrder = ({ data, guestData }: EventOrderProps) => {
                 whileInView="show"
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 1.5, ease: "easeOut" }}
-                className="w-[100px] lg:w-[200px] font-cinzel text-right font-bold text-[14px] lg:text-[14.18px] text-[#430D0D] leading-[16px] lg:leading-[18px]"
+                className="w-[150px] lg:w-[150px] font-cinzel text-right font-bold text-[14px] lg:text-[14.18px] text-[#430D0D] leading-[16px] lg:leading-[18px]"
               >
                 {holyLine1} <br /> {holyLine2}
               </motion.span>
@@ -308,7 +308,7 @@ const EventOrder = ({ data, guestData }: EventOrderProps) => {
                 whileInView="show"
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 1.5, ease: "easeOut" }}
-                className="w-[100px] lg:w-[200px] font-cinzel text-left text-[14px] lg:text-[14.18px] text-[#454545]"
+                className="w-[150px] lg:w-[150px] font-cinzel text-left text-[14px] lg:text-[14.18px] text-[#454545]"
               >
                 {holyMatrimony ? formatTime(holyMatrimony.date) : "11.00 WIB"}
               </motion.span>
@@ -374,7 +374,7 @@ const EventOrder = ({ data, guestData }: EventOrderProps) => {
 
         {/* List sesi: Teapai / Reception / After Party */}
         {(shouldShowTeapai || shouldShowReception || shouldShowAfterParty) && (
-          <div className="flex flex-col gap-y-[36px] lg:gap-y-[32.5px] mt-[30px] lg:mt-[31px]">
+          <div className="flex flex-col items-center gap-y-[36px] lg:gap-y-[32.5px] mt-[30px] lg:mt-[31px]">
             {shouldShowTeapai && (
               <div className="flex items-center justify-center gap-[20px]">
                 <motion.span
