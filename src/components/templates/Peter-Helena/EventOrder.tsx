@@ -381,7 +381,7 @@ const EventOrder = ({ data, guestData }: EventOrderProps) => {
               whileInView="show"
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 1.5, ease: "easeOut" }}
-              className="w-[150px] lg:w-[150px] font-cinzel text-right font-bold text-[14px] lg:text-[14.18px] text-[#430D0D] leading-[16px] lg:leading-[18px]"
+              className="w-[140px] lg:w-[150px] font-cinzel text-right font-bold text-[14px] lg:text-[14.18px] text-[#430D0D] leading-[16px] lg:leading-[18px]"
             >
               {holyLine1} <br /> {holyLine2}
             </motion.span>
@@ -391,7 +391,7 @@ const EventOrder = ({ data, guestData }: EventOrderProps) => {
               whileInView="show"
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 1.5, ease: "easeOut" }}
-              className="w-[150px] lg:w-[150px] font-cinzel text-left text-[14px] lg:text-[14.18px] text-[#454545]"
+              className="w-[140px] lg:w-[150px] font-cinzel text-left text-[14px] lg:text-[14.18px] text-[#454545]"
             >
               {holyMatrimony ? formatTime(holyMatrimony.date) : "11.00 WIB"}
             </motion.span>
@@ -406,7 +406,11 @@ const EventOrder = ({ data, guestData }: EventOrderProps) => {
               whileInView="show"
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 1.5, ease: "easeOut" }}
-              className="relative w-[63px] h-[95px] lg:h-[96px] mt-[37px] lg:mt-[35px]"
+              className={`relative w-[63px] h-[95px] lg:h-[96px] ${
+                shouldShowHoly || shouldShowHolyTime
+                  ? "mt-[37px] lg:mt-[35px]"
+                  : "-mt-[0px]"
+              }`}
             >
               <Image
                 src="/images/Peter-Helena/EventOrder/Cheers.webp"
@@ -466,7 +470,7 @@ const EventOrder = ({ data, guestData }: EventOrderProps) => {
                   whileInView="show"
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 1.5, ease: "easeOut" }}
-                  className="w-[150px] lg:w-[150px] font-cinzel text-right font-bold text-[14px] lg:text-[14.18px] text-[#430D0D] leading-[16px] lg:leading-[18px]"
+                  className="w-[140px] lg:w-[150px] font-cinzel text-right font-bold text-[14px] lg:text-[14.18px] text-[#430D0D] leading-[16px] lg:leading-[18px]"
                 >
                   {row.line1}
                   {row.line2 && (
@@ -482,7 +486,7 @@ const EventOrder = ({ data, guestData }: EventOrderProps) => {
                   whileInView="show"
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 1.5, ease: "easeOut" }}
-                  className="w-[150px] lg:w-[150px] font-cinzel text-left text-[14px] lg:text-[14.18px] text-[#454545] leading-[16px] break-words"
+                  className="w-[140px] lg:w-[150px] font-cinzel text-left text-[14px] lg:text-[14.18px] text-[#454545] leading-[16px] break-words"
                 >
                   {row.time} <br /> {row.location}
                 </motion.span>
