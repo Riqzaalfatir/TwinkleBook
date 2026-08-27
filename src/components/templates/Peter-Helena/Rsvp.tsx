@@ -4,6 +4,7 @@ import Image from "next/image";
 import { SmartRsvpForm, useSmartRsvp } from "@/components/rsvp/SmartRsvpForm";
 import { motion } from "framer-motion";
 import { fadeUp, fadeRight, fadeLeft } from "../../../lib/animation";
+import moment from "moment"; // ← tambahin import ini
 
 type RsvpProps = {
   data?: any;
@@ -73,7 +74,9 @@ const RsvpSectionDesign = () => {
             className="font-cinzel text-[12px] lg:text-[12.15px] text-white text-center leading-[20px] pt-[34px] tracking-wide"
           >
             Kindly confirm your attendance before <br />
-            [Due Date]
+            {moment(
+              guestData?.closeRSVPDate ?? new Date().toISOString(),
+            ).format("DD MMMM YYYY")}
           </motion.p>
           <div className="flex items-center justify-center gap-[20px] lg:gap-[20.25px] mt-[31.5px] lg:mt-[32px]">
             <motion.div
@@ -156,4 +159,3 @@ const RsvpSectionDesign = () => {
 };
 
 export default Rsvp;
-

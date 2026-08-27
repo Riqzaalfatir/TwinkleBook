@@ -36,6 +36,14 @@ type LocationDummy = {
   directMapURL: string;
 };
 
+type ListRow = {
+  key: string;
+  line1: string;
+  line2: string;
+  time: string;
+  location: string;
+};
+
 const dataLocationDummy: LocationDummy[] = [
   {
     name: "HOLY MATRIMONY",
@@ -66,8 +74,7 @@ const findValidSessionByName = (
 
 const formatTime = (date: string) => moment(date).format("HH.mm") + " WIB";
 
-// cari alamat/link Maps dari dummy array dulu (by name), baru fallback ke data mentah API,
-// baru fallback ke teks statis desain
+// fallback ke dummy array dulu, lalu data API, lalu teks statis
 const resolveLocation = (
   session: SessionItem | undefined,
   fallbackAddressName: string,
@@ -116,7 +123,7 @@ const toTitleCase = (text: string): string => {
   return text.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase());
 };
 
-// pecah nama session jadi 2 baris (sesuai layout desain), split di spasi pertama
+// split nama sesi jadi 2 baris di spasi pertama
 const splitLabel = (
   name: string,
   fallbackLine1: string,
@@ -129,7 +136,7 @@ const splitLabel = (
   return [titleCased.slice(0, spaceIndex), titleCased.slice(spaceIndex + 1)];
 };
 
-// pecah address jadi 2 baris persis setelah koma pertama (sesuai desain: "Jl. ... No 51," / "South Jakarta")
+// split address jadi 2 baris setelah koma terakhir
 const renderAddressWithLineBreak = (address: string) => {
   const commaIndex = address.lastIndexOf(",");
   if (commaIndex === -1) return address;
@@ -146,7 +153,6 @@ const renderAddressWithLineBreak = (address: string) => {
 };
 
 const EventOrder = ({ data, guestData }: EventOrderProps) => {
-  // asumsi sementara: eventSessionByPin ada di data.eventSessionByPin, fallback ke dataSession
   const rawSessions: SessionItem[] =
     data?.eventSessionByPin ?? data?.dataSession ?? [];
   const validEventId: string | undefined = data?.dataEvent?.id;
@@ -167,7 +173,7 @@ const EventOrder = ({ data, guestData }: EventOrderProps) => {
     validEventId,
   );
 
-  // Teapai: dari guestData.groups, BUKAN dari rawSessions
+  // teapai dari guestData.groups, bukan rawSessions
   const teapaiGroup = guestData?.groups?.find(
     (g) => g.name?.toLowerCase() === "teapai ceremony",
   );
@@ -175,15 +181,11 @@ const EventOrder = ({ data, guestData }: EventOrderProps) => {
   const teapaiLocation =
     teapaiGroup?.additionalSessionDescription?.trim() || null;
 
-  // --- Kondisi tampil per section  ---
-  // 1) eventSessionByPin belum ada kasih statis
-  // 2) eventSessionByPin UDAH ngasih data tapi tidak cocok, sembunyikan
   const isSessionDataLoaded = rawSessions.length > 0;
   const shouldShowHoly = !isSessionDataLoaded || Boolean(holyMatrimony);
   const shouldShowReception = !isSessionDataLoaded || Boolean(reception);
   const shouldShowAfterParty = !isSessionDataLoaded || Boolean(afterParty);
 
-  // Teapai sumbernya guestData, jadi kondisi "belum loaded"-nya ngecek guestData, bukan rawSessions
   const isGuestDataLoaded = guestData != null;
   const shouldShowTeapai = !isGuestDataLoaded || Boolean(teapaiGroup);
 
@@ -202,7 +204,6 @@ const EventOrder = ({ data, guestData }: EventOrderProps) => {
     "Wedding",
     "Reception",
   );
-  // After Party render 1 baris
   const afterPartyLabel = afterParty?.name
     ? toTitleCase(afterParty.name)
     : "After Party";
@@ -219,6 +220,67 @@ const EventOrder = ({ data, guestData }: EventOrderProps) => {
     "Jl. Imam Bonjol, Menteng, Central Jakarta",
     "https://maps.app.goo.gl/7rba66o67yTGGZUy7",
   );
+
+  // sesi lain di luar 4 nama yang dikenal, auto masuk list bawah
+  const knownSessionKeywords = [
+    "holy matrimony",
+    "reception",
+    "after party",
+    "teapai",
+  ];
+  const extraSessions = rawSessions.filter((s) => {
+    const nameLower = s.name?.toLowerCase() ?? "";
+    const isKnown = knownSessionKeywords.some((keyword) =>
+      nameLower.includes(keyword),
+    );
+    return !isKnown && validEventId && s.eventId === validEventId;
+  });
+
+  const listRows: ListRow[] = [
+    ...(shouldShowTeapai
+      ? [
+          {
+            key: "teapai",
+            line1: teapaiLine1,
+            line2: teapaiLine2,
+            time: teapaiDate ? formatTime(teapaiDate) : "14.30 WIB",
+            location: teapaiLocation ?? "Esquire Room",
+          },
+        ]
+      : []),
+    ...(shouldShowReception
+      ? [
+          {
+            key: "reception-list",
+            line1: receptionLine1,
+            line2: receptionLine2,
+            time: reception ? formatTime(reception.date) : "18.30 WIB",
+            location: receptionLocation.addressName,
+          },
+        ]
+      : []),
+    ...(shouldShowAfterParty
+      ? [
+          {
+            key: "after-party",
+            line1: afterPartyLabel,
+            line2: "",
+            time: afterParty ? formatTime(afterParty.date) : "21.30 WIB",
+            location: afterParty?.addressName?.trim() ?? "Esquire Room",
+          },
+        ]
+      : []),
+    ...extraSessions.map((s) => {
+      const [line1, line2] = splitLabel(s.name, "", "");
+      return {
+        key: s.id,
+        line1,
+        line2,
+        time: formatTime(s.date),
+        location: s.addressName?.trim() || s.address?.trim() || "-",
+      };
+    }),
+  ];
 
   return (
     <section
@@ -237,7 +299,6 @@ const EventOrder = ({ data, guestData }: EventOrderProps) => {
       </motion.h1>
 
       <div className="flex flex-col items-center justify-center text-center leading-none mt-[32.5px] lg:mt-[30px]">
-        {/* Holy Matrimony */}
         {shouldShowHoly && (
           <>
             <motion.div
@@ -316,7 +377,6 @@ const EventOrder = ({ data, guestData }: EventOrderProps) => {
           </>
         )}
 
-        {/* Divider icon + info Reception */}
         {shouldShowReception && (
           <>
             <motion.div
@@ -372,11 +432,13 @@ const EventOrder = ({ data, guestData }: EventOrderProps) => {
           </>
         )}
 
-        {/* List sesi: Teapai / Reception / After Party */}
-        {(shouldShowTeapai || shouldShowReception || shouldShowAfterParty) && (
+        {listRows.length > 0 && (
           <div className="flex flex-col items-center gap-y-[36px] lg:gap-y-[32.5px] mt-[30px] lg:mt-[31px]">
-            {shouldShowTeapai && (
-              <div className="flex items-center justify-center gap-[20px]">
+            {listRows.map((row) => (
+              <div
+                key={row.key}
+                className="flex items-center justify-center gap-[20px]"
+              >
                 <motion.span
                   variants={fadeRight}
                   initial="hidden"
@@ -385,33 +447,13 @@ const EventOrder = ({ data, guestData }: EventOrderProps) => {
                   transition={{ duration: 1.5, ease: "easeOut" }}
                   className="w-[150px] lg:w-[150px] font-cinzel text-right font-bold text-[14px] lg:text-[14.18px] text-[#430D0D] leading-[16px] lg:leading-[18px]"
                 >
-                  {teapaiLine1} <br /> {teapaiLine2}
-                </motion.span>
-                <motion.span
-                  variants={fadeLeft}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 1.5, ease: "easeOut" }}
-                  className="w-[150px] lg:w-[150px] font-cinzel text-left text-[14px] lg:text-[14.18px] text-[#454545] leading-[16px]"
-                >
-                  {teapaiDate ? formatTime(teapaiDate) : "14.30 WIB"} <br />{" "}
-                  {teapaiLocation ?? "Esquire Room"}
-                </motion.span>
-              </div>
-            )}
-
-            {shouldShowReception && (
-              <div className="flex items-center justify-center gap-[20px]">
-                <motion.span
-                  variants={fadeRight}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 1.5, ease: "easeOut" }}
-                  className="w-[150px] lg:w-[150px] font-cinzel text-right font-bold text-[14px] lg:text-[14.18px] text-[#430D0D] leading-[16px] lg:leading-[18px]"
-                >
-                  {receptionLine1} <br /> {receptionLine2}
+                  {row.line1}
+                  {row.line2 && (
+                    <>
+                      {" "}
+                      <br /> {row.line2}
+                    </>
+                  )}
                 </motion.span>
                 <motion.span
                   variants={fadeLeft}
@@ -421,37 +463,10 @@ const EventOrder = ({ data, guestData }: EventOrderProps) => {
                   transition={{ duration: 1.5, ease: "easeOut" }}
                   className="w-[150px] lg:w-[150px] font-cinzel text-left text-[14px] lg:text-[14.18px] text-[#454545] leading-[16px] break-words"
                 >
-                  {reception ? formatTime(reception.date) : "18.30 WIB"} <br />{" "}
-                  {receptionLocation.addressName}
+                  {row.time} <br /> {row.location}
                 </motion.span>
               </div>
-            )}
-
-            {shouldShowAfterParty && (
-              <div className="flex items-center justify-center gap-[20px]">
-                <motion.span
-                  variants={fadeRight}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 1.5, ease: "easeOut" }}
-                  className="w-[150px] lg:w-[150px] font-cinzel text-right font-bold text-[14px] lg:text-[14.18px] text-[#430D0D] leading-[16px] lg:leading-[18px]"
-                >
-                  {afterPartyLabel}
-                </motion.span>
-                <motion.span
-                  variants={fadeLeft}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 1.5, ease: "easeOut" }}
-                  className="w-[150px] lg:w-[150px] font-cinzel text-left text-[14px] lg:text-[14.18px] text-[#454545] leading-[16px]"
-                >
-                  {afterParty ? formatTime(afterParty.date) : "21.30 WIB"}{" "}
-                  <br /> {afterParty?.addressName?.trim() ?? "Esquire Room"}
-                </motion.span>
-              </div>
-            )}
+            ))}
           </div>
         )}
       </div>
