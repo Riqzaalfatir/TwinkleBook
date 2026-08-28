@@ -102,6 +102,7 @@ const Profile = forwardRef<ProfileHandle, ProfileProps>(
             <video
               ref={videoRef}
               src={videoSrc}
+              poster="/images/Peter-Helena/video-thumbnail.webp"
               loop
               preload="metadata"
               playsInline
