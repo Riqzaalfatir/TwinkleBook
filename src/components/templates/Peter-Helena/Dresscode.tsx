@@ -40,8 +40,8 @@ const Dresscode = ({ guestData }: DresscodeProps) => {
       >
         {isDCGuest ? (
           <>
-            We kindly invite you to dress in <br />
-            formal attire.
+           We kindly invite you to dress in <br />
+           formal attire. Kindly avoid batik.
           </>
         ) : (
           <>
@@ -60,7 +60,8 @@ const Dresscode = ({ guestData }: DresscodeProps) => {
           transition={{ duration: 1.5, ease: "easeOut" }}
           className="font-cinzel text-[14px] lg:text-[14.18px] text-white"
         >
-          <span className="font-bold uppercase">Men:</span> Black Tie
+          <span className="font-bold uppercase">Men:</span>{" "}
+          {isDCGuest ? "Formal Wear" : "Black Tie"}
         </motion.p>
         <motion.div
           variants={fadeUp}
@@ -70,11 +71,19 @@ const Dresscode = ({ guestData }: DresscodeProps) => {
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
           <Image
-            src="/images/Peter-Helena/Dresscode/MEN.png"
+            src={
+              isDCGuest
+                ? "/images/Peter-Helena/Dresscode/GUEST.webp"
+                : "/images/Peter-Helena/Dresscode/MEN.png"
+            }
             alt="Men Dresscode"
-            width={54}
-            height={54}
-            className="w-[55px] lg:w-[55.31px] h-auto mt-[8px]"
+            width={isDCGuest ? 96 : 54}
+            height={isDCGuest ? 55 : 54}
+            className={
+              isDCGuest
+                ? "w-[111px] lg:w-[111.62px] h-auto mt-[8px]"
+                : "w-[55px] lg:w-[55.31px] h-auto mt-[8px]"
+            }
           />
         </motion.div>
       </div>
@@ -101,7 +110,7 @@ const Dresscode = ({ guestData }: DresscodeProps) => {
           <Image
             src={
               isDCGuest
-                ? "/images/Peter-Helena/Dresscode/WOMEN-DC.webp"
+                ? "/images/Peter-Helena/Dresscode/GUEST.webp"
                 : "/images/Peter-Helena/Dresscode/WOMEN.webp"
             }
             alt="Women Dresscode"
@@ -109,7 +118,7 @@ const Dresscode = ({ guestData }: DresscodeProps) => {
             height={354}
             className={
               isDCGuest
-                ? "w-[160px] lg:w-[155px] h-auto mt-[8px]"
+                ? "w-[111px] lg:w-[111.62px] h-auto mt-[8px]"
                 : "w-[196px] lg:w-[188.84px] h-auto mt-[8px]"
             }
           />
