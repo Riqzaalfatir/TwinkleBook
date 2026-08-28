@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import { motion } from "framer-motion";
 import { fadeUp } from "../../../lib/animation";
+import { useAutoPauseOnHiddenTab } from "../../../hooks/useAutoPauseOnHiddenTab"; // sesuaikan path
 
 type ProfileProps = {
   data?: any;
@@ -45,6 +46,8 @@ const Profile = forwardRef<ProfileHandle, ProfileProps>(
   ({ data, onVideoPlay, onVideoPause }, ref) => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isPlaying, setIsPlaying] = useState(false);
+
+    const isAutoTogglingRef = useAutoPauseOnHiddenTab(videoRef);
 
     useImperativeHandle(
       ref,
@@ -100,15 +103,26 @@ const Profile = forwardRef<ProfileHandle, ProfileProps>(
               ref={videoRef}
               src={videoSrc}
               loop
+              preload="metadata"
               playsInline
               controls={isPlaying}
               onPlay={() => {
                 setIsPlaying(true);
-                onVideoPlay?.();
+
+                if (isAutoTogglingRef.current) {
+                  isAutoTogglingRef.current = false;
+                } else {
+                  onVideoPlay?.();
+                }
               }}
               onPause={() => {
                 setIsPlaying(false);
-                onVideoPause?.();
+
+                if (isAutoTogglingRef.current) {
+                  isAutoTogglingRef.current = false;
+                } else {
+                  onVideoPause?.();
+                }
               }}
               className="w-full h-full object-cover"
             />

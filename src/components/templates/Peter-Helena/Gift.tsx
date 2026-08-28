@@ -30,7 +30,7 @@ const BANK_ICONS: Record<string, string> = {
   BCA: "/images/Peter-Helena/Gift/BCA.webp",
   Paynow: "/images/Peter-Helena/Gift/Paynow.webp",
   "Standard Chartered Bank Singapore Limited":
-    "/images/Peter-Helena/Gift/BS.webp",
+    "/images/Peter-Helena/Gift/BSS.png",
 };
 
 // Info tambahan khusus Bank Singapore (API belum nyediain field ini)
@@ -142,37 +142,25 @@ const WeddingGift = ({ data }: WeddingGiftProps) => {
                 whileInView="show"
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 1.5, ease: "easeOut" }}
-                className={`w-[285px] pt-[12.5px] pb-[8.8px] rounded-[10.92px] bg-white shadow-[0_2px_8px_rgba(0,0,0,0.15)] flex items-center ${
+                className={`w-[285px] pt-[12.5px] pb-[8.8px] rounded-[10.92px] bg-white shadow-[0_2px_8px_rgba(0,0,0,0.15)] flex items-center px-[15px] ${
                   index === 0 ? "mt-[29px]" : "mt-[17.8px]"
                 }`}
               >
-                <Image
-                  src={icon ?? "/images/Peter-Helena/Gift/BCA.webp"}
-                  alt={gift.bank}
-                  width={34}
-                  height={34}
-                  className={
-                    isSpecial
-                      ? "w-[44px] h-[44px] object-contain ml-[10px] -mt-[15px]"
-                      : "w-[34px] h-[34px] object-contain ml-[15px]"
-                  }
-                />
+                <div className="w-[34px] flex-shrink-0 flex justify-center">
+                  <Image
+                    src={icon ?? "/images/Peter-Helena/Gift/BCA.webp"}
+                    alt={gift.bank}
+                    width={isSpecial ? 44 : 34}
+                    height={isSpecial ? 44 : 34}
+                    className={`object-contain ${isSpecial ? "translate-x-[2px] lg:translate-x-[3px]" : ""}`}
+                  />
+                </div>
 
-                <div
-                  className={
-                    isSpecial
-                      ? "text-left ml-[8.5px] leading-[15px]"
-                      : "text-left ml-[14px] leading-[15px]"
-                  }
-                >
+                <div className="text-left ml-[14px] leading-[15px] flex-1 min-w-0">
                   <p className="font-cinzel text-[12px] text-[#454545] font-bold">
                     {gift.number}
                   </p>
-                  <p
-                    className={`font-cinzel text-[12px] text-[#454545] ${
-                      isSpecial ? "pt-[4px]" : ""
-                    }`}
-                  >
+                  <p className="font-cinzel text-[12px] text-[#454545]">
                     {gift.bank}
                   </p>
                   <p className="font-cinzel text-[12px] text-[#454545]">
@@ -200,11 +188,7 @@ const WeddingGift = ({ data }: WeddingGiftProps) => {
 
                 <button
                   onClick={() => handleCopy(gift.number, index)}
-                  className={
-                    isSpecial
-                      ? "font-times-new-roman text-[12px] text-[#454545] ml-auto mr-[8px] font-bold -mt-[10px]"
-                      : "font-times-new-roman text-[12px] text-[#454545] ml-auto mr-[8px] font-bold"
-                  }
+                  className="font-times-new-roman text-[12px] text-[#454545] ml-[8px] font-bold flex-shrink-0"
                 >
                   {copiedIndex === index ? "Copied!" : "Copy"}
                 </button>
@@ -218,4 +202,3 @@ const WeddingGift = ({ data }: WeddingGiftProps) => {
 };
 
 export default WeddingGift;
-
