@@ -4,11 +4,22 @@ import { useEffect, useState } from "react";
 
 const BREAKPOINT = 1024;
 
-const IMAGES_MOBILE: string[] = [];
+const IMAGES_MOBILE: string[] = [
+  "/images/David-Natasha/Opening/DNMobile.webp",
+  "/images/David-Natasha/Profile/temp2.webp",
+];
 
-const IMAGES_DESKTOP: string[] = [];
+const IMAGES_DESKTOP: string[] = [
+  "/images/David-Natasha/Opening/OpeningD.webp",
+  "/images/David-Natasha/Profile/temp3.webp",
+  "/images/David-Natasha/Wishes/Frameee.webp",
+  "/images/David-Natasha/Wishes/FrameD.webp"
+];
 
-const IMAGES_COMMON: string[] = [];
+const IMAGES_COMMON: string[] = [
+  "/images/David-Natasha/Opening/AsetAtasM.webp",
+  "/images/David-Natasha/Opening/AsetBawahM.webp"
+];
 
 interface UsePreloaderOptions {
   dynamicImages?: string[];
