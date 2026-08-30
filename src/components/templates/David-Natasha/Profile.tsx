@@ -1,5 +1,7 @@
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { fadeUp } from "../../../lib/animation";
 
 const Profile = () => {
   return (
@@ -7,7 +9,14 @@ const Profile = () => {
       id="profile"
       className="relative w-full flex flex-col items-center py-[8.8vw] lg:py-[3.97vw]"
     >
-      <div className="relative w-[100%] lg:w-[66%]">
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="relative w-[100%] lg:w-[66%]"
+      >
         <Image
           src="/images/David-Natasha/Profile/temp2.webp"
           alt="Profile Frame"
@@ -24,64 +33,121 @@ const Profile = () => {
         />
 
         <div className="absolute inset-0 flex flex-col items-center text-center mt-[34.4vw] lg:mt-[18.7vw]">
-          <p className="font-cormorant-garamond text-[3.85vw] lg:text-[1.59vw] text-[#021125]">
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="font-cormorant-garamond text-[3.85vw] lg:text-[1.59vw] text-[#021125]"
+          >
             By the Grace of God
-          </p>
+          </motion.p>
 
-          <p className="font-cormorant-garamond text-[4.10vw] lg:text-[1.59vw] font-semibold text-[#021125] mt-[6.5vw] lg:mt-[3.57vw] leading-[4.93vw] lg:leading-[1.98vw]">
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="font-cormorant-garamond text-[4.10vw] lg:text-[1.59vw] font-semibold text-[#021125] mt-[6.5vw] lg:mt-[3.57vw] leading-[4.93vw] lg:leading-[1.8vw]"
+          >
             Mr. Andy Solaiman Susetio and
             <br />
             Mrs. Natalia Chrismastuti
-          </p>
+          </motion.p>
 
-          <p className="font-cormorant-garamond text-[3.85vw] lg:text-[1.59vw] italic text-[#021125] my-[4.3vw] lg:my-[1.59vw]">
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="font-cormorant-garamond text-[3.85vw] lg:text-[1.59vw] italic text-[#021125] my-[4.3vw] lg:my-[1.65vw]"
+          >
             together with
-          </p>
+          </motion.p>
 
-          <p className="font-cormorant-garamond text-[4.10vw] lg:text-[1.59vw] font-semibold text-[#021125] leading-[4.93vw] lg:leading-[1.98vw]">
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="font-cormorant-garamond text-[4.10vw] lg:text-[1.59vw] font-semibold text-[#021125] leading-[4.93vw] lg:leading-[1.98vw]"
+          >
             Mr. Stefanie Natasya and
             <br />
             Mrs. Agus Lugiman
-          </p>
+          </motion.p>
 
-          <p className="font-cormorant-garamond leading-[4.93vw] lg:leading-[1.98vw] text-[3.85vw] lg:text-[1.59vw] text-[#021125] mt-[7.5vw] lg:mt-[3.8vw]">
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="font-cormorant-garamond leading-[4.93vw] lg:leading-[1.82vw] text-[3.85vw] lg:text-[1.59vw] text-[#021125] mt-[7.5vw] lg:mt-[3.8vw]"
+          >
             Cordially request the honour of your
             <br className="lg:hidden" />
             presence at the <br className="hidden lg:block" /> marriage of their
             <br />
             son and daughter
-          </p>
+          </motion.p>
 
-          <h2
-            className="font-sackers-italic-script text-[10.26vw] lg:text-[6.35vw] leading-[8.62vw] text-[#021125] lg:leading-[4.6vw] mt-[8vw] lg:mt-[4.2vw] [--stroke-w:0.3px] lg:[--stroke-w:0.64px]"
+          <motion.h2
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="font-sackers-italic-script text-[10.26vw] lg:text-[6.35vw] leading-[8.62vw] text-[#021125] lg:leading-[4.6vw] mt-[8vw] lg:mt-[4.3vw] [--stroke-w:0.3px] lg:[--stroke-w:0.64px]"
             style={{ WebkitTextStroke: "var(--stroke-w) #021125" }}
           >
             Prawira David <br />
             Aldridge Susetio
-          </h2>
+          </motion.h2>
 
-          <p
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
             className="font-sackers-italic-script text-[12.31vw] lg:text-[6.78vw] text-[#021125] mt-[0.4vw] lg:mt-[1.49vw] [--stroke-w:0.3px] lg:[--stroke-w:0.64px]"
             style={{ WebkitTextStroke: "var(--stroke-w) #021125" }}
           >
             &
-          </p>
+          </motion.p>
 
-          <h2
+          <motion.h2
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
             className="font-sackers-italic-script text-[10.26vw] lg:text-[6.35vw] leading-[8.62vw] lg:leading-[4.6vw] text-[#021125] mt-[2.4vw] 
-            lg:mt-[3.1vw] [--stroke-w:0.3px] lg:[--stroke-w:0.64px]"
+            lg:mt-[3vw] [--stroke-w:0.3px] lg:[--stroke-w:0.64px]"
             style={{ WebkitTextStroke: "var(--stroke-w) #021125" }}
           >
             Stefanie Natasya
-          </h2>
+          </motion.h2>
 
-          <p className="font-cormorant-garamond text-[4.10vw] text-[#021125] lg:text-[1.59vw] mt-[9.5vw] lg:mt-[5.9vw] leading-[4.93vw] lg:leading-[1.98vw]">
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="font-cormorant-garamond text-[4.10vw] text-[#021125] lg:text-[1.59vw] mt-[9.5vw] lg:mt-[6.1vw] leading-[4.93vw] lg:leading-[1.95vw]"
+          >
             Our joy will be complete with
             <br />
             your presence and blessings.
-          </p>
+          </motion.p>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

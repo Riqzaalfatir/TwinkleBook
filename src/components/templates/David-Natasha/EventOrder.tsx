@@ -1,5 +1,7 @@
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { fadeUp } from "../../../lib/animation";
 
 const EventOrder = () => {
   return (
@@ -9,96 +11,191 @@ const EventOrder = () => {
         alt="flower decoration"
         width={500}
         height={500}
-        className="absolute -top-[0vw] -left-[0vw] w-[71vw] h-auto pointer-events-none z-20"
+        className="absolute -top-[0vw] -left-[0vw] w-[71vw] lg:w-[41vw] h-auto pointer-events-none z-20"
       />
 
-      <Image
+      {/* <Image
         src="/images/David-Natasha/EventOrder/AsetBawahM.webp"
         alt="flower decoration"
         width={650}
         height={650}
-        className="absolute -bottom-[0vw] -right-[0vw] w-[73vw] h-auto pointer-events-none z-20"
+        className="absolute -bottom-[0vw] -right-[0vw] w-[73vw] lg:w-[41vw] h-auto pointer-events-none z-20"
+      /> */}
+
+      <Image
+        src="/images/David-Natasha/EventOrder/AsetBawahD.webp"
+        alt="flower decoration"
+        width={650}
+        height={650}
+        className="absolute -bottom-[0vw] -right-[0vw] w-[73vw] lg:w-[31.9vw] h-auto pointer-events-none z-20"
       />
 
-      <div className="relative z-[15] flex flex-col items-center text-center pt-[22.4vw] pb-[29.49vw]">
-        <h1
-          className="font-sackers-italic-script text-[13.33vw] text-[#021125]"
-          style={{ WebkitTextStroke: "0.3px #021125" }}
+      <div className="relative z-[15] flex flex-col items-center text-center pt-[22.4vw] lg:pt-[8.1vw] pb-[29.49vw] lg:pb-[8.1vw]">
+        <motion.h1
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="font-sackers-italic-script text-[13.33vw] lg:text-[5.29vw] text-[#021125] [--stroke-w:0.3px] lg:[--stroke-w:0.53px]"
+          style={{ WebkitTextStroke: "var(--stroke-w) #021125" }}
         >
           Event Detail
-        </h1>
+        </motion.h1>
 
-        <div className="flex flex-col items-center justify-center leading-none mt-[4.5vw]">
-          <Image
-            src="/images/David-Natasha/EventOrder/GIDAGOO.webp"
-            alt="GII HOK IM TONG Dago"
-            width={450}
-            height={450}
-            className="w-[67.69vw] h-auto"
-          />
+        <div className="flex flex-col items-center justify-center leading-none mt-[4.5vw] lg:mt-[1.35vw]">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+          >
+            <Image
+              src="/images/David-Natasha/EventOrder/GIIDago.webp"
+              alt="GII HOK IM TONG Dago"
+              width={650}
+              height={650}
+              className="w-[67.69vw] lg:w-[32.2vw] h-auto"
+            />
+          </motion.div>
 
-          <h2 className="font-cormorant-garamond text-[5.13vw] font-bold text-[#021125] tracking-wide mt-[10.26vw]">
+          <motion.h2
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="font-cormorant-garamond text-[5.13vw] lg:text-[1.98vw] font-bold text-[#021125] tracking-wide mt-[10.26vw] lg:mt-[2.75vw]"
+          >
             HOLY MATRIMONY
-          </h2>
+          </motion.h2>
 
-          <p className="font-cormorant-garamond font-medium text-[4.62vw] text-[#021125] mt-[5.13vw]">
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="font-cormorant-garamond font-medium text-[4.62vw] lg:text-[1.98vw] text-[#021125] mt-[5.13vw] lg:mt-[2.05vw]"
+          >
             10.30 WIB
-          </p>
+          </motion.p>
 
-          <p className="font-cormorant-garamond text-[3.85vw] font-bold text-[#021125] mt-[6.1vw] leading-[5.13vw]">
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="font-cormorant-garamond text-[3.85vw] lg:text-[1.98vw] font-bold text-[#021125] mt-[6.1vw] lg:mt-[1.89vw] leading-[5.13vw] lg:leading-[1.98vw]"
+          >
             GII HOK IM TONG - DAGO
-          </p>
+          </motion.p>
 
-          <p className="font-cormorant-garamond text-[3.59vw] text-[#021125] mt-[1.4vw] font-medium leading-[4.13vw]">
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="font-cormorant-garamond text-[3.59vw] lg:text-[1.32vw] text-[#021125] mt-[1.4vw] font-medium leading-[4.13vw] lg:leading-[1.98vw] lg:mt-[0.73vw]"
+          >
             Jl. Cikapayang No. 2-4, Kota Bandung
-          </p>
+          </motion.p>
 
-          <a
+          <motion.a
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
             href="https://maps.app.goo.gl/4E2uyDg52DDiW5hn7"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-[6.1vw] w-[41.03vw] h-[7.69vw] bg-[#021125] text-white text-[3.59vw] tracking-wide font-medium rounded-[1.54vw] font-cormorant-garamond flex items-center justify-center"
+            className="mt-[6.1vw] lg:mt-[0.9vw] w-[41.03vw] lg:w-[10.58vw] h-[7.69vw] lg:h-[1.98vw] bg-[#021125] text-white text-[3.59vw] lg:text-[0.93vw] tracking-wide font-medium rounded-[1.54vw] lg:rounded-[0.40vw] font-cormorant-garamond flex items-center justify-center"
           >
             GOOGLE MAPS
-          </a>
+          </motion.a>
         </div>
 
-        <div className="flex flex-col items-center justify-center leading-none mt-[13.08vw]">
-          <Image
-            src="/images/David-Natasha/EventOrder/International.webp"
-            alt="Intercontinental Bandung Dago Pakar"
-            width={450}
-            height={450}
-            className="w-[67.69vw] h-auto"
-          />
+        <div className="flex flex-col items-center justify-center leading-none mt-[13.08vw] lg:mt-[7.15vw]">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+          >
+            <Image
+              src="/images/David-Natasha/EventOrder/Intercontinental.webp"
+              alt="Intercontinental Bandung Dago Pakar"
+              width={550}
+              height={550}
+              className="w-[67.69vw] lg:w-[32.2vw] h-auto"
+            />
+          </motion.div>
 
-          <h2 className="font-cormorant-garamond text-[5.13vw] font-bold text-[#021125] mt-[10.26vw]">
+          <motion.h2
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="font-cormorant-garamond text-[5.13vw] lg:text-[1.98vw] font-bold text-[#021125] mt-[10.26vw] lg:mt-[2.75vw]"
+          >
             WEDDING RECEPTION
-          </h2>
+          </motion.h2>
 
-          <p className="font-cormorant-garamond font-medium text-[4.62vw] text-[#021125] mt-[5.13vw]">
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="font-cormorant-garamond font-medium text-[4.62vw] lg:text-[1.98vw] text-[#021125] mt-[5.13vw] lg:mt-[2.05vw]"
+          >
             18.00 WIB
-          </p>
+          </motion.p>
 
-          <p className="font-cormorant-garamond text-[3.85vw] font-bold text-[#021125] mt-[6.1vw] leading-[5.13vw]">
-            INTERCONTINENTAL BANDUNG <br />
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="font-cormorant-garamond text-[3.85vw] lg:text-[1.98vw] font-bold text-[#021125] mt-[6.1vw] leading-[5.13vw] lg:leading-[1.98vw] lg:mt-[1.98vw]"
+          >
+            INTERCONTINENTAL BANDUNG <br className="lg:hidden" />
             DAGO PAKAR
-          </p>
+          </motion.p>
 
-          <p className="font-cormorant-garamond font-medium text-[3.59vw] text-[#021125] mt-[1.4vw] leading-[4.13vw]">
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="font-cormorant-garamond font-medium text-[3.59vw] lg:text-[1.32vw] text-[#021125] mt-[1.4vw] leading-[4.13vw] lg:leading-[1.98vw] lg:mt-[0.73vw]"
+          >
             Jl. Resor Dago Pakar Raya 2B
-            <br />
+            <br className="lg:hidden" />
             Resor Dago Pakar, Kota Bandung
-          </p>
+          </motion.p>
 
-          <a
+          <motion.a
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
             href="https://maps.app.goo.gl/QPdiNEsZX5cvHibA8"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-[6.1vw] w-[41.03vw] h-[7.69vw] bg-[#021125] text-white text-[3.59vw] font-medium tracking-wide rounded-[1.54vw] font-cormorant-garamond flex items-center justify-center"
+            className="mt-[6.1vw] lg:mt-[0.9vw] w-[41.03vw] lg:w-[10.58vw] h-[7.69vw] lg:h-[1.98vw] bg-[#021125] text-white text-[3.59vw] lg:text-[0.93vw] font-medium tracking-wide rounded-[1.54vw] lg:rounded-[0.40vw] font-cormorant-garamond flex items-center justify-center"
           >
             GOOGLE MAPS
-          </a>
+          </motion.a>
         </div>
       </div>
     </section>
@@ -106,15 +203,6 @@ const EventOrder = () => {
 };
 
 export default EventOrder;
-
-
-
-
-
-
-
-
-
 
 // // UKURAN SEBELUM DI KE VW KAN
 // import React from "react";

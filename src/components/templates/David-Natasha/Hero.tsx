@@ -12,7 +12,6 @@ type HeroProps = {
 const Hero = ({ start = false }: HeroProps) => {
   return (
     <section id="hero" className="relative w-full h-screen overflow-hidden">
-
       {/* MOBILE */}
       <Image
         src="/images/David-Natasha/Hero/DNBackground.webp"
@@ -23,7 +22,7 @@ const Hero = ({ start = false }: HeroProps) => {
       />
 
       {/* DEKSTOP */}
-       <Image
+      <Image
         src="/images/David-Natasha/Hero/DNBackgroundD.webp"
         alt="Hero Background"
         fill
