@@ -14,8 +14,8 @@ module.exports = {
 
         // Albert-Jessica (include: Lora)
         marcellus: ["var(--font-marcellus)"],
-        "cormorant-garamond": ["var(--font-cormorant-garamond)"],
-        slight: ["var(--font-slight)"],
+        "cormorant-garamond": ["var(--font-cormorant-garamond)"], // INCLUDE DENGAN TEMPLATE DAVID NATASHA
+        slight: ["var(--font-slight)"], // INCLUDE DENGAN TEMPLATE DAVID NATASHA
 
         // Michael-Vannya
         kinfolk: ["var(--font-kinfolk)"],
@@ -27,6 +27,11 @@ module.exports = {
         cinzel: ["var(--font-cinzel)"],
         "cinzel-decorative": ["var(--font-cinzel-decorative)"],
         ovo: ["var(--font-ovo)"],
+
+        // David-Natasha
+        "costa-rica": ["var(--font-costa-rica)"],
+        "sackers-italic-script": ["var(--font-sackers-italic-script)"],
+        garamond: ["var(--font-garamond)"],
       },
     },
   },

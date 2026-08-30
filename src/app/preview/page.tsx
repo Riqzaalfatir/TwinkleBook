@@ -1,5 +1,5 @@
-import PeterHelena from "@/components/templates/Peter-Helena";
+import DavidNatasha from "@/components/templates/David-Natasha";
 
 export default function PreviewPage() {
-  return <PeterHelena/>;
+  return <DavidNatasha/>;
 }
