@@ -68,7 +68,7 @@ const WishesCard = ({ data, onClose }: WishesCardProps) => {
           </p>
 
           {/* Pesan */}
-          <p className="font-cormorant-garamond text-[13px] leading-[1.8] text-[#021125] line-clamp-6 text-center mb-7">
+          <p className="font-cormorant-garamond text-[13px] leading-[1.8] text-[#021125] text-center mb-7 max-h-[130px] overflow-y-auto px-1 lg:max-h-[170px]">
             {decodeHtmlEntities(data.pesan)}
           </p>
 
