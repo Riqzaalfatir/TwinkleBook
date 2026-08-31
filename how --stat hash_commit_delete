@@ -1,0 +1,88 @@
+[33mda1e1b8[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m delete aset image yg tidak terpakai, all templatee
+[33m69870a9[m delete aset image yg tidak terpakai, all template
+[33mec8624e[m latching rsvp david natasya
+[33ma42f4ea[m update ballrom peter helena
+[33m5400a72[m latching tanpa rsvp
+[33m269cc4b[m update button rsvp, sudah latching tetapi eventorder belum, dan perlu fungsionalitas lebih lanjut 'DAVID NATASYA'
+[33m933c996[m update gift dekstop, wishes dan buton rsvp 'DAVID NATASYA'
+[33m959dee3[m detailing mobile dekstop sebelum revisi
+[33m74e6b12[m testing use preloader aset opening profile dan wishes david natasha
+[33ma5c42f2[m testing layout template david natasha, perlu detailing lebih lanjut
+[33m018ce3a[m update dresscode peter helena dan tambah aset david natasha
+[33m0369bcd[m[33m ([m[1;32mDavidNatasha[m[33m)[m update dresscode peter helena
+[33m556690b[m penambahan thumbnail pada profile peter-helena
+[33m87437ea[m update logic tab vidio dan lagu 'PETER HELENA'
+[33m29f996c[m update jarak komponen eventorder peterhelena
+[33m5dd4987[m update logic vidio play & music dan dinamis group eventorder 'PETER-HELENA'
+[33m7f59f43[m nama hotel eventorder peterhelena
+[33m91bf5f1[m penyesuaian eventorder peter helena
+[33madd0782[m update rsvp date dan eventorder peterhelena agar bisa lebih dari 4 slot
+[33m6ef12bd[m update vidio profile peterhelenaa
+[33m01ddb67[m update vidio profile peterhelena
+[33mab79bcc[m update eventorder dinamis
+[33mbf22164[m update michael vanya gift dan peterhelena dekstopcover
+[33mfca5884[m update event order maps dinamis
+[33m0f2ab2c[m update slider michaeel vannya
+[33m8e349ee[m update gallery michael vannya
+[33mb8d5fb3[m update ukuran dinamis gambar dresscode
+[33mf4266cc[m update vidio profile PETER-HELENA
+[33md599781[m clean code dan latching tambahan gift dan dresscode
+[33m47a94f6[m latching tanpa gift dan drescode
+[33m1bc67f0[m update gift copy  'PETER HELENA'
+[33mdaefdc6[m update gift dan sudah ada beberepa dinamis yaitu opening dekstop cover dan hero 'PETER HELENA'
+[33mc4ab897[m update popup wishes ketika dikirim dan nomor provite pada rsvp TEMPLATE PETER HELENA
+[33mb24e8f7[m ganti bg dekstop cover template PETER-HELENA
+[33mb7cc1f4[m update use preloader dan waktu countdown pada template PETER-HELENA
+[33ma399324[m Merge pull request #4 from Riqzaalfatir/Peter-Helena
+[33m1dab48b[m[33m ([m[1;31morigin/Peter-Helena[m[33m, [m[1;32mPeter-Helena[m[33m)[m push template peter helena sudah detailing, sudah dapat di review tetapi belum revisi
+[33m4408067[m perubahan text buton rsvp template michael jessica
+[33m310c567[m clean code tamplate michael vannya
+[33m7bb0a5d[m update template michael vanya pada section rsvp dan wishes. perubahan nama tanggal dan placeholder jadi dinamis
+[33m86ad616[m add link buton gif hero
+[33m14c3d9e[m latching template michael-vannya
+[33me451b26[m update posisi gambar bg thankyou mobile michael vannya
+[33md96b97d[m revisi MICHAEL VANNYA STYLING countdown,drescode, gallery, header, hero, rsvp, thankyou
+[33mb8f1c92[m[33m ([m[1;31morigin/michael-vannya[m[33m, [m[1;32mmichael-vannya[m[33m)[m detailing mobile dan dekstop sbelum revisi
+[33m4e5c51a[m detailing mobile
+[33m1531780[m fix: correct casing for kinfolk.ttf
+[33m89f87aa[m detailing v1
+[33m49ab88d[m penghapusan gambar yang sudah tidak terpakai di semua template, dan setup project template Mihael-Vannya sudah setup folder template, setup fonts.(sebelum pindah branch template)
+[33ma052d58[m update vidio bg template albert jessica
+[33m4d273d3[m ganti template id albert jessica
+[33m55967a1[m aset aset image pada atet halim dan albertjessica ditambahkan pointer agar tidak bisa di klik(tidak semua) penambahan thankyou
+[33md6b952d[m aset aset image pada atet halim dan albertjessica ditambahkan pointer agar tidak bisa di klik(tidak semua)
+[33m37b6dd4[m update userpreloader albs agar galery unduh nya dinamis
+[33me2e4d5e[m penambahan fitur audio dan ubah ukuran mobile content opening
+[33mcd26557[m udpdate blur albert kessica dari 3 px menjadi 6 px
+[33m15c4538[m udpdate emot wishes grid emot dan dinamiskan dekstop cover. pada template albert-jessica
+[33m53acb94[m update image dekstop cover dan emot wishes
+[33m9950c20[m update loadingscreen jadi hanya render 1x sesuai template
+[33mc86203a[m update latching pada template Albert-jessica dan perubahan beberapa code global agar bisa mengakses template
+[33m5a06de4[m update Opening  eventorder dan link maps Albert-Jessica
+[33m41ee956[m update section dresscode template atettrisnaa
+[33m2f968dc[m update section dresscode template atettrisna
+[33m97710ea[m update section dresscode template atettrisna
+[33m7733ac9[m update tanggal dekstop cover kiri  albert-jessica
+[33md3f02ae[m update thankyou & buton eventorder albert-jessica
+[33m03ee0f1[m Merge pull request #1 from Riqzaalfatir/albert-jessica
+[33mfc7ecc3[m[33m ([m[1;31morigin/albert-jessica[m[33m, [m[1;32malbert-jessica[m[33m)[m update index
+[33mdb6a074[m update wishes
+[33ma86e05d[m add albert-jessica template
+[33mcea9a70[m clean code dan revisi aset gambar gallery
+[33m43e4efc[m revisi atet halim pada rsvp, alamat lengkap eventorder dan gambar profile
+[33mdb69c96[m latching tahap awal sudah rekomen dokumentasi penambahan types event
+[33m8d245bc[m latching tahap awal sudah rekomen dokumentasi dan wishescard
+[33m8f5ee0e[m latching tahap awal sudah rekomen dokumentasii
+[33m9db6120[m latching tahap awal sudah rekomen dokumentasi
+[33m6e1f946[m latching tahap awal sudah rekomen dokum
+[33m62fee1d[m latching tahap awal sudah rekomen dokum
+[33m71d1667[m update tangga dan udah direvisi
+[33m16a8c7a[m update tangga dan udah direvisi
+[33m33032b7[m update tanggal dan udah di revisi
+[33mfcd7b8f[m update warna profle
+[33mbb3608a[m update dan revisi jadi dekstop juga pake vw
+[33m12aca85[m aset hero
+[33m838f033[m link gambar
+[33m75c62f8[m up vercel
+[33mb38188e[m initial commit
+[33md2e29d7[m Initial commit from Create Next App
