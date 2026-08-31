@@ -61,15 +61,14 @@ const DavidNatasha = ({
     ? formatDateWithWeekday(data.dataEvent.date)
     : "SATURDAY, 10 OCTOBER 2026";
 
-  // Kalau API gak nyediain lagu, jangan pakai fallback statis — biarin string kosong.
-  // Tombolnya tetep muncul, cuma pas di-play gak ada suara (gak ada src buat di-load).
   const backgroundSoundUrl = data?.dataContent?.backgroundSoundData?.url
     ? `https://media.twinklebook.com/${data.dataContent.backgroundSoundData.url}`
     : "";
 
   const dynamicImages = ["/images/David-Natasha/Hero/DNBackground.webp"];
+  const rawGalleryData = data?.dataContent?.galleryImageData ?? [];
 
-  const { loaded, progress } = usePreloader({ dynamicImages });
+  const { loaded, progress } = usePreloader({ dynamicImages, rawGalleryData });
 
   return (
     <div
@@ -81,12 +80,10 @@ const DavidNatasha = ({
         <Header />
         <Hero start={start} data={data} />
         <Profile data={data} />
-        {/* <Profile /> */}
         <Countdown data={data} />
         <EventOrder data={data} />
         <Gallery data={data} />
         <Rsvp data={data} guestData={eventGuestByPin} />
-        {/* <Rsvp /> */}
         <Gift data={data} />
         <Wishes data={data} guestData={eventGuestByPin} />
         <Thankyou data={data} />

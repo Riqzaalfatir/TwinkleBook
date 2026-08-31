@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { getGalleryPhotos } from "../../../lib/getGalleryPhotos";
 
 const BREAKPOINT = 1024;
 
@@ -41,18 +42,27 @@ const IMAGES_COMMON: string[] = [
 
 interface UsePreloaderOptions {
   dynamicImages?: string[];
+  rawGalleryData?: any[];
 }
 
-export function usePreloader({ dynamicImages = [] }: UsePreloaderOptions = {}) {
+export function usePreloader({
+  dynamicImages = [],
+  rawGalleryData = [],
+}: UsePreloaderOptions = {}) {
   const [progress, setProgress] = useState(0);
   const [loaded, setLoaded] = useState(false);
 
+  const galleryKey = rawGalleryData.map((item: any) => item?.url).join(",");
+
   useEffect(() => {
     const isDesktop = window.innerWidth >= BREAKPOINT;
+    const galleryImages = getGalleryPhotos(rawGalleryData, !isDesktop);
+
     const imagesToLoad = [
       ...(isDesktop ? IMAGES_DESKTOP : IMAGES_MOBILE),
       ...IMAGES_COMMON,
       ...dynamicImages,
+      ...galleryImages,
     ];
 
     const total = imagesToLoad.length;
@@ -81,7 +91,7 @@ export function usePreloader({ dynamicImages = [] }: UsePreloaderOptions = {}) {
       cancelled = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dynamicImages.join(",")]);
+  }, [dynamicImages.join(","), galleryKey]);
 
   return { loaded, progress };
 }
