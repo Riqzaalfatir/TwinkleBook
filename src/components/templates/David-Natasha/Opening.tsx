@@ -125,7 +125,7 @@ const Opening = ({
               )}
             </div>
 
-            <div className="relative z-20 flex flex-col items-center text-center pt-[48px] lg:pt-[58px] pb-[51px] lg:pb-[65px] overflow-hidden">
+            <div className="relative z-20 flex flex-col items-center text-center pt-[48px] lg:pt-[58px] pb-[50px] lg:pb-[65px] overflow-hidden">
               <Image
                 src="/images/David-Natasha/Opening/AsetAtasM.webp"
                 alt="flower decoration"
@@ -145,18 +145,18 @@ const Opening = ({
                 The Wedding of
               </p>
 
-              <h1 className="relative z-10 font-sackers-italic-script text-[40px] lg:text-[56px] text-[#021125] leading-none break-words max-w-[280px] lg:max-w-[320px] -mt-[1.5px] lg:-mt-[2.5px]">
-                {groomName} & {brideName}
+              <h1 className="relative z-10 font-sackers-italic-script text-[40px] lg:text-[56px] text-[#021125] break-words max-w-[280px] lg:max-w-[320px] mt-[5.2px] lg:mt-[10px] leading-[26px] lg:leading-[32px]">
+                {groomName} & {brideName} 
               </h1>
 
-              <p className="relative z-10 font-cormorant-garamond text-[12px] lg:text-[20px] text-[#021125] pt-[7.5px]">
+              <p className="relative z-10 font-cormorant-garamond text-[12px] lg:text-[20px] text-[#021125] pt-[14.8px] lg:pt-[19px]">
                 Dear,
               </p>
-              <p className="relative z-10 font-cormorant-garamond text-[16px] lg:text-[24px] text-[#021125] pt-[2px] lg:pt-[0px] lg:-mt-[5px] break-words max-w-[250px]">
+              <p className="relative z-10 font-cormorant-garamond text-[16px] lg:text-[24px] text-[#021125] pt-[6px] lg:pt-[0px] lg:mt-[3px] break-words max-w-[250px] leading-[19px] lg:leading-[20px]">
                 {namaTamu}
               </p>
 
-              <p className="relative z-10 font-cormorant-garamond text-[10px] lg:text-[16px] text-[#021125] leading-[13px] lg:leading-[16px] pt-[19px] lg:pt-[18px]">
+              <p className="relative z-10 font-cormorant-garamond text-[10px] lg:text-[16px] text-[#021125] leading-[13.7px] lg:leading-[19px] pt-[20px] lg:pt-[26px]">
                 We sincerely apologize
                 <br />
                 for any misspelling of names or titles.
@@ -164,7 +164,7 @@ const Opening = ({
 
               <button
                 onClick={handleOpen}
-                className="relative z-10 bg-[#021125] transition-colors flex items-center justify-center text-white w-[154px] h-[30px] lg:w-[220px] lg:h-[35px] rounded-[52px] lg:rounded-[35px] uppercase font-cormorant-garamond text-[12px] lg:text-[16px] tracking-widest mt-[16px] lg:mt-[15px]"
+                className="relative z-10 bg-[#021125] transition-colors flex items-center justify-center text-white w-[154px] h-[30px] lg:w-[220px] lg:h-[35px] rounded-[52px] lg:rounded-[35px] uppercase font-cormorant-garamond text-[12px] lg:text-[16px] tracking-widest mt-[15px] lg:mt-[15px]"
               >
                 <span>View Invitation</span>
               </button>
@@ -177,9 +177,6 @@ const Opening = ({
 };
 
 export default Opening;
-
-
-
 
 // SEBELUM DI DINAMISKAN
 // "use client";

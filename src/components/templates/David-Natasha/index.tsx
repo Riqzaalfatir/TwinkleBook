@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Hero from "./Hero";
 import Profile from "./Profile";
 import Countdown from "./Countdown";
@@ -15,6 +15,10 @@ import LoadingScreen from "./LoadingScreen";
 import Header from "./Header";
 import { usePreloader } from "./hooks/usePreloader";
 import { useCurrentGuest } from "@/hooks/api/useCurrentGuest";
+import { formatDateWithWeekday } from "../../../lib/formatDate";
+import PlaySongButton, {
+  PlaySongButtonHandle,
+} from "../../../ui/PlaySongButton";
 import {
   cormorantGaramond,
   costaRica,
@@ -37,6 +41,7 @@ const DavidNatasha = ({
 }: DavidNatashaProps) => {
   const [start, setStart] = useState<boolean>(false);
   const [showLoading, setShowLoading] = useState<boolean>(true);
+  const playSongRef = useRef<PlaySongButtonHandle>(null);
 
   const { getEventGuestByPin, eventGuestByPin } = useCurrentGuest();
 
@@ -52,6 +57,15 @@ const DavidNatasha = ({
   const namaTamu = eventGuestByPin?.name ?? "[Guest Name]";
   const groomName = data?.dataEvent?.groomName ?? "David";
   const brideName = data?.dataEvent?.brideName ?? "Natasya";
+  const eventDate = data?.dataEvent?.date
+    ? formatDateWithWeekday(data.dataEvent.date)
+    : "SATURDAY, 10 OCTOBER 2026";
+
+  // Kalau API gak nyediain lagu, jangan pakai fallback statis — biarin string kosong.
+  // Tombolnya tetep muncul, cuma pas di-play gak ada suara (gak ada src buat di-load).
+  const backgroundSoundUrl = data?.dataContent?.backgroundSoundData?.url
+    ? `https://media.twinklebook.com/${data.dataContent.backgroundSoundData.url}`
+    : "";
 
   const dynamicImages = ["/images/David-Natasha/Hero/DNBackground.webp"];
 
@@ -65,11 +79,11 @@ const DavidNatasha = ({
 
       <div className="relative z-10">
         <Header />
-        <Hero start={start} data={data} /> 
-        {/* <Profile data={data} /> */}
-        <Profile />
+        <Hero start={start} data={data} />
+        <Profile data={data} />
+        {/* <Profile /> */}
         <Countdown data={data} />
-        <EventOrder />
+        <EventOrder data={data} />
         <Gallery data={data} />
         {/* <Rsvp data={data} guestData={eventGuestByPin} /> */}
         <Rsvp />
@@ -88,10 +102,19 @@ const DavidNatasha = ({
         />
       )}
 
+      <PlaySongButton
+        ref={playSongRef}
+        src={backgroundSoundUrl}
+        start={start}
+      />
+
       {showLoading && (
         <LoadingScreen
           progress={progress}
           onDone={() => setShowLoading(false)}
+          groomName={groomName}
+          brideName={brideName}
+          eventDate={eventDate}
         />
       )}
     </div>

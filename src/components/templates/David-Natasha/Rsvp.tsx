@@ -196,8 +196,6 @@
 
 // export default Rsvp;
 
-
-
 // SEBELUM DI DINAMISKAN
 "use client";
 
@@ -345,7 +343,7 @@ const Rsvp = () => {
             onClick={handleUnableClick}
             className={attendStatus === 2 ? activeClass : inactiveClass}
           >
-            UNABLE TO <br className='lg:hidden' /> ATTEND
+            UNABLE TO <br className="lg:hidden" /> ATTEND
           </motion.button>
         </div>
         <motion.p
@@ -358,27 +356,27 @@ const Rsvp = () => {
         >
           Confirm Your RSVP
         </motion.p>
-       <motion.button
-  variants={fadeUp}
-  initial="hidden"
-  whileInView="show"
-  viewport={{ once: true, amount: 0.3 }}
-  transition={{ duration: 1.5, ease: "easeOut" }}
-  type="button"
-  onClick={handleSubmitClick}
-  className="flex items-center justify-center w-[41.28vw] h-[9.23vw]  lg:w-[14.55vw] lg:h-[3.44vw] bg-[#021125] rounded-[1.54vw] lg:rounded-[3.31vw] font-cormorant-garamond text-[3.33vw] lg:text-[1.19vw] text-white mt-[6.8vw] lg:mt-[2.1vw]"
->
-  {attendStatus === 1 ? (
-    "CONFIRM ATTEND"
-  ) : attendStatus === 2 ? (
-    <>
-      CONFIRM UNABLE <br />
-      TO ATTEND
-    </>
-  ) : (
-    "CONFIRM"
-  )}
-</motion.button>
+        <motion.button
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          type="button"
+          onClick={handleSubmitClick}
+          className="flex items-center justify-center w-[41.28vw] h-[9.23vw]  lg:w-[14.55vw] lg:h-[3.44vw] bg-[#021125] rounded-[1.54vw] lg:rounded-[3.31vw] font-cormorant-garamond text-[3.33vw] lg:text-[1.19vw] text-white mt-[6.8vw] lg:mt-[2.1vw]"
+        >
+          {attendStatus === 1 ? (
+            "CONFIRM ATTEND"
+          ) : attendStatus === 2 ? (
+            <>
+              CONFIRM UNABLE <br />
+              TO ATTEND
+            </>
+          ) : (
+            "CONFIRM"
+          )}
+        </motion.button>
         <motion.p
           variants={fadeUp}
           initial="hidden"
