@@ -31,14 +31,9 @@ const Wishes = () => {
   return (
     <section
       id="wishes"
-      className="relative w-full flex flex-col items-center py-[16vw] lg:py-[12.3vw]"
+      className="relative w-full flex flex-col items-center py-[16vw] lg:py-[12.15vw]"
     >
-      <motion.div
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
+      <div
         className="relative w-[100%] lg:w-[66%]"
       >
         <Image
@@ -56,7 +51,7 @@ const Wishes = () => {
           className="w-full h-auto hidden lg:block"
         />
 
-        <div className="absolute inset-0 flex flex-col items-center mt-[34.5vw] lg:mt-[16vw] ml-[1vw] lg:-ml-[0.2vw]">
+        <div className="absolute inset-0 flex flex-col items-center mt-[34.5vw] lg:mt-[15.98vw] ml-[1vw] lg:-ml-[0.2vw]">
           <motion.h1
             variants={fadeUp}
             initial="hidden"
@@ -92,7 +87,7 @@ const Wishes = () => {
               value={pesan}
               placeholder="Leave your wishes here."
               onChange={(e) => setPesan(e.target.value)}
-              className="w-full text-[#021125] font-cormorant-garamond bg-transparent text-[3.59vw] lg:text-[1.59vw] border-[0.5px] border-[#021125] px-[3.08vw] py-[1.54vw] lg:py-[0.86vw] lg:px-[1.35vw] h-[15.38vw] lg:h-[13.03vw] rounded-[1.54vw] lg:rounded-[1.32vw] outline-none placeholder:text-[#021125]/30 resize-none"
+              className="w-full text-[#021125] font-cormorant-garamond bg-transparent text-[3.59vw] lg:text-[1.59vw] border-[0.5px] border-[#021125] px-[3.08vw] py-[1.54vw] lg:py-[0.8vw] lg:px-[1.35vw] h-[15.38vw] lg:h-[13.03vw] rounded-[1.54vw] lg:rounded-[1.32vw] outline-none placeholder:text-[#021125]/30 resize-none"
             />
 
             <motion.button
@@ -130,7 +125,7 @@ const Wishes = () => {
                 <div className="px-[3.08vw] lg:px-[1.35vw] py-[5.5vw] lg:py-[1.46vw]">
                   {pesanList.map((item, index, array) => (
                     <div key={item.id}>
-                      <p className="text-[#021125] font-cormorant-garamond text-[3.59vw] lg:text-[1.59vw] font-bold mb-[1.03vw] lg:mb-[1.06vw]">
+                      <p className="text-[#021125] font-cormorant-garamond text-[3.59vw] lg:text-[1.59vw] font-bold mb-[0.4vw] lg:mb-[0.2vw]">
                         {item.nama}
                       </p>
 
@@ -139,7 +134,7 @@ const Wishes = () => {
                       </p>
 
                       {index !== array.length - 1 && (
-                        <div className="border-t-[0.03vw] border-[#021125] mt-[2.56vw] lg:mt-[0.50vw] mb-[3.08vw] lg:mb-[1.26vw]" />
+                        <div className="border-t-[0.03vw] border-[#021125] mt-[2.95vw] lg:mt-[0.50vw] mb-[3.08vw] lg:mb-[1.26vw]" />
                       )}
                     </div>
                   ))}
@@ -224,7 +219,7 @@ const Wishes = () => {
             </motion.button>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {notifType && (
         <NotifModal type={notifType} onClose={() => setNotifType("")} />

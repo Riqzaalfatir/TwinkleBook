@@ -32,29 +32,30 @@ const DavidNatasha = () => {
   const { loaded, progress } = usePreloader({ dynamicImages });
 
   return (
-    <div
-      className={`relative bg-[url('/images/David-Natasha/Kertas.svg')] bg-repeat-y bg-top [background-size:100%_auto] ${cormorantGaramond.variable} ${timesNewRomanBold.variable} ${garamond.variable} ${costaRica.variable} ${slight.variable} ${sackersItalicScript.variable}`}
-    >
-      <Header />
-      <Hero start={start} />
-      <Profile />
-      <Countdown />
-      <EventOrder />
-      <Gallery />
-      <Rsvp />
-      <Gift />
-      <Wishes />
-      <Thankyou />
+   <div
+  className={`relative bg-[url('/images/David-Natasha/Kertas.webp')] bg-top [background-size:100%_auto] ${cormorantGaramond.variable} ${timesNewRomanBold.variable} ${garamond.variable} ${costaRica.variable} ${slight.variable} ${sackersItalicScript.variable}`}
+>
+  <div className="absolute inset-0 bg-white/60 pointer-events-none" />
 
-      {!start && loaded && <Opening setStart={setStart} />}
+  <div className="relative z-10">
+    <Header />
+    <Hero start={start} />
+    <Profile />
+    <Countdown />
+    <EventOrder />
+    <Gallery />
+    <Rsvp />
+    <Gift />
+    <Wishes />
+    <Thankyou />
+  </div>
 
-      {showLoading && (
-        <LoadingScreen
-          progress={progress}
-          onDone={() => setShowLoading(false)}
-        />
-      )}
-    </div>
+  {!start && loaded && <Opening setStart={setStart} />}
+
+  {showLoading && (
+    <LoadingScreen progress={progress} onDone={() => setShowLoading(false)} />
+  )}
+</div>
   );
 };
 

@@ -11,7 +11,7 @@ const CountdownSection = () => {
   return (
     <section
       id="countdown"
-      className="relative w-full bg-[#080225] flex flex-col items-center pt-[9vw] lg:pt-[3.5vw] pb-[10vw] lg:pb-[4vw] z-30"
+      className="relative w-full bg-[#080225] flex flex-col items-center pt-[8.9vw] lg:pt-[3.5vw] pb-[10vw] lg:pb-[3.95vw] z-30"
     >
       <motion.h2
         variants={fadeUp}
@@ -35,7 +35,7 @@ const CountdownSection = () => {
           ];
 
           return (
-            <div className="flex flex-row items-center gap-[3.84vw] lg:gap-[1.6vw] mt-[5vw] lg:mt-[1.45vw]">
+            <div className="flex flex-row items-center gap-[3.84vw] lg:gap-[1.7vw] mt-[5vw] lg:mt-[1.45vw]">
               {items.map((item, index) => (
                 <motion.div
                   key={item.label}

@@ -96,38 +96,38 @@ const Opening = ({
               />
             </div>
 
-            <div className="relative z-20 flex flex-col items-center text-center px-[10px] pt-[46px] lg:pt-[58px] pb-[50px] lg:pb-[65px] overflow-hidden">
+            <div className="relative z-20 flex flex-col items-center text-center pt-[48px] lg:pt-[58px] pb-[51px] lg:pb-[65px] overflow-hidden">
               <Image
                 src="/images/David-Natasha/Opening/AsetAtasM.webp"
                 alt="flower decoration"
                 width={450}
                 height={450}
-                className="absolute top-0 left-0 w-[123px] h-auto pointer-events-none z-0"
+                className="absolute top-0 left-0 w-[125px] lg:w-[160px] h-auto pointer-events-none z-0"
               />
               <Image
                 src="/images/David-Natasha/Opening/AsetBawahM.webp"
                 alt="flower decoration"
                 width={450}
                 height={450}
-                className="absolute bottom-0 right-0 w-[123px] h-auto pointer-events-none z-0"
+                className="absolute bottom-0 right-0 w-[125px] lg:w-[145px] h-auto pointer-events-none z-0"
               />
 
               <p className="relative z-10 font-cormorant-garamond text-[12px] lg:text-[18px] text-[#021125] uppercase">
                 The Wedding of
               </p>
 
-              <h1 className="relative z-10 font-sackers-italic-script text-[40px] lg:text-[56px] text-[#021125] leading-none break-words max-w-[280px]">
+              <h1 className="relative z-10 font-sackers-italic-script text-[40px] lg:text-[56px] text-[#021125] leading-none break-words max-w-[280px] lg:max-w-[320px] -mt-[1.5px] lg:-mt-[2.5px]">
                 {groomName} & {brideName}
               </h1>
 
               <p className="relative z-10 font-cormorant-garamond text-[12px] lg:text-[20px] text-[#021125] pt-[7.5px]">
                 Dear,
               </p>
-              <p className="relative z-10 font-cormorant-garamond text-[16px] lg:text-[24px] text-[#021125] pt-[4px] break-words max-w-[250px]">
+              <p className="relative z-10 font-cormorant-garamond text-[16px] lg:text-[24px] text-[#021125] pt-[2px] lg:pt-[0px] lg:-mt-[5px] break-words max-w-[250px]">
                 {namaTamu}
               </p>
 
-              <p className="relative z-10 font-cormorant-garamond text-[10px] lg:text-[16px] text-[#021125] leading-[13px] pt-[19px]">
+              <p className="relative z-10 font-cormorant-garamond text-[10px] lg:text-[16px] text-[#021125] leading-[13px] lg:leading-[16px] pt-[19px] lg:pt-[18px]">
                 We sincerely apologize
                 <br />
                 for any misspelling of names or titles.

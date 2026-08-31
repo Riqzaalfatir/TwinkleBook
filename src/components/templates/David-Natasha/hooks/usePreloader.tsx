@@ -7,18 +7,36 @@ const BREAKPOINT = 1024;
 const IMAGES_MOBILE: string[] = [
   "/images/David-Natasha/Opening/DNMobile.webp",
   "/images/David-Natasha/Profile/temp2.webp",
+  "/images/David-Natasha/Hero/DNBackground.webp",
+  "/images/David-Natasha/EventOrder/BungaAtasA.webp",
+  "/images/David-Natasha/EventOrder/AsetBawahM.webp",
+  "/images/David-Natasha/Rsvp/AsetAtasM.webp",
+  "/images/David-Natasha/Rsvp/AsetTengahM.webp",
+  "/images/David-Natasha/Wishes/Frameee.webp",
+  "/images/David-Natasha/Thankyou/AsetAtasM.webp",
+  "/images/David-Natasha/Thankyou/AsetBawahM.webp",
 ];
 
 const IMAGES_DESKTOP: string[] = [
   "/images/David-Natasha/Opening/OpeningD.webp",
   "/images/David-Natasha/Profile/temp3.webp",
-  "/images/David-Natasha/Wishes/Frameee.webp",
-  "/images/David-Natasha/Wishes/FrameD.webp"
+  "/images/David-Natasha/Wishes/FrameD.webp",
+  "/images/David-Natasha/Hero/DNBackgroundD.webp",
+  "/images/David-Natasha/EventOrder/BungaAtasD.webp",
+  "/images/David-Natasha/EventOrder/AsetBawahD.webp",
+  "/images/David-Natasha/Rsvp/AsetAtasG.webp",
+  "/images/David-Natasha/Rsvp/AsetTengahG.webp",
+  "/images/David-Natasha/Thankyou/AsetAtasD.webp",
+  "/images/David-Natasha/Thankyou/AsetBawahD.webp",
 ];
 
 const IMAGES_COMMON: string[] = [
+  "/images/David-Natasha/Kertas.webp",
   "/images/David-Natasha/Opening/AsetAtasM.webp",
-  "/images/David-Natasha/Opening/AsetBawahM.webp"
+  "/images/David-Natasha/Opening/AsetBawahM.webp",
+  "/images/David-Natasha/Hero/DNLOGOO.webp",
+  "/images/David-Natasha/EventOrder/GIIDago.webp",
+  "/images/David-Natasha/EventOrder/Intercontinental.webp",
 ];
 
 interface UsePreloaderOptions {

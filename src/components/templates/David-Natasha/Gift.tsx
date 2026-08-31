@@ -52,14 +52,18 @@ const Gift = () => {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="font-cormorant-garamond text-[3.85vw] lg:text-[1.59vw] text-[#021125] mt-[7.2vw] lg:mt-[2.7vw] leading-normal lg:leading-[2vw]"
+          className="font-cormorant-garamond text-[3.85vw] lg:text-[1.59vw] text-[#021125] mt-[7vw] lg:mt-[2.8vw] leading-[4.4vw] lg:leading-[2vw]"
         >
-          Your presence and prayers are the greatest blessing to us. <br />
-          Should you wish to send a gift, the details are provided <br />
-          below for your convenience.
+          Your presence and prayers <br />
+          are the greatest blessing to us. <br />
+          <p className="pt-[5.2vw] lg:pt-[1.5vw]">
+            Should you wish to honor us with a gift, <br />
+            please find the details below <br />
+            for your convenience.
+          </p>
         </motion.p>
 
-        <div className="w-full max-w-[72.82vw] lg:max-w-[31.5vw] flex flex-col gap-[5.90vw] lg:gap-[1.7vw] mt-[11vw] lg:mt-[4.75vw]">
+        <div className="w-full max-w-[72.82vw] lg:max-w-[31.5vw] flex flex-col gap-[5.90vw] lg:gap-[1.7vw] mt-[11.5vw] lg:mt-[4.78vw]">
           {gifts.map((gift, index) => {
             const icon = BANK_ICONS[gift.bank];
 
@@ -88,7 +92,7 @@ const Gift = () => {
                   />
                 </div>
 
-                <div className="text-left ml-[3.59vw] lg:ml-[2.9vw] leading-[3.85vw] lg:leading-[1.5vw] flex-1 min-w-0">
+                <div className="text-left ml-[3.85vw] lg:ml-[2.9vw] leading-[3.85vw] lg:leading-[1.7vw] flex-1 min-w-0">
                   <p
                     className=" font-garamond text-[3.08vw] lg:text-[1.32vw] text-[#021125]"
                     style={{ WebkitTextStroke: "0.11px #021125" }}
@@ -111,7 +115,7 @@ const Gift = () => {
 
                 <button
                   onClick={() => handleCopy(gift.number, index)}
-                  className="font-times-new-roman-bold text-[3.08vw] lg:text-[1.32vw] text-[#021125] mr-[2.05vw] lg:mr-[0.39vw] font-bold flex-shrink-0"
+                  className="font-times-new-roman-bold text-[3.08vw] lg:text-[1.32vw] text-[#021125] mr-[1.5vw] lg:mr-[0.39vw] font-bold flex-shrink-0"
                   style={{ WebkitTextStroke: "0.11px #021125" }}
                 >
                   {copiedIndex === index ? "Copied!" : "Copy"}

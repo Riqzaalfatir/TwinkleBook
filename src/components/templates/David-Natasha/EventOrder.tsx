@@ -11,26 +11,33 @@ const EventOrder = () => {
         alt="flower decoration"
         width={500}
         height={500}
-        className="absolute -top-[0vw] -left-[0vw] w-[71vw] lg:w-[41vw] h-auto pointer-events-none z-20"
+        className="absolute -top-[0vw] -left-[0vw] w-[71vw] h-auto pointer-events-none z-20 lg:hidden"
+      />
+      <Image
+        src="/images/David-Natasha/EventOrder/BungaAtasD.webp"
+        alt="flower decoration"
+        width={500}
+        height={500}
+        className="absolute -top-[0vw] -left-[0vw] w-[44vw] h-auto pointer-events-none z-20 hidden lg:block"
       />
 
-      {/* <Image
+      <Image
         src="/images/David-Natasha/EventOrder/AsetBawahM.webp"
         alt="flower decoration"
         width={650}
         height={650}
-        className="absolute -bottom-[0vw] -right-[0vw] w-[73vw] lg:w-[41vw] h-auto pointer-events-none z-20"
-      /> */}
+        className="absolute -bottom-[0vw] -right-[0vw] w-[73vw] h-auto pointer-events-none z-20 lg:hidden"
+      />
 
       <Image
         src="/images/David-Natasha/EventOrder/AsetBawahD.webp"
         alt="flower decoration"
         width={650}
         height={650}
-        className="absolute -bottom-[0vw] -right-[0vw] w-[73vw] lg:w-[31.9vw] h-auto pointer-events-none z-20"
+        className="absolute -bottom-[0vw] -right-[0vw] w-[33vw] h-auto pointer-events-none z-20 hidden lg:block"
       />
 
-      <div className="relative z-[15] flex flex-col items-center text-center pt-[22.4vw] lg:pt-[8.1vw] pb-[29.49vw] lg:pb-[8.1vw]">
+      <div className="relative z-[15] flex flex-col items-center text-center pt-[22.4vw] lg:pt-[8.15vw] pb-[29.45vw] lg:pb-[9.5vw]">
         <motion.h1
           variants={fadeUp}
           initial="hidden"
@@ -43,7 +50,7 @@ const EventOrder = () => {
           Event Detail
         </motion.h1>
 
-        <div className="flex flex-col items-center justify-center leading-none mt-[4.5vw] lg:mt-[1.35vw]">
+        <div className="flex flex-col items-center justify-center leading-none mt-[5.6vw] lg:mt-[1.35vw]">
           <motion.div
             variants={fadeUp}
             initial="hidden"
@@ -54,9 +61,9 @@ const EventOrder = () => {
             <Image
               src="/images/David-Natasha/EventOrder/GIIDago.webp"
               alt="GII HOK IM TONG Dago"
-              width={650}
-              height={650}
-              className="w-[67.69vw] lg:w-[32.2vw] h-auto"
+              width={750}
+              height={750}
+              className="w-[88vw] lg:w-[32.2vw] h-auto"
             />
           </motion.div>
 
@@ -66,7 +73,7 @@ const EventOrder = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-cormorant-garamond text-[5.13vw] lg:text-[1.98vw] font-bold text-[#021125] tracking-wide mt-[10.26vw] lg:mt-[2.75vw]"
+            className="font-cormorant-garamond text-[5.13vw] lg:text-[1.98vw] font-bold text-[#021125] tracking-wide mt-[11.2vw] lg:mt-[2.75vw]"
           >
             HOLY MATRIMONY
           </motion.h2>
@@ -88,7 +95,7 @@ const EventOrder = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-cormorant-garamond text-[3.85vw] lg:text-[1.98vw] font-bold text-[#021125] mt-[6.1vw] lg:mt-[1.89vw] leading-[5.13vw] lg:leading-[1.98vw]"
+            className="font-cormorant-garamond text-[3.85vw] lg:text-[1.98vw] font-bold text-[#021125] mt-[5.3vw] lg:mt-[1.89vw] leading-[5.13vw] lg:leading-[1.98vw]"
           >
             GII HOK IM TONG - DAGO
           </motion.p>
@@ -113,13 +120,13 @@ const EventOrder = () => {
             href="https://maps.app.goo.gl/4E2uyDg52DDiW5hn7"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-[6.1vw] lg:mt-[0.9vw] w-[41.03vw] lg:w-[10.58vw] h-[7.69vw] lg:h-[1.98vw] bg-[#021125] text-white text-[3.59vw] lg:text-[0.93vw] tracking-wide font-medium rounded-[1.54vw] lg:rounded-[0.40vw] font-cormorant-garamond flex items-center justify-center"
+            className="mt-[5.5vw] lg:mt-[0.9vw] w-[41.03vw] lg:w-[10.58vw] h-[7.69vw] lg:h-[1.98vw] bg-[#021125] text-white text-[3.59vw] lg:text-[0.93vw] tracking-wide font-medium rounded-[1.54vw] lg:rounded-[0.40vw] font-cormorant-garamond flex items-center justify-center"
           >
             GOOGLE MAPS
           </motion.a>
         </div>
 
-        <div className="flex flex-col items-center justify-center leading-none mt-[13.08vw] lg:mt-[7.15vw]">
+        <div className="flex flex-col items-center justify-center leading-none mt-[18.2vw] lg:mt-[7.15vw]">
           <motion.div
             variants={fadeUp}
             initial="hidden"
@@ -132,7 +139,7 @@ const EventOrder = () => {
               alt="Intercontinental Bandung Dago Pakar"
               width={550}
               height={550}
-              className="w-[67.69vw] lg:w-[32.2vw] h-auto"
+              className="w-[88vw] lg:w-[32.2vw] h-auto"
             />
           </motion.div>
 
@@ -142,7 +149,7 @@ const EventOrder = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-cormorant-garamond text-[5.13vw] lg:text-[1.98vw] font-bold text-[#021125] mt-[10.26vw] lg:mt-[2.75vw]"
+            className="font-cormorant-garamond text-[5.13vw] lg:text-[1.98vw] font-bold text-[#021125] mt-[11.2vw] lg:mt-[2.75vw]"
           >
             WEDDING RECEPTION
           </motion.h2>
@@ -164,7 +171,7 @@ const EventOrder = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-cormorant-garamond text-[3.85vw] lg:text-[1.98vw] font-bold text-[#021125] mt-[6.1vw] leading-[5.13vw] lg:leading-[1.98vw] lg:mt-[1.98vw]"
+            className="font-cormorant-garamond text-[3.85vw] lg:text-[1.98vw] font-bold text-[#021125] mt-[5.3vw] leading-[5.13vw] lg:leading-[1.98vw] lg:mt-[1.98vw]"
           >
             INTERCONTINENTAL BANDUNG <br className="lg:hidden" />
             DAGO PAKAR
@@ -192,7 +199,7 @@ const EventOrder = () => {
             href="https://maps.app.goo.gl/QPdiNEsZX5cvHibA8"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-[6.1vw] lg:mt-[0.9vw] w-[41.03vw] lg:w-[10.58vw] h-[7.69vw] lg:h-[1.98vw] bg-[#021125] text-white text-[3.59vw] lg:text-[0.93vw] font-medium tracking-wide rounded-[1.54vw] lg:rounded-[0.40vw] font-cormorant-garamond flex items-center justify-center"
+            className="mt-[5.5vw] lg:mt-[0.9vw] w-[41.03vw] lg:w-[10.58vw] h-[7.69vw] lg:h-[1.98vw] bg-[#021125] text-white text-[3.59vw] lg:text-[0.93vw] font-medium tracking-wide rounded-[1.54vw] lg:rounded-[0.40vw] font-cormorant-garamond flex items-center justify-center"
           >
             GOOGLE MAPS
           </motion.a>

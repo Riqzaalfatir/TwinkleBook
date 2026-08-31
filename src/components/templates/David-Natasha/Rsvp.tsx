@@ -51,18 +51,32 @@ const Rsvp = () => {
   return (
     <section id="rsvp" className="relative w-full  z-10">
       <Image
+        src="/images/David-Natasha/Rsvp/AsetAtasM.webp"
+        alt="flower decoration"
+        width={450}
+        height={450}
+        className="absolute -top-[0vw] -left-[0vw] w-[84vw] h-auto pointer-events-none z-20 lg:hidden"
+      />
+      <Image
+        src="/images/David-Natasha/Rsvp/AsetTengahM.webp"
+        alt="flower decoration"
+        width={450}
+        height={450}
+        className="absolute -bottom-[56vw] -right-[0vw] w-[26vw] h-auto pointer-events-none z-20 lg:hidden"
+      />
+      <Image
         src="/images/David-Natasha/Rsvp/AsetAtasG.webp"
         alt="flower decoration"
         width={450}
         height={450}
-        className="absolute -top-[0vw] -left-[0vw] w-[84vw] lg:w-[37.2vw] h-auto pointer-events-none z-20"
+        className="absolute -top-[0vw] -left-[0vw] w-[37.2vw] h-auto pointer-events-none z-20 hidden lg:block"
       />
       <Image
         src="/images/David-Natasha/Rsvp/AsetTengahG.webp"
         alt="flower decoration"
         width={450}
         height={450}
-        className="absolute -bottom-[56vw] lg:-bottom-[18.5vw] -right-[0vw] w-[26vw] lg:w-[17.8vw] h-auto pointer-events-none z-20"
+        className="absolute lg:-bottom-[18.5vw] -right-[0vw] w-[17.8vw] h-auto pointer-events-none z-20 hidden lg:block"
       />
       <div className="relative z-[15] flex flex-col items-center text-center leading-none pt-[25.4vw] lg:pt-[9.54vw] pb-[15.38vw] lg:pb-[14.4vw] px-[6.15vw] lg:px-[0vw]">
         <motion.h1
@@ -82,7 +96,7 @@ const Rsvp = () => {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="font-cormorant-garamond text-[3.85vw] lg:text-[1.59vw] text-[#021125] mt-[8.2vw] lg:mt-[2.9vw]"
+          className="font-cormorant-garamond text-[3.85vw] lg:text-[1.59vw] text-[#021125] mt-[8.2vw] lg:mt-[2.9vw] tracking-wide"
         >
           Dear Mr./Mrs./Ms.
         </motion.p>
@@ -105,9 +119,9 @@ const Rsvp = () => {
           className="font-cormorant-garamond text-[3.33vw] lg:text-[1.59vw] text-[#021125] mt-[8.46vw] leading-[5vw] lg:leading-[1.8vw] lg:mt-[2.1vw]"
         >
           Kindly confirm your attendance before <br />
-          11 June 2026
+          [Due Date]
         </motion.p>
-        <div className="flex items-center justify-center gap-[5.13vw] lg:gap-[1.90vw] mt-[8.3vw] lg:mt-[2.2vw]">
+        <div className="flex items-center justify-center gap-[5.13vw] lg:gap-[1.90vw] mt-[8.3vw] lg:mt-[2.3vw]">
           <motion.button
             variants={fadeRight}
             initial="hidden"
@@ -162,7 +176,7 @@ const Rsvp = () => {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="font-cormorant-garamond text-[2.82vw] lg:text-[1.59vw] text-[#021125] mt-[8.7vw] lg:mt-[4.10vw] leading-[3.8vw] lg:leading-[1.98vw]"
+          className="font-cormorant-garamond text-[2.82vw] lg:text-[1.59vw] text-[#021125] mt-[8.7vw] lg:mt-[4.05vw] leading-[3.8vw] lg:leading-[1.98vw]"
         >
           If you need assistance with your RSVP, <br />
           please contact our support team.

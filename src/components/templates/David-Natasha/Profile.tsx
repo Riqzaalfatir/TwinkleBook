@@ -7,14 +7,9 @@ const Profile = () => {
   return (
     <section
       id="profile"
-      className="relative w-full flex flex-col items-center py-[8.8vw] lg:py-[3.97vw]"
+      className="relative w-full flex flex-col items-center py-[8.75vw] lg:py-[3.97vw]"
     >
-      <motion.div
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
+      <div
         className="relative w-[100%] lg:w-[66%]"
       >
         <Image
@@ -32,7 +27,7 @@ const Profile = () => {
           className="w-full h-auto hidden lg:block"
         />
 
-        <div className="absolute inset-0 flex flex-col items-center text-center mt-[34.4vw] lg:mt-[18.7vw]">
+        <div className="absolute inset-0 flex flex-col items-center text-center mt-[34.35vw] lg:mt-[18.7vw]">
           <motion.p
             variants={fadeUp}
             initial="hidden"
@@ -50,7 +45,7 @@ const Profile = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-cormorant-garamond text-[4.10vw] lg:text-[1.59vw] font-semibold text-[#021125] mt-[6.5vw] lg:mt-[3.57vw] leading-[4.93vw] lg:leading-[1.8vw]"
+            className="font-cormorant-garamond text-[4.10vw] lg:text-[1.59vw] font-semibold text-[#021125] mt-[6.5vw] lg:mt-[3.7vw] leading-[4.93vw] lg:leading-[1.8vw]"
           >
             Mr. Andy Solaiman Susetio and
             <br />
@@ -140,14 +135,14 @@ const Profile = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-cormorant-garamond text-[4.10vw] text-[#021125] lg:text-[1.59vw] mt-[9.5vw] lg:mt-[6.1vw] leading-[4.93vw] lg:leading-[1.95vw]"
+            className="font-cormorant-garamond text-[4.10vw] text-[#021125] lg:text-[1.59vw] mt-[9.52vw] lg:mt-[5.9vw] leading-[4.85vw] lg:leading-[1.95vw]"
           >
             Our joy will be complete with
             <br />
             your presence and blessings.
           </motion.p>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };

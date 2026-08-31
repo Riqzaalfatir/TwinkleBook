@@ -11,7 +11,7 @@ const Thankyou = () => {
         alt="flower decoration"
         width={950}
         height={950}
-        className="absolute -top-[0vw] -left-[0vw] w-[45.5vw] h-auto pointer-events-none z-20 lg:hidden"
+        className="absolute -top-[2vw] -left-[0vw] w-[45.5vw] h-auto pointer-events-none z-20 lg:hidden"
       />
 
       <Image
@@ -55,7 +55,7 @@ const Thankyou = () => {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="font-cormorant-garamond text-[3.59vw] lg:text-[1.59vw] text-[#021125] mt-[3.8vw] lg:mt-[1.5vw] leading-[5.13vw] lg:leading-[2vw]"
+          className="font-cormorant-garamond text-[3.59vw] lg:text-[1.59vw] text-[#021125] mt-[4vw] lg:mt-[1.5vw] leading-[4.5vw] lg:leading-[2vw]"
         >
           for being part of this golden celebration. <br />
           We look forward to celebrating this special <br />
