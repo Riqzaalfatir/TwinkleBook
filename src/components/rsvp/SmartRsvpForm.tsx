@@ -68,7 +68,7 @@ export const SmartRsvpForm = ({
 
   const mockValue: SmartRsvpContextType = {
     guestData: {
-      name: guestDataProp?.name ?? "Sela (Tester)", 
+      name: guestDataProp?.name ?? "[Guest Name]", 
       closeRSVPDate: guestDataProp?.closeRSVPDate ?? "2026-09-12T00:00:00.000Z", 
     },
     attendStatus,
