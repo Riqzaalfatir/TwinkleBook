@@ -85,8 +85,8 @@ const DavidNatasha = ({
         <Countdown data={data} />
         <EventOrder data={data} />
         <Gallery data={data} />
-        {/* <Rsvp data={data} guestData={eventGuestByPin} /> */}
-        <Rsvp />
+        <Rsvp data={data} guestData={eventGuestByPin} />
+        {/* <Rsvp /> */}
         <Gift data={data} />
         <Wishes data={data} guestData={eventGuestByPin} />
         <Thankyou data={data} />

@@ -73,7 +73,7 @@ const Profile = ({ data }: ProfileProps) => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-cormorant-garamond text-[4.10vw] lg:text-[1.59vw] font-semibold text-[#021125] mt-[6.5vw] lg:mt-[3.7vw] leading-[4.93vw] lg:leading-[1.8vw]"
+            className="font-cormorant-garamond text-[4.10vw] lg:text-[1.59vw] font-semibold text-[#021125] mt-[6.5vw] lg:mt-[3.7vw] leading-[4.93vw] lg:leading-[1.8vw] max-w-[70vw] lg:max-w-[35vw] break-words"
           >
             {splitParentName(groomParent)}
           </motion.p>
@@ -95,7 +95,7 @@ const Profile = ({ data }: ProfileProps) => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-cormorant-garamond text-[4.10vw] lg:text-[1.59vw] font-semibold text-[#021125] leading-[4.93vw] lg:leading-[1.98vw]"
+            className="font-cormorant-garamond text-[4.10vw] lg:text-[1.59vw] font-semibold text-[#021125] leading-[4.93vw] lg:leading-[1.98vw] max-w-[70vw] lg:max-w-[35vw] break-words"
           >
             {splitParentName(brideParent)}
           </motion.p>
@@ -295,7 +295,7 @@ export default Profile;
 //             whileInView="show"
 //             viewport={{ once: true, amount: 0.3 }}
 //             transition={{ duration: 1.5, ease: "easeOut" }}
-//             className="font-sackers-italic-script text-[10.26vw] lg:text-[6.35vw] leading-[8.62vw] lg:leading-[4.6vw] text-[#021125] mt-[2.4vw] 
+//             className="font-sackers-italic-script text-[10.26vw] lg:text-[6.35vw] leading-[8.62vw] lg:leading-[4.6vw] text-[#021125] mt-[2.4vw]
 //             lg:mt-[3vw] [--stroke-w:0.3px] lg:[--stroke-w:0.64px]"
 //             style={{ WebkitTextStroke: "var(--stroke-w) #021125" }}
 //           >
@@ -321,4 +321,3 @@ export default Profile;
 // };
 
 // export default Profile;
-

@@ -81,13 +81,14 @@ const Thankyou = ({ data }: ThankyouProps) => {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
+          className="mt-[59vw] lg:mt-[15.3vw] mb-[25.38vw] lg:mb-[10.16vw]"
         >
           <Image
             src="/images/David-Natasha/Thankyou/Provite.webp"
             alt="Provite"
             width={250}
             height={250}
-            className="w-[22.82vw] lg:w-[7.41vw] h-auto mt-[59vw] lg:mt-[15.3vw] mb-[25.38vw] lg:mb-[10.16vw]"
+            className="w-[22.82vw] lg:w-[7.41vw] h-auto"
           />
         </motion.div>
       </div>

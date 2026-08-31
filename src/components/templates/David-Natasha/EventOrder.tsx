@@ -160,8 +160,7 @@ const EventOrder = ({ data }: EventOrderProps) => {
   const holyTitle =
     holyMatrimony?.addressName?.trim().toUpperCase() || holyDummy.addressName;
   const receptionTitle =
-    reception?.addressName?.trim().toUpperCase() ||
-    receptionDummy.addressName;
+    reception?.addressName?.trim().toUpperCase() || receptionDummy.addressName;
 
   const holyAddress = resolveAddress(holyMatrimony?.address, holyDummy.address);
   const receptionAddress = resolveAddress(
@@ -451,7 +450,6 @@ const EventOrder = ({ data }: EventOrderProps) => {
 };
 
 export default EventOrder;
-
 
 // SEBELUM DI DINAMISKAN
 // import React from "react";
