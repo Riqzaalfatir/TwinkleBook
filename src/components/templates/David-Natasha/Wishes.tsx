@@ -16,8 +16,9 @@ const Wishes = () => {
   const [selectedMessage, setSelectedMessage] = useState<PesanItem | null>(
     null,
   );
+  const [showPopup, setShowPopup] = useState<boolean>(false);
 
-  const [pesanList] = useState<PesanItem[]>(dummyPesan);
+  const [pesanList, setPesanList] = useState<PesanItem[]>(dummyPesan);
 
   const handleSubmit = () => {
     if (!nama.trim() || !pesan.trim()) {
@@ -25,7 +26,16 @@ const Wishes = () => {
       return;
     }
 
-    console.log("Kirim:", nama, pesan);
+    const newItem: PesanItem = {
+      id: Date.now(),
+      nama: nama.trim(),
+      pesan: pesan.trim(),
+    };
+
+    setPesanList((prev) => [newItem, ...prev]);
+    setNama("");
+    setPesan("");
+    setShowPopup(true);
   };
 
   return (
@@ -221,6 +231,57 @@ const Wishes = () => {
         </div>
       </div>
 
+      {/* POPUP KETIKA PESAN BERHASIL DIKIRIM — elemen baru, tidak menyentuh desain lain */}
+      <AnimatePresence>
+        {showPopup && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50 px-6"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, y: 12 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 12 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="relative bg-white rounded-[16px] w-[300px] text-center shadow-2xl overflow-hidden"
+            >
+              <div className="absolute top-0 left-0 right-0 h-[4px] bg-[#021125]" />
+
+              <div className="px-[28px] pb-[38px] pt-[42px]">
+                <h3 className="font-sackers-italic-script text-[50px] lg:text-[55px] text-[#021125] leading-none">
+                  Thank You
+                </h3>
+
+                <p className="font-cormorant-garamond font-bold text-[12px] text-[#021125]/70 tracking-[0.15em] uppercase mt-[15px]">
+                  Message Sent
+                </p>
+
+                <div className="w-[36px] h-[1px] bg-[#021125]/60 mx-auto my-[18px]" />
+
+                <p className="font-cormorant-garamond text-[13px] text-[#021125]/80 leading-[20px]">
+                  Thank you for your warm wishes and prayers.
+                  <br />
+                  We truly appreciate your message.
+                </p>
+
+                <button
+                  type="button"
+                  onClick={() => setShowPopup(false)}
+                  className="w-[140px] h-[36px] mt-[26px] bg-[#021125] text-white font-cormorant-garamond text-[11px] tracking-[0.1em] uppercase rounded-[71px] transition-colors duration-300 hover:bg-[#0a1f3d]"
+                >
+                  Close
+                </button>
+              </div>
+
+              <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-[#021125]" />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {notifType && (
         <NotifModal type={notifType} onClose={() => setNotifType("")} />
       )}
@@ -238,7 +299,6 @@ const Wishes = () => {
 };
 
 export default Wishes;
-
 // UKURAN SEBELUM DI VW KAN
 // "use client";
 

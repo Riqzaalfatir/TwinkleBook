@@ -54,16 +54,17 @@ const Gift = () => {
           transition={{ duration: 1.5, ease: "easeOut" }}
           className="font-cormorant-garamond text-[3.85vw] lg:text-[1.59vw] text-[#021125] mt-[7vw] lg:mt-[2.8vw] leading-[4.4vw] lg:leading-[2vw]"
         >
-          Your presence and prayers <br />
-          are the greatest blessing to us. <br />
-          <p className="pt-[5.2vw] lg:pt-[1.5vw]">
+          Your presence and prayers <br className="lg:hidden" />
+          are the <br className="hidden lg:block" />
+          greatest blessing to us. <br />
+          <p className="pt-[5.2vw] lg:pt-[1.7vw]">
             Should you wish to honor us with a gift, <br />
-            please find the details below <br />
+            please find the details below <br className="lg:hidden" />
             for your convenience.
           </p>
         </motion.p>
 
-        <div className="w-full max-w-[72.82vw] lg:max-w-[31.5vw] flex flex-col gap-[5.90vw] lg:gap-[1.7vw] mt-[11.5vw] lg:mt-[4.78vw]">
+        <div className="w-full max-w-[72.82vw] lg:max-w-[31.5vw] flex flex-col gap-[5.90vw] lg:gap-[1.95vw] mt-[11.5vw] lg:mt-[4.78vw]">
           {gifts.map((gift, index) => {
             const icon = BANK_ICONS[gift.bank];
 

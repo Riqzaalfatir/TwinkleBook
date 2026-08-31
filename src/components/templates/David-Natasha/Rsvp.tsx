@@ -144,7 +144,7 @@ const Rsvp = () => {
             onClick={handleUnableClick}
             className={attendStatus === 2 ? activeClass : inactiveClass}
           >
-            UNABLE TO <br /> ATTEND
+            UNABLE TO <br className='lg:hidden' /> ATTEND
           </motion.button>
         </div>
         <motion.p
