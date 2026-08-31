@@ -54,7 +54,7 @@ const dataLocationDummy: LocationDummy[] = [
   {
     name: "WEDDING RECEPTION",
     address: "Jl. Imam Bonjol, Menteng, Central Jakarta",
-    addressName: "Mandarin Oriental Hotel",
+    addressName: "Ballroom",
     directMapURL: "https://maps.app.goo.gl/7rba66o67yTGGZUy7",
   },
 ];
