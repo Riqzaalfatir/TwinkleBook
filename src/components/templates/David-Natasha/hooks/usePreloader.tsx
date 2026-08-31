@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getGalleryPhotos } from "../../../lib/getGalleryPhotos";
+import { getGalleryPhotos } from "../../../../lib/getGalleryPhotos";
 
 const BREAKPOINT = 1024;
 
