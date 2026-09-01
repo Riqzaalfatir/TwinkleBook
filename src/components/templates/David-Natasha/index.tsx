@@ -78,7 +78,7 @@ const DavidNatasha = ({
 
       <div className="relative z-10">
         <Header />
-        <Hero start={start} data={data} />
+        {/* <Hero start={start} data={data} />
         <Profile data={data} />
         <Countdown data={data} />
         <EventOrder data={data} />
@@ -86,7 +86,7 @@ const DavidNatasha = ({
         <Rsvp data={data} guestData={eventGuestByPin} />
         <Gift data={data} />
         <Wishes data={data} guestData={eventGuestByPin} />
-        <Thankyou data={data} />
+        <Thankyou data={data} /> */}
       </div>
 
       {!start && loaded && (
@@ -99,11 +99,11 @@ const DavidNatasha = ({
         />
       )}
 
-      <PlaySongButton
+      {/* <PlaySongButton
         ref={playSongRef}
         src={backgroundSoundUrl}
         start={start}
-      />
+      /> */}
 
       {showLoading && (
         <LoadingScreen
