@@ -112,15 +112,10 @@ export function usePreloader({
   const [progress, setProgress] = useState(0);
   const [loaded, setLoaded] = useState(false);
 
-  const dynamicKey = dynamicImages.join(",");
-
   useEffect(() => {
     const cancelledRef = {
       current: false,
     };
-
-    setProgress(0);
-    setLoaded(false);
 
     const isDesktop = window.innerWidth >= BREAKPOINT;
 
@@ -146,9 +141,16 @@ export function usePreloader({
     console.log("[Preloader] Images:", imagesToLoad);
 
     if (total === 0) {
-      setProgress(100);
-      setLoaded(true);
-      return;
+      // Schedule state updates in a microtask to avoid cascading renders
+      queueMicrotask(() => {
+        if (!cancelledRef.current) {
+          setProgress(100);
+          setLoaded(true);
+        }
+      });
+      return () => {
+        cancelledRef.current = true;
+      };
     }
 
     let count = 0;
@@ -188,7 +190,7 @@ export function usePreloader({
     return () => {
       cancelledRef.current = true;
     };
-  }, [dynamicKey]);
+  }, [dynamicImages]);
 
   return {
     loaded,

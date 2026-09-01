@@ -66,7 +66,7 @@ const PlaySongButton = forwardRef<
           setIsPlaying(false);
         });
     }
-  }, [start]);
+  }, [start, src]);
 
   const toggleSong = () => {
     if (!audioRef.current) return;

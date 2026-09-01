@@ -30,17 +30,39 @@ import {
   timesNewRomanBold,
 } from "./fonts/fonts";
 
-type DavidNatashaProps = {
-  data?: any;
-  isPreview?: boolean;
-  dataValidation?: unknown;
-};
+interface ImageData {
+  id?: string;
+  filename?: string;
+  url: string;
+  type?: number;
+  parentId?: string;
+}
 
-const DavidNatasha = ({
-  data,
-  isPreview,
-  dataValidation,
-}: DavidNatashaProps) => {
+interface EventData {
+  groomName?: string;
+  brideName?: string;
+  date?: string;
+  [key: string]: unknown;
+}
+
+interface EventContent {
+  backgroundSoundData?: {
+    url: string;
+  };
+  popUpIconImageData?: ImageData | null;
+  [key: string]: unknown;
+}
+
+interface DavidNatashaProps {
+  data?: {
+    url?: string;
+    dataEvent?: EventData;
+    dataContent?: EventContent;
+    [key: string]: unknown;
+  };
+}
+
+const DavidNatasha = ({ data }: DavidNatashaProps) => {
   const [start, setStart] = useState<boolean>(false);
   const [showLoading, setShowLoading] = useState<boolean>(true);
 
@@ -195,7 +217,7 @@ const DavidNatasha = ({
       </div>
 
       {/* Opening Card */}
-      {/* {!start && loaded && (
+      {!start && loaded && (
         <Opening
           setStart={setStart}
           namaTamu={namaTamu}
@@ -206,16 +228,16 @@ const DavidNatasha = ({
               ?.popUpIconImageData
           }
         />
-      )} */}
+      )}
 
       {/* Background Music */}
-      {/* <PlaySongButton
+      <PlaySongButton
         src={backgroundSoundUrl}
         start={start}
-      /> */}
+      />
 
       {/* Loading */}
-      {/* {showLoading && (
+      {showLoading && (
         <LoadingScreen
           progress={progress}
           onDone={() =>
@@ -225,7 +247,7 @@ const DavidNatasha = ({
           brideName={brideName}
           eventDate={eventDate}
         />
-      )} */}
+      )}
     </div>
   );
 };
