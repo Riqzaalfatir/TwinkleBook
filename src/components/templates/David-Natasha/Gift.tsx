@@ -17,7 +17,7 @@ type GiftProps = {
 };
 
 const BANK_ICONS: Record<string, string> = {
-  BCA: "/images/David-Natasha/Gift/BCA.webp",
+  BCA: "/images/David-Natasha/Gift/BCA.avif",
 };
 
 const FALLBACK_GIFTS: Gift[] = [
@@ -122,7 +122,7 @@ const Gift = ({ data }: GiftProps) => {
           {gifts.map((gift, index) => {
             const icon =
               BANK_ICONS[gift.bank?.toUpperCase()] ??
-              "/images/David-Natasha/Gift/BCA.webp";
+              "/images/David-Natasha/Gift/BCA.avif";
 
             return (
               <motion.div
@@ -328,7 +328,7 @@ export default Gift;
 //               >
 //                 <div className="w-[8.72vw] lg:w-[2.8vw] flex-shrink-0 flex justify-center">
 //                   <Image
-//                     src={icon ?? "/images/David-Natasha/Gift/BCA.webp"}
+//                     src={icon ?? "/images/David-Natasha/Gift/BCA.avif"}
 //                     alt={gift.bank}
 //                     width={64}
 //                     height={64}

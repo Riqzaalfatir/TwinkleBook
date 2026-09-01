@@ -35,7 +35,7 @@ const DavidNatasha = ({
     <div
       className={`
         relative
-        bg-[url('/images/David-Natasha/Kertas.webp')]
+        bg-[url('/images/David-Natasha/Kertas.avif')]
         bg-top
         [background-size:100%_auto]
         ${cormorantGaramond.variable}
@@ -80,7 +80,7 @@ const DavidNatasha = ({
           data={data}
         />
 
-        {/* <Gallery
+        <Gallery
           data={data}
         />
 
@@ -100,7 +100,7 @@ const DavidNatasha = ({
 
         <Thankyou
           data={data}
-        /> */}
+        />
       </div>
 
       {/* ========================= */}

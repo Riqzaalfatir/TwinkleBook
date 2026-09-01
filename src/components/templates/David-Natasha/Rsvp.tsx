@@ -36,28 +36,28 @@ const RsvpSectionDesign = () => {
 
       <section id="rsvp" className="relative w-full  z-10">
         <Image
-          src="/images/David-Natasha/Rsvp/AsetAtasM.webp"
+          src="/images/David-Natasha/Rsvp/AsetAtasM.avif"
           alt="flower decoration"
           width={450}
           height={450}
           className="absolute -top-[0vw] -left-[0vw] w-[84vw] h-auto pointer-events-none z-20 lg:hidden"
         />
         <Image
-          src="/images/David-Natasha/Rsvp/AsetTengahM.webp"
+          src="/images/David-Natasha/Rsvp/AsetTengahM.avif"
           alt="flower decoration"
           width={450}
           height={450}
           className="absolute -bottom-[56vw] -right-[0vw] w-[26vw] h-auto pointer-events-none z-20 lg:hidden"
         />
         <Image
-          src="/images/David-Natasha/Rsvp/AsetAtasG.webp"
+          src="/images/David-Natasha/Rsvp/AsetAtasG.avif"
           alt="flower decoration"
           width={450}
           height={450}
           className="absolute -top-[0vw] -left-[0vw] w-[37.2vw] h-auto pointer-events-none z-20 hidden lg:block"
         />
         <Image
-          src="/images/David-Natasha/Rsvp/AsetTengahG.webp"
+          src="/images/David-Natasha/Rsvp/AsetTengahG.avif"
           alt="flower decoration"
           width={450}
           height={450}

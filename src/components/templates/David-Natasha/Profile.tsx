@@ -42,14 +42,14 @@ const Profile = ({ data }: ProfileProps) => {
     >
       <div className="relative w-[100%] lg:w-[66%]">
         <Image
-          src="/images/David-Natasha/Profile/temp2.webp"
+          src="/images/David-Natasha/Profile/temp2.avif"
           alt="Profile Frame"
           width={1554}
           height={4096}
           className="w-full h-auto lg:hidden"
         />
         <Image
-          src="/images/David-Natasha/Profile/temp3.webp"
+          src="/images/David-Natasha/Profile/temp3.avif"
           alt="Profile Frame"
           width={1554}
           height={4096}

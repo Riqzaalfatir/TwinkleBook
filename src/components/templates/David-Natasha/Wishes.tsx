@@ -91,14 +91,14 @@ const Wishes = ({ data, guestData }: WishesProps) => {
     >
       <div className="relative w-[100%] lg:w-[66%]">
         <Image
-          src="/images/David-Natasha/Wishes/Frameee.webp"
+          src="/images/David-Natasha/Wishes/Frameee.avif"
           alt="Wishes Frame"
           width={1554}
           height={4096}
           className="w-full h-auto lg:hidden"
         />
         <Image
-          src="/images/David-Natasha/Wishes/FrameD.webp"
+          src="/images/David-Natasha/Wishes/FrameD.avif"
           alt="Wishes Frame"
           width={1554}
           height={4096}

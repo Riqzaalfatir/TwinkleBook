@@ -26,7 +26,7 @@ const Thankyou = ({ data }: ThankyouProps) => {
     <section className="relative w-full z-10">
       {/* MOBILE TOP DECORATION */}
       <Image
-        src="/images/David-Natasha/Thankyou/AsetAtasM.webp"
+        src="/images/David-Natasha/Thankyou/AsetAtasM.avif"
         alt="flower decoration"
         width={950}
         height={950}
@@ -35,7 +35,7 @@ const Thankyou = ({ data }: ThankyouProps) => {
 
       {/* MOBILE BOTTOM DECORATION */}
       <Image
-        src="/images/David-Natasha/Thankyou/AsetBawahM.webp"
+        src="/images/David-Natasha/Thankyou/AsetBawahM.avif"
         alt="flower decoration"
         width={650}
         height={650}
@@ -44,7 +44,7 @@ const Thankyou = ({ data }: ThankyouProps) => {
 
       {/* DESKTOP TOP DECORATION */}
       <Image
-        src="/images/David-Natasha/Thankyou/AsetAtasD.webp"
+        src="/images/David-Natasha/Thankyou/AsetAtasD.avif"
         alt="flower decoration"
         width={950}
         height={950}
@@ -53,7 +53,7 @@ const Thankyou = ({ data }: ThankyouProps) => {
 
       {/* DESKTOP BOTTOM DECORATION */}
       <Image
-        src="/images/David-Natasha/Thankyou/AsetBawahD.webp"
+        src="/images/David-Natasha/Thankyou/AsetBawahD.avif"
         alt="flower decoration"
         width={650}
         height={650}
@@ -116,7 +116,7 @@ const Thankyou = ({ data }: ThankyouProps) => {
           className="mt-[59vw] lg:mt-[15.3vw] mb-[25.38vw] lg:mb-[10.16vw]"
         >
           <Image
-            src="/images/David-Natasha/Thankyou/Provite.webp"
+            src="/images/David-Natasha/Thankyou/Provite.avif"
             alt="Provite"
             width={250}
             height={250}

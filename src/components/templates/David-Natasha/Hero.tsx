@@ -60,7 +60,7 @@ const Hero = ({ start = false, data }: HeroProps) => {
         <>
           {/* MOBILE */}
           <Image
-            src="/images/David-Natasha/Hero/DNBackground.webp"
+            src="/images/David-Natasha/Hero/DNBackground.avif"
             alt="Hero Background"
             fill
             priority
@@ -69,7 +69,7 @@ const Hero = ({ start = false, data }: HeroProps) => {
 
           {/* DESKTOP */}
           <Image
-            src="/images/David-Natasha/Hero/DNBackgroundD.webp"
+            src="/images/David-Natasha/Hero/DNBackgroundD.avif"
             alt="Hero Background"
             fill
             priority
@@ -92,7 +92,7 @@ const Hero = ({ start = false, data }: HeroProps) => {
           <Image
             src={
               apiLogoUrl ||
-              "/images/David-Natasha/Hero/DNLOGOO.webp"
+              "/images/David-Natasha/Hero/DNLOGOO.avif"
             }
             alt={`${groomName} & ${brideName} Logo`}
             width={550}

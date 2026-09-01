@@ -108,14 +108,14 @@ const Opening = ({
               ) : (
                 <>
                   <Image
-                    src="/images/David-Natasha/Opening/DNMobile.webp"
+                    src="/images/David-Natasha/Opening/DNMobile.avif"
                     alt={`${groomName} & ${brideName}`}
                     fill
                     className="object-cover lg:hidden"
                     priority
                   />
                   <Image
-                    src="/images/David-Natasha/Opening/OpeningD.webp"
+                    src="/images/David-Natasha/Opening/OpeningD.avif"
                     alt={`${groomName} & ${brideName}`}
                     fill
                     className="object-cover hidden lg:block"
@@ -127,14 +127,14 @@ const Opening = ({
 
             <div className="relative z-20 flex flex-col items-center text-center pt-[48px] lg:pt-[58px] pb-[50px] lg:pb-[65px] overflow-hidden">
               <Image
-                src="/images/David-Natasha/Opening/AsetAtasM.webp"
+                src="/images/David-Natasha/Opening/AsetAtasM.avif"
                 alt="flower decoration"
                 width={450}
                 height={450}
                 className="absolute top-0 left-0 w-[125px] lg:w-[160px] h-auto pointer-events-none z-0"
               />
               <Image
-                src="/images/David-Natasha/Opening/AsetBawahM.webp"
+                src="/images/David-Natasha/Opening/AsetBawahM.avif"
                 alt="flower decoration"
                 width={450}
                 height={450}

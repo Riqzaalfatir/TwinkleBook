@@ -31,19 +31,19 @@ type Orientation = "landscape" | "portrait" | null;
 const AUTOPLAY_DELAY = 4000;
 
 const DEFAULT_PHOTOS_MOBILE: string[] = [
-  "/images/David-Natasha/Gallery/ASET1.webp",
-  "/images/David-Natasha/Gallery/ASET1.webp",
-  "/images/David-Natasha/Gallery/ASET1.webp",
-  "/images/David-Natasha/Gallery/ASET1.webp",
-  "/images/David-Natasha/Gallery/ASET1.webp",
+  "/images/David-Natasha/Gallery/ASET1.avif",
+  "/images/David-Natasha/Gallery/ASET1.avif",
+  "/images/David-Natasha/Gallery/ASET1.avif",
+  "/images/David-Natasha/Gallery/ASET1.avif",
+  "/images/David-Natasha/Gallery/ASET1.avif",
 ];
 
 const DEFAULT_PHOTOS_DESKTOP: string[] = [
-  "/images/David-Natasha/Gallery/ASETD1.webp",
-  "/images/David-Natasha/Gallery/ASETD1.webp",
-  "/images/David-Natasha/Gallery/ASETD1.webp",
-  "/images/David-Natasha/Gallery/ASETD1.webp",
-  "/images/David-Natasha/Gallery/ASETD1.webp",
+  "/images/David-Natasha/Gallery/ASETD1.avif",
+  "/images/David-Natasha/Gallery/ASETD1.avif",
+  "/images/David-Natasha/Gallery/ASETD1.avif",
+  "/images/David-Natasha/Gallery/ASETD1.avif",
+  "/images/David-Natasha/Gallery/ASETD1.avif",
 ];
 
 const ChevronLeftIcon = ({ size }: { size: number }) => (
@@ -94,7 +94,7 @@ const Gallery = ({ data }: GalleryProps) => {
     return rawGalleryData.map((item: any) =>
       item?.url
         ? `https://media.twinklebook.com/${item.url}`
-        : "/images/David-Natasha/Gallery/ASET1.webp",
+        : "/images/David-Natasha/Gallery/ASET1.avif",
     );
   }, [rawGalleryData, isMobile]);
 
