@@ -80,7 +80,7 @@ const DavidNatasha = ({
           data={data}
         />
 
-        <Gallery
+        {/* <Gallery
           data={data}
         />
 
@@ -100,7 +100,7 @@ const DavidNatasha = ({
 
         <Thankyou
           data={data}
-        />
+        /> */}
       </div>
 
       {/* ========================= */}
