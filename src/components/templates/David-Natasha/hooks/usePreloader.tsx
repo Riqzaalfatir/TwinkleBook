@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { getGalleryPhotos } from "../../../../lib/getGalleryPhotos";
 
 const BREAKPOINT = 1024;
+const BATCH_SIZE = 4;
 
 const IMAGES_MOBILE: string[] = [
   "/images/David-Natasha/Opening/DNMobile.webp",
@@ -45,6 +46,32 @@ interface UsePreloaderOptions {
   rawGalleryData?: any[];
 }
 
+function loadImage(src: string): Promise<void> {
+  return new Promise((resolve) => {
+    const img = new window.Image();
+    img.src = src;
+    img.onload = img.onerror = () => resolve();
+  });
+}
+
+async function loadInBatches(
+  images: string[],
+  onProgress: () => void,
+  cancelledRef: { current: boolean },
+) {
+  for (let i = 0; i < images.length; i += BATCH_SIZE) {
+    if (cancelledRef.current) return;
+    const batch = images.slice(i, i + BATCH_SIZE);
+    await Promise.all(
+      batch.map((src) =>
+        loadImage(src).then(() => {
+          if (!cancelledRef.current) onProgress();
+        }),
+      ),
+    );
+  }
+}
+
 export function usePreloader({
   dynamicImages = [],
   rawGalleryData = [],
@@ -73,22 +100,21 @@ export function usePreloader({
       return;
     }
 
+    const cancelledRef = { current: false };
     let count = 0;
-    let cancelled = false;
 
-    imagesToLoad.forEach((src) => {
-      const img = new window.Image();
-      img.src = src;
-      img.onload = img.onerror = () => {
-        if (cancelled) return;
+    loadInBatches(
+      imagesToLoad,
+      () => {
         count++;
         setProgress(Math.round((count / total) * 100));
         if (count === total) setLoaded(true);
-      };
-    });
+      },
+      cancelledRef,
+    );
 
     return () => {
-      cancelled = true;
+      cancelledRef.current = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dynamicImages.join(","), galleryKey]);
