@@ -106,12 +106,11 @@ async function loadInBatches(
   }
 }
 
-export function usePreloader({
-  dynamicImages = [],
-}: UsePreloaderOptions = {}) {
+export function usePreloader({ dynamicImages = [] }: UsePreloaderOptions = {}) {
   // Compute the list of images to load
   const imagesToLoad = (() => {
-    const isDesktop = typeof window !== 'undefined' && window.innerWidth >= BREAKPOINT;
+    const isDesktop =
+      typeof window !== "undefined" && window.innerWidth >= BREAKPOINT;
     const allImages = [
       ...(isDesktop ? IMAGES_DESKTOP : IMAGES_MOBILE),
       ...IMAGES_COMMON,
@@ -121,8 +120,7 @@ export function usePreloader({
       new Set(
         allImages.filter(
           (src): src is string =>
-            typeof src === "string" &&
-            src.trim().length > 0,
+            typeof src === "string" && src.trim().length > 0,
         ),
       ),
     );
@@ -154,10 +152,7 @@ export function usePreloader({
       () => {
         count += 1;
 
-        const newProgress = Math.min(
-          100,
-          Math.round((count / total) * 100),
-        );
+        const newProgress = Math.min(100, Math.round((count / total) * 100));
 
         setProgress(newProgress);
 
@@ -170,10 +165,7 @@ export function usePreloader({
       },
       cancelledRef,
     ).catch((error) => {
-      console.error(
-        "[Preloader] Unexpected error:",
-        error,
-      );
+      console.error("[Preloader] Unexpected error:", error);
 
       if (!cancelledRef.current) {
         setProgress(100);

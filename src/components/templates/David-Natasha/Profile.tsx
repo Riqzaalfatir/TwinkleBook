@@ -172,4 +172,3 @@ const Profile = ({ data }: ProfileProps) => {
 };
 
 export default Profile;
-

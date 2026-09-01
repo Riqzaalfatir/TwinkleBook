@@ -1,11 +1,9 @@
 //  ⚠️ INI FILE MOCK SEMENTARA UNTUK UP VERCEL — bukan implementasi asli.
 
-
 "use client";
 
 import React, { createContext, useContext, useState } from "react";
 import NotifModal from "../templates/../../popup/NotifModal";
-
 
 type SmartRsvpContextType = {
   guestData: { name?: string; closeRSVPDate?: string } | null;
@@ -35,7 +33,7 @@ type ModalType =
 
 type SmartRsvpFormProps = {
   data?: any;
-  guestData?: { name?: string; closeRSVPDate?: string } | null; 
+  guestData?: { name?: string; closeRSVPDate?: string } | null;
   paramUrl?: string;
   onSubmitRSVP?: () => void;
   defaultAttendStatus?: number;
@@ -44,7 +42,7 @@ type SmartRsvpFormProps = {
 
 export const SmartRsvpForm = ({
   data,
-  guestData: guestDataProp, 
+  guestData: guestDataProp,
   paramUrl = "",
   defaultAttendStatus = 1,
   children,
@@ -63,13 +61,17 @@ export const SmartRsvpForm = ({
   };
 
   const handleFinalConfirm = (): void => {
-    setModalType(attendStatus === 1 ? "rsvp_confirmed_hadir" : "rsvp_confirmed_tidak_hadir");
+    setModalType(
+      attendStatus === 1
+        ? "rsvp_confirmed_hadir"
+        : "rsvp_confirmed_tidak_hadir",
+    );
   };
 
   const mockValue: SmartRsvpContextType = {
     guestData: {
-      name: guestDataProp?.name ?? "[Guest Name]", 
-      closeRSVPDate: guestDataProp?.closeRSVPDate ?? "2026-09-12T00:00:00.000Z", 
+      name: guestDataProp?.name ?? "[Guest Name]",
+      closeRSVPDate: guestDataProp?.closeRSVPDate ?? "2026-09-12T00:00:00.000Z",
     },
     attendStatus,
     invitationUrl: waNumber,
@@ -97,7 +99,11 @@ export const SmartRsvpForm = ({
 SmartRsvpForm.AttendToggle = ({ className }: { className?: string }) => {
   const { setAttendStatus } = useSmartRsvp();
   return (
-    <button type="button" onClick={() => setAttendStatus(1)} className={className}>
+    <button
+      type="button"
+      onClick={() => setAttendStatus(1)}
+      className={className}
+    >
       ATTEND
     </button>
   );
@@ -106,12 +112,15 @@ SmartRsvpForm.AttendToggle = ({ className }: { className?: string }) => {
 SmartRsvpForm.NotAttendToggle = ({ className }: { className?: string }) => {
   const { setAttendStatus } = useSmartRsvp();
   return (
-    <button type="button" onClick={() => setAttendStatus(2)} className={className}>
+    <button
+      type="button"
+      onClick={() => setAttendStatus(2)}
+      className={className}
+    >
       UNABLE TO ATTEND
     </button>
   );
 };
-
 
 SmartRsvpForm.SubmitButton = ({ className }: { className?: string }) => {
   const { attendStatus, handleSubmitClick } = useSmartRsvp();

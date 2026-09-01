@@ -36,14 +36,9 @@ export default function PinRedirectPage() {
   useEffect(() => {
     if (!id || !pin) return;
 
-    localStorage.setItem(
-      `${id}-pin`,
-      pin,
-    );
+    localStorage.setItem(`${id}-pin`, pin);
 
-    window.location.replace(
-      `/${id}`,
-    );
+    window.location.replace(`/${id}`);
   }, [id, pin]);
 
   return null;

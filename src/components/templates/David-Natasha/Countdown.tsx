@@ -75,13 +75,3 @@ const CountdownSection = ({ data }: CountdownSectionProps) => {
 };
 
 export default CountdownSection;
-
-
-
-
-
-
-
-
-
-

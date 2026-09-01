@@ -11,10 +11,7 @@ import { useEventSessionByPin } from "@/hooks/api/useEventSessionByPin";
 import { useCurrentGuest } from "@/hooks/api/useCurrentGuest";
 
 import { getTemplateNameFromId } from "@/lib/templateMap";
-import {
-  TEMPLATE_REGISTRY,
-  DEFAULT_TEMPLATE,
-} from "@/lib/templateRegistry";
+import { TEMPLATE_REGISTRY, DEFAULT_TEMPLATE } from "@/lib/templateRegistry";
 
 export default function EventPage() {
   const { id } = useParams<{ id: string }>();
@@ -27,12 +24,7 @@ export default function EventPage() {
    * ==========================================
    */
 
-  const {
-    getEventByUrl,
-    eventByUrl,
-    status,
-    error,
-  } = useEventUrl();
+  const { getEventByUrl, eventByUrl, status, error } = useEventUrl();
 
   useEffect(() => {
     if (!id) return;
@@ -47,25 +39,16 @@ export default function EventPage() {
    */
 
   useEffect(() => {
-    if (
-      !eventByUrl ||
-      hasCheckedAccessRef.current
-    ) {
+    if (!eventByUrl || hasCheckedAccessRef.current) {
       return;
     }
 
     hasCheckedAccessRef.current = true;
 
-    const savedPin =
-      localStorage.getItem(`${id}-pin`);
+    const savedPin = localStorage.getItem(`${id}-pin`);
 
-    if (
-      eventByUrl.eventAccess === 0 &&
-      !savedPin
-    ) {
-      window.location.replace(
-        `/${id}/private`,
-      );
+    if (eventByUrl.eventAccess === 0 && !savedPin) {
+      window.location.replace(`/${id}/private`);
 
       return;
     }
@@ -88,10 +71,7 @@ export default function EventPage() {
     if (!eventByUrl?.id) return;
 
     getEventContent(eventByUrl.id);
-  }, [
-    eventByUrl?.id,
-    getEventContent,
-  ]);
+  }, [eventByUrl?.id, getEventContent]);
 
   /*
    * ==========================================
@@ -109,16 +89,12 @@ export default function EventPage() {
   useEffect(() => {
     if (!id) return;
 
-    const pin =
-      localStorage.getItem(`${id}-pin`);
+    const pin = localStorage.getItem(`${id}-pin`);
 
     if (pin) {
       getEventGuestByPin(id, pin);
     }
-  }, [
-    id,
-    getEventGuestByPin,
-  ]);
+  }, [id, getEventGuestByPin]);
 
   /*
    * ==========================================
@@ -126,29 +102,18 @@ export default function EventPage() {
    * ==========================================
    */
 
-  const {
-    getEventSessionByPin,
-    eventSessionByPin,
-    eventSessionByPinStatus,
-  } = useEventSessionByPin();
+  const { getEventSessionByPin, eventSessionByPin, eventSessionByPinStatus } =
+    useEventSessionByPin();
 
   useEffect(() => {
     if (!eventByUrl?.id) return;
 
-    const pin =
-      localStorage.getItem(`${id}-pin`);
+    const pin = localStorage.getItem(`${id}-pin`);
 
     if (pin) {
-      getEventSessionByPin(
-        pin,
-        eventByUrl.id,
-      );
+      getEventSessionByPin(pin, eventByUrl.id);
     }
-  }, [
-    eventByUrl?.id,
-    id,
-    getEventSessionByPin,
-  ]);
+  }, [eventByUrl?.id, id, getEventSessionByPin]);
 
   /*
    * ==========================================
@@ -157,33 +122,24 @@ export default function EventPage() {
    */
 
   const assembledData = useMemo(() => {
-    if (
-      !eventByUrl ||
-      !eventContentByEventId
-    ) {
+    if (!eventByUrl || !eventContentByEventId) {
       return null;
     }
 
-    const pin =
-      localStorage.getItem(`${id}-pin`);
+    const pin = localStorage.getItem(`${id}-pin`);
 
     return {
       dataEvent: eventByUrl,
 
-      dataContent:
-        eventContentByEventId,
+      dataContent: eventContentByEventId,
 
-      dataSession:
-        eventSessionByPin || [],
+      dataSession: eventSessionByPin || [],
 
-      guest:
-        eventGuestByPin || null,
+      guest: eventGuestByPin || null,
 
-      pin:
-        pin || null,
+      pin: pin || null,
 
-      url:
-        id,
+      url: id,
     };
   }, [
     eventByUrl,
@@ -199,10 +155,7 @@ export default function EventPage() {
    * ==========================================
    */
 
-  if (
-    status === "loading" ||
-    contentStatus === "loading"
-  ) {
+  if (status === "loading" || contentStatus === "loading") {
     return null;
   }
 
@@ -213,14 +166,7 @@ export default function EventPage() {
    */
 
   if (status === "error") {
-    return (
-      <ErrorScreen
-        message={
-          error ||
-          "Event tidak ditemukan"
-        }
-      />
-    );
+    return <ErrorScreen message={error || "Event tidak ditemukan"} />;
   }
 
   /*
@@ -231,12 +177,7 @@ export default function EventPage() {
 
   if (contentStatus === "error") {
     return (
-      <ErrorScreen
-        message={
-          contentError ||
-          "Konten event tidak ditemukan"
-        }
-      />
+      <ErrorScreen message={contentError || "Konten event tidak ditemukan"} />
     );
   }
 
@@ -244,10 +185,7 @@ export default function EventPage() {
    * Event/content belum tersedia,
    * tetapi juga belum error.
    */
-  if (
-    !eventByUrl ||
-    !eventContentByEventId
-  ) {
+  if (!eventByUrl || !eventContentByEventId) {
     return null;
   }
 
@@ -266,18 +204,12 @@ export default function EventPage() {
    * Session gagal tidak perlu
    * menghentikan invitation.
    */
-  if (
-    eventSessionByPinStatus === "error"
-  ) {
-    console.warn(
-      "Session fetch gagal, lanjutin dengan session kosong",
-    );
+  if (eventSessionByPinStatus === "error") {
+    console.warn("Session fetch gagal, lanjutin dengan session kosong");
   }
 
   if (!assembledData) {
-    return (
-      <ErrorScreen message="Event data tidak tersedia" />
-    );
+    return <ErrorScreen message="Event data tidak tersedia" />;
   }
 
   /*
@@ -286,20 +218,12 @@ export default function EventPage() {
    * ==========================================
    */
 
-  const templateName =
-    eventByUrl.templateId
-      ? getTemplateNameFromId(
-          eventByUrl.templateId as string,
-        )
-      : DEFAULT_TEMPLATE;
+  const templateName = eventByUrl.templateId
+    ? getTemplateNameFromId(eventByUrl.templateId as string)
+    : DEFAULT_TEMPLATE;
 
   const TemplateComponent =
-    TEMPLATE_REGISTRY[
-      templateName
-    ] ??
-    TEMPLATE_REGISTRY[
-      DEFAULT_TEMPLATE
-    ];
+    TEMPLATE_REGISTRY[templateName] ?? TEMPLATE_REGISTRY[DEFAULT_TEMPLATE];
 
   /*
    * ==========================================

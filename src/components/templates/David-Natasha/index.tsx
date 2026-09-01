@@ -1,134 +1,3 @@
-// "use client";
-
-// import React from "react";
-
-// import Header from "./Header";
-// import Hero from "./Hero";
-// import Profile from "./Profile";
-// import Countdown from "./Countdown";
-// import EventOrder from "./EventOrder";
-// import Gallery from "./Gallery";
-// import Rsvp from "./Rsvp";
-// import Gift from "./Gift";
-// import Wishes from "./Wishes";
-// import Thankyou from "./Thankyou";
-
-// import { DavidNatashaDataProps } from "./types";
-
-// import {
-//   cormorantGaramond,
-//   costaRica,
-//   slight,
-//   sackersItalicScript,
-//   garamond,
-//   timesNewRomanBold,
-// } from "./fonts/fonts";
-
-// interface DavidNatashaProps {
-//   data?: DavidNatashaDataProps;
-// }
-
-// const DavidNatasha = ({
-//   data,
-// }: DavidNatashaProps) => {
-//   return (
-//     <div
-//       className={`
-//         relative
-//         bg-[url('/images/David-Natasha/Kertas.avif')]
-//         bg-top
-//         [background-size:100%_auto]
-//         ${cormorantGaramond.variable}
-//         ${timesNewRomanBold.variable}
-//         ${garamond.variable}
-//         ${costaRica.variable}
-//         ${slight.variable}
-//         ${sackersItalicScript.variable}
-//       `}
-//     >
-//       {/* Background Overlay */}
-//       <div
-//         className="
-//           absolute
-//           inset-0
-//           bg-white/60
-//           pointer-events-none
-//         "
-//       />
-
-//       {/* ========================= */}
-//       {/* MAIN CONTENT */}
-//       {/* ========================= */}
-
-//       <div className="relative z-10">
-//         <Header />
-
-//         <Hero
-//           start={true}
-//           data={data}
-//         />
-
-//         <Profile
-//           data={data}
-//         />
-
-//         <Countdown
-//           data={data}
-//         />
-
-//         <EventOrder
-//           data={data}
-//         />
-
-//         <Gallery
-//           data={data}
-//         />
-
-//         <Rsvp
-//           data={data}
-//           guestData={undefined}
-//         />
-
-//         <Gift
-//           data={data}
-//         />
-
-//         <Wishes
-//           data={data}
-//           guestData={undefined}
-//         />
-
-//         <Thankyou
-//           data={data}
-//         />
-//       </div>
-
-//       {/* ========================= */}
-//       {/* DEBUG MODE */}
-//       {/* ========================= */}
-
-//       {/*
-//         Opening            OFF
-//         LoadingScreen      OFF
-//         usePreloader       OFF
-//         PlaySongButton     OFF
-//         useCurrentGuest    OFF
-//         localStorage       OFF
-//         Guest API Request  OFF
-
-//         Semua section utama tetap ON.
-//       */}
-//     </div>
-//   );
-// };
-
-// export default DavidNatasha;
-
-
-
-
-
-
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -169,10 +38,7 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
   const [start, setStart] = useState<boolean>(false);
   const [showLoading, setShowLoading] = useState<boolean>(true);
 
-  const {
-    getEventGuestByPin,
-    eventGuestByPin,
-  } = useCurrentGuest();
+  const { getEventGuestByPin, eventGuestByPin } = useCurrentGuest();
 
   /*
    * Ambil data guest berdasarkan PIN
@@ -181,57 +47,35 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
     if (!data?.url) return;
 
     try {
-      const pin = window.localStorage.getItem(
-        `${data.url}-pin`,
-      );
+      const pin = window.localStorage.getItem(`${data.url}-pin`);
 
       if (pin) {
-        getEventGuestByPin(
-          data.url,
-          pin,
-        );
+        getEventGuestByPin(data.url, pin);
       }
     } catch (error) {
-      console.warn(
-        "localStorage tidak tersedia:",
-        error,
-      );
+      console.warn("localStorage tidak tersedia:", error);
     }
-  }, [
-    data?.url,
-    getEventGuestByPin,
-  ]);
+  }, [data?.url, getEventGuestByPin]);
 
   /*
    * Guest & event information
    */
-  const namaTamu =
-    eventGuestByPin?.name ??
-    "[Guest Name]";
+  const namaTamu = eventGuestByPin?.name ?? "[Guest Name]";
 
-  const groomName =
-    data?.dataEvent?.groomName ??
-    "David";
+  const groomName = data?.dataEvent?.groomName ?? "David";
 
-  const brideName =
-    data?.dataEvent?.brideName ??
-    "Natasya";
+  const brideName = data?.dataEvent?.brideName ?? "Natasya";
 
-  const eventDate =
-    data?.dataEvent?.date
-      ? formatDateWithWeekday(
-          data.dataEvent.date,
-        )
-      : "SATURDAY, 10 OCTOBER 2026";
+  const eventDate = data?.dataEvent?.date
+    ? formatDateWithWeekday(data.dataEvent.date)
+    : "SATURDAY, 10 OCTOBER 2026";
 
   /*
    * Background music
    */
-  const backgroundSoundUrl =
-    data?.dataContent
-      ?.backgroundSoundData?.url
-      ? `https://media.twinklebook.com/${data.dataContent.backgroundSoundData.url}`
-      : "/audio/default-song.mp3";
+  const backgroundSoundUrl = data?.dataContent?.backgroundSoundData?.url
+    ? `https://media.twinklebook.com/${data.dataContent.backgroundSoundData.url}`
+    : "/audio/default-song.mp3";
 
   /*
    * Static image yang perlu preload.
@@ -239,14 +83,9 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
    * Gallery tidak dimasukkan ke preloader
    * supaya tidak menahan Opening.
    */
-  const dynamicImages = [
-    "/images/David-Natasha/Hero/DNBackground.webp",
-  ];
+  const dynamicImages = ["/images/David-Natasha/Hero/DNBackground.webp"];
 
-  const {
-    loaded,
-    progress,
-  } = usePreloader({
+  const { loaded, progress } = usePreloader({
     dynamicImages,
   });
 
@@ -279,44 +118,23 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
       <div className="relative z-10">
         <Header />
 
-        <Hero
-          start={start}
-          data={data}
-        />
+        <Hero start={start} data={data} />
 
-        <Profile
-          data={data}
-        />
+        <Profile data={data} />
 
-        <Countdown
-          data={data}
-        />
+        <Countdown data={data} />
 
-        <EventOrder
-          data={data}
-        />
+        <EventOrder data={data} />
 
-        <Gallery
-          data={data}
-        />
+        <Gallery data={data} />
 
-        <Rsvp
-          data={data}
-          guestData={eventGuestByPin}
-        />
+        <Rsvp data={data} guestData={eventGuestByPin} />
 
-        <Gift
-          data={data}
-        />
+        <Gift data={data} />
 
-        <Wishes
-          data={data}
-          guestData={eventGuestByPin}
-        />
+        <Wishes data={data} guestData={eventGuestByPin} />
 
-        <Thankyou
-          data={data}
-        />
+        <Thankyou data={data} />
       </div>
 
       {/* Opening Card */}
@@ -326,26 +144,18 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
           namaTamu={namaTamu}
           groomName={groomName}
           brideName={brideName}
-          popUpIconImageData={
-            data?.dataContent
-              ?.popUpIconImageData
-          }
+          popUpIconImageData={data?.dataContent?.popUpIconImageData}
         />
       )}
 
       {/* Background Music */}
-      <PlaySongButton
-        src={backgroundSoundUrl}
-        start={start}
-      />
+      <PlaySongButton src={backgroundSoundUrl} start={start} />
 
       {/* Loading */}
       {showLoading && (
         <LoadingScreen
           progress={progress}
-          onDone={() =>
-            setShowLoading(false)
-          }
+          onDone={() => setShowLoading(false)}
           groomName={groomName}
           brideName={brideName}
           eventDate={eventDate}
