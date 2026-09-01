@@ -91,7 +91,7 @@ const Opening = ({
           >
             {/* BACKGROUND KERTAS */}
             <Image
-              src="/images/Atet-Halim/Hero/BackgoundKertas.webp"
+              src="/images/Atet-Halim/Hero/BackgoundKertas.avif"
               alt="background"
               fill
               className="object-cover z-0"

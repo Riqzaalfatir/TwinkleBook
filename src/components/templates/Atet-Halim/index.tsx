@@ -68,7 +68,7 @@ const AtetHalim = ({ data, isPreview, dataValidation }: AtetHalimProps) => {
     >
       <div
         className="absolute inset-0 -z-10 bg-[#F6F6F4] bg-repeat [background-size:390px_auto] lg:[background-size:1914px_auto]
-          bg-[url('/images/Atet-Halim/Hero/BackgoundKertas.webp')]
+          bg-[url('/images/Atet-Halim/Hero/BackgoundKertas.avif')]
           lg:bg-[url('/images/Atet-Halim/Hero/BgKertasD.webp')]"
       />
 

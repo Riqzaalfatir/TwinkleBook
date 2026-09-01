@@ -32,7 +32,7 @@ const IMAGES_DESKTOP: string[] = [
 
 const IMAGES_COMMON: string[] = [
   // Opening.tsx
-  "/images/Atet-Halim/Hero/BackgoundKertas.webp",
+  "/images/Atet-Halim/Hero/BackgoundKertas.avif",
 
   // Hero.tsx
   "/images/Atet-Halim/hero/BungaKiriAtasD.webp",
