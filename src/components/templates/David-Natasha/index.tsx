@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 
+import Header from "./Header";
 import Hero from "./Hero";
 import Profile from "./Profile";
 import Countdown from "./Countdown";
@@ -11,10 +12,7 @@ import Rsvp from "./Rsvp";
 import Gift from "./Gift";
 import Wishes from "./Wishes";
 import Thankyou from "./Thankyou";
-import Opening from "./Opening";
-import Header from "./Header";
 
-import { useCurrentGuest } from "@/hooks/api/useCurrentGuest";
 import { DavidNatashaDataProps } from "./types";
 
 import {
@@ -33,56 +31,6 @@ interface DavidNatashaProps {
 const DavidNatasha = ({
   data,
 }: DavidNatashaProps) => {
-  const [start, setStart] = useState<boolean>(false);
-
-  const {
-    getEventGuestByPin,
-    eventGuestByPin,
-  } = useCurrentGuest();
-
-  /*
-   * Ambil data guest berdasarkan PIN
-   */
-  useEffect(() => {
-    if (!data?.url) return;
-
-    try {
-      const pin = window.localStorage.getItem(
-        `${data.url}-pin`,
-      );
-
-      if (pin) {
-        getEventGuestByPin(
-          data.url,
-          pin,
-        );
-      }
-    } catch (error) {
-      console.warn(
-        "localStorage tidak tersedia:",
-        error,
-      );
-    }
-  }, [
-    data?.url,
-    getEventGuestByPin,
-  ]);
-
-  /*
-   * Guest information
-   */
-  const namaTamu =
-    eventGuestByPin?.name ??
-    "[Guest Name]";
-
-  const groomName =
-    data?.dataEvent?.groomName ??
-    "David";
-
-  const brideName =
-    data?.dataEvent?.brideName ??
-    "Natasya";
-
   return (
     <div
       className={`
@@ -116,7 +64,7 @@ const DavidNatasha = ({
         <Header />
 
         <Hero
-          start={start}
+          start={true}
           data={data}
         />
 
@@ -138,7 +86,7 @@ const DavidNatasha = ({
 
         <Rsvp
           data={data}
-          guestData={eventGuestByPin}
+          guestData={undefined}
         />
 
         <Gift
@@ -147,7 +95,7 @@ const DavidNatasha = ({
 
         <Wishes
           data={data}
-          guestData={eventGuestByPin}
+          guestData={undefined}
         />
 
         <Thankyou
@@ -156,43 +104,25 @@ const DavidNatasha = ({
       </div>
 
       {/* ========================= */}
-      {/* OPENING */}
-      {/* ========================= */}
-
-      {!start && (
-        <Opening
-          setStart={setStart}
-          namaTamu={namaTamu}
-          groomName={groomName}
-          brideName={brideName}
-          popUpIconImageData={
-            data?.dataContent
-              ?.popUpIconImageData
-          }
-        />
-      )}
-
-      {/* ========================= */}
-      {/* DEBUG TEST */}
+      {/* DEBUG MODE */}
       {/* ========================= */}
 
       {/*
-        LoadingScreen       OFF
-        usePreloader        OFF
-        PlaySongButton      OFF
+        Opening            OFF
+        LoadingScreen      OFF
+        usePreloader       OFF
+        PlaySongButton     OFF
+        useCurrentGuest    OFF
+        localStorage       OFF
+        Guest API Request  OFF
 
-        Jadi tidak ada:
-        - preload image
-        - loading progress
-        - audio element
-        - autoplay musik
+        Semua section utama tetap ON.
       */}
     </div>
   );
 };
 
 export default DavidNatasha;
-
 
 
 
