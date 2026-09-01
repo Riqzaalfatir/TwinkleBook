@@ -63,7 +63,7 @@ const DavidNatasha = ({
 
   const backgroundSoundUrl = data?.dataContent?.backgroundSoundData?.url
     ? `https://media.twinklebook.com/${data.dataContent.backgroundSoundData.url}`
-    : "";
+    : "/audio/default-song.mp3"; // fallback statis kalau API kosong
 
   const dynamicImages = ["/images/David-Natasha/Hero/DNBackground.webp"];
   const rawGalleryData = data?.dataContent?.galleryImageData ?? [];
@@ -82,7 +82,7 @@ const DavidNatasha = ({
         <Profile data={data} />
         <Countdown data={data} />
         <EventOrder data={data} />
-        <Gallery data={data} />
+        {/* <Gallery data={data} /> */}
         <Rsvp data={data} guestData={eventGuestByPin} />
         <Gift data={data} />
         <Wishes data={data} guestData={eventGuestByPin} />
@@ -99,11 +99,11 @@ const DavidNatasha = ({
         />
       )}
 
-      {/* <PlaySongButton
+      <PlaySongButton
         ref={playSongRef}
         src={backgroundSoundUrl}
         start={start}
-      /> */}
+      />
 
       {showLoading && (
         <LoadingScreen
