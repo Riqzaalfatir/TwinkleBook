@@ -195,7 +195,7 @@ const DavidNatasha = ({
       </div>
 
       {/* Opening Card */}
-      {!start && loaded && (
+      {/* {!start && loaded && (
         <Opening
           setStart={setStart}
           namaTamu={namaTamu}
@@ -206,16 +206,16 @@ const DavidNatasha = ({
               ?.popUpIconImageData
           }
         />
-      )}
+      )} */}
 
       {/* Background Music */}
-      <PlaySongButton
+      {/* <PlaySongButton
         src={backgroundSoundUrl}
         start={start}
-      />
+      /> */}
 
       {/* Loading */}
-      {showLoading && (
+      {/* {showLoading && (
         <LoadingScreen
           progress={progress}
           onDone={() =>
@@ -225,7 +225,7 @@ const DavidNatasha = ({
           brideName={brideName}
           eventDate={eventDate}
         />
-      )}
+      )} */}
     </div>
   );
 };
