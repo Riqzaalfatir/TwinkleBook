@@ -45,7 +45,7 @@ const Hero = ({ start = false, data }: HeroProps) => {
           fill
           priority
           unoptimized
-          className="object-cover object-top lg:object-bottom"
+          className="object-cover object-bottom"
         />
       ) : (
         <>
@@ -55,7 +55,7 @@ const Hero = ({ start = false, data }: HeroProps) => {
             alt="Hero Background"
             fill
             priority
-            className="object-cover object-top lg:hidden"
+            className="object-cover object-bottom lg:hidden"
           />
 
           {/* DESKTOP */}
