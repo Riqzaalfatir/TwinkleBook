@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getGalleryPhotos } from "../../../../lib/getGalleryPhotos";
 
 const BREAKPOINT = 1024;
 const BATCH_SIZE = 4;
+const IMAGE_TIMEOUT = 10000;
 
 const IMAGES_MOBILE: string[] = [
   "/images/David-Natasha/Opening/DNMobile.webp",
@@ -43,14 +43,44 @@ const IMAGES_COMMON: string[] = [
 
 interface UsePreloaderOptions {
   dynamicImages?: string[];
-  rawGalleryData?: any[];
 }
 
 function loadImage(src: string): Promise<void> {
   return new Promise((resolve) => {
-    const img = new window.Image();
+    const img = new Image();
+
+    let finished = false;
+
+    const timeout = window.setTimeout(() => {
+      console.warn("[Preloader] Timeout:", src);
+      finish();
+    }, IMAGE_TIMEOUT);
+
+    function finish() {
+      if (finished) return;
+
+      finished = true;
+
+      clearTimeout(timeout);
+
+      img.onload = null;
+      img.onerror = null;
+
+      resolve();
+    }
+
+    img.onload = finish;
+
+    img.onerror = () => {
+      console.warn("[Preloader] Failed:", src);
+      finish();
+    };
+
     img.src = src;
-    img.onload = img.onerror = () => resolve();
+
+    if (img.complete) {
+      finish();
+    }
   });
 }
 
@@ -61,87 +91,107 @@ async function loadInBatches(
 ) {
   for (let i = 0; i < images.length; i += BATCH_SIZE) {
     if (cancelledRef.current) return;
+
     const batch = images.slice(i, i + BATCH_SIZE);
+
     await Promise.all(
-      batch.map((src) =>
-        loadImage(src).then(() => {
-          if (!cancelledRef.current) onProgress();
-        }),
-      ),
+      batch.map(async (src) => {
+        await loadImage(src);
+
+        if (!cancelledRef.current) {
+          onProgress();
+        }
+      }),
     );
   }
 }
 
 export function usePreloader({
   dynamicImages = [],
-  rawGalleryData = [],
 }: UsePreloaderOptions = {}) {
   const [progress, setProgress] = useState(0);
   const [loaded, setLoaded] = useState(false);
 
-  const galleryKey = rawGalleryData.map((item: any) => item?.url).join(",");
+  const dynamicKey = dynamicImages.join(",");
 
   useEffect(() => {
-    const isDesktop = window.innerWidth >= BREAKPOINT;
-    const galleryImages = getGalleryPhotos(rawGalleryData, !isDesktop);
+    const cancelledRef = {
+      current: false,
+    };
 
-    const imagesToLoad = [
+    setProgress(0);
+    setLoaded(false);
+
+    const isDesktop = window.innerWidth >= BREAKPOINT;
+
+    const allImages = [
       ...(isDesktop ? IMAGES_DESKTOP : IMAGES_MOBILE),
       ...IMAGES_COMMON,
       ...dynamicImages,
-      ...galleryImages,
     ];
+
+    const imagesToLoad = Array.from(
+      new Set(
+        allImages.filter(
+          (src): src is string =>
+            typeof src === "string" &&
+            src.trim().length > 0,
+        ),
+      ),
+    );
 
     const total = imagesToLoad.length;
 
-    try {
-      localStorage.setItem(
-        "debug-preloader",
-        JSON.stringify({
-          stage: "start",
-          total,
-          galleryCount: galleryImages.length,
-          urls: imagesToLoad,
-          time: new Date().toISOString(),
-        }),
-      );
-    } catch (e) {}
+    console.log("[Preloader] Total:", total);
+    console.log("[Preloader] Images:", imagesToLoad);
 
     if (total === 0) {
-      setLoaded(true);
       setProgress(100);
+      setLoaded(true);
       return;
     }
 
-    const cancelledRef = { current: false };
     let count = 0;
 
     loadInBatches(
       imagesToLoad,
       () => {
-        count++;
-        try {
-          localStorage.setItem(
-            "debug-preloader",
-            JSON.stringify({
-              stage: "progress",
-              count,
-              total,
-              time: new Date().toISOString(),
-            }),
-          );
-        } catch (e) {}
-        setProgress(Math.round((count / total) * 100));
-        if (count === total) setLoaded(true);
+        count += 1;
+
+        const newProgress = Math.min(
+          100,
+          Math.round((count / total) * 100),
+        );
+
+        setProgress(newProgress);
+
+        if (count >= total) {
+          setProgress(100);
+          setLoaded(true);
+
+          console.log("[Preloader] Complete");
+        }
       },
       cancelledRef,
-    );
+    ).catch((error) => {
+      console.error(
+        "[Preloader] Unexpected error:",
+        error,
+      );
+
+      if (!cancelledRef.current) {
+        setProgress(100);
+        setLoaded(true);
+      }
+    });
 
     return () => {
       cancelledRef.current = true;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dynamicImages.join(","), galleryKey]);
+  }, [dynamicKey]);
 
-  return { loaded, progress };
+  return {
+    loaded,
+    progress,
+  };
 }

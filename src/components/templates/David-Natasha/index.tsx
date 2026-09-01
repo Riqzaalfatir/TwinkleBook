@@ -43,16 +43,36 @@ const DavidNatasha = ({
   const [showLoading, setShowLoading] = useState<boolean>(true);
   const playSongRef = useRef<PlaySongButtonHandle>(null);
 
+  const handleSetStart: React.Dispatch<
+  React.SetStateAction<boolean>
+> = (value) => {
+  if (value === true) {
+    playSongRef.current?.play();
+  }
+
+  setStart(value);
+};
+
   const { getEventGuestByPin, eventGuestByPin } = useCurrentGuest();
 
-  useEffect(() => {
-    if (data?.url) {
-      const pin = localStorage.getItem(`${data.url}-pin`);
-      if (pin) {
-        getEventGuestByPin(data.url, pin);
-      }
+ useEffect(() => {
+  if (!data?.url) return;
+
+  try {
+    const pin = window.localStorage.getItem(
+      `${data.url}-pin`,
+    );
+
+    if (pin) {
+      getEventGuestByPin(data.url, pin);
     }
-  }, [data?.url, getEventGuestByPin]);
+  } catch (error) {
+    console.warn(
+      "localStorage tidak tersedia:",
+      error,
+    );
+  }
+}, [data?.url, getEventGuestByPin]);
 
   const namaTamu = eventGuestByPin?.name ?? "[Guest Name]";
   const groomName = data?.dataEvent?.groomName ?? "David";
@@ -66,9 +86,9 @@ const DavidNatasha = ({
     : "/audio/default-song.mp3"; // fallback statis kalau API kosong
 
   const dynamicImages = ["/images/David-Natasha/Hero/DNBackground.webp"];
-  const rawGalleryData = data?.dataContent?.galleryImageData ?? [];
-
-  const { loaded, progress } = usePreloader({ dynamicImages, rawGalleryData });
+  const { loaded, progress } = usePreloader({
+  dynamicImages,
+});
 
   return (
     <div
@@ -82,7 +102,7 @@ const DavidNatasha = ({
         <Profile data={data} />
         <Countdown data={data} />
         <EventOrder data={data} />
-        {/* <Gallery data={data} /> */}
+        <Gallery data={data} />
         <Rsvp data={data} guestData={eventGuestByPin} />
         <Gift data={data} />
         <Wishes data={data} guestData={eventGuestByPin} />
@@ -90,19 +110,18 @@ const DavidNatasha = ({
       </div>
 
       {!start && loaded && (
-        <Opening
-          setStart={setStart}
-          namaTamu={namaTamu}
-          groomName={groomName}
-          brideName={brideName}
-          popUpIconImageData={data?.dataContent?.popUpIconImageData}
-        />
+        <Opening 
+  setStart={handleSetStart} 
+  namaTamu={namaTamu}
+  groomName={groomName}
+  brideName={brideName}
+  popUpIconImageData={data?.dataContent?.popUpIconImageData}
+/>
       )}
 
       <PlaySongButton
         ref={playSongRef}
         src={backgroundSoundUrl}
-        start={start}
       />
 
       {showLoading && (
