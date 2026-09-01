@@ -25,6 +25,8 @@ type GalleryProps = {
   data?: any;
 };
 
+type Orientation = "landscape" | "portrait" | null;
+
 const AUTOPLAY_DELAY = 4000;
 
 const DEFAULT_PHOTOS_MOBILE: string[] = [
@@ -46,6 +48,7 @@ const DEFAULT_PHOTOS_DESKTOP: string[] = [
 const Gallery = ({ data }: GalleryProps) => {
   const [lightboxOpen, setLightboxOpen] = useState<boolean>(false);
   const [lightboxIndex, setLightboxIndex] = useState<number>(0);
+  const [orientations, setOrientations] = useState<Orientation[]>([]);
   const scrollPosRef = useRef<number>(0);
   const isMobile = useIsMobile();
 
@@ -62,16 +65,54 @@ const Gallery = ({ data }: GalleryProps) => {
     );
   }, [rawGalleryData, isMobile]);
 
+  useEffect(() => {
+    if (isMobile) return;
+
+    let cancelled = false;
+    setOrientations(new Array(photos.length).fill(null));
+
+    photos.forEach((src, index) => {
+      const img = new window.Image();
+      img.src = src;
+      img.onload = () => {
+        if (cancelled) return;
+        const orientation: Orientation =
+          img.naturalWidth >= img.naturalHeight ? "landscape" : "portrait";
+        setOrientations((prev) => {
+          const next = [...prev];
+          next[index] = orientation;
+          return next;
+        });
+      };
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [photos, isMobile]);
+
   const plugins = useMemo(
     () => [Autoplay({ delay: AUTOPLAY_DELAY, stopOnInteraction: false })],
     [],
   );
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, plugins);
+  const [emblaRefMobile, emblaApiMobile] = useEmblaCarousel(
+    { loop: true },
+    plugins,
+  );
+
+  const [emblaRefDesktop, emblaApiDesktop] = useEmblaCarousel(
+    {
+      loop: true,
+      align: "start",
+      containScroll: "trimSnaps",
+    },
+    plugins,
+  );
 
   useEffect(() => {
-    emblaApi?.reInit();
-  }, [isMobile, emblaApi]);
+    emblaApiDesktop?.reInit();
+  }, [orientations, emblaApiDesktop]);
 
   const handlePhotoClick = useCallback((index: number) => {
     scrollPosRef.current = window.scrollY;
@@ -88,34 +129,67 @@ const Gallery = ({ data }: GalleryProps) => {
 
   return (
     <>
-      <section
-        id="gallery"
-        className={
-          isMobile
-            ? "relative w-full h-[600px] min-h-[600px] max-h-[600px] z-20"
-            : "relative w-full h-[960px] min-h-[960px] max-h-[960px] z-20"
-        }
-      >
-        <div className="overflow-hidden w-full h-full" ref={emblaRef}>
-          <div className="flex h-full">
-            {photos.map((src, index) => (
-              <div
-                key={index}
-                className="relative flex-none w-full h-full cursor-pointer"
-                onClick={() => handlePhotoClick(index)}
-              >
-                <Image
-                  src={src}
-                  alt={`David & Natasya Gallery ${index + 1}`}
-                  fill
-                  className="object-cover lg:object-bottom"
-                  priority={index === 0}
-                />
-              </div>
-            ))}
+      {isMobile ? (
+        <section
+          id="gallery"
+          className="relative w-full h-[600px] min-h-[600px] max-h-[600px] overflow-hidden z-20"
+        >
+          <div className="embla h-full" ref={emblaRefMobile}>
+            <div className="embla__container flex h-full">
+              {photos.map((src, index) => (
+                <div
+                  key={index}
+                  className="embla__slide relative flex-[0_0_100%] h-full cursor-pointer"
+                  onClick={() => handlePhotoClick(index)}
+                >
+                  <Image
+                    src={src}
+                    alt={`David & Natasya Gallery ${index + 1}`}
+                    fill
+                    className="object-cover"
+                    priority={index === 0}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : (
+        <section
+          id="gallery"
+          className="relative w-full h-[960px] min-h-[960px] max-h-[960px] overflow-hidden z-20"
+        >
+          <div className="embla h-full" ref={emblaRefDesktop}>
+            <div className="embla__container flex h-full">
+              {photos.map((src, index) => {
+                const orientation = orientations[index];
+                const widthClass =
+                  orientation === "landscape"
+                    ? "w-[900px]"
+                    : orientation === "portrait"
+                      ? "w-[450px]"
+                      : "w-[600px]";
+
+                return (
+                  <div
+                    key={index}
+                    className={`embla__slide relative flex-[0_0_auto] h-full cursor-pointer ${widthClass}`}
+                    onClick={() => handlePhotoClick(index)}
+                  >
+                    <Image
+                      src={src}
+                      alt={`David & Natasya Gallery ${index + 1}`}
+                      fill
+                      className="object-cover"
+                      priority={index === 0}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
 
       <Lightbox
         open={lightboxOpen}
