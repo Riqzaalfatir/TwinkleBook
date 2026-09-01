@@ -94,6 +94,19 @@ export function usePreloader({
 
     const total = imagesToLoad.length;
 
+    try {
+      localStorage.setItem(
+        "debug-preloader",
+        JSON.stringify({
+          stage: "start",
+          total,
+          galleryCount: galleryImages.length,
+          urls: imagesToLoad,
+          time: new Date().toISOString(),
+        }),
+      );
+    } catch (e) {}
+
     if (total === 0) {
       setLoaded(true);
       setProgress(100);
@@ -107,6 +120,17 @@ export function usePreloader({
       imagesToLoad,
       () => {
         count++;
+        try {
+          localStorage.setItem(
+            "debug-preloader",
+            JSON.stringify({
+              stage: "progress",
+              count,
+              total,
+              time: new Date().toISOString(),
+            }),
+          );
+        } catch (e) {}
         setProgress(Math.round((count / total) * 100));
         if (count === total) setLoaded(true);
       },
