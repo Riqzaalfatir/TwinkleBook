@@ -359,7 +359,7 @@ const EventOrder = ({ data }: EventOrderProps) => {
                 alt={holyDummy.alt}
                 width={750}
                 height={750}
-                className="w-[88vw] lg:w-[32.2vw] h-auto"
+                className="w-[88vw] lg:w-[32.2vw] h-auto pointer-events-none"
               />
             </motion.div>
 
@@ -483,7 +483,7 @@ const EventOrder = ({ data }: EventOrderProps) => {
                 alt={receptionDummy.alt}
                 width={550}
                 height={550}
-                className="w-[88vw] lg:w-[32.2vw] h-auto"
+                className="w-[88vw] lg:w-[32.2vw] h-auto pointer-events-none"
               />
             </motion.div>
 
