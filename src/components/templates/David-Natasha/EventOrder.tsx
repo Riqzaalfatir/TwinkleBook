@@ -44,7 +44,7 @@ type VenueDummy = {
  */
 const VENUE_DUMMY: Record<string, VenueDummy> = {
   "HOLY MATRIMONY": {
-    image: "/images/David-Natasha/EventOrder/GIIDago.webp",
+    image: "/images/David-Natasha/EventOrder/GIIDago.avif",
     alt: "GII HOK IM TONG Dago",
     addressName: "GII HOK IM TONG - DAGO",
     address: "Jl. Cikapayang No. 2-4, Kota Bandung",
@@ -52,7 +52,7 @@ const VENUE_DUMMY: Record<string, VenueDummy> = {
   },
 
   "WEDDING RECEPTION": {
-    image: "/images/David-Natasha/EventOrder/Intercontinental.webp",
+    image: "/images/David-Natasha/EventOrder/Intercontinental.avif",
     alt: "Intercontinental Bandung Dago Pakar",
     addressName: "INTERCONTINENTAL BANDUNG DAGO PAKAR",
     address: "Jl. Resor Dago Pakar Raya 2B Resor Dago Pakar, Kota Bandung",

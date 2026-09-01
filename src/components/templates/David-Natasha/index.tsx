@@ -83,7 +83,7 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
    * Gallery tidak dimasukkan ke preloader
    * supaya tidak menahan Opening.
    */
-  const dynamicImages = ["/images/David-Natasha/Hero/DNBackground.webp"];
+  const dynamicImages = ["/images/David-Natasha/Hero/DNBackground.avif"];
 
   const { loaded, progress } = usePreloader({
     dynamicImages,
@@ -93,7 +93,7 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
     <div
       className={`
         relative
-        bg-[url('/images/David-Natasha/Kertas.webp')]
+        bg-[url('/images/David-Natasha/Kertas.avif')]
         bg-top
         [background-size:100%_auto]
         ${cormorantGaramond.variable}
