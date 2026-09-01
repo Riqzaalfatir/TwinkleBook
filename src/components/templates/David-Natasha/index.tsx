@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
+
 import Hero from "./Hero";
 import Profile from "./Profile";
 import Countdown from "./Countdown";
@@ -13,12 +14,13 @@ import Thankyou from "./Thankyou";
 import Opening from "./Opening";
 import LoadingScreen from "./LoadingScreen";
 import Header from "./Header";
+
 import { usePreloader } from "./hooks/usePreloader";
 import { useCurrentGuest } from "@/hooks/api/useCurrentGuest";
 import { formatDateWithWeekday } from "../../../lib/formatDate";
-import PlaySongButton, {
-  PlaySongButtonHandle,
-} from "../../../ui/PlaySongButton";
+
+import PlaySongButton from "../../../ui/PlaySongButton";
+
 import {
   cormorantGaramond,
   costaRica,
@@ -41,93 +43,184 @@ const DavidNatasha = ({
 }: DavidNatashaProps) => {
   const [start, setStart] = useState<boolean>(false);
   const [showLoading, setShowLoading] = useState<boolean>(true);
-  const playSongRef = useRef<PlaySongButtonHandle>(null);
 
-  const handleSetStart: React.Dispatch<
-  React.SetStateAction<boolean>
-> = (value) => {
-  if (value === true) {
-    playSongRef.current?.play();
-  }
+  const {
+    getEventGuestByPin,
+    eventGuestByPin,
+  } = useCurrentGuest();
 
-  setStart(value);
-};
+  /*
+   * Ambil data guest berdasarkan PIN
+   */
+  useEffect(() => {
+    if (!data?.url) return;
 
-  const { getEventGuestByPin, eventGuestByPin } = useCurrentGuest();
+    try {
+      const pin = window.localStorage.getItem(
+        `${data.url}-pin`,
+      );
 
- useEffect(() => {
-  if (!data?.url) return;
-
-  try {
-    const pin = window.localStorage.getItem(
-      `${data.url}-pin`,
-    );
-
-    if (pin) {
-      getEventGuestByPin(data.url, pin);
+      if (pin) {
+        getEventGuestByPin(
+          data.url,
+          pin,
+        );
+      }
+    } catch (error) {
+      console.warn(
+        "localStorage tidak tersedia:",
+        error,
+      );
     }
-  } catch (error) {
-    console.warn(
-      "localStorage tidak tersedia:",
-      error,
-    );
-  }
-}, [data?.url, getEventGuestByPin]);
+  }, [
+    data?.url,
+    getEventGuestByPin,
+  ]);
 
-  const namaTamu = eventGuestByPin?.name ?? "[Guest Name]";
-  const groomName = data?.dataEvent?.groomName ?? "David";
-  const brideName = data?.dataEvent?.brideName ?? "Natasya";
-  const eventDate = data?.dataEvent?.date
-    ? formatDateWithWeekday(data.dataEvent.date)
-    : "SATURDAY, 10 OCTOBER 2026";
+  /*
+   * Guest & event information
+   */
+  const namaTamu =
+    eventGuestByPin?.name ??
+    "[Guest Name]";
 
-  const backgroundSoundUrl = data?.dataContent?.backgroundSoundData?.url
-    ? `https://media.twinklebook.com/${data.dataContent.backgroundSoundData.url}`
-    : "/audio/default-song.mp3"; // fallback statis kalau API kosong
+  const groomName =
+    data?.dataEvent?.groomName ??
+    "David";
 
-  const dynamicImages = ["/images/David-Natasha/Hero/DNBackground.webp"];
-  const { loaded, progress } = usePreloader({
-  dynamicImages,
-});
+  const brideName =
+    data?.dataEvent?.brideName ??
+    "Natasya";
+
+  const eventDate =
+    data?.dataEvent?.date
+      ? formatDateWithWeekday(
+          data.dataEvent.date,
+        )
+      : "SATURDAY, 10 OCTOBER 2026";
+
+  /*
+   * Background music
+   */
+  const backgroundSoundUrl =
+    data?.dataContent
+      ?.backgroundSoundData?.url
+      ? `https://media.twinklebook.com/${data.dataContent.backgroundSoundData.url}`
+      : "/audio/default-song.mp3";
+
+  /*
+   * Static image yang perlu preload.
+   *
+   * Gallery tidak dimasukkan ke preloader
+   * supaya tidak menahan Opening.
+   */
+  const dynamicImages = [
+    "/images/David-Natasha/Hero/DNBackground.webp",
+  ];
+
+  const {
+    loaded,
+    progress,
+  } = usePreloader({
+    dynamicImages,
+  });
 
   return (
     <div
-      className={`relative bg-[url('/images/David-Natasha/Kertas.webp')] bg-top [background-size:100%_auto] ${cormorantGaramond.variable} ${timesNewRomanBold.variable} ${garamond.variable} ${costaRica.variable} ${slight.variable} ${sackersItalicScript.variable}`}
+      className={`
+        relative
+        bg-[url('/images/David-Natasha/Kertas.webp')]
+        bg-top
+        [background-size:100%_auto]
+        ${cormorantGaramond.variable}
+        ${timesNewRomanBold.variable}
+        ${garamond.variable}
+        ${costaRica.variable}
+        ${slight.variable}
+        ${sackersItalicScript.variable}
+      `}
     >
-      <div className="absolute inset-0 bg-white/60 pointer-events-none" />
-
-      <div className="relative z-10">
-        <Header />
-        <Hero start={start} data={data} />
-        <Profile data={data} />
-        <Countdown data={data} />
-        <EventOrder data={data} />
-        <Gallery data={data} />
-        <Rsvp data={data} guestData={eventGuestByPin} />
-        <Gift data={data} />
-        <Wishes data={data} guestData={eventGuestByPin} />
-        <Thankyou data={data} />
-      </div>
-
-      {!start && loaded && (
-        <Opening 
-  setStart={handleSetStart} 
-  namaTamu={namaTamu}
-  groomName={groomName}
-  brideName={brideName}
-  popUpIconImageData={data?.dataContent?.popUpIconImageData}
-/>
-      )}
-
-      <PlaySongButton
-        ref={playSongRef}
-        src={backgroundSoundUrl}
+      {/* Background overlay */}
+      <div
+        className="
+          absolute
+          inset-0
+          bg-white/60
+          pointer-events-none
+        "
       />
 
+      {/* Main Content */}
+      <div className="relative z-10">
+        <Header />
+
+        <Hero
+          start={start}
+          data={data}
+        />
+
+        <Profile
+          data={data}
+        />
+
+        <Countdown
+          data={data}
+        />
+
+        <EventOrder
+          data={data}
+        />
+
+        <Gallery
+          data={data}
+        />
+
+        <Rsvp
+          data={data}
+          guestData={eventGuestByPin}
+        />
+
+        <Gift
+          data={data}
+        />
+
+        <Wishes
+          data={data}
+          guestData={eventGuestByPin}
+        />
+
+        <Thankyou
+          data={data}
+        />
+      </div>
+
+      {/* Opening Card */}
+      {!start && loaded && (
+        <Opening
+          setStart={setStart}
+          namaTamu={namaTamu}
+          groomName={groomName}
+          brideName={brideName}
+          popUpIconImageData={
+            data?.dataContent
+              ?.popUpIconImageData
+          }
+        />
+      )}
+
+      {/* Background Music */}
+      <PlaySongButton
+        src={backgroundSoundUrl}
+        start={start}
+      />
+
+      {/* Loading */}
       {showLoading && (
         <LoadingScreen
           progress={progress}
-          onDone={() => setShowLoading(false)}
+          onDone={() =>
+            setShowLoading(false)
+          }
           groomName={groomName}
           brideName={brideName}
           eventDate={eventDate}

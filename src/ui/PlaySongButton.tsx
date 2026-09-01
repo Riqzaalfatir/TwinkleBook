@@ -1,17 +1,16 @@
 "use client";
 
 import {
+  useEffect,
   useRef,
   useState,
   forwardRef,
   useImperativeHandle,
 } from "react";
 
-import { useAutoPauseOnHiddenTab } from "../hooks/useAutoPauseOnHiddenTab";
-
 type PlaySongButtonProps = {
   src: string;
-  start?: boolean; // backward compatibility template lama
+  start: boolean;
   onPlay?: () => void;
 };
 
@@ -23,102 +22,80 @@ export type PlaySongButtonHandle = {
 const PlaySongButton = forwardRef<
   PlaySongButtonHandle,
   PlaySongButtonProps
->(({ src, onPlay }, ref) => {
-  const [isPlaying, setIsPlaying] =
-    useState(false);
-
-  const audioRef =
-    useRef<HTMLAudioElement | null>(null);
-
-  const hasSrc = Boolean(src);
-
-  useAutoPauseOnHiddenTab(
-    audioRef,
-    setIsPlaying,
-  );
+>(({ src, start, onPlay }, ref) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useImperativeHandle(
     ref,
     () => ({
       pause: () => {
-        if (!audioRef.current) return;
-
-        audioRef.current.pause();
-        setIsPlaying(false);
+        if (audioRef.current) {
+          audioRef.current.pause();
+          setIsPlaying(false);
+        }
       },
 
       play: () => {
-        if (!audioRef.current || !hasSrc) {
-          return;
+        if (audioRef.current) {
+          audioRef.current
+            .play()
+            .then(() => {
+              setIsPlaying(true);
+            })
+            .catch((err) => {
+              console.log("Play diblokir:", err);
+            });
         }
-
-        audioRef.current
-          .play()
-          .then(() => {
-            setIsPlaying(true);
-          })
-          .catch((error) => {
-            console.warn(
-              "Audio play blocked:",
-              error,
-            );
-
-            setIsPlaying(false);
-          });
       },
     }),
-    [hasSrc],
+    [],
   );
 
-  const toggleSong = () => {
-    const audio = audioRef.current;
+  useEffect(() => {
+    console.log("start berubah jadi:", start, "src:", src);
 
-    if (!audio || !hasSrc) return;
+    if (start && audioRef.current) {
+      audioRef.current
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch((err) => {
+          console.log("Autoplay diblokir:", err);
+          setIsPlaying(false);
+        });
+    }
+  }, [start]);
+
+  const toggleSong = () => {
+    if (!audioRef.current) return;
 
     if (isPlaying) {
-      audio.pause();
+      audioRef.current.pause();
       setIsPlaying(false);
+    } else {
+      onPlay?.();
 
-      return;
+      audioRef.current
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch((err) => {
+          console.log("Play diblokir:", err);
+          setIsPlaying(false);
+        });
     }
-
-    onPlay?.();
-
-    audio
-      .play()
-      .then(() => {
-        setIsPlaying(true);
-      })
-      .catch((error) => {
-        console.warn(
-          "Audio play blocked:",
-          error,
-        );
-
-        setIsPlaying(false);
-      });
   };
-
-  if (!hasSrc) return null;
 
   return (
     <>
-      <audio
-        ref={audioRef}
-        src={src}
-        loop
-        preload="auto"
-        playsInline
-      />
+      <audio ref={audioRef} src={src} loop />
 
       <button
         type="button"
         onClick={toggleSong}
-        aria-label={
-          isPlaying
-            ? "Pause music"
-            : "Play music"
-        }
         className="fixed bottom-6 right-6 z-[60] w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md active:scale-95 transition-transform"
       >
         {isPlaying ? (
@@ -145,7 +122,6 @@ const PlaySongButton = forwardRef<
   );
 });
 
-PlaySongButton.displayName =
-  "PlaySongButton";
+PlaySongButton.displayName = "PlaySongButton";
 
 export default PlaySongButton;
