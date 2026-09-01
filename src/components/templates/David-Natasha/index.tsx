@@ -15,7 +15,6 @@ import Opening from "./Opening";
 import Header from "./Header";
 
 import { useCurrentGuest } from "@/hooks/api/useCurrentGuest";
-import PlaySongButton from "../../../ui/PlaySongButton";
 import { DavidNatashaDataProps } from "./types";
 
 import {
@@ -34,8 +33,7 @@ interface DavidNatashaProps {
 const DavidNatasha = ({
   data,
 }: DavidNatashaProps) => {
-  const [start, setStart] =
-    useState<boolean>(false);
+  const [start, setStart] = useState<boolean>(false);
 
   const {
     getEventGuestByPin,
@@ -49,10 +47,9 @@ const DavidNatasha = ({
     if (!data?.url) return;
 
     try {
-      const pin =
-        window.localStorage.getItem(
-          `${data.url}-pin`,
-        );
+      const pin = window.localStorage.getItem(
+        `${data.url}-pin`,
+      );
 
       if (pin) {
         getEventGuestByPin(
@@ -85,15 +82,6 @@ const DavidNatasha = ({
   const brideName =
     data?.dataEvent?.brideName ??
     "Natasya";
-
-  /*
-   * Background music
-   */
-  const backgroundSoundUrl =
-    data?.dataContent
-      ?.backgroundSoundData?.url
-      ? `https://media.twinklebook.com/${data.dataContent.backgroundSoundData.url}`
-      : "/audio/default-song.mp3";
 
   return (
     <div
@@ -185,13 +173,20 @@ const DavidNatasha = ({
       )}
 
       {/* ========================= */}
-      {/* BACKGROUND MUSIC */}
+      {/* DEBUG TEST */}
       {/* ========================= */}
 
-      <PlaySongButton
-        src={backgroundSoundUrl}
-        start={start}
-      />
+      {/*
+        LoadingScreen       OFF
+        usePreloader        OFF
+        PlaySongButton      OFF
+
+        Jadi tidak ada:
+        - preload image
+        - loading progress
+        - audio element
+        - autoplay musik
+      */}
     </div>
   );
 };
