@@ -45,10 +45,42 @@ const DEFAULT_PHOTOS_DESKTOP: string[] = [
   "/images/David-Natasha/Gallery/ASETD1.webp",
 ];
 
+const ChevronLeftIcon = ({ size }: { size: number }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2.5}
+    strokeLinecap="square"
+    strokeLinejoin="miter"
+  >
+    <path d="M15 18l-6-6 6-6" />
+  </svg>
+);
+
+const ChevronRightIcon = ({ size }: { size: number }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2.5}
+    strokeLinecap="square"
+    strokeLinejoin="miter"
+  >
+    <path d="M9 18l6-6-6-6" />
+  </svg>
+);
+
 const Gallery = ({ data }: GalleryProps) => {
   const [lightboxOpen, setLightboxOpen] = useState<boolean>(false);
   const [lightboxIndex, setLightboxIndex] = useState<number>(0);
   const [orientations, setOrientations] = useState<Orientation[]>([]);
+  const [selectedIndexMobile, setSelectedIndexMobile] = useState<number>(0);
+  const [selectedIndexDesktop, setSelectedIndexDesktop] = useState<number>(0);
   const scrollPosRef = useRef<number>(0);
   const isMobile = useIsMobile();
 
@@ -110,6 +142,40 @@ const Gallery = ({ data }: GalleryProps) => {
     plugins,
   );
 
+  const onSelectMobile = useCallback(() => {
+    if (!emblaApiMobile) return;
+    setSelectedIndexMobile(emblaApiMobile.selectedScrollSnap());
+  }, [emblaApiMobile]);
+
+  const onSelectDesktop = useCallback(() => {
+    if (!emblaApiDesktop) return;
+    setSelectedIndexDesktop(emblaApiDesktop.selectedScrollSnap());
+  }, [emblaApiDesktop]);
+
+  useEffect(() => {
+    if (!emblaApiMobile) return;
+    onSelectMobile();
+    emblaApiMobile.on("select", onSelectMobile);
+    emblaApiMobile.on("reInit", onSelectMobile);
+
+    return () => {
+      emblaApiMobile.off("select", onSelectMobile);
+      emblaApiMobile.off("reInit", onSelectMobile);
+    };
+  }, [emblaApiMobile, onSelectMobile]);
+
+  useEffect(() => {
+    if (!emblaApiDesktop) return;
+    onSelectDesktop();
+    emblaApiDesktop.on("select", onSelectDesktop);
+    emblaApiDesktop.on("reInit", onSelectDesktop);
+
+    return () => {
+      emblaApiDesktop.off("select", onSelectDesktop);
+      emblaApiDesktop.off("reInit", onSelectDesktop);
+    };
+  }, [emblaApiDesktop, onSelectDesktop]);
+
   useEffect(() => {
     emblaApiDesktop?.reInit();
   }, [orientations, emblaApiDesktop]);
@@ -153,6 +219,48 @@ const Gallery = ({ data }: GalleryProps) => {
               ))}
             </div>
           </div>
+
+          <button
+            type="button"
+            aria-label="Previous photo"
+            onClick={() => emblaApiMobile?.scrollPrev()}
+            className="absolute left-3 top-1/2 -translate-y-1/2 z-40 flex items-center justify-center rounded-full bg-black/40 text-white"
+            style={{ width: "48px", height: "48px" }}
+          >
+            <ChevronLeftIcon size={24} />
+          </button>
+
+          <button
+            type="button"
+            aria-label="Next photo"
+            onClick={() => emblaApiMobile?.scrollNext()}
+            className="absolute right-3 top-1/2 -translate-y-1/2 z-40 flex items-center justify-center rounded-full bg-black/40 text-white"
+            style={{ width: "48px", height: "48px" }}
+          >
+            <ChevronRightIcon size={24} />
+          </button>
+
+          <div
+            className="absolute left-1/2 -translate-x-1/2 flex items-center z-40"
+            style={{ bottom: "24px", gap: "6px" }}
+          >
+            {photos.map((_, index) => {
+              const isActive = selectedIndexMobile === index;
+              return (
+                <div
+                  key={index}
+                  className="rounded-full transition-all duration-300"
+                  style={{
+                    width: isActive ? "24px" : "10px",
+                    height: "4px",
+                    backgroundColor: isActive
+                      ? "#FFFFFF"
+                      : "rgba(255,255,255,0.4)",
+                  }}
+                />
+              );
+            })}
+          </div>
         </section>
       ) : (
         <section
@@ -187,6 +295,48 @@ const Gallery = ({ data }: GalleryProps) => {
                 );
               })}
             </div>
+          </div>
+
+          <button
+            type="button"
+            aria-label="Previous photo"
+            onClick={() => emblaApiDesktop?.scrollPrev()}
+            className="absolute left-6 top-1/2 -translate-y-1/2 z-40 flex items-center justify-center rounded-full bg-black/40 text-white"
+            style={{ width: "72px", height: "72px" }}
+          >
+            <ChevronLeftIcon size={45} />
+          </button>
+
+          <button
+            type="button"
+            aria-label="Next photo"
+            onClick={() => emblaApiDesktop?.scrollNext()}
+            className="absolute right-6 top-1/2 -translate-y-1/2 z-40 flex items-center justify-center rounded-full bg-black/40 text-white"
+            style={{ width: "72px", height: "72px" }}
+          >
+            <ChevronRightIcon size={45} />
+          </button>
+
+          <div
+            className="absolute left-1/2 -translate-x-1/2 flex items-center z-40"
+            style={{ bottom: "32px", gap: "8px" }}
+          >
+            {photos.map((_, index) => {
+              const isActive = selectedIndexDesktop === index;
+              return (
+                <div
+                  key={index}
+                  className="rounded-full transition-all duration-300"
+                  style={{
+                    width: isActive ? "36px" : "14px",
+                    height: "5px",
+                    backgroundColor: isActive
+                      ? "#FFFFFF"
+                      : "rgba(255,255,255,0.4)",
+                  }}
+                />
+              );
+            })}
           </div>
         </section>
       )}
