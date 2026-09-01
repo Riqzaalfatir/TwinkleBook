@@ -20,9 +20,10 @@ import Counter from "yet-another-react-lightbox/plugins/counter";
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import "yet-another-react-lightbox/plugins/counter.css";
+import { DavidNatashaDataProps } from "./types";
 
 type GalleryProps = {
-  data?: any;
+  data?: DavidNatashaDataProps;
 };
 
 type Orientation = "landscape" | "portrait" | null;

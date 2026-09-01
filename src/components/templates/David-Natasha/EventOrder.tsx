@@ -5,6 +5,7 @@ import Image from "next/image";
 import moment from "moment";
 import { motion } from "framer-motion";
 import { fadeUp } from "../../../lib/animation";
+import { DavidNatashaDataProps } from "./types";
 
 type SessionItem = {
   id: string;
@@ -19,7 +20,7 @@ type SessionItem = {
 };
 
 type EventOrderProps = {
-  data?: any;
+  data?: DavidNatashaDataProps;
 };
 
 type VenueDummy = {

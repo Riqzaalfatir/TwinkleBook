@@ -9,6 +9,7 @@ import NotifModal from "../../../popup/NotifModal";
 import WishesCard from "./popup/WishesCard";
 import { useListPMG } from "../../../hooks/api/useListPMG";
 import { usePMG } from "../../../hooks/api/usePMG";
+import { DavidNatashaDataProps } from "./types";
 
 const decodeHtmlEntities = (text: string): string => {
   if (typeof window === "undefined") return text;
@@ -18,7 +19,7 @@ const decodeHtmlEntities = (text: string): string => {
 };
 
 type WishesProps = {
-  data?: any;
+  data?: DavidNatashaDataProps;
   guestData?: { name?: string } | null;
 };
 

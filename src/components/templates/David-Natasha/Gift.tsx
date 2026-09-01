@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeUp } from "../../../lib/animation";
+import { DavidNatashaDataProps } from "./types";
 
 type Gift = {
   bank: string;
@@ -12,7 +13,7 @@ type Gift = {
 };
 
 type GiftProps = {
-  data?: any;
+  data?: DavidNatashaDataProps;
 };
 
 const BANK_ICONS: Record<string, string> = {

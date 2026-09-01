@@ -5,18 +5,11 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import moment from "moment";
 import { fadeUp, scaleIn } from "../../../lib/animation";
-
-type ImageData = {
-  id?: string;
-  filename?: string;
-  url: string;
-  type?: number;
-  parentId?: string;
-};
+import { DavidNatashaDataProps } from "./types";
 
 type HeroProps = {
   start?: boolean;
-  data?: any;
+  data?: DavidNatashaDataProps;
 };
 
 const Hero = ({ start = false, data }: HeroProps) => {

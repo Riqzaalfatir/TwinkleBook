@@ -4,9 +4,10 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeUp } from "../../../lib/animation";
+import { DavidNatashaDataProps } from "./types";
 
 type ProfileProps = {
-  data?: any;
+  data?: DavidNatashaDataProps;
 };
 
 const splitParentName = (text?: string) => {

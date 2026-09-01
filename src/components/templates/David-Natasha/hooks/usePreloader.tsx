@@ -109,23 +109,15 @@ async function loadInBatches(
 export function usePreloader({
   dynamicImages = [],
 }: UsePreloaderOptions = {}) {
-  const [progress, setProgress] = useState(0);
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    const cancelledRef = {
-      current: false,
-    };
-
-    const isDesktop = window.innerWidth >= BREAKPOINT;
-
+  // Compute the list of images to load
+  const imagesToLoad = (() => {
+    const isDesktop = typeof window !== 'undefined' && window.innerWidth >= BREAKPOINT;
     const allImages = [
       ...(isDesktop ? IMAGES_DESKTOP : IMAGES_MOBILE),
       ...IMAGES_COMMON,
       ...dynamicImages,
     ];
-
-    const imagesToLoad = Array.from(
+    return Array.from(
       new Set(
         allImages.filter(
           (src): src is string =>
@@ -134,24 +126,26 @@ export function usePreloader({
         ),
       ),
     );
+  })();
 
-    const total = imagesToLoad.length;
+  const total = imagesToLoad.length;
+
+  // Set initial state based on whether we have images to load
+  const [progress, setProgress] = useState(total === 0 ? 100 : 0);
+  const [loaded, setLoaded] = useState(total === 0);
+
+  useEffect(() => {
+    // If no images to load, effect is not needed
+    if (total === 0) {
+      return;
+    }
+
+    const cancelledRef = {
+      current: false,
+    };
 
     console.log("[Preloader] Total:", total);
     console.log("[Preloader] Images:", imagesToLoad);
-
-    if (total === 0) {
-      // Schedule state updates in a microtask to avoid cascading renders
-      queueMicrotask(() => {
-        if (!cancelledRef.current) {
-          setProgress(100);
-          setLoaded(true);
-        }
-      });
-      return () => {
-        cancelledRef.current = true;
-      };
-    }
 
     let count = 0;
 
@@ -190,7 +184,7 @@ export function usePreloader({
     return () => {
       cancelledRef.current = true;
     };
-  }, [dynamicImages]);
+  }, [total, imagesToLoad]);
 
   return {
     loaded,

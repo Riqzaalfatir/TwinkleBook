@@ -5,9 +5,10 @@ import { SmartRsvpForm, useSmartRsvp } from "@/components/rsvp/SmartRsvpForm";
 import { motion } from "framer-motion";
 import { fadeUp, fadeRight, fadeLeft } from "../../../lib/animation";
 import moment from "moment";
+import { DavidNatashaDataProps } from "./types";
 
 type RsvpProps = {
-  data?: any;
+  data?: DavidNatashaDataProps;
   guestData?: { name?: string; closeRSVPDate?: string } | null;
 };
 

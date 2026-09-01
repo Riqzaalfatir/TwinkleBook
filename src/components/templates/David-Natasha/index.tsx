@@ -18,8 +18,8 @@ import Header from "./Header";
 import { usePreloader } from "./hooks/usePreloader";
 import { useCurrentGuest } from "@/hooks/api/useCurrentGuest";
 import { formatDateWithWeekday } from "../../../lib/formatDate";
-
 import PlaySongButton from "../../../ui/PlaySongButton";
+import { DavidNatashaDataProps } from "./types";
 
 import {
   cormorantGaramond,
@@ -30,36 +30,8 @@ import {
   timesNewRomanBold,
 } from "./fonts/fonts";
 
-interface ImageData {
-  id?: string;
-  filename?: string;
-  url: string;
-  type?: number;
-  parentId?: string;
-}
-
-interface EventData {
-  groomName?: string;
-  brideName?: string;
-  date?: string;
-  [key: string]: unknown;
-}
-
-interface EventContent {
-  backgroundSoundData?: {
-    url: string;
-  };
-  popUpIconImageData?: ImageData | null;
-  [key: string]: unknown;
-}
-
 interface DavidNatashaProps {
-  data?: {
-    url?: string;
-    dataEvent?: EventData;
-    dataContent?: EventContent;
-    [key: string]: unknown;
-  };
+  data?: DavidNatashaDataProps;
 }
 
 const DavidNatasha = ({ data }: DavidNatashaProps) => {

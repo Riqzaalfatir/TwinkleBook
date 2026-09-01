@@ -5,9 +5,10 @@ import Countdown from "react-countdown";
 import { motion } from "framer-motion";
 import { fadeUp } from "../../../lib/animation";
 import { formatDateWithWeekday } from "@/lib/formatDate";
+import { DavidNatashaDataProps } from "./types";
 
 type CountdownSectionProps = {
-  data?: any;
+  data?: DavidNatashaDataProps;
 };
 
 const CountdownSection = ({ data }: CountdownSectionProps) => {
