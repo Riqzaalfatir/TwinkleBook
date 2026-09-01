@@ -24,7 +24,7 @@ const PlaySongButton = forwardRef<PlaySongButtonHandle, PlaySongButtonProps>(
   ({ src, start, onPlay }, ref) => {
     const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef<HTMLAudioElement | null>(null);
-
+    const hasSrc = Boolean(src);
     // GANTI: dulu useEffect manual, sekarang tinggal panggil hook
     useAutoPauseOnHiddenTab(audioRef, setIsPlaying);
 
@@ -39,7 +39,7 @@ const PlaySongButton = forwardRef<PlaySongButtonHandle, PlaySongButtonProps>(
         },
 
         play: () => {
-          if (audioRef.current) {
+          if (audioRef.current && hasSrc) {
             audioRef.current
               .play()
               .then(() => {
@@ -51,13 +51,11 @@ const PlaySongButton = forwardRef<PlaySongButtonHandle, PlaySongButtonProps>(
           }
         },
       }),
-      [],
+      [hasSrc],
     );
 
     useEffect(() => {
-      console.log("start berubah jadi:", start, "src:", src);
-
-      if (start && audioRef.current) {
+      if (start && audioRef.current && hasSrc) {
         audioRef.current
           .play()
           .then(() => {
@@ -68,10 +66,10 @@ const PlaySongButton = forwardRef<PlaySongButtonHandle, PlaySongButtonProps>(
             setIsPlaying(false);
           });
       }
-    }, [start]);
+    }, [start, hasSrc]);
 
     const toggleSong = () => {
-      if (!audioRef.current) return;
+      if (!audioRef.current || !hasSrc) return;
 
       if (isPlaying) {
         audioRef.current.pause();
@@ -93,7 +91,7 @@ const PlaySongButton = forwardRef<PlaySongButtonHandle, PlaySongButtonProps>(
 
     return (
       <>
-        <audio ref={audioRef} src={src} loop />
+        {hasSrc && <audio ref={audioRef} src={src} loop />}
 
         <button
           onClick={toggleSong}

@@ -99,11 +99,11 @@ const DavidNatasha = ({
         />
       )}
 
-      {/* <PlaySongButton
+      <PlaySongButton
         ref={playSongRef}
         src={backgroundSoundUrl}
         start={start}
-      /> */}
+      />
 
       {showLoading && (
         <LoadingScreen
