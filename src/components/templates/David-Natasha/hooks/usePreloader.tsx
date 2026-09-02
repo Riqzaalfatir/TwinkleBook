@@ -6,6 +6,12 @@ const BREAKPOINT = 1024;
 const BATCH_SIZE = 4;
 const IMAGE_TIMEOUT = 10000;
 
+/*
+ * ==========================================
+ * MOBILE ASSETS
+ * ==========================================
+ */
+
 const IMAGES_MOBILE: string[] = [
   "/images/David-Natasha/Opening/DNMobile.avif",
   "/images/David-Natasha/Profile/temp2.avif",
@@ -18,6 +24,12 @@ const IMAGES_MOBILE: string[] = [
   "/images/David-Natasha/Thankyou/AsetAtasM.avif",
   "/images/David-Natasha/Thankyou/AsetBawahM.avif",
 ];
+
+/*
+ * ==========================================
+ * DESKTOP ASSETS
+ * ==========================================
+ */
 
 const IMAGES_DESKTOP: string[] = [
   "/images/David-Natasha/Opening/OpeningD.avif",
@@ -32,11 +44,22 @@ const IMAGES_DESKTOP: string[] = [
   "/images/David-Natasha/Thankyou/AsetBawahD.avif",
 ];
 
+/*
+ * ==========================================
+ * COMMON ASSETS
+ * ==========================================
+ *
+ * Selalu preload baik mobile maupun desktop.
+ */
+
 const IMAGES_COMMON: string[] = [
   "/images/David-Natasha/Kertas.avif",
+
   "/images/David-Natasha/Opening/AsetAtasM.avif",
   "/images/David-Natasha/Opening/AsetBawahM.avif",
+
   "/images/David-Natasha/Hero/DNLOGOO.avif",
+
   "/images/David-Natasha/EventOrder/GIIDago.avif",
   "/images/David-Natasha/EventOrder/Intercontinental.avif",
 ];
@@ -45,14 +68,25 @@ interface UsePreloaderOptions {
   dynamicImages?: string[];
 }
 
+/*
+ * ==========================================
+ * LOAD SINGLE IMAGE
+ * ==========================================
+ */
+
 function loadImage(src: string): Promise<void> {
   return new Promise((resolve) => {
-    const img = new Image();
+    const img = new window.Image();
 
     let finished = false;
 
+    /*
+     * Jangan biarkan satu gambar bermasalah
+     * menggantung preloader selamanya.
+     */
     const timeout = window.setTimeout(() => {
       console.warn("[Preloader] Timeout:", src);
+
       finish();
     }, IMAGE_TIMEOUT);
 
@@ -61,8 +95,11 @@ function loadImage(src: string): Promise<void> {
 
       finished = true;
 
-      clearTimeout(timeout);
+      window.clearTimeout(timeout);
 
+      /*
+       * Lepaskan listener setelah selesai.
+       */
       img.onload = null;
       img.onerror = null;
 
@@ -73,24 +110,56 @@ function loadImage(src: string): Promise<void> {
 
     img.onerror = () => {
       console.warn("[Preloader] Failed:", src);
+
       finish();
     };
 
+    /*
+     * Ini yang benar-benar membuat browser
+     * mengambil asset.
+     */
     img.src = src;
 
+    /*
+     * Kalau sudah tersedia di browser cache,
+     * tidak perlu menunggu event onload.
+     */
     if (img.complete) {
       finish();
     }
   });
 }
 
+/*
+ * ==========================================
+ * BATCH LOADER
+ * ==========================================
+ *
+ * Load hanya beberapa gambar sekaligus.
+ *
+ * BATCH_SIZE = 4:
+ *
+ * 4 image
+ * ↓
+ * selesai
+ * ↓
+ * 4 image berikutnya
+ *
+ * Lebih aman daripada request semuanya
+ * secara bersamaan.
+ */
+
 async function loadInBatches(
   images: string[],
   onProgress: () => void,
-  cancelledRef: { current: boolean },
+  cancelledRef: {
+    current: boolean;
+  },
 ) {
   for (let i = 0; i < images.length; i += BATCH_SIZE) {
-    if (cancelledRef.current) return;
+    if (cancelledRef.current) {
+      return;
+    }
 
     const batch = images.slice(i, i + BATCH_SIZE);
 
@@ -106,17 +175,70 @@ async function loadInBatches(
   }
 }
 
+/*
+ * ==========================================
+ * USE PRELOADER
+ * ==========================================
+ */
+
 export function usePreloader({ dynamicImages = [] }: UsePreloaderOptions = {}) {
-  // Compute the list of images to load
-  const imagesToLoad = (() => {
-    const isDesktop =
-      typeof window !== "undefined" && window.innerWidth >= BREAKPOINT;
+  const [progress, setProgress] = useState(0);
+
+  const [loaded, setLoaded] = useState(false);
+
+  /*
+   * Sama konsepnya dengan Peter-Helena:
+   *
+   * dependency berdasarkan ISI array,
+   * bukan reference array.
+   *
+   * Contoh:
+   *
+   * render #1:
+   * ["/a.avif", "/b.avif"]
+   *
+   * render #2:
+   * ["/a.avif", "/b.avif"]
+   *
+   * Meskipun array baru,
+   * hasil join tetap sama.
+   *
+   * Jadi useEffect TIDAK restart.
+   */
+  const dynamicImagesKey = dynamicImages.join("|");
+
+  useEffect(() => {
+    /*
+     * Tentukan mobile / desktop
+     * sekali ketika preload dimulai.
+     */
+    const isDesktop = window.innerWidth >= BREAKPOINT;
+
+    /*
+     * Gabungkan:
+     *
+     * device-specific asset
+     * +
+     * common asset
+     * +
+     * dynamic asset
+     */
     const allImages = [
       ...(isDesktop ? IMAGES_DESKTOP : IMAGES_MOBILE),
+
       ...IMAGES_COMMON,
+
       ...dynamicImages,
     ];
-    return Array.from(
+
+    /*
+     * Bersihkan:
+     *
+     * - string kosong
+     * - value invalid
+     * - duplicate image
+     */
+    const imagesToLoad = Array.from(
       new Set(
         allImages.filter(
           (src): src is string =>
@@ -124,16 +246,20 @@ export function usePreloader({ dynamicImages = [] }: UsePreloaderOptions = {}) {
         ),
       ),
     );
-  })();
 
-  const total = imagesToLoad.length;
+    const total = imagesToLoad.length;
 
-  // Set initial state based on whether we have images to load
-  const [progress, setProgress] = useState(total === 0 ? 100 : 0);
-  const [loaded, setLoaded] = useState(total === 0);
+    /*
+     * Reset state hanya ketika preload
+     * benar-benar dijalankan ulang.
+     */
+    setProgress(total === 0 ? 100 : 0);
 
-  useEffect(() => {
-    // If no images to load, effect is not needed
+    setLoaded(total === 0);
+
+    /*
+     * Tidak ada gambar.
+     */
     if (total === 0) {
       return;
     }
@@ -142,18 +268,32 @@ export function usePreloader({ dynamicImages = [] }: UsePreloaderOptions = {}) {
       current: false,
     };
 
-    console.log("[Preloader] Total:", total);
-    console.log("[Preloader] Images:", imagesToLoad);
-
     let count = 0;
 
+    console.log("[Preloader] Device:", isDesktop ? "desktop" : "mobile");
+
+    console.log("[Preloader] Total:", total);
+
+    console.log("[Preloader] Images:", imagesToLoad);
+
+    /*
+     * Mulai preload dalam batch.
+     */
     loadInBatches(
       imagesToLoad,
+
       () => {
         count += 1;
 
         const newProgress = Math.min(100, Math.round((count / total) * 100));
 
+        /*
+         * setProgress menyebabkan render.
+         *
+         * Tetapi sekarang effect ini
+         * TIDAK restart hanya karena
+         * progress berubah.
+         */
         setProgress(newProgress);
 
         if (count >= total) {
@@ -163,20 +303,42 @@ export function usePreloader({ dynamicImages = [] }: UsePreloaderOptions = {}) {
           console.log("[Preloader] Complete");
         }
       },
+
       cancelledRef,
     ).catch((error) => {
       console.error("[Preloader] Unexpected error:", error);
 
+      /*
+       * Kalau terjadi error tak terduga,
+       * jangan biarkan LoadingScreen
+       * menggantung selamanya.
+       */
       if (!cancelledRef.current) {
         setProgress(100);
         setLoaded(true);
       }
     });
 
+    /*
+     * Cleanup ketika component unmount
+     * atau dynamicImages benar-benar berubah.
+     */
     return () => {
       cancelledRef.current = true;
     };
-  }, [total, imagesToLoad]);
+
+    /*
+     * PENTING:
+     *
+     * Kita sengaja menggunakan key
+     * berdasarkan isi dynamicImages,
+     * bukan reference array.
+     *
+     * Jadi setProgress() tidak membuat
+     * preload restart.
+     */
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dynamicImagesKey]);
 
   return {
     loaded,

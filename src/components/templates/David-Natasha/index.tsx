@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
+import Header from "./Header";
 import Hero from "./Hero";
 import Profile from "./Profile";
 import Countdown from "./Countdown";
@@ -13,13 +14,13 @@ import Wishes from "./Wishes";
 import Thankyou from "./Thankyou";
 import Opening from "./Opening";
 import LoadingScreen from "./LoadingScreen";
-import Header from "./Header";
 
 import { usePreloader } from "./hooks/usePreloader";
-import { useCurrentGuest } from "@/hooks/api/useCurrentGuest";
 import { formatDateWithWeekday } from "../../../lib/formatDate";
 import PlaySongButton from "../../../ui/PlaySongButton";
+
 import { DavidNatashaDataProps } from "./types";
+import type { useCurrentGuest } from "@/hooks/api/useCurrentGuest";
 
 import {
   cormorantGaramond,
@@ -30,37 +31,29 @@ import {
   timesNewRomanBold,
 } from "./fonts/fonts";
 
+/*
+ * Guest sudah diambil oleh app/[id]/page.tsx
+ * dan dikirim melalui data.guest.
+ */
+type GuestData = ReturnType<typeof useCurrentGuest>["eventGuestByPin"];
+
 interface DavidNatashaProps {
-  data?: DavidNatashaDataProps;
+  data?: DavidNatashaDataProps & {
+    guest?: GuestData;
+  };
 }
 
 const DavidNatasha = ({ data }: DavidNatashaProps) => {
   const [start, setStart] = useState<boolean>(false);
+
   const [showLoading, setShowLoading] = useState<boolean>(true);
 
-  const { getEventGuestByPin, eventGuestByPin } = useCurrentGuest();
-
   /*
-   * Ambil data guest berdasarkan PIN
+   * Guest tidak di-fetch ulang di template.
    */
-  useEffect(() => {
-    if (!data?.url) return;
+  const guestData = data?.guest;
 
-    try {
-      const pin = window.localStorage.getItem(`${data.url}-pin`);
-
-      if (pin) {
-        getEventGuestByPin(data.url, pin);
-      }
-    } catch (error) {
-      console.warn("localStorage tidak tersedia:", error);
-    }
-  }, [data?.url, getEventGuestByPin]);
-
-  /*
-   * Guest & event information
-   */
-  const namaTamu = eventGuestByPin?.name ?? "[Guest Name]";
+  const namaTamu = guestData?.name ?? "[Guest Name]";
 
   const groomName = data?.dataEvent?.groomName ?? "David";
 
@@ -71,23 +64,17 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
     : "SATURDAY, 10 OCTOBER 2026";
 
   /*
-   * Background music
+   * Background music.
    */
   const backgroundSoundUrl = data?.dataContent?.backgroundSoundData?.url
     ? `https://media.twinklebook.com/${data.dataContent.backgroundSoundData.url}`
     : "/audio/default-song.mp3";
 
   /*
-   * Static image yang perlu preload.
-   *
-   * Gallery tidak dimasukkan ke preloader
-   * supaya tidak menahan Opening.
+   * Asset statis sudah ditentukan di usePreloader.
+   * Gallery API tidak dimasukkan ke preloader.
    */
-  const dynamicImages = ["/images/David-Natasha/Hero/DNBackground.avif"];
-
-  const { loaded, progress } = usePreloader({
-    dynamicImages,
-  });
+  const { loaded, progress } = usePreloader();
 
   return (
     <div
@@ -114,7 +101,7 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
         "
       />
 
-      {/* Main Content */}
+      {/* Main content */}
       <div className="relative z-10">
         <Header />
 
@@ -128,16 +115,16 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
 
         <Gallery data={data} />
 
-        <Rsvp data={data} guestData={eventGuestByPin} />
+        <Rsvp data={data} guestData={guestData} />
 
         <Gift data={data} />
 
-        <Wishes data={data} guestData={eventGuestByPin} />
+        <Wishes data={data} guestData={guestData} />
 
         <Thankyou data={data} />
       </div>
 
-      {/* Opening Card */}
+      {/* Opening */}
       {!start && loaded && (
         <Opening
           setStart={setStart}
@@ -148,10 +135,10 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
         />
       )}
 
-      {/* Background Music */}
+      {/* Background music */}
       <PlaySongButton src={backgroundSoundUrl} start={start} />
 
-      {/* Loading */}
+      {/* Loading screen */}
       {showLoading && (
         <LoadingScreen
           progress={progress}
