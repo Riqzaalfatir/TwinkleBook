@@ -18,9 +18,7 @@ import LoadingScreen from "./LoadingScreen";
 import { usePreloader } from "./hooks/usePreloader";
 import { formatDateWithWeekday } from "../../../lib/formatDate";
 import PlaySongButton from "../../../ui/PlaySongButton";
-
 import { DavidNatashaDataProps } from "./types";
-import type { useCurrentGuest } from "@/hooks/api/useCurrentGuest";
 
 import {
   cormorantGaramond,
@@ -31,49 +29,42 @@ import {
   timesNewRomanBold,
 } from "./fonts/fonts";
 
-/*
- * Guest sudah diambil oleh app/[id]/page.tsx
- * dan dikirim melalui data.guest.
- */
-type GuestData = ReturnType<typeof useCurrentGuest>["eventGuestByPin"];
-
 interface DavidNatashaProps {
-  data?: DavidNatashaDataProps & {
-    guest?: GuestData;
-  };
+  data?: DavidNatashaDataProps;
 }
 
 const DavidNatasha = ({ data }: DavidNatashaProps) => {
-  const [start, setStart] = useState<boolean>(false);
+  const [start, setStart] = useState(false);
+  const [showLoading, setShowLoading] = useState(true);
 
-  const [showLoading, setShowLoading] = useState<boolean>(true);
+  // Guest sudah diambil oleh app/[id]/page.tsx.
+  const guestData = data?.guest ?? null;
 
-  /*
-   * Guest tidak di-fetch ulang di template.
-   */
-  const guestData = data?.guest;
+  const namaTamu =
+    guestData &&
+    typeof guestData === "object" &&
+    "name" in guestData &&
+    typeof guestData.name === "string"
+      ? guestData.name
+      : "[Guest Name]";
 
-  const namaTamu = guestData?.name ?? "[Guest Name]";
+  const groomName =
+    data?.dataEvent?.groomName ?? "David";
 
-  const groomName = data?.dataEvent?.groomName ?? "David";
-
-  const brideName = data?.dataEvent?.brideName ?? "Natasya";
+  const brideName =
+    data?.dataEvent?.brideName ?? "Natasya";
 
   const eventDate = data?.dataEvent?.date
     ? formatDateWithWeekday(data.dataEvent.date)
     : "SATURDAY, 10 OCTOBER 2026";
 
-  /*
-   * Background music.
-   */
-  const backgroundSoundUrl = data?.dataContent?.backgroundSoundData?.url
-    ? `https://media.twinklebook.com/${data.dataContent.backgroundSoundData.url}`
-    : "/audio/default-song.mp3";
+  const backgroundSoundUrl =
+    data?.dataContent?.backgroundSoundData?.url
+      ? `https://media.twinklebook.com/${data.dataContent.backgroundSoundData.url}`
+      : "/audio/default-song.mp3";
 
-  /*
-   * Asset statis sudah ditentukan di usePreloader.
-   * Gallery API tidak dimasukkan ke preloader.
-   */
+  // Hanya preload asset yang terdaftar di usePreloader.
+  // Gallery API tidak termasuk di dalamnya.
   const { loaded, progress } = usePreloader();
 
   return (
@@ -91,7 +82,6 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
         ${sackersItalicScript.variable}
       `}
     >
-      {/* Background overlay */}
       <div
         className="
           absolute
@@ -101,11 +91,13 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
         "
       />
 
-      {/* Main content */}
       <div className="relative z-10">
         <Header />
 
-        <Hero start={start} data={data} />
+        <Hero
+          start={start}
+          data={data}
+        />
 
         <Profile data={data} />
 
@@ -115,30 +107,38 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
 
         <Gallery data={data} />
 
-        <Rsvp data={data} guestData={guestData} />
+        <Rsvp
+          data={data}
+          guestData={guestData}
+        />
 
         <Gift data={data} />
 
-        <Wishes data={data} guestData={guestData} />
+        <Wishes
+          data={data}
+          guestData={guestData}
+        />
 
         <Thankyou data={data} />
       </div>
 
-      {/* Opening */}
       {!start && loaded && (
         <Opening
           setStart={setStart}
           namaTamu={namaTamu}
           groomName={groomName}
           brideName={brideName}
-          popUpIconImageData={data?.dataContent?.popUpIconImageData}
+          popUpIconImageData={
+            data?.dataContent?.popUpIconImageData
+          }
         />
       )}
 
-      {/* Background music */}
-      <PlaySongButton src={backgroundSoundUrl} start={start} />
+      <PlaySongButton
+        src={backgroundSoundUrl}
+        start={start}
+      />
 
-      {/* Loading screen */}
       {showLoading && (
         <LoadingScreen
           progress={progress}
