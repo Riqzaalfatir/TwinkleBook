@@ -26,9 +26,9 @@ const RsvpSectionDesign = () => {
   const waHref = (invitationUrl ?? "6281998478131").replace(/\D/g, "");
 
   const activeClass =
-    "flex items-center justify-center w-[36.15vw] h-[10.26vw] lg:w-[13.43vw] lg:h-[2.78vw] bg-[#021125] rounded-[1.54vw] lg:rounded-[3.31vw] font-cormorant-garamond text-[3.33vw] lg:text-[1.19vw] text-white";
+    "flex items-center justify-center w-[36.15vw] h-[10.26vw] lg:w-[13.43vw] lg:h-[2.78vw] bg-[#021125] rounded-[1.54vw] lg:rounded-[0.42vw] font-cormorant-garamond text-[3.33vw] lg:text-[1.19vw] text-white";
   const inactiveClass =
-    "flex items-center justify-center w-[36.15vw] h-[10.26vw] lg:w-[13.43vw] lg:h-[2.78vw] border border-[#021125] rounded-[1.54vw] lg:rounded-[3.31vw] font-cormorant-garamond text-[3.33vw] lg:text-[1.19vw] text-[#021125]";
+    "flex items-center justify-center w-[36.15vw] h-[10.26vw] lg:w-[13.43vw] lg:h-[2.78vw] border border-[#021125] rounded-[1.54vw] lg:rounded-[0.42vw] font-cormorant-garamond text-[3.33vw] lg:text-[1.19vw] text-[#021125]";
 
   return (
     <>
@@ -149,7 +149,7 @@ const RsvpSectionDesign = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
           >
-            <SmartRsvpForm.SubmitButton className="flex items-center justify-center w-[41.28vw] h-[9.23vw]  lg:w-[14.55vw] lg:h-[3.44vw] bg-[#021125] rounded-[1.54vw] lg:rounded-[3.31vw] font-cormorant-garamond text-[3.33vw] lg:text-[1.19vw] text-white mt-[6.8vw] lg:mt-[2.1vw]" />
+            <SmartRsvpForm.SubmitButton className="flex items-center justify-center w-[41.28vw] h-[9.23vw]  lg:w-[14.55vw] lg:h-[3.44vw] bg-[#021125] rounded-[1.54vw] lg:rounded-[0.42vw] font-cormorant-garamond text-[3.33vw] lg:text-[1.19vw] text-white mt-[6.8vw] lg:mt-[2.1vw]" />
           </motion.div>
           <motion.p
             variants={fadeUp}
@@ -171,7 +171,7 @@ const RsvpSectionDesign = () => {
             href={`https://wa.me/${waHref}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-[41.28vw] lg:w-[14.55vw] h-[7.69vw] lg:h-[2.78vw] bg-[#12877B] rounded-[1.54vw] lg:rounded-[3.31vw] font-cormorant-garamond text-[3.33vw] lg:text-[1.06vw] text-white gap-[1.93vw] lg:gap-[0.75vw] mt-[7.8vw] lg:mt-[1.9vw]"
+            className="flex items-center justify-center w-[41.28vw] lg:w-[14.55vw] h-[7.69vw] lg:h-[2.78vw] bg-[#12877B] rounded-[1.54vw] lg:rounded-[0.42vw] font-cormorant-garamond text-[3.33vw] lg:text-[1.06vw] text-white gap-[1.93vw] lg:gap-[0.75vw] mt-[7.8vw] lg:mt-[1.9vw]"
           >
             <Image
               src="/images/Michael-Vannya/Rsvp/Wa.png"
