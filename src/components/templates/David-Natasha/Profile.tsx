@@ -163,7 +163,7 @@ const Profile = ({ data }: ProfileProps) => {
           >
             Our joy will be complete with
             <br />
-            your presence and blessings.
+            your presence and blessings
           </motion.p>
         </div>
       </div>

@@ -147,7 +147,7 @@ const renderTitleWithBreak = (text: string, breakAfterWords?: number) => {
 
   return (
     <>
-      {firstLine}
+      {firstLine}{" "}
       <br className="lg:hidden" />
       {secondLine}
     </>
@@ -534,6 +534,23 @@ const EventOrder = ({ data }: EventOrderProps) => {
                 ease: "easeOut",
               }}
               className="font-cormorant-garamond text-[3.85vw] lg:text-[1.98vw] font-bold text-[#021125] mt-[5.3vw] leading-[5.13vw] lg:leading-[1.98vw] lg:mt-[1.98vw]"
+            >
+              GRAND BALLROOM
+            </motion.p>
+
+            <motion.p
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{
+                once: true,
+                amount: 0.3,
+              }}
+              transition={{
+                duration: 1.5,
+                ease: "easeOut",
+              }}
+              className="font-cormorant-garamond text-[3.85vw] lg:text-[1.98vw] font-bold text-[#021125] mt-[1.5vw] leading-[5.13vw] lg:leading-[1.98vw] lg:mt-[1vw]"
             >
               {renderTitleWithBreak(
                 receptionTitle,
