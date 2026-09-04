@@ -14,6 +14,7 @@ import Wishes from "./Wishes";
 import Thankyou from "./Thankyou";
 import Opening from "./Opening";
 import LoadingScreen from "./LoadingScreen";
+import RsvpButton from "../../../ui/RsvpButton";
 
 import { usePreloader } from "./hooks/usePreloader";
 import { formatDateWithWeekday } from "../../../lib/formatDate";
@@ -107,7 +108,7 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
 
         <Gallery data={data} />
 
-        <Rsvp
+       <Rsvp
           data={data}
           guestData={guestData}
         />
@@ -138,6 +139,8 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
         src={backgroundSoundUrl}
         start={start}
       />
+
+      <RsvpButton />
 
       {showLoading && (
         <LoadingScreen

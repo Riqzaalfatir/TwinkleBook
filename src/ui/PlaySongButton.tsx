@@ -7,6 +7,7 @@ import {
   forwardRef,
   useImperativeHandle,
 } from "react";
+import { useAutoPauseOnHiddenTab } from "../hooks/useAutoPauseOnHiddenTab";
 
 type PlaySongButtonProps = {
   src: string;
@@ -19,12 +20,11 @@ export type PlaySongButtonHandle = {
   play: () => void;
 };
 
-const PlaySongButton = forwardRef<
-  PlaySongButtonHandle,
-  PlaySongButtonProps
->(({ src, start, onPlay }, ref) => {
+const PlaySongButton = forwardRef<PlaySongButtonHandle, PlaySongButtonProps>(({ src, start, onPlay }, ref) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useAutoPauseOnHiddenTab(audioRef, setIsPlaying);
 
   useImperativeHandle(
     ref,
@@ -53,8 +53,6 @@ const PlaySongButton = forwardRef<
   );
 
   useEffect(() => {
-    console.log("start berubah jadi:", start, "src:", src);
-
     if (start && audioRef.current) {
       audioRef.current
         .play()
@@ -96,7 +94,7 @@ const PlaySongButton = forwardRef<
       <button
         type="button"
         onClick={toggleSong}
-        className="fixed bottom-6 right-6 z-[60] w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md active:scale-95 transition-transform"
+        className="fixed bottom-6 right-6 lg:right-10 z-[60] w-12 h-12 lg:w-[60px] lg:h-[60px] rounded-full bg-white border-2 border-[#2A6CF6] flex items-center justify-center shadow-lg active:scale-95 transition-transform"
       >
         {isPlaying ? (
           <svg
