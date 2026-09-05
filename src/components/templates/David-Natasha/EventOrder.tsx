@@ -521,7 +521,7 @@ const EventOrder = ({ data }: EventOrderProps) => {
               {reception ? formatTime(reception.date) : "18.00 WIB"}
             </motion.p>
 
-            {/* <motion.p
+            <motion.p
               variants={fadeUp}
               initial="hidden"
               whileInView="show"
@@ -536,9 +536,9 @@ const EventOrder = ({ data }: EventOrderProps) => {
               className="font-cormorant-garamond text-[3.85vw] lg:text-[1.98vw] font-bold text-[#021125] mt-[5.3vw] leading-[5.13vw] lg:leading-[1.98vw] lg:mt-[1.98vw]"
             >
               GRAND BALLROOM
-            </motion.p> */}
+            </motion.p>
 
-            <motion.p
+            {/* <motion.p
               variants={fadeUp}
               initial="hidden"
               whileInView="show"
@@ -556,9 +556,9 @@ const EventOrder = ({ data }: EventOrderProps) => {
                 receptionTitle,
                 receptionDummy.titleBreakAfterWords,
               )}
-            </motion.p>
+            </motion.p> */}
 
-            {/* <motion.p
+            <motion.p
               variants={fadeUp}
               initial="hidden"
               whileInView="show"
@@ -576,7 +576,7 @@ const EventOrder = ({ data }: EventOrderProps) => {
                 receptionTitle,
                 receptionDummy.titleBreakAfterWords,
               )}
-            </motion.p> */}
+            </motion.p>
 
             <motion.p
               variants={fadeUp}
