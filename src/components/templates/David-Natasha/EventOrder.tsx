@@ -310,7 +310,7 @@ const EventOrder = ({ data }: EventOrderProps) => {
         className="absolute -bottom-[0vw] -right-[0vw] w-[33vw] h-auto pointer-events-none z-20 hidden lg:block"
       />
 
-      <div className="relative z-[15] flex flex-col items-center text-center pt-[22.4vw] lg:pt-[8.15vw] pb-[29.45vw] lg:pb-[9.5vw]">
+      <div className="relative z-[15] flex flex-col items-center text-center pt-[98px] lg:pt-[144px] pb-[29.45vw] lg:pb-[144px]">
         {/* ========================== */}
         {/* TITLE */}
         {/* ========================== */}

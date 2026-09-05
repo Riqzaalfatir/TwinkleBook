@@ -72,7 +72,7 @@ const Gift = ({ data }: GiftProps) => {
 
   return (
     <section id="gift" className="relative w-full z-[5]">
-      <div className="relative z-[15] flex flex-col items-center text-center leading-none pt-[17.5vw] pb-[15.38vw] px-[6.15vw] lg:pt-[0.1vw] lg:pb-[0vw] lg:px-[0vw]">
+      <div className="relative z-[15] flex flex-col items-center text-center leading-none pt-[17.5vw] pb-[15.38vw] px-[6.15vw] lg:pt-[0vw] lg:pb-[0vw] lg:px-[0vw]">
         <motion.h1
           variants={fadeUp}
           initial="hidden"
@@ -117,7 +117,7 @@ const Gift = ({ data }: GiftProps) => {
           </p>
         </motion.div>
 
-        <div className="w-full max-w-[72.82vw] lg:max-w-[31.5vw] flex flex-col gap-[5.90vw] lg:gap-[1.95vw] mt-[11.5vw] lg:mt-[4.78vw]">
+        <div className="w-full max-w-[72.82vw] lg:max-w-[31.5vw] flex flex-col gap-[5.90vw] lg:gap-[1.95vw] mt-[11.5vw] lg:mt-[83px]">
           {gifts.map((gift, index) => {
             const icon =
               BANK_ICONS[gift.bank?.toUpperCase()] ??

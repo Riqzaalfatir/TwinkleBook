@@ -109,7 +109,13 @@ SmartRsvpForm.AttendToggle = ({ className }: { className?: string }) => {
   );
 };
 
-SmartRsvpForm.NotAttendToggle = ({ className }: { className?: string }) => {
+SmartRsvpForm.NotAttendToggle = ({
+  className,
+  stacked = false,
+}: {
+  className?: string;
+  stacked?: boolean;
+}) => {
   const { setAttendStatus } = useSmartRsvp();
   return (
     <button
@@ -117,7 +123,15 @@ SmartRsvpForm.NotAttendToggle = ({ className }: { className?: string }) => {
       onClick={() => setAttendStatus(2)}
       className={className}
     >
-      UNABLE TO ATTEND
+      {stacked ? (
+        <>
+          UNABLE TO
+          <br className='lg:hidden' />
+          ATTEND
+        </>
+      ) : (
+        "UNABLE TO ATTEND"
+      )}
     </button>
   );
 };

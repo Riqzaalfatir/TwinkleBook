@@ -63,7 +63,7 @@ const RsvpSectionDesign = () => {
           height={450}
           className="absolute lg:-bottom-[18.5vw] -right-[0vw] w-[17.8vw] h-auto pointer-events-none z-20 hidden lg:block"
         />
-        <div className="relative z-[15] flex flex-col items-center text-center leading-none pt-[25.4vw] lg:pt-[9.54vw] pb-[15.38vw] lg:pb-[14.4vw] px-[6.15vw] lg:px-[0vw]">
+        <div className="relative z-[15] flex flex-col items-center text-center leading-none pt-[25.4vw] lg:pt-[144px] pb-[15.38vw] lg:pb-[221px] px-[6.15vw] lg:px-[0vw]">
           <motion.h1
             variants={fadeUp}
             initial="hidden"
@@ -128,6 +128,7 @@ const RsvpSectionDesign = () => {
               transition={{ duration: 1.5, ease: "easeOut" }}
             >
               <SmartRsvpForm.NotAttendToggle
+                stacked
                 className={attendStatus === 2 ? activeClass : inactiveClass}
               />
             </motion.div>

@@ -87,7 +87,6 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
         className="
           absolute
           inset-0
-          bg-white/60
           pointer-events-none
         "
       />
