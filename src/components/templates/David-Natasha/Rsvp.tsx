@@ -47,7 +47,7 @@ const RsvpSectionDesign = () => {
           alt="flower decoration"
           width={450}
           height={450}
-          className="absolute -bottom-[56vw] -right-[0vw] w-[26vw] h-auto pointer-events-none z-20 lg:hidden"
+          className="absolute -bottom-[53.5vw] -right-[0vw] w-[26vw] h-auto pointer-events-none z-20 lg:hidden"
         />
         <Image
           src="/images/David-Natasha/Rsvp/AsetAtasG.avif"
@@ -63,15 +63,14 @@ const RsvpSectionDesign = () => {
           height={450}
           className="absolute lg:-bottom-[18.5vw] -right-[0vw] w-[17.8vw] h-auto pointer-events-none z-20 hidden lg:block"
         />
-        <div className="relative z-[15] flex flex-col items-center text-center leading-none pt-[25.4vw] lg:pt-[144px] pb-[15.38vw] lg:pb-[221px] px-[6.15vw] lg:px-[0vw]">
+        <div className="relative z-[15] flex flex-col items-center text-center leading-none pt-[100px] lg:pt-[130px] pb-[15.6vw] lg:pb-[220px] px-[6.15vw] lg:px-[0vw]">
           <motion.h1
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-sackers-italic-script text-[13.33vw] lg:text-[5.29vw] text-[#021125] [--stroke-w:0.3px] lg:[--stroke-w:0.53px]"
-            style={{ WebkitTextStroke: "var(--stroke-w) #021125" }}
+            className="font-antic-didone text-[8.72vw] lg:text-[3.04vw] text-[#021125] uppercase"
           >
             Rsvp
           </motion.h1>
@@ -81,7 +80,7 @@ const RsvpSectionDesign = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-cormorant-garamond text-[3.85vw] lg:text-[1.59vw] text-[#021125] mt-[8.2vw] lg:mt-[2.9vw] tracking-wide"
+            className="font-cormorant-garamond text-[3.85vw] lg:text-[1.59vw] text-[#021125] mt-[11.8vw] lg:mt-[4.2vw] tracking-wide"
           >
             Dear Mr./Mrs./Ms.
           </motion.p>

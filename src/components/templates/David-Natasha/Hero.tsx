@@ -73,7 +73,7 @@ const Hero = ({ start = false, data }: HeroProps) => {
       <div className="absolute top-0 left-0 w-full h-[500px] lg:h-[600px] z-[5] bg-gradient-to-b from-white to-white/0" />
 
       {/* HERO CONTENT */}
-      <div className="relative z-10 w-full h-full flex flex-col items-center leading-none pt-[18vw] lg:pt-[6.55vw]">
+      <div className="relative z-10 w-full h-full flex flex-col items-center leading-none pt-[20.5vw] lg:pt-[6.55vw]">
         {/* LOGO */}
         <motion.div
           variants={scaleIn}
@@ -100,7 +100,7 @@ const Hero = ({ start = false, data }: HeroProps) => {
             ease: "easeOut",
             delay: 0.3,
           }}
-          className="font-cormorant-garamond font-medium text-[4.10vw] lg:text-[1.46vw] text-[#021125] mt-[14.5vw] lg:mt-[4.87vw]"
+          className="font-cormorant-garamond font-medium text-[4.10vw] lg:text-[1.46vw] text-[#021125] mt-[11.2vw] lg:mt-[2.4vw]"
         >
           THE WEDDING OF
         </motion.p>
@@ -115,7 +115,7 @@ const Hero = ({ start = false, data }: HeroProps) => {
             ease: "easeOut",
             delay: 0.5,
           }}
-          className="font-sackers-italic-script font-normal text-[12.31vw] lg:text-[6.35vw] text-[#021125] mt-[2.82vw] lg:mt-[1.2vw]"
+          className="font-antic-didone font-normal text-[9.74vw] lg:text-[4.23vw] text-[#021125] mt-[2.9vw] lg:mt-[0.95vw]"
         >
           {groomName} & {brideName}
         </motion.h1>
@@ -130,7 +130,7 @@ const Hero = ({ start = false, data }: HeroProps) => {
             ease: "easeOut",
             delay: 0.7,
           }}
-          className="font-cormorant-garamond text-[4.62vw] lg:text-[1.72vw] font-medium text-[#021125] mt-[2.7vw] lg:mt-[0.8vw]"
+          className="font-cormorant-garamond text-[4.62vw] lg:text-[1.72vw] font-medium text-[#021125] mt-[3.5vw] lg:mt-[0.9vw]"
         >
           {eventDate}
         </motion.p>

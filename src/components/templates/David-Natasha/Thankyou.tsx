@@ -20,6 +20,9 @@ const Thankyou = ({ data }: ThankyouProps) => {
   const footerNote =
     typeof footerNoteRaw === "string" ? footerNoteRaw.trim() : "";
 
+  const hashTagRaw = data?.dataEvent?.hashTag;
+  const hashTag = typeof hashTagRaw === "string" ? hashTagRaw.trim() : "oVIDSYAllytogether";
+
   return (
     <section className="relative w-full z-10">
       {/* MOBILE TOP DECORATION */}
@@ -28,7 +31,7 @@ const Thankyou = ({ data }: ThankyouProps) => {
         alt="flower decoration"
         width={950}
         height={950}
-        className="absolute -top-[2vw] -left-[0vw] w-[45.5vw] h-auto pointer-events-none z-20 lg:hidden"
+        className="absolute top-[3vw] -left-[0vw] w-[45.5vw] h-auto pointer-events-none z-20 lg:hidden"
       />
 
       {/* MOBILE BOTTOM DECORATION */}
@@ -58,7 +61,7 @@ const Thankyou = ({ data }: ThankyouProps) => {
         className="absolute -bottom-[0vw] -right-[0vw] w-[28.9vw] h-auto pointer-events-none z-20 hidden lg:block"
       />
 
-      <div className="relative z-[15] flex flex-col items-center text-center pt-[280px] lg:pt-[228px]">
+      <div className="relative z-[15] flex flex-col items-center text-center pt-[89.5vw] lg:pt-[228px]">
         <motion.h1
           variants={fadeUp}
           initial="hidden"
@@ -68,7 +71,7 @@ const Thankyou = ({ data }: ThankyouProps) => {
             duration: 1.5,
             ease: "easeOut",
           }}
-          className="font-sackers-italic-script text-[13.33vw] lg:text-[5.29vw] text-[#021125] [--stroke-w:0.3px] lg:[--stroke-w:0.53px] leading-none"
+          className="font-antic-didone text-[8.72vw] lg:text-[3.04vw] text-[#021125] [--stroke-w:0.3px] lg:[--stroke-w:0.53px] leading-none"
           style={{
             WebkitTextStroke: "var(--stroke-w) #021125",
           }}
@@ -85,17 +88,17 @@ const Thankyou = ({ data }: ThankyouProps) => {
             duration: 1.5,
             ease: "easeOut",
           }}
-          className="font-cormorant-garamond text-[3.59vw] lg:text-[1.59vw] text-[#021125] mt-[4vw] lg:mt-[1.5vw] leading-[4.5vw] lg:leading-[2vw]"
+          className="font-cormorant-garamond text-[3.59vw] lg:text-[1.59vw] text-[#021125] mt-[10.5vw] lg:mt-[4.2vw] leading-[4.5vw] lg:leading-[2vw]"
         >
           {footerNote ? (
             footerNote
           ) : (
             <>
-              for being part of this golden celebration.
-              <br />
-              We look forward to celebrating this special
-              <br />
-              milestone with you.
+              We look forward to celebrate <br />
+              this moment with you <br />
+              {hashTag && (
+                <span className="inline-block mt-[20px] lg:mt-[29px]">#{hashTag}</span>
+              )}
             </>
           )}
         </motion.p>
@@ -109,7 +112,7 @@ const Thankyou = ({ data }: ThankyouProps) => {
             duration: 1.5,
             ease: "easeOut",
           }}
-          className="mt-[59vw] lg:mt-[15.3vw] mb-[25.38vw] lg:mb-[10.16vw]"
+          className="mt-[46.5vw] lg:mt-[13.4vw] mb-[29vw] lg:mb-[10.7vw]"
         >
           <Image
             src="/images/David-Natasha/Thankyou/Provite.avif"

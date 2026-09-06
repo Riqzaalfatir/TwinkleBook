@@ -18,6 +18,8 @@ type GiftProps = {
 
 const BANK_ICONS: Record<string, string> = {
   BCA: "/images/David-Natasha/Gift/BCA.avif",
+    "BENDIGO BANK": "/images/David-Natasha/Gift/Bendigo.webp",
+
 };
 
 const FALLBACK_GIFTS: Gift[] = [
@@ -30,6 +32,11 @@ const FALLBACK_GIFTS: Gift[] = [
     bank: "BCA",
     number: "6840308667",
     name: "Stefanie Natasya",
+  },
+  {
+    bank: "Bendigo Bank",
+    number: "166687939",
+    name: "Prawira David Aldridge Susetio",
   },
 ];
 
@@ -82,10 +89,7 @@ const Gift = ({ data }: GiftProps) => {
             duration: 1.5,
             ease: "easeOut",
           }}
-          className="font-sackers-italic-script text-[13.33vw] lg:text-[5.29vw] text-[#021125] -ml-[5.13vw] lg:ml-[0vw] [--stroke-w:0.3px] lg:[--stroke-w:0.53px]"
-          style={{
-            WebkitTextStroke: "var(--stroke-w) #021125",
-          }}
+          className="font-antic-didone text-[8.72vw] lg:text-[3.04vw] text-[#021125] "
         >
           Wedding Gift
         </motion.h1>
@@ -102,7 +106,7 @@ const Gift = ({ data }: GiftProps) => {
             duration: 1.5,
             ease: "easeOut",
           }}
-          className="font-cormorant-garamond text-[3.85vw] lg:text-[1.59vw] text-[#021125] mt-[7vw] lg:mt-[2.8vw] leading-[4.4vw] lg:leading-[2vw]"
+          className="font-cormorant-garamond text-[3.85vw] lg:text-[1.59vw] text-[#021125] mt-[11.25vw] lg:mt-[4.2vw] leading-[4.4vw] lg:leading-[2vw]"
         >
           <p>
             Your presence and prayers <br className="lg:hidden" />

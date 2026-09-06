@@ -17,6 +17,7 @@ type OpeningProps = {
   groomName?: string;
   brideName?: string;
   popUpIconImageData?: ImageData | null;
+  hashTag?: string;
 };
 
 const blurVariants = {
@@ -42,6 +43,7 @@ const Opening = ({
   groomName = "David",
   brideName = "Natasya",
   popUpIconImageData = null,
+  hashTag = "oVIDSYAllytogether",
 }: OpeningProps) => {
   const [open, setOpen] = useState<boolean>(true);
 
@@ -63,8 +65,6 @@ const Opening = ({
     setStart(true);
   };
 
-  // Kalau API nyediain gambar (popUpIconImageData), pakai itu untuk mobile & desktop.
-  // Kalau masih null, fallback ke hardcode mobile/desktop punya David-Natasha.
   const apiImageUrl = popUpIconImageData?.url
     ? `https://media.twinklebook.com/${popUpIconImageData.url}`
     : null;
@@ -125,7 +125,7 @@ const Opening = ({
               )}
             </div>
 
-            <div className="relative z-20 flex flex-col items-center text-center pt-[48px] lg:pt-[58px] pb-[50px] lg:pb-[65px] overflow-hidden">
+            <div className="relative z-20 flex flex-col items-center text-center pt-[48px] lg:pt-[58px] pb-[50px] lg:pb-[75px] overflow-hidden">
               <Image
                 src="/images/David-Natasha/Opening/AsetAtasM.avif"
                 alt="flower decoration"
@@ -145,26 +145,23 @@ const Opening = ({
                 The Wedding of
               </p>
 
-              <h1 className="relative z-10 font-sackers-italic-script text-[40px] lg:text-[56px] text-[#021125] break-words max-w-[280px] lg:max-w-[320px] mt-[5.2px] lg:mt-[10px] leading-[26px] lg:leading-[32px]">
+              <h1 className="relative z-10 font-antic-didone text-[26px] lg:text-[36px] text-[#021125] break-words max-w-[280px] lg:max-w-[320px] mt-[5.2px] lg:mt-[10px] leading-[26px] lg:leading-[32px]">
                 {groomName} & {brideName}
               </h1>
+              <p className="relative z-10 font-cormorant-garamond text-[12px]  text-[#021125] leading-[13.7px] lg:leading-[19px] pt-[8px] lg:pt-[3px]">
+                #{hashTag}
+              </p>
 
-              <p className="relative z-10 font-cormorant-garamond text-[12px] lg:text-[20px] text-[#021125] pt-[14.8px] lg:pt-[19px]">
+              <p className="relative z-10 font-cormorant-garamond text-[12px] lg:text-[20px] text-[#021125] pt-[25px] lg:pt-[4.5px]">
                 Dear,
               </p>
               <p className="relative z-10 font-cormorant-garamond text-[16px] lg:text-[24px] text-[#021125] pt-[6px] lg:pt-[0px] lg:mt-[3px] break-words max-w-[250px] leading-[19px] lg:leading-[20px]">
                 {namaTamu}
               </p>
 
-              <p className="relative z-10 font-cormorant-garamond text-[10px] lg:text-[16px] text-[#021125] leading-[13.7px] lg:leading-[19px] pt-[20px] lg:pt-[26px]">
-                We sincerely apologize
-                <br />
-                for any misspelling of names or titles.
-              </p>
-
               <button
                 onClick={handleOpen}
-                className="relative z-10 bg-[#021125] transition-colors flex items-center justify-center text-white w-[154px] h-[30px] lg:w-[220px] lg:h-[35px] rounded-[52px] lg:rounded-[35px] uppercase font-cormorant-garamond text-[12px] lg:text-[16px] tracking-widest mt-[15px] lg:mt-[15px]"
+                className="relative z-10 bg-[#021125] transition-colors flex items-center justify-center text-white w-[154px] h-[30px] lg:w-[220px] lg:h-[35px] rounded-[52px] lg:rounded-[35px] uppercase font-cormorant-garamond text-[12px] lg:text-[16px] tracking-widest mt-[25px] lg:mt-[34px]"
               >
                 <span>View Invitation</span>
               </button>

@@ -32,7 +32,7 @@ module.exports = {
         "costa-rica": ["var(--font-costa-rica)"],
         "sackers-italic-script": ["var(--font-sackers-italic-script)"],
         garamond: ["var(--font-garamond)"],
-      },
+"antic-didone": ["var(--font-antic-didone)"],      },
     },
   },
   plugins: [],

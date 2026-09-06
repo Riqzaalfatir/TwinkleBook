@@ -28,6 +28,7 @@ import {
   sackersItalicScript,
   garamond,
   timesNewRomanBold,
+  anticDidone,
 } from "./fonts/fonts";
 
 interface DavidNatashaProps {
@@ -64,6 +65,12 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
       ? `https://media.twinklebook.com/${data.dataContent.backgroundSoundData.url}`
       : "/audio/default-song.mp3";
 
+  const hashTagRaw = data?.dataEvent?.hashTag;
+  const hashTag =
+    typeof hashTagRaw === "string" && hashTagRaw.trim()
+      ? hashTagRaw.trim()
+      : "oVIDSYAllytogether";
+
   // Hanya preload asset yang terdaftar di usePreloader.
   // Gallery API tidak termasuk di dalamnya.
   const { loaded, progress } = usePreloader();
@@ -81,6 +88,7 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
         ${costaRica.variable}
         ${slight.variable}
         ${sackersItalicScript.variable}
+        ${anticDidone.variable}
       `}
     >
       <div
@@ -132,6 +140,7 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
           popUpIconImageData={
             data?.dataContent?.popUpIconImageData
           }
+          hashTag={hashTag}
         />
       )}
 

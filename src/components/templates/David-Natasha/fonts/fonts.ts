@@ -1,4 +1,4 @@
-import { Cormorant_Garamond } from "next/font/google";
+import { Cormorant_Garamond, Antic_Didone } from "next/font/google";
 import localFont from "next/font/local";
 
 export const cormorantGaramond = Cormorant_Garamond({
@@ -6,6 +6,13 @@ export const cormorantGaramond = Cormorant_Garamond({
   weight: ["300", "400", "500", "600", "700"],
   style: ["normal", "italic"],
   variable: "--font-cormorant-garamond",
+});
+
+export const anticDidone = Antic_Didone({
+  subsets: ["latin"],
+  weight: "400",
+  style: "normal",
+  variable: "--font-antic-didone",
 });
 
 export const costaRica = localFont({

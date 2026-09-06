@@ -46,7 +46,7 @@ const VENUE_DUMMY: Record<string, VenueDummy> = {
   "HOLY MATRIMONY": {
     image: "/images/David-Natasha/EventOrder/GIIDago.avif",
     alt: "GII HOK IM TONG Dago",
-    addressName: "GII HOK IM TONG - DAGO",
+    addressName: "GII HOK IM TONG DAGO",
     address: "Jl. Cikapayang No. 2-4, Kota Bandung",
     mapUrl: "https://maps.app.goo.gl/4E2uyDg52DDiW5hn7",
   },
@@ -310,7 +310,7 @@ const EventOrder = ({ data }: EventOrderProps) => {
         className="absolute -bottom-[0vw] -right-[0vw] w-[33vw] h-auto pointer-events-none z-20 hidden lg:block"
       />
 
-      <div className="relative z-[15] flex flex-col items-center text-center pt-[98px] lg:pt-[144px] pb-[29.45vw] lg:pb-[144px]">
+      <div className="relative z-[15] flex flex-col items-center text-center pt-[100px] lg:pt-[130px] pb-[29.45vw] lg:pb-[144px]">
         {/* ========================== */}
         {/* TITLE */}
         {/* ========================== */}
@@ -327,10 +327,7 @@ const EventOrder = ({ data }: EventOrderProps) => {
             duration: 1.5,
             ease: "easeOut",
           }}
-          className="font-sackers-italic-script text-[13.33vw] lg:text-[5.29vw] text-[#021125] [--stroke-w:0.3px] lg:[--stroke-w:0.53px]"
-          style={{
-            WebkitTextStroke: "var(--stroke-w) #021125",
-          }}
+          className="font-antic-didone text-[8.72vw] lg:text-[3.04vw] text-[#021125]"
         >
           Event Detail
         </motion.h1>
@@ -340,7 +337,7 @@ const EventOrder = ({ data }: EventOrderProps) => {
         {/* ========================== */}
 
         {shouldShowHoly && (
-          <div className="flex flex-col items-center justify-center leading-none mt-[5.6vw] lg:mt-[1.35vw]">
+          <div className="flex flex-col items-center justify-center leading-none mt-[10vw] lg:mt-[3.4vw]">
             <motion.div
               variants={fadeUp}
               initial="hidden"
@@ -394,7 +391,7 @@ const EventOrder = ({ data }: EventOrderProps) => {
               }}
               className="font-cormorant-garamond font-medium text-[4.62vw] lg:text-[1.98vw] text-[#021125] mt-[5.13vw] lg:mt-[2.05vw]"
             >
-              {holyMatrimony ? formatTime(holyMatrimony.date) : "10.30 WIB"}
+              {holyMatrimony ? formatTime(holyMatrimony.date) : "12.00 WIB"}
             </motion.p>
 
             <motion.p
