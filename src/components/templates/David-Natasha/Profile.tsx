@@ -109,10 +109,10 @@ const Profile = ({ data }: ProfileProps) => {
             transition={{ duration: 1.5, ease: "easeOut" }}
             className="font-cormorant-garamond leading-[4.93vw] lg:leading-[1.82vw] text-[3.85vw] lg:text-[1.59vw] text-[#021125] mt-[7.5vw] lg:mt-[3.8vw]"
           >
-            Cordially request the honour of your
+            Cordially request the honour of your 
             <br className="lg:hidden" />
-            presence at the <br className="hidden lg:block" /> marriage of their
-            <br />
+            {" "}presence at the <br className="hidden lg:block" /> marriage of their
+            <br className="lg:hidden" />
             son and daughter
           </motion.p>
 
@@ -122,7 +122,7 @@ const Profile = ({ data }: ProfileProps) => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-sackers-italic-script text-[10.26vw] lg:text-[6.35vw] leading-[8.62vw] text-[#021125] lg:leading-[4.6vw] mt-[8vw] lg:mt-[4.3vw] [--stroke-w:0.3px] lg:[--stroke-w:0.64px] px-[13.5vw] lg:px-[9vw]"
+            className="font-sackers-italic-script text-[10.26vw] lg:text-[6.35vw] leading-[8.62vw] text-[#021125] lg:leading-[4.6vw] mt-[8vw] lg:mt-[4.3vw] [--stroke-w:0.3px] lg:[--stroke-w:0.64px] px-[13.5vw] lg:px-[10vw]"
             style={{ WebkitTextStroke: "var(--stroke-w) #021125" }}
           >
             {groomFullName}
@@ -146,7 +146,7 @@ const Profile = ({ data }: ProfileProps) => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-sackers-italic-script text-[10.26vw] lg:text-[6.35vw] leading-[8.62vw] lg:leading-[4.6vw] text-[#021125] mt-[2.4vw] px-[13.5vw] lg:px-[9vw]
+            className="font-sackers-italic-script text-[10.26vw] lg:text-[6.35vw] leading-[8.62vw] lg:leading-[4.6vw] text-[#021125] mt-[2.4vw] px-[13.5vw] lg:px-[10vw]
             lg:mt-[3vw] [--stroke-w:0.3px] lg:[--stroke-w:0.64px]"
             style={{ WebkitTextStroke: "var(--stroke-w) #021125" }}
           >
