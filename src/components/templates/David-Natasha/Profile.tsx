@@ -32,13 +32,12 @@ const Profile = ({ data }: ProfileProps) => {
     data?.dataEvent?.groomParent ??
     "Mr. Andy S. Susetio and Mrs. Natalia Susetio";
   const brideParent =
-    data?.dataEvent?.brideParent ??
-    "Mr. Agus Lugiman and Mrs. Ratna Sari";
+    data?.dataEvent?.brideParent ?? "Mr. Agus Lugiman and Mrs. Ratna Sari";
 
   return (
     <section
       id="profile"
-      className="relative w-full flex flex-col items-center py-[8.75vw] lg:py-[3.97vw]"
+      className="relative w-full flex flex-col items-center py-[8.75vw] lg:pt-[3.9vw] lg:pb-[6.8vw]"
     >
       <div className="relative w-[100%] lg:w-[66%]">
         <Image
@@ -49,7 +48,7 @@ const Profile = ({ data }: ProfileProps) => {
           className="w-full h-auto lg:hidden"
         />
         <Image
-          src="/images/David-Natasha/Profile/temp3.avif"
+          src="/images/David-Natasha/Profile/tempdekstop.webp"
           alt="Profile Frame"
           width={1554}
           height={4096}
@@ -65,7 +64,7 @@ const Profile = ({ data }: ProfileProps) => {
             transition={{ duration: 1.5, ease: "easeOut" }}
             className="font-cormorant-garamond text-[3.85vw] lg:text-[1.59vw] text-[#021125]"
           >
-            By the Grace of God
+            By the grace of God
           </motion.p>
 
           <motion.p
@@ -74,7 +73,7 @@ const Profile = ({ data }: ProfileProps) => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-cormorant-garamond text-[4.10vw] lg:text-[1.59vw] font-semibold text-[#021125] mt-[6.5vw] lg:mt-[3.7vw] leading-[4.93vw] lg:leading-[1.8vw] max-w-[70vw] lg:max-w-[35vw] break-words"
+            className="font-cormorant-garamond text-[4.10vw] lg:text-[1.59vw] font-semibold text-[#021125] mt-[6.5vw] lg:mt-[3.5vw] leading-[4.93vw] lg:leading-[1.8vw] max-w-[70vw] lg:max-w-[35vw] break-words"
           >
             {splitParentName(groomParent)}
           </motion.p>
@@ -85,7 +84,7 @@ const Profile = ({ data }: ProfileProps) => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-cormorant-garamond text-[3.85vw] lg:text-[1.59vw] italic text-[#021125] my-[4.3vw] lg:my-[1.65vw]"
+            className="font-cormorant-garamond text-[3.85vw] lg:text-[1.59vw] italic text-[#021125] my-[4.3vw] lg:my-[2.1vw]"
           >
             together with
           </motion.p>
@@ -107,11 +106,11 @@ const Profile = ({ data }: ProfileProps) => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-cormorant-garamond leading-[4.93vw] lg:leading-[1.82vw] text-[3.85vw] lg:text-[1.59vw] text-[#021125] mt-[7.1vw] lg:mt-[3.8vw]"
+            className="font-cormorant-garamond leading-[4.93vw] lg:leading-[1.82vw] text-[3.85vw] lg:text-[1.59vw] text-[#021125] mt-[7.1vw] lg:mt-[3.6vw]"
           >
-            Cordially request the honour of your 
-            <br className="lg:hidden" />
-            {" "}presence at the <br className="hidden lg:block" /> marriage of their
+            Cordially request the honour of your
+            <br className="lg:hidden" /> presence at the{" "}
+            <br className="hidden lg:block" /> marriage of their
             <br className="lg:hidden" />
             son and daughter
           </motion.p>
@@ -122,7 +121,7 @@ const Profile = ({ data }: ProfileProps) => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-antic-didone text-[7.18vw] lg:text-[3.84vw] leading-[8.62vw] text-[#021125] lg:leading-[4.6vw] mt-[8vw] lg:mt-[4.3vw]  px-[13.5vw] lg:px-[14vw]"
+            className="font-antic-didone text-[7.18vw] lg:text-[3.84vw] leading-[8.62vw] text-[#021125] lg:leading-[4.6vw] mt-[8vw] lg:mt-[3.3vw]  px-[13.5vw] lg:px-[14vw]"
           >
             {groomFullName}
           </motion.h2>
@@ -133,7 +132,7 @@ const Profile = ({ data }: ProfileProps) => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-antic-didone text-[7.18vw] lg:text-[3.84vw] text-[#021125] mt-[5.5vw] lg:mt-[3.6vw] "
+            className="font-antic-didone text-[7.18vw] lg:text-[3.83vw] text-[#021125] mt-[5.5vw] lg:mt-[4.4vw] "
           >
             &
           </motion.p>
@@ -145,7 +144,7 @@ const Profile = ({ data }: ProfileProps) => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
             className="font-antic-didone text-[7.18vw] lg:text-[3.84vw] leading-[8.62vw] lg:leading-[4.6vw] text-[#021125] mt-[5.5vw] px-[13.5vw] lg:px-[14vw]
-            lg:mt-[3.9vw] "
+            lg:mt-[3.7vw] "
           >
             {brideFullName}
           </motion.h2>
@@ -156,7 +155,7 @@ const Profile = ({ data }: ProfileProps) => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-cormorant-garamond text-[4.10vw] text-[#021125] lg:text-[1.59vw] mt-[9.52vw] lg:mt-[5.9vw] leading-[4.85vw] lg:leading-[1.95vw]"
+            className="font-cormorant-garamond text-[4.10vw] text-[#021125] lg:text-[1.59vw] mt-[9.52vw] lg:mt-[3.7vw] leading-[4.85vw] lg:leading-[1.9vw]"
           >
             Our joy will be complete with
             <br />

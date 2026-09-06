@@ -125,7 +125,7 @@ const Opening = ({
               )}
             </div>
 
-            <div className="relative z-20 flex flex-col items-center text-center pt-[48px] lg:pt-[58px] pb-[50px] lg:pb-[75px] overflow-hidden">
+            <div className="relative z-20 flex flex-col items-center text-center pt-[48px] lg:pt-[58px] pb-[50px] lg:pb-[63px] overflow-hidden">
               <Image
                 src="/images/David-Natasha/Opening/AsetAtasM.avif"
                 alt="flower decoration"
@@ -145,23 +145,28 @@ const Opening = ({
                 The Wedding of
               </p>
 
-              <h1 className="relative z-10 font-antic-didone text-[26px] lg:text-[36px] text-[#021125] break-words max-w-[280px] lg:max-w-[320px] mt-[5.2px] lg:mt-[10px] leading-[26px] lg:leading-[32px]">
+              <h1 className="relative z-10 font-antic-didone text-[26px] lg:text-[36px] text-[#021125] break-words max-w-[280px] lg:max-w-[320px] mt-[5.2px] lg:mt-[11px] leading-[26px] lg:leading-[32px]">
                 {groomName} & {brideName}
               </h1>
-              <p className="relative z-10 font-cormorant-garamond text-[12px]  text-[#021125] leading-[13.7px] lg:leading-[19px] pt-[8px] lg:pt-[3px]">
+
+              {/* <p className="relative z-10 font-cormorant-garamond text-[12px] lg:text-[16px]  text-[#021125] leading-[13.7px] lg:leading-[19px] pt-[8px] lg:pt-[18px]">
                 #{hashTag}
+              </p> */}
+
+              <p className="relative z-10 font-cormorant-garamond text-[12px] lg:text-[16px]  text-[#021125] leading-[13.7px] lg:leading-[19px] pt-[8px] lg:pt-[18px]">
+                #oVIDSYAllytogether
               </p>
 
-              <p className="relative z-10 font-cormorant-garamond text-[12px] lg:text-[20px] text-[#021125] pt-[25px] lg:pt-[4.5px]">
+              <p className="relative z-10 font-cormorant-garamond text-[12px] lg:text-[20px] text-[#021125] pt-[25px] lg:pt-[14px]">
                 Dear,
               </p>
-              <p className="relative z-10 font-cormorant-garamond text-[16px] lg:text-[24px] text-[#021125] pt-[6px] lg:pt-[0px] lg:mt-[3px] break-words max-w-[250px] leading-[19px] lg:leading-[20px]">
+              <p className="relative z-10 font-cormorant-garamond text-[16px] lg:text-[24px] text-[#021125] pt-[6px] lg:pt-[1px] lg:mt-[3px] break-words max-w-[250px] leading-[19px] lg:leading-[20px]">
                 {namaTamu}
               </p>
 
               <button
                 onClick={handleOpen}
-                className="relative z-10 bg-[#021125] transition-colors flex items-center justify-center text-white w-[154px] h-[30px] lg:w-[220px] lg:h-[35px] rounded-[52px] lg:rounded-[35px] uppercase font-cormorant-garamond text-[12px] lg:text-[16px] tracking-widest mt-[25px] lg:mt-[34px]"
+                className="relative z-10 bg-[#021125] transition-colors flex items-center justify-center text-white w-[154px] h-[30px] lg:w-[220px] lg:h-[35px] rounded-[52px] lg:rounded-[35px] uppercase font-cormorant-garamond text-[12px] lg:text-[16px] mt-[25px] lg:mt-[37px]"
               >
                 <span>View Invitation</span>
               </button>

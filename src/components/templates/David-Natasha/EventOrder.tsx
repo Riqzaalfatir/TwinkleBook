@@ -147,8 +147,7 @@ const renderTitleWithBreak = (text: string, breakAfterWords?: number) => {
 
   return (
     <>
-      {firstLine}{" "}
-      <br className="lg:hidden" />
+      {firstLine} <br className="lg:hidden" />
       {secondLine}
     </>
   );
@@ -310,7 +309,7 @@ const EventOrder = ({ data }: EventOrderProps) => {
         className="absolute -bottom-[0vw] -right-[0vw] w-[33vw] h-auto pointer-events-none z-20 hidden lg:block"
       />
 
-      <div className="relative z-[15] flex flex-col items-center text-center pt-[100px] lg:pt-[130px] pb-[29.45vw] lg:pb-[144px]">
+      <div className="relative z-[15] flex flex-col items-center text-center pt-[24.1vw] lg:pt-[8.3vw] pb-[29.45vw] lg:pb-[8.5vw]">
         {/* ========================== */}
         {/* TITLE */}
         {/* ========================== */}

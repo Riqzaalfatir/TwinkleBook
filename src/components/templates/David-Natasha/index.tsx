@@ -50,20 +50,17 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
       ? guestData.name
       : "[Guest Name]";
 
-  const groomName =
-    data?.dataEvent?.groomName ?? "David";
+  const groomName = data?.dataEvent?.groomName ?? "David";
 
-  const brideName =
-    data?.dataEvent?.brideName ?? "Natasya";
+  const brideName = data?.dataEvent?.brideName ?? "Natasya";
 
   const eventDate = data?.dataEvent?.date
     ? formatDateWithWeekday(data.dataEvent.date)
     : "SATURDAY, 10 OCTOBER 2026";
 
-  const backgroundSoundUrl =
-    data?.dataContent?.backgroundSoundData?.url
-      ? `https://media.twinklebook.com/${data.dataContent.backgroundSoundData.url}`
-      : "/audio/default-song.mp3";
+  const backgroundSoundUrl = data?.dataContent?.backgroundSoundData?.url
+    ? `https://media.twinklebook.com/${data.dataContent.backgroundSoundData.url}`
+    : "/audio/default-song.mp3";
 
   const hashTagRaw = data?.dataEvent?.hashTag;
   const hashTag =
@@ -95,7 +92,8 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
         className="
           absolute
           inset-0
-          bg-[#F6F6F4]/20
+          bg-white/40
+          lg:bg-white/60
           pointer-events-none
         "
       />
@@ -103,10 +101,7 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
       <div className="relative z-10">
         <Header />
 
-        <Hero
-          start={start}
-          data={data}
-        />
+        <Hero start={start} data={data} />
 
         <Profile data={data} />
 
@@ -116,10 +111,7 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
 
         <Gallery data={data} />
 
-       <Rsvp
-          data={data}
-          guestData={guestData}
-        />
+        <Rsvp data={data} guestData={guestData} />
 
         <Gift data={data} />
 
@@ -137,17 +129,12 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
           namaTamu={namaTamu}
           groomName={groomName}
           brideName={brideName}
-          popUpIconImageData={
-            data?.dataContent?.popUpIconImageData
-          }
+          popUpIconImageData={data?.dataContent?.popUpIconImageData}
           hashTag={hashTag}
         />
       )}
 
-      <PlaySongButton
-        src={backgroundSoundUrl}
-        start={start}
-      />
+      <PlaySongButton src={backgroundSoundUrl} start={start} />
 
       <RsvpButton />
 

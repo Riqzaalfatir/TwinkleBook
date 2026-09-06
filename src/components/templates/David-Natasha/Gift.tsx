@@ -18,8 +18,7 @@ type GiftProps = {
 
 const BANK_ICONS: Record<string, string> = {
   BCA: "/images/David-Natasha/Gift/BCA.avif",
-    "BENDIGO BANK": "/images/David-Natasha/Gift/Bendigo.webp",
-
+  "BENDIGO BANK": "/images/David-Natasha/Gift/Bendigo.webp",
 };
 
 const FALLBACK_GIFTS: Gift[] = [
@@ -33,11 +32,11 @@ const FALLBACK_GIFTS: Gift[] = [
     number: "6840308667",
     name: "Stefanie Natasya",
   },
-  {
-    bank: "Bendigo Bank",
-    number: "166687939",
-    name: "Prawira David Aldridge Susetio",
-  },
+  // {
+  //   bank: "Bendigo Bank",
+  //   number: "166687939",
+  //   name: "Prawira David Aldridge Susetio",
+  // },
 ];
 
 const Gift = ({ data }: GiftProps) => {
@@ -79,7 +78,7 @@ const Gift = ({ data }: GiftProps) => {
 
   return (
     <section id="gift" className="relative w-full z-[5]">
-      <div className="relative z-[15] flex flex-col items-center text-center leading-none pt-[17.5vw] pb-[0vw] px-[6.15vw] lg:pt-[0vw] lg:pb-[0vw] lg:px-[0vw]">
+      <div className="relative z-[15] flex flex-col items-center text-center leading-none pt-[17.95vw] pb-[0vw] px-[6.15vw] lg:pt-[0vw] lg:pb-[0vw] lg:px-[0vw]">
         <motion.h1
           variants={fadeUp}
           initial="hidden"
@@ -121,7 +120,7 @@ const Gift = ({ data }: GiftProps) => {
           </p>
         </motion.div>
 
-        <div className="w-full max-w-[72.82vw] lg:max-w-[31.5vw] flex flex-col gap-[5.90vw] lg:gap-[1.95vw] mt-[11.5vw] mb-[80px] lg:mt-[83px] lg:mb-[92px]">
+        <div className="w-full max-w-[72.82vw] lg:max-w-[31.5vw] flex flex-col gap-[5.90vw] lg:gap-[1.95vw] mt-[11.5vw] mb-[20.51vw] lg:mt-[6vw] lg:mb-[6.08vw]">
           {gifts.map((gift, index) => {
             const icon =
               BANK_ICONS[gift.bank?.toUpperCase()] ??

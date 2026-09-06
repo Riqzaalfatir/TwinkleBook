@@ -33,7 +33,8 @@ const IMAGES_MOBILE: string[] = [
 
 const IMAGES_DESKTOP: string[] = [
   "/images/David-Natasha/Opening/OpeningD.avif",
-  "/images/David-Natasha/Profile/temp3.avif",
+  "/images/David-Natasha/Profile/tempdekstop.webp",
+  "/images/David-Natasha/Profile/BGDEKSTOP.webp",
   "/images/David-Natasha/Wishes/FrameD.avif",
   "/images/David-Natasha/Hero/DNBackgroundD.avif",
   "/images/David-Natasha/EventOrder/BungaAtasD.avif",

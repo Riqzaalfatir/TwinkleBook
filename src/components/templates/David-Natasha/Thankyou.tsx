@@ -21,7 +21,8 @@ const Thankyou = ({ data }: ThankyouProps) => {
     typeof footerNoteRaw === "string" ? footerNoteRaw.trim() : "";
 
   const hashTagRaw = data?.dataEvent?.hashTag;
-  const hashTag = typeof hashTagRaw === "string" ? hashTagRaw.trim() : "oVIDSYAllytogether";
+  const hashTag =
+    typeof hashTagRaw === "string" ? hashTagRaw.trim() : "oVIDSYAllytogether";
 
   return (
     <section className="relative w-full z-10">
@@ -61,7 +62,7 @@ const Thankyou = ({ data }: ThankyouProps) => {
         className="absolute -bottom-[0vw] -right-[0vw] w-[28.9vw] h-auto pointer-events-none z-20 hidden lg:block"
       />
 
-      <div className="relative z-[15] flex flex-col items-center text-center pt-[89.5vw] lg:pt-[228px]">
+      <div className="relative z-[15] flex flex-col items-center text-center pt-[89.5vw] lg:pt-[15.06vw]">
         <motion.h1
           variants={fadeUp}
           initial="hidden"
@@ -97,7 +98,12 @@ const Thankyou = ({ data }: ThankyouProps) => {
               We look forward to celebrate <br />
               this moment with you <br />
               {hashTag && (
-                <span className="inline-block mt-[20px] lg:mt-[29px]">#{hashTag}</span>
+                // <span className="inline-block mt-[4vw] lg:mt-[1.8vw]">
+                //   #{hashTag}
+                // </span>
+                <span className="inline-block mt-[4vw] lg:mt-[1.8vw]">
+                  #oVIDSYAllytogether
+                </span>
               )}
             </>
           )}
@@ -112,7 +118,7 @@ const Thankyou = ({ data }: ThankyouProps) => {
             duration: 1.5,
             ease: "easeOut",
           }}
-          className="mt-[46.5vw] lg:mt-[13.4vw] mb-[29vw] lg:mb-[10.7vw]"
+          className="mt-[46.5vw] lg:mt-[13.5vw] mb-[30vw] lg:mb-[13.75vw]"
         >
           <Image
             src="/images/David-Natasha/Thankyou/Provite.avif"

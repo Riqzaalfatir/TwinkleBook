@@ -47,7 +47,7 @@ const RsvpSectionDesign = () => {
           alt="flower decoration"
           width={450}
           height={450}
-          className="absolute -bottom-[53.5vw] -right-[0vw] w-[26vw] h-auto pointer-events-none z-20 lg:hidden"
+          className="absolute -bottom-[54.5vw] -right-[0vw] w-[26vw] h-auto pointer-events-none z-20 lg:hidden"
         />
         <Image
           src="/images/David-Natasha/Rsvp/AsetAtasG.avif"
@@ -63,7 +63,7 @@ const RsvpSectionDesign = () => {
           height={450}
           className="absolute lg:-bottom-[18.5vw] -right-[0vw] w-[17.8vw] h-auto pointer-events-none z-20 hidden lg:block"
         />
-        <div className="relative z-[15] flex flex-col items-center text-center leading-none pt-[100px] lg:pt-[130px] pb-[15.6vw] lg:pb-[220px] px-[6.15vw] lg:px-[0vw]">
+        <div className="relative z-[15] flex flex-col items-center text-center leading-none pt-[25.9vw] lg:pt-[10.4vw] pb-[15.6vw] lg:pb-[14.58vw] px-[6.15vw] lg:px-[0vw]">
           <motion.h1
             variants={fadeUp}
             initial="hidden"
@@ -80,7 +80,7 @@ const RsvpSectionDesign = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="font-cormorant-garamond text-[3.85vw] lg:text-[1.59vw] text-[#021125] mt-[11.8vw] lg:mt-[4.2vw] tracking-wide"
+            className="font-cormorant-garamond text-[3.85vw] lg:text-[1.59vw] text-[#021125] mt-[11.8vw] lg:mt-[4.3vw] tracking-wide"
           >
             Dear Mr./Mrs./Ms.
           </motion.p>
