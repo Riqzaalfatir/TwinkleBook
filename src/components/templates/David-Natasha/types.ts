@@ -30,6 +30,7 @@ export type EventData = {
 export type EventContent = {
   backgroundImageData?: ImageData | null;
   logoImageData?: ImageData | null;
+  coupleImageData?: ImageData | null;
   backgroundSoundData?: {
     url: string;
     [key: string]: unknown;
