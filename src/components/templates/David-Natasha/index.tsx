@@ -115,10 +115,10 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
 
         <Gift data={data} />
 
-        <Wishes
+        {/* <Wishes
           data={data}
           guestData={guestData}
-        />
+        /> */}
 
         <Thankyou data={data} />
       </div>
