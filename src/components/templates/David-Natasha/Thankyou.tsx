@@ -46,7 +46,7 @@ const Thankyou = ({ data }: ThankyouProps) => {
         alt="flower decoration"
         width={950}
         height={950}
-        className="absolute -top-[7.3vw] -left-[0vw] w-[18.6vw] h-auto pointer-events-none z-20 hidden lg:block"
+        className="absolute top-[4.2vw] -left-[0vw] w-[18.6vw] h-auto pointer-events-none z-20 hidden lg:block"
       />
 
       {/* DESKTOP BOTTOM DECORATION */}
@@ -58,7 +58,7 @@ const Thankyou = ({ data }: ThankyouProps) => {
         className="absolute -bottom-[0vw] -right-[0vw] w-[28.9vw] h-auto pointer-events-none z-20 hidden lg:block"
       />
 
-      <div className="relative z-[15] flex flex-col items-center text-center pt-[76vw] lg:pt-[4.95vw]">
+      <div className="relative z-[15] flex flex-col items-center text-center pt-[280px] lg:pt-[228px]">
         <motion.h1
           variants={fadeUp}
           initial="hidden"
@@ -68,7 +68,7 @@ const Thankyou = ({ data }: ThankyouProps) => {
             duration: 1.5,
             ease: "easeOut",
           }}
-          className="font-sackers-italic-script text-[13.33vw] lg:text-[5.29vw] text-[#021125] [--stroke-w:0.3px] lg:[--stroke-w:0.53px]"
+          className="font-sackers-italic-script text-[13.33vw] lg:text-[5.29vw] text-[#021125] [--stroke-w:0.3px] lg:[--stroke-w:0.53px] leading-none"
           style={{
             WebkitTextStroke: "var(--stroke-w) #021125",
           }}
