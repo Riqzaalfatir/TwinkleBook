@@ -46,7 +46,7 @@ const Thankyou = ({ data }: ThankyouProps) => {
         alt="flower decoration"
         width={950}
         height={950}
-        className="absolute top-[4.2vw] -left-[0vw] w-[18.6vw] h-auto pointer-events-none z-20 hidden lg:block"
+        className="absolute top-[1vw] -left-[0vw] w-[18.6vw] h-auto pointer-events-none z-20 hidden lg:block"
       />
 
       {/* DESKTOP BOTTOM DECORATION */}
