@@ -113,7 +113,7 @@ const DavidNatasha = ({ data }: DavidNatashaProps) => {
 
         <Rsvp data={data} guestData={guestData} />
 
-        <Gift data={data} />
+        {/* <Gift data={data} /> */}
 
         {/* <Wishes
           data={data}
