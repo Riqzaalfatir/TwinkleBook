@@ -19,8 +19,8 @@ const Header = () => {
     { name: "EVENT DETAIL", link: "#eventorder" },
     { name: "GALLERY", link: "#gallery" },
     { name: "RSVP", link: "#rsvp" },
-    { name: "GIFT", link: "#gift" },
-    { name: "WISHES", link: "#wishes" },
+    // { name: "GIFT", link: "#gift" },
+    // { name: "WISHES", link: "#wishes" },
   ];
 
   const container: Variants = {
