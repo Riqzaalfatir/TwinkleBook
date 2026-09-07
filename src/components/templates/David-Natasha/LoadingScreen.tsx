@@ -47,7 +47,7 @@ export default function LoadingScreen({
           The Wedding of
         </p>
 
-        <h1 className="font-antic-didone  font-normal text-[40px] lg:text-[50px] text-[#021125] mt-[10px] leading-[1.3]">
+        <h1 className="font-antic-didone  font-normal text-[35px] lg:text-[50px] text-[#021125] mt-[10px] leading-[1.3]">
           {groomName} & {brideName}
         </h1>
 
