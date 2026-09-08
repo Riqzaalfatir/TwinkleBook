@@ -153,6 +153,36 @@ const renderTitleWithBreak = (text: string, breakAfterWords?: number) => {
   );
 };
 
+const renderReceptionTitle = (title: string, breakAfterWords?: number) => {
+  const target = "INTERCONTINENTAL";
+
+  if (!title.startsWith(target) || !breakAfterWords) {
+    return renderTitleWithBreak(title, breakAfterWords);
+  }
+
+  const words = title.split(" ");
+  const firstLineRest = words.slice(1, breakAfterWords).join(" ");
+  const secondLine = words.slice(breakAfterWords).join(" ");
+
+  const boostedWord = (
+    <>
+      <span className="text-[4.8vw] lg:text-[2.5vw]">I</span>
+      NTER
+      <span className="text-[4.8vw] lg:text-[2.5vw]">C</span>
+      ONTINENTAL
+    </>
+  );
+
+ return (
+  <>
+    {boostedWord} {firstLineRest}
+    <br className="lg:hidden" />
+    {" "}
+    {secondLine}
+  </>
+);
+};
+
 /*
  * Venue dikenal:
  * pakai map URL statis.
@@ -568,10 +598,7 @@ const EventOrder = ({ data }: EventOrderProps) => {
               }}
               className="font-cormorant-garamond text-[3.85vw] lg:text-[1.98vw] font-bold text-[#021125] mt-[1.5vw] leading-[5.13vw] lg:leading-[1.98vw] lg:mt-[1vw]"
             >
-              {renderTitleWithBreak(
-                receptionTitle,
-                receptionDummy.titleBreakAfterWords,
-              )}
+             {renderReceptionTitle(receptionTitle, receptionDummy.titleBreakAfterWords)}
             </motion.p>
 
             <motion.p

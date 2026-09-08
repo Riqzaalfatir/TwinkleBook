@@ -82,7 +82,7 @@ const RsvpSectionDesign = () => {
             transition={{ duration: 1.5, ease: "easeOut" }}
             className="font-cormorant-garamond text-[3.85vw] lg:text-[1.59vw] text-[#021125] mt-[11.8vw] lg:mt-[4.3vw] tracking-wide"
           >
-            Dear Mr./Mrs./Ms.
+            Dear,
           </motion.p>
           <motion.p
             variants={fadeUp}
