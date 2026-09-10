@@ -110,9 +110,9 @@ const Profile = ({ data }: ProfileProps) => {
           >
             Cordially request the honour of your
             <br className="lg:hidden" /> presence at the{" "}
-            <br className="hidden lg:block" /> marriage of their
+            <br className="hidden lg:block" /> marriage of their 
             <br className="lg:hidden" />
-            son and daughter
+            {" "} son and daughter
           </motion.p>
 
           <motion.h2

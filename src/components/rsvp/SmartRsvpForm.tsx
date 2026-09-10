@@ -127,7 +127,7 @@ SmartRsvpForm.NotAttendToggle = ({
         <>
           UNABLE TO
           <br className='lg:hidden' />
-          ATTEND
+          {" "}ATTEND
         </>
       ) : (
         "UNABLE TO ATTEND"
