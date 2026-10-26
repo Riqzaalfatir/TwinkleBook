@@ -32,7 +32,12 @@ module.exports = {
         "costa-rica": ["var(--font-costa-rica)"],
         "sackers-italic-script": ["var(--font-sackers-italic-script)"],
         garamond: ["var(--font-garamond)"],
-"antic-didone": ["var(--font-antic-didone)"],      },
+        "antic-didone": ["var(--font-antic-didone)"],
+
+        // Lincoln-Laurensia
+        overpass: ["var(--font-overpass)"],
+        poppins: ["var(--font-poppins)"],
+      },
     },
   },
   plugins: [],

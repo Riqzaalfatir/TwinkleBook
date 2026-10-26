@@ -1,5 +1,5 @@
-import DavidNatasha from "@/components/templates/David-Natasha";
+import LincolnLaurensia from "@/components/templates/Lincoln-Laurensia";
 
 export default function PreviewPage() {
-  return <DavidNatasha/>;
+  return <LincolnLaurensia/>;
 }

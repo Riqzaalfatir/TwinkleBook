@@ -1,0 +1,15 @@
+import { Poppins, Overpass } from "next/font/google";
+
+export const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-poppins",
+});
+
+export const overpass = Overpass({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-overpass",
+});
