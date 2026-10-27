@@ -71,16 +71,18 @@ const Opening = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.7, ease: "easeInOut" }}
-          className="fixed inset-0 z-[100] flex justify-center items-center px-[16px]"
+          className="fixed inset-0 z-[100] flex justify-center items-start pt-[45vw] px-[16px] lg:items-center lg:pt-0"
         >
-          <div className="absolute inset-0 z-0">
-            <Image
-              src="/images/Lincoln-Laurensia/Opening/BgMobile.webp"
-              alt="Opening background"
-              fill
-              priority
-              className="object-cover object-top lg:hidden"
-            />
+          <div className="absolute inset-0 z-0 bg-[#2F2F2F]">
+            <div className="relative aspect-[390/844] w-full lg:hidden">
+              <Image
+                src="/images/Lincoln-Laurensia/Opening/BgMobile.webp"
+                alt="Opening background"
+                fill
+                priority
+                className="object-cover"
+              />
+            </div>
             <Image
               src="/images/Lincoln-Laurensia/Opening/BgDekstop.webp"
               alt="Opening background"
@@ -95,7 +97,7 @@ const Opening = ({
             initial={false}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit="exit"
-            className="relative bg-[#2F2F2F]/[0.92] lg:bg-[#2F2F2F]/[0.86] rounded-[15px] rounded-tl-[19px] lg:rounded-[23.39px] lg:rounded-tl-[29.62px] overflow-hidden w-[290px] max-w-[290px] lg:w-[452.15px] lg:max-w-[452.15px] flex flex-col z-[100] [box-shadow:0px_8px_11.6px_0px_rgba(0,0,0,0.76)] lg:[box-shadow:0px_12.47px_18.09px_0px_rgba(0,0,0,0.54)]"
+            className="relative antialiased bg-[#2F2F2F]/[0.92] lg:bg-[#2F2F2F]/[0.86] rounded-[15px] rounded-tl-[19px] lg:rounded-[23.39px] lg:rounded-tl-[29.62px] overflow-hidden w-[290px] max-w-[290px] lg:w-[452.15px] lg:max-w-[452.15px] flex flex-col z-[100] [box-shadow:0px_8px_11.6px_0px_rgba(0,0,0,0.76)] lg:[box-shadow:0px_12.47px_18.09px_0px_rgba(0,0,0,0.54)]"
           >
             <div className="relative z-20 flex flex-col items-center text-center pt-[48px] lg:pt-[90px] pb-[49px] lg:pb-[67px] overflow-hidden">
               <p className="relative z-10 font-poppins text-[12px] lg:text-[18px] text-white italic tracking-wide">
@@ -109,7 +111,7 @@ const Opening = ({
                 </span>
               </h1>
 
-              <p className="relative z-10 font-poppins text-[12px] lg:text-[18px] text-white pt-[9px] lg:pt-[15px]">
+              <p className="relative z-10 font-poppins text-[12px] lg:text-[18px] tracking-[0.02em] text-white pt-[9px] lg:pt-[15px]">
                 SATURDAY, 19 SEPTEMBER 2026
               </p>
 

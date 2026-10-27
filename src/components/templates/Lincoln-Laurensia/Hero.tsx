@@ -22,9 +22,9 @@ const Hero = ({ data, start = true }: HeroProps) => {
 
   return (
     <section
-      id="hero"
-      className="relative flex min-h-screen w-full flex-col justify-end overflow-hidden text-white"
-    >
+  id="hero"
+  className="relative flex h-[216.41vw] w-full flex-col justify-end overflow-hidden text-white lg:h-auto lg:min-h-screen"
+>
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/Lincoln-Laurensia/Hero/HeroBG.webp"
