@@ -1,68 +1,172 @@
 import React from "react";
 import Image from "next/image";
+import moment from "moment";
+import { motion } from "framer-motion";
+import { fadeIn, fadeUp, fadeLeft, fadeRight } from "../../../lib/animation";
 
-const schedule = [
-  { title: "Holy Matrimony", time: "10:30", note: "", right: false },
-  { title: "Tea Pai", time: "15:00", note: "", right: true },
-  { title: "Cocktail Party", time: "16:30", note: "", right: false },
+type SessionItem = {
+  id: string;
+  eventId: string;
+  name: string;
+  date: string;
+  address: string | null;
+  addressName: string | null;
+  latLong: string | null;
+};
+
+type EventOrderProps = {
+  data?: any;
+};
+
+const ZERO_ID = "00000000-0000-0000-0000-000000000000";
+
+const defaultSchedule = [
+  { id: "1", title: "Holy Matrimony", time: "10:30", note: "" },
+  { id: "2", title: "Tea Pai", time: "15:00", note: "" },
+  { id: "3", title: "Cocktail Party", time: "16:30", note: "" },
   {
+    id: "4",
     title: "Dinner Reception",
     time: "18:00",
     note: "at manten ballroom",
-    right: true,
   },
-  {
-    title: "After Party",
-    time: "21:00",
-    note: "at rirlungan hall",
-    right: false,
-  },
+  { id: "5", title: "After Party", time: "21:00", note: "at ririungan hall" },
 ];
 
-const EventOrder = () => {
+const FALLBACK_ADDRESS = "Jl. Kolonel Masturi No. VIII, Kab. Bandung";
+
+// Alamat API dipakai hanya kalau tidak lebih panjang dari fallback (supaya layout tetap)
+const resolveAddress = (apiAddress?: string | null) => {
+  const clean = apiAddress?.trim();
+  return clean && clean.length <= FALLBACK_ADDRESS.length
+    ? clean
+    : FALLBACK_ADDRESS;
+};
+
+const resolveMapUrl = (latLong?: string | null) => {
+  if (!latLong) return "#";
+  if (latLong.startsWith("http")) return latLong;
+  return `https://www.google.com/maps/search/?api=1&query=${latLong.replace(/\s/g, "")}`;
+};
+
+const EventOrder = ({ data }: EventOrderProps) => {
+  const validEventId: string | undefined = data?.dataEvent?.id;
+  const sessionSource = data?.eventSessionByPin ?? data?.dataSession;
+
+  // Hanya acara milik event ini (acara tambahan punya eventId nol, tetap ikut)
+  const sessions: SessionItem[] = (
+    Array.isArray(sessionSource) ? sessionSource : []
+  )
+    .filter(
+      (s: SessionItem) => s.eventId === validEventId || s.eventId === ZERO_ID,
+    )
+    .sort(
+      (a: SessionItem, b: SessionItem) =>
+        new Date(a.date).getTime() - new Date(b.date).getTime(),
+    );
+
+  const schedule =
+    sessions.length > 0
+      ? sessions.map((s) => ({
+          id: s.id,
+          title: s.name ?? "",
+          time: moment(s.date).format("HH:mm"),
+          note: /^at\s/i.test(s.addressName ?? "")
+            ? (s.addressName as string).toLowerCase()
+            : "",
+        }))
+      : defaultSchedule;
+
+  // Lokasi utama = acara pertama yang punya alamat dan koordinat
+  const venue = sessions.find((s) => s.address && s.latLong);
+  const venueWords = (venue?.addressName?.trim() || "Imah Seniman").split(
+    /\s+/,
+  );
+  const venueLine1 = venueWords[0];
+  const venueLine2 = venueWords.slice(1).join(" ");
+  const venueAddress = resolveAddress(venue?.address);
+  const mapUrl = venue ? resolveMapUrl(venue.latLong) : "#";
+
+  const dateLabel = data?.dataEvent?.date
+    ? moment(data.dataEvent.date).format("DD.MM.YY")
+    : "28.11.26";
+
   return (
     <section
       id="event-order"
       className="relative z-10 w-full overflow-hidden bg-[#2F2F2F] px-[6.15vw] pt-[9.3vw] pb-[17vw] font-poppins text-white lg:px-0 lg:pt-0 lg:pb-0"
     >
       <div className="mx-auto w-full max-w-[107.69vw] lg:relative lg:w-[58.93vw] lg:max-w-none lg:pb-[8.29vw] lg:pt-[7.4vw] lg:ml-[11.9vw]">
-        <p className="text-right text-[4.1vw] uppercase  text-[#A0A0A0] lg:absolute lg:left-[40.81vw] lg:top-[8.1vw] lg:whitespace-nowrap lg:text-left lg:text-[1.46vw]">
+        <motion.p
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="text-right text-[4.1vw] uppercase  text-[#A0A0A0] lg:absolute lg:left-[40.81vw] lg:top-[8.1vw] lg:whitespace-nowrap lg:text-left lg:text-[1.46vw]"
+        >
           Our Date and Location
-        </p>
+        </motion.p>
 
         <div className="mt-[3vw] text-left text-[#E2E2E2] lg:mt-0">
-          <h2 className="text-[16.41vw] font-semibold uppercase leading-[1.05] lg:leading-[0.99] lg:text-[6.35vw]">
-            Imah
+          <motion.h2
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="text-[16.41vw] font-semibold uppercase leading-[1.05] lg:leading-[0.99] lg:text-[6.35vw]"
+          >
+            {venueLine1}
             <br />
-            Seniman
+            {venueLine2}
             <br />
             <span className="text-[16.41vw] font-normal leading-none lg:text-[6.35vw]">
-              28.11.26
+              {dateLabel}
             </span>
-          </h2>
-          <p className="mt-[1vw] lg:mt-[0.6vw] font-overpass text-[3.59vw] font-light uppercase lg:whitespace-nowrap lg:text-[1.46vw]">
-            Jl. Kolonel Masturi No. VIII, Kab. Bandung
-          </p>
-          <a
-            href="#"
+          </motion.h2>
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="mt-[1vw] lg:mt-[0.6vw] font-overpass text-[3.59vw] font-light uppercase lg:whitespace-nowrap lg:text-[1.46vw]"
+          >
+            {venueAddress}
+          </motion.p>
+          <motion.a
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            href={mapUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-[0vw] lg:mt-[0.5vw] inline-block border-b border-[#E2E2E2] font-overpass text-[3.08vw] font-medium italic uppercase lg:text-[1.32vw]"
           >
             Google Maps
-          </a>
+          </motion.a>
         </div>
 
         {/* Gambar mobile */}
-      <div className="relative left-1/2 mt-[3vw] h-[68vw] w-screen -translate-x-1/2 lg:hidden">
-  <Image
-    src="/images/Lincoln-Laurensia/EventOrder/RumahMobile.webp"
-    alt="Imah Seniman"
-    fill
-    className="object-contain object-right"
-  />
-</div>
+        <div
+          className="relative left-1/2 mt-[3vw] h-[68vw] w-screen -translate-x-1/2 lg:hidden"
+        >
+          <Image
+            src="/images/Lincoln-Laurensia/EventOrder/RumahMobile.webp"
+            alt="Imah Seniman"
+            fill
+            className="object-contain object-right"
+          />
+        </div>
 
         {/* Gambar desktop (ikut flow, bukan absolute) */}
-        <div className="hidden lg:relative lg:ml-[9.1vw] lg:block lg:h-[41.5vw] lg:w-[78.97vw] mt-[0.5vw]">
+        <div
+         
+          className="hidden lg:relative lg:ml-[9.1vw] lg:block lg:h-[41.5vw] lg:w-[78.97vw] mt-[0.5vw]"
+        >
           <Image
             src="/images/Lincoln-Laurensia/EventOrder/RumahDekstop.webp"
             alt="Imah Seniman"
@@ -73,41 +177,49 @@ const EventOrder = () => {
 
         {/* Daftar acara: tinggi otomatis mengikuti jumlah item */}
         <div className="relative z-10 mt-[10.5vw] flex flex-col gap-[3.8vw] lg:mt-[3.4vw] lg:gap-0">
-          {schedule.map((item, index) => (
-            <div
-              key={item.title}
-              className={`flex flex-col lg:w-[19.84vw] ${
-                index > 0 ? "lg:-mt-[0.6vw]" : ""
-              } ${
-                item.right
-                  ? "items-end text-right lg:self-end"
-                  : "items-start text-left lg:self-start"
-              }`}
-            >
-              <p className="text-[6.15vw] font-light uppercase leading-none text-[#E2E2E2] lg:text-[2.12vw]">
-                {item.title}
-              </p>
+          {schedule.map((item, index) => {
+            const isRight = index % 2 === 1;
 
-              {item.note && (
-                <p className="mt-[0.75vw] text-[4.1vw] italic leading-none text-[#E2E2E2] lg:mt-[0.25vw] lg:text-[1.32vw]">
-                  {item.note}
-                </p>
-              )}
-
-              <p
-                className={`text-[12.31vw] font-medium leading-[1.05] text-[#E2E2E2] lg:text-[4.23vw] ${
-                  item.note
-                    ? "mt-[1.5vw] lg:mt-[0.45vw]"
-                    : "mt-[1vw] lg:mt-[0.45vw]"
+            return (
+              <motion.div
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+                key={item.id}
+                className={`flex flex-col lg:w-[19.84vw] ${
+                  index > 0 ? "lg:-mt-[0.6vw]" : ""
+                } ${
+                  isRight
+                    ? "items-end text-right lg:self-end"
+                    : "items-start text-left lg:self-start"
                 }`}
               >
-                {item.time}
-                <br />
-                <p className="-mt-[5px]" >WIB</p>
-                
-              </p>
-            </div>
-          ))}
+                <p className="text-[6.15vw] font-light uppercase leading-none text-[#E2E2E2] lg:text-[2.12vw]">
+                  {item.title}
+                </p>
+
+                {item.note && (
+                  <p className="mt-[0.75vw] text-[4.1vw] italic leading-none text-[#E2E2E2] lg:mt-[0.25vw] lg:text-[1.32vw]">
+                    {item.note}
+                  </p>
+                )}
+
+                <p
+                  className={`text-[12.31vw] font-medium leading-[1.05] text-[#E2E2E2] lg:text-[4.23vw] ${
+                    item.note
+                      ? "mt-[1.5vw] lg:mt-[0.45vw]"
+                      : "mt-[1vw] lg:mt-[0.45vw]"
+                  }`}
+                >
+                  {item.time}
+                  <br />
+                  <p className="-mt-[5px]">WIB</p>
+                </p>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -115,6 +227,125 @@ const EventOrder = () => {
 };
 
 export default EventOrder;
+
+// SEBELUM DI DINAMISKAN
+// import React from "react";
+// import Image from "next/image";
+
+// const schedule = [
+//   { title: "Holy Matrimony", time: "10:30", note: "", right: false },
+//   { title: "Tea Pai", time: "15:00", note: "", right: true },
+//   { title: "Cocktail Party", time: "16:30", note: "", right: false },
+//   {
+//     title: "Dinner Reception",
+//     time: "18:00",
+//     note: "at manten ballroom",
+//     right: true,
+//   },
+//   {
+//     title: "After Party",
+//     time: "21:00",
+//     note: "at rirlungan hall",
+//     right: false,
+//   },
+// ];
+
+// const EventOrder = () => {
+//   return (
+//     <section
+//       id="event-order"
+//       className="relative z-10 w-full overflow-hidden bg-[#2F2F2F] px-[6.15vw] pt-[9.3vw] pb-[17vw] font-poppins text-white lg:px-0 lg:pt-0 lg:pb-0"
+//     >
+//       <div className="mx-auto w-full max-w-[107.69vw] lg:relative lg:w-[58.93vw] lg:max-w-none lg:pb-[8.29vw] lg:pt-[7.4vw] lg:ml-[11.9vw]">
+//         <p className="text-right text-[4.1vw] uppercase  text-[#A0A0A0] lg:absolute lg:left-[40.81vw] lg:top-[8.1vw] lg:whitespace-nowrap lg:text-left lg:text-[1.46vw]">
+//           Our Date and Location
+//         </p>
+
+//         <div className="mt-[3vw] text-left text-[#E2E2E2] lg:mt-0">
+//           <h2 className="text-[16.41vw] font-semibold uppercase leading-[1.05] lg:leading-[0.99] lg:text-[6.35vw]">
+//             Imah
+//             <br />
+//             Seniman
+//             <br />
+//             <span className="text-[16.41vw] font-normal leading-none lg:text-[6.35vw]">
+//               28.11.26
+//             </span>
+//           </h2>
+//           <p className="mt-[1vw] lg:mt-[0.6vw] font-overpass text-[3.59vw] font-light uppercase lg:whitespace-nowrap lg:text-[1.46vw]">
+//             Jl. Kolonel Masturi No. VIII, Kab. Bandung
+//           </p>
+//           <a
+//             href="#"
+//             className="mt-[0vw] lg:mt-[0.5vw] inline-block border-b border-[#E2E2E2] font-overpass text-[3.08vw] font-medium italic uppercase lg:text-[1.32vw]"
+//           >
+//             Google Maps
+//           </a>
+//         </div>
+
+//         {/* Gambar mobile */}
+//       <div className="relative left-1/2 mt-[3vw] h-[68vw] w-screen -translate-x-1/2 lg:hidden">
+//   <Image
+//     src="/images/Lincoln-Laurensia/EventOrder/RumahMobile.webp"
+//     alt="Imah Seniman"
+//     fill
+//     className="object-contain object-right"
+//   />
+// </div>
+
+//         {/* Gambar desktop (ikut flow, bukan absolute) */}
+//         <div className="hidden lg:relative lg:ml-[9.1vw] lg:block lg:h-[41.5vw] lg:w-[78.97vw] mt-[0.5vw]">
+//           <Image
+//             src="/images/Lincoln-Laurensia/EventOrder/RumahDekstop.webp"
+//             alt="Imah Seniman"
+//             fill
+//             className="object-contain object-right"
+//           />
+//         </div>
+
+//         {/* Daftar acara: tinggi otomatis mengikuti jumlah item */}
+//         <div className="relative z-10 mt-[10.5vw] flex flex-col gap-[3.8vw] lg:mt-[3.4vw] lg:gap-0">
+//           {schedule.map((item, index) => (
+//             <div
+//               key={item.title}
+//               className={`flex flex-col lg:w-[19.84vw] ${
+//                 index > 0 ? "lg:-mt-[0.6vw]" : ""
+//               } ${
+//                 item.right
+//                   ? "items-end text-right lg:self-end"
+//                   : "items-start text-left lg:self-start"
+//               }`}
+//             >
+//               <p className="text-[6.15vw] font-light uppercase leading-none text-[#E2E2E2] lg:text-[2.12vw]">
+//                 {item.title}
+//               </p>
+
+//               {item.note && (
+//                 <p className="mt-[0.75vw] text-[4.1vw] italic leading-none text-[#E2E2E2] lg:mt-[0.25vw] lg:text-[1.32vw]">
+//                   {item.note}
+//                 </p>
+//               )}
+
+//               <p
+//                 className={`text-[12.31vw] font-medium leading-[1.05] text-[#E2E2E2] lg:text-[4.23vw] ${
+//                   item.note
+//                     ? "mt-[1.5vw] lg:mt-[0.45vw]"
+//                     : "mt-[1vw] lg:mt-[0.45vw]"
+//                 }`}
+//               >
+//                 {item.time}
+//                 <br />
+//                 <p className="-mt-[5px]" >WIB</p>
+
+//               </p>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default EventOrder;
 
 // SEBELUM DI VW KAN
 // import React from "react";
