@@ -13,7 +13,7 @@ const DressCode = () => {
 
       <div className="relative mt-[7.3vw] h-[35.64vw] w-full max-w-[103.33vw] lg:mt-[3.9vw] lg:h-[12.9vw] lg:max-w-[37.3vw]">
         <Image
-          src="/images/Lincoln-Laurensia/DressCode/Orang.webp"
+          src="/images/Lincoln-Laurensia/Dresscode/Orang.webp"
           alt="Dress code"
           fill
           className="object-contain"
@@ -42,7 +42,7 @@ const DressCode = () => {
         <div className="flex flex-col items-center">
           <div className="relative h-[17.18vw] w-[17.18vw] lg:h-[6.47vw] lg:w-[6.47vw]">
             <Image
-              src="/images/Lincoln-Laurensia/DressCode/NoWhite.webp"
+              src="/images/Lincoln-Laurensia/Dresscode/NoWhite.webp"
               alt="No White"
               fill
               className="object-contain"
@@ -56,7 +56,7 @@ const DressCode = () => {
         <div className="flex flex-col items-center">
           <div className="relative h-[17.18vw] w-[17.18vw] lg:h-[6.47vw] lg:w-[6.47vw]">
             <Image
-              src="/images/Lincoln-Laurensia/DressCode/NoBatik.webp"
+              src="/images/Lincoln-Laurensia/Dresscode/NoBatik.webp"
               alt="No Batik"
               fill
               className="object-contain"
