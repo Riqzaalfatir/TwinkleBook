@@ -131,7 +131,7 @@ const EventOrder = ({ data }: EventOrderProps) => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="mt-[1vw] lg:mt-[0.6vw] font-overpass text-[3.59vw] font-light uppercase lg:whitespace-nowrap lg:text-[1.46vw]"
+            className="mt-[1vw] lg:mt-[0.6vw] font-overpass text-[3.59vw] font-light uppercase lg:whitespace-nowrap lg:text-[1.46vw] text-white/80"
           >
             {venueAddress}
           </motion.p>
@@ -144,15 +144,14 @@ const EventOrder = ({ data }: EventOrderProps) => {
             href={mapUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-[0vw] lg:mt-[0.5vw] inline-block border-b border-[#E2E2E2] font-overpass text-[3.08vw] font-medium italic uppercase lg:text-[1.32vw]"
-          >
+           className="mt-[0vw] lg:mt-[0.5vw] inline-block font-overpass text-[3.08vw] font-medium italic uppercase lg:text-[1.32vw] text-white/80 underline decoration-[#E2E2E2]/80 decoration-1 underline-offset-[1vw] lg:underline-offset-[0.5vw]">
             Google Maps
           </motion.a>
         </div>
 
         {/* Gambar mobile */}
         <div
-          className="relative left-1/2 mt-[3vw] h-[68vw] w-screen -translate-x-1/2 lg:hidden"
+          className="relative left-1/2 mt-[3vw] h-[72vw] w-screen -translate-x-1/2 lg:hidden"
         >
           <Image
             src="/images/Lincoln-Laurensia/EventOrder/RumahMobile.webp"

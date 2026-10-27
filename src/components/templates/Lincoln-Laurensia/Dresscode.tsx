@@ -69,7 +69,7 @@ transition={{ duration: 1.5, ease: "easeOut" }}
         <p className="text-[3.08vw] font-bold uppercase lg:text-[1.46vw] text-[#2F2F2F]">
           Ladies :
         </p>
-        <p className="text-[3.08vw] italic uppercase lg:text-[1.46vw] text-[#2F2F2F] leading-[15px]">
+        <p className="text-[3.08vw] italic uppercase lg:text-[1.46vw] text-[#2F2F2F] leading-[15px] mt-[1px] lg:mt-[0.7vw]">
           Formal attire following the <br className="lg:hidden" /> color palette
         </p>
       </motion.div>
@@ -80,7 +80,7 @@ initial="hidden"
 whileInView="show"
 viewport={{ once: true, amount: 0.3 }}
 transition={{ duration: 1.5, ease: "easeOut" }}
-      className="mt-[7vw] flex items-start justify-center gap-[7.95vw] lg:mt-[2.2vw] lg:gap-[2.99vw]">
+      className="mt-[7vw] flex items-start justify-center gap-[7.95vw] lg:mt-[2.8vw] lg:gap-[2.99vw]">
         <div className="flex flex-col items-center">
           <div className="relative h-[17.18vw] w-[17.18vw] lg:h-[6.47vw] lg:w-[6.47vw]">
             <Image

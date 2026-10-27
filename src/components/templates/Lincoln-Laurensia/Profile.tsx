@@ -85,7 +85,7 @@ const Profile = () => {
             <div className="absolute inset-x-0 bottom-0 h-[125.64vw] bg-gradient-to-b from-black/0 to-black lg:hidden" />
           </motion.div>
 
-          <div className="absolute inset-x-0 bottom-0 px-[6vw] pb-[19.5vw] pt-[20.51vw] font-poppins text-white lg:static lg:col-start-2 lg:row-start-1 lg:self-start lg:p-0 lg:text-black">
+          <div className="absolute inset-x-0 bottom-0 px-[6vw] pb-[21vw] pt-[20.51vw] font-poppins text-white lg:static lg:col-start-2 lg:row-start-1 lg:self-start lg:p-0 lg:text-black">
             <motion.p
               variants={fadeUp}
               initial="hidden"
@@ -102,7 +102,7 @@ const Profile = () => {
               whileInView="show"
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 1.5, ease: "easeOut" }}
-              className="text-[9.74vw] pt-[1.5px] lg:pt-[4px] font-semibold uppercase leading-none lg:text-[3.44vw]"
+              className="text-[9.74vw] pt-[2px] lg:pt-[5px] font-semibold uppercase leading-none lg:text-[3.44vw]"
             >
               Lincoln
             </motion.h2>
@@ -142,7 +142,7 @@ const Profile = () => {
               whileInView="show"
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 1.5, ease: "easeOut" }}
-              className="text-[3.59vw] font-extralight leading-[5.13vw] mt-[12.5px] lg:mt-[15px] lg:text-[1.46vw] lg:leading-[2.2vw]"
+              className="text-[3.59vw] font-extralight leading-[5.13vw] mt-[12.5px] lg:mt-[10px] lg:text-[1.46vw] lg:leading-[2.2vw] text-white/80 lg:text-white"
             >
               Meet Ken. He&apos;s the calm to her chaos, the steady sea to{" "}
               <br className="hidden lg:block" />
@@ -171,7 +171,7 @@ const Profile = () => {
             <div className="absolute inset-x-0 bottom-0 h-[125.64vw] bg-gradient-to-b from-black/0 to-black lg:hidden" />
           </motion.div>
 
-          <div className="absolute inset-x-0 bottom-0 px-[6vw] pb-[19.5vw] pt-[20.51vw] font-poppins text-white lg:static lg:col-start-2 lg:row-start-1 lg:self-end lg:p-0 lg:text-right lg:text-black">
+          <div className="absolute inset-x-0 bottom-0 px-[6vw] pb-[21vw] pt-[20.51vw] font-poppins text-white lg:static lg:col-start-2 lg:row-start-1 lg:self-end lg:p-0 lg:text-right lg:text-black">
             <motion.p
               variants={fadeUp}
               initial="hidden"
@@ -188,7 +188,7 @@ const Profile = () => {
               whileInView="show"
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 1.5, ease: "easeOut" }}
-              className="pt-[1.5px] lg:pt-[4px] font-overpass text-[9.74vw] font-semibold uppercase leading-none lg:text-[3.44vw]"
+              className="pt-[2px] lg:pt-[5px] font-overpass text-[9.74vw] font-semibold uppercase leading-none lg:text-[3.44vw]"
             >
               Laurensia
             </motion.h2>
@@ -228,9 +228,11 @@ const Profile = () => {
               whileInView="show"
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 1.5, ease: "easeOut" }}
-              className="text-[3.59vw] font-extralight leading-[5.13vw] mt-[12.5px] lg:mt-[15px] lg:text-[1.46vw] lg:leading-[2.2vw]"
+              className="text-[3.59vw] font-extralight leading-[5.13vw] mt-[12.5px] lg:mt-[10px] lg:text-[1.46vw] lg:leading-[2.2vw] text-white/80 lg:text-white"
             >
-              Ken calls her Lien. She&apos;s the one he can talk to about{" "}
+              Ken calls her Lien. She&apos;s the one he can <br className="lg:hidden" />
+              talk 
+              to about{" "}
               <br className="hidden lg:block" />
               anything, dream about everything with, and count on{" "}
               <br className="hidden lg:block" />

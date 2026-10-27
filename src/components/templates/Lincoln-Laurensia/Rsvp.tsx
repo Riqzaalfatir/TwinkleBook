@@ -39,7 +39,7 @@ const RsvpSection = ({ data }: { data?: any }) => {
   const activeClass =
     "flex items-center justify-center bg-white w-[36.15vw] h-[10.26vw] lg:w-[13.43vw] lg:h-[2.78vw] text-[3.59vw] lg:text-[1.19vw] uppercase text-[#30201E] rounded-[1.54vw] lg:rounded-[0.33vw]";
   const inactiveClass =
-    "flex items-center justify-center border border-white/60 w-[36.15vw] h-[10.26vw] lg:w-[13.43vw] lg:h-[2.78vw] text-[3.59vw] lg:text-[1.19vw] uppercase text-white rounded-[1.54vw] lg:rounded-[0.33vw]";
+    "flex items-center justify-center border border-white/60 w-[36.15vw] h-[10.26vw] lg:w-[13.43vw] lg:h-[2.78vw] text-[3.59vw] lg:text-[1.19vw] uppercase text-white rounded-[1.54vw] lg:rounded-[0.33vw] leading-none";
 
   return (
     <>
@@ -47,7 +47,7 @@ const RsvpSection = ({ data }: { data?: any }) => {
 
       <section
         id="rsvp"
-        className="relative z-10 flex w-full flex-col items-center bg-[#2F2F2F] px-[6.15vw] py-[19vw] text-center font-poppins text-white lg:px-[1.59vw] lg:py-[7.8vw]"
+        className="relative z-10 flex w-full flex-col items-center bg-[#2F2F2F] px-[6.15vw] py-[19.5vw] text-center font-poppins text-white lg:px-[1.59vw] lg:py-[7.8vw]"
       >
         <motion.h2 
         variants={fadeUp}
@@ -55,7 +55,7 @@ initial="hidden"
 whileInView="show"
 viewport={{ once: true, amount: 0.3 }}
 transition={{ duration: 1.5, ease: "easeOut" }}
-        className="text-[10.26vw] font-semibold uppercase tracking-[1em] lg:tracking-[1.2em] lg:text-[3.44vw] ml-[10vw] lg:ml-[3.5vw]">
+        className="text-[10.26vw] font-semibold uppercase tracking-[1.2em] lg:tracking-[1.2em] lg:text-[3.44vw] ml-[10vw] lg:ml-[3.5vw]">
           RSVP
         </motion.h2>
 
@@ -65,7 +65,7 @@ initial="hidden"
 whileInView="show"
 viewport={{ once: true, amount: 0.3 }}
 transition={{ duration: 1.5, ease: "easeOut" }}
-        className="mt-[7.45vw] lg:mt-[3.31vw]">
+        className="mt-[7.1vw] lg:mt-[3.31vw]">
           <p className="text-[3.59vw] lg:text-[1.46vw]">Dear Mr. /Mrs. / Ms.</p>
           <p className="mt-[2.82vw] lg:mt-[0.66vw] text-[4.1vw] lg:text-[1.59vw]">
             {guestData?.name ?? "[Guest Name]"}
@@ -78,7 +78,7 @@ initial="hidden"
 whileInView="show"
 viewport={{ once: true, amount: 0.3 }}
 transition={{ duration: 1.5, ease: "easeOut" }}
-        className="mt-[6.67vw] lg:mt-[3.1vw]">
+        className="mt-[6.67vw] lg:mt-[3.1vw] leading-[20px] lg:leading-[30px]">
           <p className="text-[3.59vw] lg:text-[1.46vw]">
             Kindly confirm your attendance before
             <br />

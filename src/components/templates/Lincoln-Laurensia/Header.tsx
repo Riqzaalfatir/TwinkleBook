@@ -13,10 +13,10 @@ const MENU = [
   { label: "Home", target: "hero" },
   { label: "Profile", target: "profile" },
   { label: "Date", target: "countdown" },
+    { label: "Gallery", target: "gallery" },
   { label: "Event Detail", target: "event-order" },
-  { label: "RSVP", target: "rsvp" },
   { label: "Dress Code", target: "dress-code" },
-  { label: "Gallery", target: "gallery" },
+  { label: "RSVP", target: "rsvp" },
   { label: "Wishes", target: "wishes" },
 ];
 
@@ -130,8 +130,9 @@ const Header = () => {
     scrollToSection(target);
   };
 
-  const lineBase =
-    "absolute left-0 block h-[2px] w-full rounded-full bg-[#2F2F2F]";
+  const lineBase = `absolute left-0 block h-[2px] w-full rounded-full transition-colors duration-300 ${
+  iconOpen ? "bg-[#2F2F2F]" : "bg-white"
+}`;
 
   return (
     <>
@@ -148,7 +149,7 @@ const Header = () => {
               <button
                 type="button"
                 onClick={() => scrollToSection(item.target)}
-                className="text-[16px] uppercase tracking-wide text-[#2F2F2F] transition-opacity duration-300 hover:opacity-60"
+                className="text-[16px] uppercase tracking-wide text-white transition-opacity duration-300 hover:opacity-60"
               >
                 {item.label}
               </button>

@@ -63,20 +63,23 @@ transition={{ duration: 1.5, ease: "easeOut" }}
         </motion.p>
       </div>
 
-      <motion.div 
-      variants={fadeUp}
-initial="hidden"
-whileInView="show"
-viewport={{ once: true, amount: 0.3 }}
-transition={{ duration: 1.5, ease: "easeOut" }}
-      className="absolute bottom-[2.5vw] left-1/2 h-[15.13vw] w-[23.08vw] -translate-x-1/2 lg:bottom-[5vw] lg:h-[5.22vw] lg:w-[8.4vw]">
-        <Image
-          src="/images/Lincoln-Laurensia/Thankyou/LogoProvite.webp"
-          alt="Provite"
-          fill
-          className="object-contain"
-        />
-      </motion.div>
+      <div className="absolute bottom-[2.5vw] inset-x-0 flex justify-center lg:bottom-[5vw]">
+  <motion.div
+    variants={fadeUp}
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true, amount: 0.3 }}
+    transition={{ duration: 1.5, ease: "easeOut" }}
+    className="relative h-[15.13vw] w-[23.08vw] lg:h-[5.22vw] lg:w-[8.4vw]"
+  >
+    <Image
+      src="/images/Lincoln-Laurensia/Thankyou/LogoProvite.webp"
+      alt="Provite"
+      fill
+      className="object-contain"
+    />
+  </motion.div>
+</div>
     </section>
   );
 };

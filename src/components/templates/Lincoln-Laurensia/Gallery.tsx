@@ -52,7 +52,7 @@ const Gallery = ({ data }: GalleryProps) => {
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        className="relative my-[9.5vw] h-[117.95vw] w-[88.21vw] lg:my-[4.23vw] lg:h-[47.42vw] lg:w-[35.25vw]"
+        className="relative my-[9.5vw] h-[117.95vw] w-[88.21vw] lg:my-[3.8vw] lg:h-[47.42vw] lg:w-[35.25vw]"
       >
         <Image
           src={firstUrl}

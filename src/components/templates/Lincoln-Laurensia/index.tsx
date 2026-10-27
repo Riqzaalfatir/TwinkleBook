@@ -39,13 +39,13 @@ const LincolnLaurensia = ({ data }: LincolnLaurensiaProps) => {
     }
   }, [data?.url, getEventGuestByPin]);
 
-  const namaTamu =
+    const namaTamu =
     eventGuestByPin &&
     typeof eventGuestByPin === "object" &&
     "name" in eventGuestByPin &&
     typeof eventGuestByPin.name === "string"
       ? eventGuestByPin.name
-      : "[Guest Name]";
+      : "";
 
   const groomName = data?.dataEvent?.groomName ?? "Lincoln";
   const brideName = data?.dataEvent?.brideName ?? "Laurensia";

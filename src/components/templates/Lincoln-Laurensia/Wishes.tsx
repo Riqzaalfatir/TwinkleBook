@@ -162,7 +162,7 @@ transition={{ duration: 1.5, ease: "easeOut" }}
               {/* Bar atas */}
               <div className="sticky top-0 z-10 h-[15px] w-full bg-white lg:h-[15px]" />
 
-              <div className="px-[3.33vw] py-[4.4vw] lg:px-[1.65vw] lg:py-[1.28vw]">
+              <div className="px-[3.33vw] py-[0vw] lg:px-[1.65vw] lg:py-[0.2vw]">
                 {pesanList.map((item, index) => (
                   <div key={item.id}>
                     <p className="text-[3.59vw] font-bold lg:text-[1.46vw]">

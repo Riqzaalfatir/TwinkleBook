@@ -117,13 +117,13 @@ const Countdown = ({ data }: CountdownProps) => {
       />
       <div className="absolute inset-0 -z-10 bg-black/30" />
 
-      <div className="relative flex flex-col items-center px-[5.13vw] pt-[16.1vw] pb-[86vw] lg:px-0 lg:pt-[7.5vw] lg:pb-[33.5vw]">
+      <div className="relative flex flex-col items-center px-[5.13vw] pt-[18vw] pb-[89vw] lg:px-0 lg:pt-[7.5vw] lg:pb-[33.5vw]">
         <motion.div
           variants={stagger}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
-          className="flex items-start justify-center gap-[4.25vw] lg:gap-[2.25vw]"
+          className="flex items-start justify-center gap-[6.2vw] lg:gap-[2.5vw]"
         >
           {items.map((item) => (
             <motion.div
@@ -151,7 +151,7 @@ transition={{ duration: 1.5, ease: "easeOut" }}
           href={calendarUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-[8vw] flex h-[7.44vw] w-[41.03vw] items-center justify-center bg-[#605C5C82]/50 font-poppins text-[3.08vw] uppercase tracking-wide text-[#FEFBF0] lg:mt-[2.25vw] lg:h-[1.98vw] lg:w-[18.25vw] lg:text-[1.32vw]"
+          className="mt-[9vw] flex h-[7.44vw] w-[41.03vw] items-center justify-center bg-[#605C5C82]/50 font-poppins text-[3.08vw] uppercase tracking-wide text-[#FEFBF0] lg:mt-[2.25vw] lg:h-[1.98vw] lg:w-[18.25vw] lg:text-[1.32vw]"
         >
           Mark Your Calendar
         </motion.a>

@@ -43,7 +43,7 @@ const Hero = ({ data, start = true }: HeroProps) => {
         <div className="absolute bottom-0 left-0 hidden h-[52.65vw] w-full lg:block bg-[linear-gradient(to_top,rgba(0,0,0,1)_0%,rgba(0,0,0,0.55)_33%,rgba(0,0,0,0.39)_66%,rgba(0,0,0,0)_100%)]" />
       </div>
 
-      <div className="relative z-10 flex flex-col items-center pt-[129.49vw] pb-[20.51vw] lg:pt-[35.71vw] lg:pb-[24.47vw] text-center">
+      <div className="relative z-10 flex flex-col items-center pt-[129.49vw] pb-[20.51vw] lg:pt-[34.75vw] lg:pb-[24.47vw] text-center">
         <motion.p
           variants={fadeUp}
           initial="hidden"
@@ -59,12 +59,12 @@ const Hero = ({ data, start = true }: HeroProps) => {
           initial="hidden"
           animate={start ? "show" : "hidden"}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="mt-[2.05vw] lg:mt-[0.73vw] font-overpass text-[9.23vw] lg:text-[3.44vw] uppercase leading-[1] lg:leading-[3.64vw] lg:tracking-wide"
+          className="mt-[2.05vw] lg:mt-[0.65vw] font-overpass text-[9.23vw] lg:text-[3.44vw] uppercase leading-[1] lg:leading-[3.5vw]"
         >
-          <span className="block text-left pl-[0.77vw] lg:pr-[3.97vw]">
+          <span className="block text-left pl-[0.77vw] lg:pl-[0.2vw]">
             {groomName} <span>&</span>
           </span>
-          <span className="block text-right pl-[10.26vw] lg:pl-[3.97vw]">
+          <span className="block text-right pl-[10.26vw] lg:pl-[3.95vw]">
             {brideName}
           </span>
         </motion.h1>
@@ -74,12 +74,12 @@ const Hero = ({ data, start = true }: HeroProps) => {
           initial="hidden"
           animate={start ? "show" : "hidden"}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="mt-[7.44vw] lg:mt-[1.92vw] font-poppins text-[3.59vw] lg:text-[1.46vw] italic"
+          className="mt-[7.44vw] lg:mt-[1.97vw] font-poppins text-[3.59vw] lg:text-[1.46vw] italic"
         >
           #KENCENbersama
         </motion.p>
 
-        <div className="mt-[1.54vw] lg:mt-[0.66vw] font-poppins text-[5.13vw] lg:text-[1.85vw] italic flex items-center justify-center gap-[6.41vw] lg:gap-[2.25vw]">
+        <div className="mt-[1.54vw] lg:mt-[0.6vw] font-poppins text-[5.13vw] lg:text-[1.85vw] italic flex items-center justify-center gap-[6.41vw] lg:gap-[2.25vw]">
           <motion.span
             variants={fadeUp}
             initial="hidden"
