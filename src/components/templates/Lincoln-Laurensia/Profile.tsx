@@ -3,10 +3,13 @@ import Image from "next/image";
 
 const Profile = () => {
   return (
-    <section id="profile" className="relative z-10 -mt-10 lg:-mt-[210px] mx-auto">
+    <section
+      id="profile"
+      className="relative z-10 -mt-[5.5vw] lg:-mt-[14.22vw] mx-auto"
+    >
       <div className="">
-        <div className="mx-auto flex items-center justify-center gap-[22px] lg:gap-[22px]">
-          <div className="relative h-[239px] w-[159px] lg:w-[312px] lg:h-[468px]">
+        <div className="mx-auto flex items-center justify-center gap-[5.64vw] lg:gap-[1.59vw]">
+          <div className="relative h-[61.28vw] w-[40.77vw] lg:w-[20.63vw] lg:h-[30.95vw]">
             <Image
               src="/images/Lincoln-Laurensia/Profile/AsetKiri.webp"
               alt="Lincoln & Laurensia"
@@ -14,7 +17,7 @@ const Profile = () => {
               className="object-cover"
             />
           </div>
-          <div className="relative h-[239px] w-[159px] lg:w-[312px] lg:h-[468px]">
+          <div className="relative h-[61.28vw] w-[40.77vw] lg:w-[20.63vw] lg:h-[30.95vw]">
             <Image
               src="/images/Lincoln-Laurensia/Profile/AsetKanan.webp"
               alt="Lincoln & Laurensia"
@@ -25,91 +28,225 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="bg-white pb-[155px] pt-[155px] font-poppins text-black">
-  <div className="mx-auto w-full max-w-[340px] lg:max-w-[646px]">
-    <p className="text-[14px] font-semibold">
-      Then make my joy complete by being like- <br />
-      minded, having the same love, being one in <br />
-      spirit and of one mind.
-    </p>
-    <p className="mt-3 text-[12px] font-semibold lg:text-[13px]">
-      Philippians 2:2
-    </p>
-  </div>
-</div>
-
-      <div className="mx-auto flex max-w-[520px] flex-col items-center gap-[30px] bg-white pb-[50px] lg:grid lg:max-w-[1462px] lg:grid-cols-[300px_1fr_300px] lg:items-stretch lg:gap-x-10 lg:gap-y-0 lg:pb-24">
-        <div className="relative w-full max-w-[340px] lg:contents">
-          <div className="relative h-[815px] w-full lg:col-start-1 lg:row-start-1 lg:h-[845px] lg:w-full">
-            <Image
-              src="/images/Lincoln-Laurensia/Profile/Lincoln.webp"
-              alt="Lincoln"
-              fill
-              className="object-cover"
-            />
-          </div>
-
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent px-4 pb-[80px] pt-20 font-poppins text-white lg:static lg:col-start-2 lg:row-start-1 lg:self-start lg:bg-none lg:p-0 lg:text-black">
-            <p className="text-[14px] font-light italic lg:text-[20px]">
-              The Groom
-            </p>
-            <h2 className="text-[38px] font-semibold uppercase leading-none lg:text-[42px]">
-              Lincoln
-            </h2>
-            <p className="mt-1 text-[20px] font-light italic uppercase lg:text-[26px]">
-              Halim
-            </p>
-            <p className="mt-[10px] text-[14px] lg:mt-6 lg:text-[22px]">
-              Son of
-            </p>
-            <p className="text-[14px] font-medium lg:text-[22px]">
-              Mr. Asun Halim & Mrs. Yanti Widjono
-            </p>
-            <p className="mt-[15px] text-[14px] font-extralight leading-[20px] lg:mt-5 lg:text-[22px] lg:leading-[24px]">
-              Meet Ken. He&apos;s the calm to her chaos, the steady sea to her
-              wild waves. The one who <br className="lg:hidden" /> loves her
-              through it all, and always finds a way to make her smile.
-            </p>
-          </div>
-        </div>
-
-        <div className="relative w-full max-w-[340px] lg:contents">
-          <div className="relative h-[815px] w-full lg:col-start-3 lg:row-start-1 lg:h-[845px] lg:w-full">
-            <Image
-              src="/images/Lincoln-Laurensia/Profile/Laurensia.webp"
-              alt="Laurensia"
-              fill
-              className="object-cover"
-            />
-          </div>
-
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent px-6 pb-8 pt-20 font-poppins text-white lg:static lg:col-start-2 lg:row-start-1 lg:self-end lg:bg-none lg:p-0 lg:text-right lg:text-black">
-            <p className="text-[11px] font-light italic lg:text-[20px]">
-              The Bride
-            </p>
-            <h2 className="font-overpass text-[30px] font-semibold uppercase leading-none lg:text-[52px]">
-              Laurensia
-            </h2>
-            <p className="mt-1 text-[12px] font-light italic uppercase lg:text-[26px]">
-              Leonie Kusuma
-            </p>
-            <p className="mt-4 text-[11px] font-light lg:mt-6 lg:text-[22px]">
-              Daughter of
-            </p>
-            <p className="text-[12px] font-medium lg:text-[22px]">
-              Mr. Ivan & Mrs. Linda
-            </p>
-            <p className="mt-[15px] text-[14px] font-extralight leading-[20px] lg:mt-5 lg:text-[22px] lg:leading-[24px]">
-              Ken calls her Lien. She&apos;s the one he can talk to about
-              anything, dream about everything with, and count on through the
-              hardest days. His best friend, his greatest comfort, and the one
-              he wants by his side for a lifetime.
-            </p>
-          </div>
+      <div className="bg-white pb-[37vw] pt-[37.3vw] lg:pt-[5.9vw] lg:pb-[16.1vw] font-poppins text-black">
+        <div className="mx-auto w-full max-w-[87.18vw] lg:max-w-[42.86vw] leading-[25px] lg:leading-[26.5px]">
+          <p className="text-[3.59vw] lg:text-[1.46vw] font-semibold">
+            Then make my joy complete by being like-{" "}
+            <br className="lg:hidden" />
+            minded, <br className="hidden lg:block" />
+            having the same love, being one in <br className="lg:hidden" />
+            spirit and of one mind.
+          </p>
+          <p className="mt-[6vw] lg:mt-[1.6vw] text-[3.59vw] font-semibold lg:text-[1.46vw]">
+            Philippians 2:2
+          </p>
         </div>
       </div>
+
+     <div className="mx-auto flex max-w-[520px] flex-col items-center gap-[7.5vw] bg-white pb-[12.1vw] lg:grid lg:max-w-[93.5vw] lg:grid-cols-[22.49vw_1fr_22.49vw] lg:items-stretch lg:gap-x-[2.78vw] lg:gap-y-0 lg:pb-[7.7vw]">
+  <div className="relative w-full max-w-[87.18vw] lg:contents">
+    <div className="relative h-[208.97vw] w-full lg:col-start-1 lg:row-start-1 lg:h-[55.89vw] lg:w-full">
+      <Image
+        src="/images/Lincoln-Laurensia/Profile/Lincoln.webp"
+        alt="Lincoln"
+        fill
+        className="object-cover"
+      />
+      <div className="absolute inset-x-0 bottom-0 h-[125.64vw] bg-gradient-to-b from-black/0 to-black lg:hidden" />
+    </div>
+
+    <div className="absolute inset-x-0 bottom-0 px-[6vw] pb-[19.5vw] pt-[20.51vw] font-poppins text-white lg:static lg:col-start-2 lg:row-start-1 lg:self-start lg:p-0 lg:text-black">
+      <p className="text-[3.59vw] font-light italic lg:text-[1.32vw]">
+        The Groom
+      </p>
+      <h2 className="text-[9.74vw] pt-[1.5px] lg:pt-[4px] font-semibold uppercase leading-none lg:text-[3.44vw]">
+        Lincoln
+      </h2>
+      <p className="pt-[0.5px] lg:pt-[1px] text-[5.13vw] font-light italic uppercase lg:text-[1.72vw]">
+        Halim
+      </p>
+      <p className="pt-[7px] lg:pt-[13px] text-[3.59vw] lg:text-[1.46vw]">
+        Son of
+      </p>
+      <p className="lg:pt-[0.5px] text-[3.59vw] lg:text-[1.46vw]">
+        Mr. Asun Halim & Mrs. Yanti Widjono
+      </p>
+      <p className="text-[3.59vw] font-extralight leading-[5.13vw] mt-[12.5px] lg:mt-[15px] lg:text-[1.46vw] lg:leading-[2.2vw]">
+        Meet Ken. He&apos;s the calm to her chaos, the steady sea to{" "}
+        <br className="hidden lg:block" />
+        her wild waves. The one who <br className="lg:hidden" /> loves her
+        through it all, and <br className="hidden lg:block" />
+        always finds a way to make her smile.
+      </p>
+    </div>
+  </div>
+
+  <div className="relative w-full max-w-[87.18vw] lg:contents">
+    <div className="relative h-[208.97vw] w-full lg:col-start-3 lg:row-start-1 lg:h-[55.89vw] lg:w-full">
+      <Image
+        src="/images/Lincoln-Laurensia/Profile/Laurensia.webp"
+        alt="Laurensia"
+        fill
+        className="object-cover"
+      />
+      <div className="absolute inset-x-0 bottom-0 h-[125.64vw] bg-gradient-to-b from-black/0 to-black lg:hidden" />
+    </div>
+
+    <div className="absolute inset-x-0 bottom-0 px-[6vw] pb-[19.5vw] pt-[20.51vw] font-poppins text-white lg:static lg:col-start-2 lg:row-start-1 lg:self-end lg:p-0 lg:text-right lg:text-black">
+      <p className="text-[3.59vw] font-light italic lg:text-[1.32vw]">
+        The Bride
+      </p>
+      <h2 className="pt-[1.5px] lg:pt-[4px] font-overpass text-[9.74vw] font-semibold uppercase leading-none lg:text-[3.44vw]">
+        Laurensia
+      </h2>
+      <p className="pt-[0.5px] lg:pt-[1px] text-[5.13vw] font-light italic uppercase lg:text-[1.72vw]">
+        Leonie Kusuma
+      </p>
+      <p className="pt-[7px] lg:pt-[13px] text-[2.82vw] font-light lg:text-[1.46vw]">
+        Daughter of
+      </p>
+      <p className="lg:pt-[0.5px] text-[3.59vw] lg:text-[1.46vw]">
+        Mr. Ivan & Mrs. Linda
+      </p>
+      <p className="text-[3.59vw] font-extralight leading-[5.13vw] mt-[12.5px] lg:mt-[15px] lg:text-[1.46vw] lg:leading-[2.2vw]">
+        Ken calls her Lien. She&apos;s the one he can talk to about{" "}
+        <br className="hidden lg:block" />
+        anything, dream about everything with, and count on{" "}
+        <br className="hidden lg:block" />
+        through the hardest days. His best friend, his greatest{" "}
+        <br className="hidden lg:block" />
+        comfort, and the one he wants by his side for a lifetime.
+      </p>
+    </div>
+  </div>
+</div>
     </section>
   );
 };
 
 export default Profile;
+
+// HANYA UKURAN, BELUM DETAILING POSISI, SEBELUM DI VW KAN
+// import React from "react";
+// import Image from "next/image";
+
+// const Profile = () => {
+//   return (
+//     <section
+//       id="profile"
+//       className="relative z-10 -mt-10 lg:-mt-[215px] mx-auto"
+//     >
+//       <div className="">
+//         <div className="mx-auto flex items-center justify-center gap-[22px] lg:gap-[24px]">
+//           <div className="relative h-[239px] w-[159px] lg:w-[312px] lg:h-[468px]">
+//             <Image
+//               src="/images/Lincoln-Laurensia/Profile/AsetKiri.webp"
+//               alt="Lincoln & Laurensia"
+//               fill
+//               className="object-cover"
+//             />
+//           </div>
+//           <div className="relative h-[239px] w-[159px] lg:w-[312px] lg:h-[468px]">
+//             <Image
+//               src="/images/Lincoln-Laurensia/Profile/AsetKanan.webp"
+//               alt="Lincoln & Laurensia"
+//               fill
+//               className="object-cover"
+//             />
+//           </div>
+//         </div>
+//       </div>
+
+//       <div className="bg-white pb-[155px] pt-[155px] font-poppins text-black">
+//         <div className="mx-auto w-full max-w-[340px] lg:max-w-[648px]">
+//           <p className="text-[14px] lg:text-[22px] font-semibold">
+//             Then make my joy complete by being like-{" "}
+//             <br className="lg:hidden" />
+//             minded, <br className="hidden lg:block" />
+//             having the same love, being one in <br className="lg:hidden" />
+//             spirit and of one mind.
+//           </p>
+//           <p className="mt-3 text-[12px] font-semibold lg:text-[22px]">
+//             Philippians 2:2
+//           </p>
+//         </div>
+//       </div>
+
+//       <div className="mx-auto flex max-w-[520px] flex-col items-center gap-[30px] bg-white pb-[50px] lg:grid lg:max-w-[1462px] lg:grid-cols-[340px_1fr_340px] lg:items-stretch lg:gap-x-[42px] lg:gap-y-0 lg:pb-24">
+//         <div className="relative w-full max-w-[340px] lg:contents">
+//           <div className="relative h-[815px] w-full lg:col-start-1 lg:row-start-1 lg:h-[845px] lg:w-full">
+//             <Image
+//               src="/images/Lincoln-Laurensia/Profile/Lincoln.webp"
+//               alt="Lincoln"
+//               fill
+//               className="object-cover"
+//             />
+//           </div>
+
+//           <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent px-4 pb-[80px] pt-20 font-poppins text-white lg:static lg:col-start-2 lg:row-start-1 lg:self-start lg:bg-none lg:p-0 lg:text-black">
+//             <p className="text-[14px] font-light italic lg:text-[20px]">
+//               The Groom
+//             </p>
+//             <h2 className="text-[38px] font-semibold uppercase leading-none lg:text-[52px]">
+//               Lincoln
+//             </h2>
+//             <p className="mt-1 text-[20px] font-light italic uppercase lg:text-[26px]">
+//               Halim
+//             </p>
+//             <p className="mt-[10px] text-[14px] lg:mt-6 lg:text-[22px]">
+//               Son of
+//             </p>
+//             <p className="text-[14px] lg:text-[22px]">
+//               Mr. Asun Halim & Mrs. Yanti Widjono
+//             </p>
+//             <p className="mt-[15px] text-[14px] font-extralight leading-[20px] lg:mt-5 lg:text-[22px] lg:leading-[24px]">
+//               Meet Ken. He&apos;s the calm to her chaos, the steady sea to{" "}
+//               <br className="hidden lg:block" />
+//               her wild waves. The one who <br className="lg:hidden" /> loves her
+//               through it all, and <br className="hidden lg:block" />
+//               always finds a way to make her smile.
+//             </p>
+//           </div>
+//         </div>
+
+//         <div className="relative w-full max-w-[340px] lg:contents">
+//           <div className="relative h-[815px] w-full lg:col-start-3 lg:row-start-1 lg:h-[845px] lg:w-full">
+//             <Image
+//               src="/images/Lincoln-Laurensia/Profile/Laurensia.webp"
+//               alt="Laurensia"
+//               fill
+//               className="object-cover"
+//             />
+//           </div>
+
+//           <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent px-6 pb-8 pt-20 font-poppins text-white lg:static lg:col-start-2 lg:row-start-1 lg:self-end lg:bg-none lg:p-0 lg:text-right lg:text-black">
+//             <p className="text-[11px] font-light italic lg:text-[20px]">
+//               The Bride
+//             </p>
+//             <h2 className="font-overpass text-[30px] font-semibold uppercase leading-none lg:text-[52px]">
+//               Laurensia
+//             </h2>
+//             <p className="mt-1 text-[12px] font-light italic uppercase lg:text-[26px]">
+//               Leonie Kusuma
+//             </p>
+//             <p className="mt-4 text-[11px] font-light lg:mt-6 lg:text-[22px]">
+//               Daughter of
+//             </p>
+//             <p className="text-[12px] lg:text-[22px]">Mr. Ivan & Mrs. Linda</p>
+//             <p className="mt-[15px] text-[14px] font-extralight leading-[20px] lg:mt-5 lg:text-[22px] lg:leading-[24px]">
+//               Ken calls her Lien. She&apos;s the one he can talk to about{" "}
+//               <br className="hidden lg:block" />
+//               anything, dream about everything with, and count on{" "}
+//               <br className="hidden lg:block" />
+//               through the hardest days. His best friend, his greatest{" "}
+//               <br className="hidden lg:block" />
+//               comfort, and the one he wants by his side for a lifetime.
+//             </p>
+//           </div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default Profile;
