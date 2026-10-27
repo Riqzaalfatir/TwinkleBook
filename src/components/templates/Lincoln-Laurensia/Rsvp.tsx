@@ -78,7 +78,7 @@ initial="hidden"
 whileInView="show"
 viewport={{ once: true, amount: 0.3 }}
 transition={{ duration: 1.5, ease: "easeOut" }}
-        className="mt-[6.67vw] lg:mt-[3.1vw] leading-[20px] lg:leading-[30px]">
+        className="mt-[6.67vw] lg:mt-[3.1vw] leading-[20px] lg:leading-[35px]">
           <p className="text-[3.59vw] lg:text-[1.46vw]">
             Kindly confirm your attendance before
             <br />

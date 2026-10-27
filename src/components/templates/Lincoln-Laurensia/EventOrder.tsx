@@ -117,9 +117,9 @@ const EventOrder = ({ data }: EventOrderProps) => {
             transition={{ duration: 1.5, ease: "easeOut" }}
             className="text-[16.41vw] font-semibold uppercase leading-[1.05] lg:leading-[0.99] lg:text-[6.35vw]"
           >
-            {venueLine1}
+            IMAH
             <br />
-            {venueLine2}
+            SENIMAN
             <br />
             <span className="text-[16.41vw] font-normal leading-none lg:text-[6.35vw]">
               {dateLabel}

@@ -102,7 +102,7 @@ const Opening = ({
                 we invite you to celebrate
               </p>
 
-              <h1 className="relative z-10 font-overpass text-[30px] lg:text-[46px] text-white break-words max-w-[280px] lg:max-w-[320px] mt-[6px] lg:mt-[19px] leading-[33px] lg:leading-[47px] uppercase">
+              <h1 className="relative z-10 font-overpass text-[30px] lg:text-[46px] text-white break-words max-w-[280px] lg:max-w-[320px] mt-[10px] lg:mt-[19px] leading-[33px] lg:leading-[47px] uppercase">
                 <span className="mr-[30px] lg:mr-[50px]">{groomName} &</span>
                 <span className="block ml-[40px] lg:ml-[60px]">
                   {brideName}

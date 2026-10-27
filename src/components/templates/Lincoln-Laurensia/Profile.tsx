@@ -51,7 +51,7 @@ const Profile = () => {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="mx-auto w-full max-w-[87.18vw] lg:max-w-[42.86vw] leading-[25px] lg:leading-[26.5px]"
+          className="mx-auto w-full max-w-[87.18vw] lg:max-w-[42.86vw] leading-[25px] lg:leading-[30px]"
         >
           <p className="text-[3.59vw] lg:text-[1.46vw] font-semibold">
             Then make my joy complete by being like-{" "}
@@ -142,7 +142,7 @@ const Profile = () => {
               whileInView="show"
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 1.5, ease: "easeOut" }}
-              className="text-[3.59vw] font-extralight leading-[5.13vw] mt-[12.5px] lg:mt-[10px] lg:text-[1.46vw] lg:leading-[2.2vw] text-white/80 lg:text-white"
+              className="text-[3.59vw] font-extralight leading-[5.13vw] mt-[12.5px] lg:mt-[10px] lg:text-[1.46vw] lg:leading-[2.2vw] text-white/80"
             >
               Meet Ken. He&apos;s the calm to her chaos, the steady sea to{" "}
               <br className="hidden lg:block" />
@@ -228,7 +228,7 @@ const Profile = () => {
               whileInView="show"
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 1.5, ease: "easeOut" }}
-              className="text-[3.59vw] font-extralight leading-[5.13vw] mt-[12.5px] lg:mt-[10px] lg:text-[1.46vw] lg:leading-[2.2vw] text-white/80 lg:text-white"
+              className="text-[3.59vw] font-extralight leading-[5.13vw] mt-[12.5px] lg:mt-[10px] lg:text-[1.46vw] lg:leading-[2.2vw] text-white/80"
             >
               Ken calls her Lien. She&apos;s the one he can <br className="lg:hidden" />
               talk 
