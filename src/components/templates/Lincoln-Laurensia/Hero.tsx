@@ -6,9 +6,10 @@ import { fadeIn, fadeUp, fadeLeft, fadeRight } from "../../../lib/animation";
 
 type HeroProps = {
   data?: any;
+  start?: boolean;
 };
 
-const Hero = ({ data }: HeroProps) => {
+const Hero = ({ data, start = true }: HeroProps) => {
   const groomName = data?.dataEvent?.groomName ?? "Lincoln";
   const brideName = data?.dataEvent?.brideName ?? "Laurensia";
 
@@ -30,7 +31,7 @@ const Hero = ({ data }: HeroProps) => {
           alt={`${groomName} & ${brideName}`}
           fill
           priority
-          className="object-cover object-center lg:hidden"
+          className="object-cover object-top lg:hidden"
         />
         <Image
           src="/images/Lincoln-Laurensia/Hero/HeroBGD.webp"
@@ -46,8 +47,7 @@ const Hero = ({ data }: HeroProps) => {
         <motion.p
           variants={fadeUp}
           initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
+          animate={start ? "show" : "hidden"}
           transition={{ duration: 1.5, ease: "easeOut" }}
           className="font-poppins text-[3.59vw] lg:text-[1.46vw] font-light uppercase tracking-[12%]"
         >
@@ -57,8 +57,7 @@ const Hero = ({ data }: HeroProps) => {
         <motion.h1
           variants={fadeUp}
           initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
+          animate={start ? "show" : "hidden"}
           transition={{ duration: 1.5, ease: "easeOut" }}
           className="mt-[2.05vw] lg:mt-[0.73vw] font-overpass text-[9.23vw] lg:text-[3.44vw] uppercase leading-[1] lg:leading-[3.64vw] lg:tracking-wide"
         >
@@ -73,8 +72,7 @@ const Hero = ({ data }: HeroProps) => {
         <motion.p
           variants={fadeUp}
           initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
+          animate={start ? "show" : "hidden"}
           transition={{ duration: 1.5, ease: "easeOut" }}
           className="mt-[7.44vw] lg:mt-[1.92vw] font-poppins text-[3.59vw] lg:text-[1.46vw] italic"
         >
@@ -85,8 +83,7 @@ const Hero = ({ data }: HeroProps) => {
           <motion.span
             variants={fadeUp}
             initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
+            animate={start ? "show" : "hidden"}
             transition={{ duration: 1.5, ease: "easeOut", delay: 0 }}
           >
             {day}
@@ -94,8 +91,7 @@ const Hero = ({ data }: HeroProps) => {
           <motion.span
             variants={fadeUp}
             initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
+            animate={start ? "show" : "hidden"}
             transition={{ duration: 1.5, ease: "easeOut", delay: 0.15 }}
           >
             {month}
@@ -103,8 +99,7 @@ const Hero = ({ data }: HeroProps) => {
           <motion.span
             variants={fadeUp}
             initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
+            animate={start ? "show" : "hidden"}
             transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
           >
             {year}
@@ -114,8 +109,7 @@ const Hero = ({ data }: HeroProps) => {
         <motion.a
           variants={fadeUp}
           initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
+          animate={start ? "show" : "hidden"}
           transition={{ duration: 1.5, ease: "easeOut" }}
           href="#profile"
           aria-label="Scroll down"

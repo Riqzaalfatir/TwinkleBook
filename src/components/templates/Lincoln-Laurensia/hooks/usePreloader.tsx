@@ -6,6 +6,7 @@ const BREAKPOINT = 1024;
 
 const IMAGES_MOBILE: string[] = [
   // OPENING
+  "/images/Lincoln-Laurensia/Opening/BgMobile.webp",
   "/images/Lincoln-Laurensia/Hero/HeroBG.webp",
 
   //COUNTDOWN
@@ -20,6 +21,7 @@ const IMAGES_MOBILE: string[] = [
 
 const IMAGES_DESKTOP: string[] = [
   // OPENING
+  "/images/Lincoln-Laurensia/Opening/BgDekstop.webp",
   "/images/Lincoln-Laurensia/Hero/HeroBGD.webp",
 
   //   COUNTDOWN
