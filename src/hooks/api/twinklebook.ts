@@ -61,7 +61,17 @@ export function getEventGuestByPin<T = any>(url: string, pin: string) {
 }
 
 // --- GetEventContent (dipakai langsung di page route, bukan lewat hook) ---
-export function getEventContent<T = any>(id: string) {
+export async function getEventContent<T = any>(id: string, lang?: number) {
+  if (lang === undefined) {
+    return apiRequest<T>(`/GetEventContent?id=${encodeURIComponent(id)}`);
+  }
+
+  const res = await apiRequest<T>(
+    `/GetEventContentByLanguage?eventId=${encodeURIComponent(id)}&lang=${lang}`,
+  );
+
+  if (res.data || !res.error) return res;
+
   return apiRequest<T>(`/GetEventContent?id=${encodeURIComponent(id)}`);
 }
 

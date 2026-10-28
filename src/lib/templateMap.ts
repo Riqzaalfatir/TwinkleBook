@@ -32,7 +32,16 @@ export const TEMPLATE_MAP: Record<string, string> = {
 
 };
 
+export const TEMPLATE_CONTENT_LANG: Record<string, number> = {
+  "Lincoln-Laurensia": 0,
+};
 
 export function getTemplateNameFromId(templateId: string): string {
   return TEMPLATE_MAP[templateId] ?? "Atet-Halim";
+}
+
+export function getContentLangFromTemplate(
+  templateName: string,
+): number | undefined {
+  return TEMPLATE_CONTENT_LANG[templateName];
 }

@@ -10,7 +10,10 @@ import { useEventContent } from "@/hooks/api/useEventContent";
 import { useEventSessionByPin } from "@/hooks/api/useEventSessionByPin";
 import { useCurrentGuest } from "@/hooks/api/useCurrentGuest";
 
-import { getTemplateNameFromId } from "@/lib/templateMap";
+import {
+  getTemplateNameFromId,
+  getContentLangFromTemplate,
+} from "@/lib/templateMap";
 import { TEMPLATE_REGISTRY, DEFAULT_TEMPLATE } from "@/lib/templateRegistry";
 
 export default function EventPage() {
@@ -70,8 +73,14 @@ export default function EventPage() {
   useEffect(() => {
     if (!eventByUrl?.id) return;
 
-    getEventContent(eventByUrl.id);
-  }, [eventByUrl?.id, getEventContent]);
+    const contentLang = eventByUrl.templateId
+      ? getContentLangFromTemplate(
+          getTemplateNameFromId(eventByUrl.templateId as string),
+        )
+      : undefined;
+
+    getEventContent(eventByUrl.id, contentLang);
+  }, [eventByUrl?.id, eventByUrl?.templateId, getEventContent]);
 
   /*
    * ==========================================
