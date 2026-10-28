@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { poppins, overpass } from "./fonts/fonts";
 import Header from "./Header";
 import Hero from "./Hero";
@@ -28,7 +28,19 @@ type LincolnLaurensiaProps = {
 const LincolnLaurensia = ({ data }: LincolnLaurensiaProps) => {
   const [start, setStart] = useState(false);
   const [showLoading, setShowLoading] = useState(true);
-  const { loaded, progress } = usePreloader();
+
+  const galleryData = data?.dataContent?.galleryImageData;
+
+  // Foto galeri dari API -> ikut di-preload.
+  // Tambahkan .slice(0, 3) kalau mau preload 3 foto pertama saja.
+  const galleryImages = useMemo(() => {
+    if (!Array.isArray(galleryData)) return [];
+    return galleryData
+      .filter((item: any) => item?.url)
+      .map((item: any) => `https://media.twinklebook.com/${item.url}`);
+  }, [galleryData]);
+
+  const { loaded, progress } = usePreloader({ dynamicImages: galleryImages });
 
   const { getEventGuestByPin, eventGuestByPin } = useCurrentGuest();
 

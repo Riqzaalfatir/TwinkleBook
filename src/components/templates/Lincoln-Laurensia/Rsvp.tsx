@@ -134,9 +134,12 @@ const RsvpSection = ({ data }: { data?: any }) => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className=""
+            className="transform-gpu"
           >
-            <SmartRsvpForm.SubmitButton className="mx-auto mt-[5.64vw] flex h-[9.23vw] w-[41.28vw] items-center justify-center rounded-[1.54vw] bg-white text-[3.59vw] uppercase leading-[1] text-[#30201E] lg:mt-[0.99vw] lg:h-[3.44vw] lg:w-[14.55vw] lg:rounded-[0.33vw] lg:text-[1.19vw]" />{" "}
+            <SmartRsvpForm.SubmitButton
+              key={attendStatus}
+              className="mx-auto mt-[5.64vw] flex h-[9.23vw] w-[41.28vw] items-center justify-center overflow-hidden whitespace-nowrap rounded-[1.54vw] bg-white text-center text-[3.59vw] uppercase leading-[1] text-[#30201E] [-webkit-transform:translateZ(0)] lg:mt-[0.99vw] lg:h-[3.44vw] lg:w-[14.55vw] lg:rounded-[0.33vw] lg:text-[1.19vw]"
+            />
           </motion.div>
         </div>
 

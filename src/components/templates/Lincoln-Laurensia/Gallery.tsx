@@ -111,6 +111,8 @@ const Gallery = ({ data }: GalleryProps) => {
                     alt={`Lincoln & Laurensia ${index + 1}`}
                     fill
                     className="object-cover"
+                    unoptimized
+                    loading="eager"
                   />
                 </div>
               ))}
