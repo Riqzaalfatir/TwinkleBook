@@ -1,19 +1,62 @@
-import React from "react";
+"use client";
+
+import React, { useState, useRef, useCallback, useMemo } from "react";
 import Image from "next/image";
 import moment from "moment";
 import { motion } from "framer-motion";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+import Lightbox from "yet-another-react-lightbox";
+import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import Counter from "yet-another-react-lightbox/plugins/counter";
+import "yet-another-react-lightbox/styles.css";
+import "yet-another-react-lightbox/plugins/thumbnails.css";
+import "yet-another-react-lightbox/plugins/counter.css";
 import { fadeIn, fadeUp, fadeLeft, fadeRight } from "../../../lib/animation";
 
 type GalleryProps = {
   data?: any;
 };
 
+const AUTOPLAY_DELAY = 4000;
+const DEFAULT_PHOTO = "/images/Lincoln-Laurensia/Gallery/AsetSatu.webp";
+
 const Gallery = ({ data }: GalleryProps) => {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const scrollPosRef = useRef(0);
+
   const galleryData = data?.dataContent?.galleryImageData;
-  const firstUrl =
-    Array.isArray(galleryData) && galleryData[0]?.url
-      ? `https://media.twinklebook.com/${galleryData[0].url}`
-      : "/images/Lincoln-Laurensia/Gallery/AsetSatu.webp";
+
+  const photos: string[] = useMemo(() => {
+    if (!Array.isArray(galleryData) || galleryData.length === 0) {
+      return [DEFAULT_PHOTO];
+    }
+    return galleryData.map((item: any) =>
+      item?.url ? `https://media.twinklebook.com/${item.url}` : DEFAULT_PHOTO,
+    );
+  }, [galleryData]);
+
+  const plugins = useMemo(
+    () => [Autoplay({ delay: AUTOPLAY_DELAY, stopOnInteraction: false })],
+    [],
+  );
+
+  const [emblaRef] = useEmblaCarousel({ loop: true }, plugins);
+
+  const handlePhotoClick = useCallback((index: number) => {
+    scrollPosRef.current = window.scrollY;
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  }, []);
+
+  const handleClose = () => {
+    setLightboxOpen(false);
+    setTimeout(() => {
+      window.scrollTo({ top: scrollPosRef.current, behavior: "instant" });
+    }, 10);
+  };
 
   const eventDate = data?.dataEvent?.date;
   const dateLabel = eventDate
@@ -21,137 +64,92 @@ const Gallery = ({ data }: GalleryProps) => {
     : "saturday - 28/11/26";
 
   return (
-    <section
-      id="gallery"
-      className="relative z-10 flex w-full flex-col items-center bg-white px-[4.1vw] py-[11.25vw] font-poppins text-[#737573] lg:px-[1.06vw] lg:py-[7.4vw]"
-    >
-      <div className="flex w-full max-w-[88.21vw] justify-between text-[2.82vw] lg:max-w-[41.2vw] lg:text-[1.46vw]">
-        <motion.p
-          variants={fadeRight}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-        >
-          just
-        </motion.p>
-        <motion.p
-          variants={fadeLeft}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-        >
-          us two
-        </motion.p>
-      </div>
-
-      <motion.div
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
-        className="relative my-[9.5vw] h-[117.95vw] w-[88.21vw] lg:my-[3.8vw] lg:h-[47.42vw] lg:w-[35.25vw]"
+    <>
+      <section
+        id="gallery"
+        className="relative z-10 flex w-full flex-col items-center bg-white px-[4.1vw] py-[11.25vw] font-poppins text-[#737573] lg:px-[1.06vw] lg:py-[7.4vw]"
       >
-        <Image
-          src={firstUrl}
-          alt="Lincoln & Laurensia"
-          fill
-          className="object-cover"
-        />
-      </motion.div>
+        <div className="flex w-full max-w-[88.21vw] justify-between text-[2.82vw] lg:max-w-[41.2vw] lg:text-[1.46vw]">
+          <motion.p
+            variants={fadeRight}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+          >
+            just
+          </motion.p>
+          <motion.p
+            variants={fadeLeft}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+          >
+            us two
+          </motion.p>
+        </div>
 
-      <div className="flex w-full max-w-[88.21vw] justify-between text-[2.82vw] lg:max-w-[41.2vw] lg:text-[1.46vw]">
-        <motion.p
-          variants={fadeRight}
+        <motion.div
+          variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
+          className="relative my-[9.5vw] h-[117.95vw] w-[88.21vw] lg:my-[3.8vw] lg:h-[47.42vw] lg:w-[35.25vw]"
         >
-          good times
-        </motion.p>
-        <motion.p
-          variants={fadeLeft}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-        >
-          {dateLabel}
-        </motion.p>
-      </div>
-    </section>
+          <div className="h-full overflow-hidden" ref={emblaRef}>
+            <div className="flex h-full">
+              {photos.map((src, index) => (
+                <div
+                  key={index}
+                  className="relative h-full flex-[0_0_100%] cursor-pointer"
+                  onClick={() => handlePhotoClick(index)}
+                >
+                  <Image
+                    src={src}
+                    alt={`Lincoln & Laurensia ${index + 1}`}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        <div className="flex w-full max-w-[88.21vw] justify-between text-[2.82vw] lg:max-w-[41.2vw] lg:text-[1.46vw]">
+          <motion.p
+            variants={fadeRight}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+          >
+            good times
+          </motion.p>
+          <motion.p
+            variants={fadeLeft}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+          >
+            {dateLabel}
+          </motion.p>
+        </div>
+      </section>
+
+      <Lightbox
+        open={lightboxOpen}
+        close={handleClose}
+        index={lightboxIndex}
+        slides={photos.map((src) => ({ src }))}
+        plugins={[Thumbnails, Zoom, Counter]}
+        noScroll={{ disabled: true }}
+      />
+    </>
   );
 };
 
 export default Gallery;
-
-// SEBELUM DI DINAMISKAN
-// import React from "react";
-// import Image from "next/image";
-
-// const Gallery = () => {
-//   return (
-//     <section
-//       id="gallery"
-//       className="relative z-10 flex w-full flex-col items-center bg-white px-[4.1vw] py-[11.25vw] font-poppins text-[#737573] lg:px-[1.06vw] lg:py-[7.4vw]"
-//     >
-//       <div className="flex w-full max-w-[88.21vw] justify-between text-[2.82vw] lg:max-w-[41.2vw] lg:text-[1.46vw]">
-//         <p>just</p>
-//         <p>us two</p>
-//       </div>
-
-//       <div className="relative my-[9.5vw] h-[117.95vw] w-[88.21vw] lg:my-[4.23vw] lg:h-[47.42vw] lg:w-[35.25vw]">
-//         <Image
-//           src="/images/Lincoln-Laurensia/Gallery/AsetSatu.webp"
-//           alt="Lincoln & Laurensia"
-//           fill
-//           className="object-cover"
-//         />
-//       </div>
-
-//       <div className="flex w-full max-w-[88.21vw] justify-between text-[2.82vw] lg:max-w-[41.2vw] lg:text-[1.46vw]">
-//         <p>good times</p>
-//         <p>saturday - 28/11/26</p>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Gallery;
-
-// SEBELUM DI VW KAN
-// import React from "react";
-// import Image from "next/image";
-
-// const Gallery = () => {
-//   return (
-//     <section
-//       id="gallery"
-//       className="relative z-10 flex w-full flex-col items-center bg-white px-4 py-10 font-poppins text-[#737573] lg:py-[120px]"
-//     >
-//       <div className="flex w-full max-w-[344px] justify-between text-[11px] lg:max-w-[630px] lg:text-[22px]">
-//         <p>just</p>
-//         <p>us two</p>
-//       </div>
-
-//       <div className="relative my-10 h-[460px] w-[344px] lg:my-[64px] lg:h-[717px] lg:w-[536.19px]">
-//         <Image
-//           src="/images/Lincoln-Laurensia/Gallery/AsetSatu.webp"
-//           alt="Lincoln & Laurensia"
-//           fill
-//           className="object-cover"
-//         />
-//       </div>
-
-//       <div className="flex w-full max-w-[344px] justify-between text-[11px] lg:max-w-[630px] lg:text-[22px]">
-//         <p>good times</p>
-//         <p>saturday - 28/11/26</p>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Gallery;

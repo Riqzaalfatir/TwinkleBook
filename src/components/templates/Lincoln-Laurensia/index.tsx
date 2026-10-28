@@ -39,7 +39,7 @@ const LincolnLaurensia = ({ data }: LincolnLaurensiaProps) => {
     }
   }, [data?.url, getEventGuestByPin]);
 
-    const namaTamu =
+  const namaTamu =
     eventGuestByPin &&
     typeof eventGuestByPin === "object" &&
     "name" in eventGuestByPin &&

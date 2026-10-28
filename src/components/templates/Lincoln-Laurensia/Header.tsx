@@ -13,7 +13,7 @@ const MENU = [
   { label: "Home", target: "hero" },
   { label: "Profile", target: "profile" },
   { label: "Date", target: "countdown" },
-    { label: "Gallery", target: "gallery" },
+  { label: "Gallery", target: "gallery" },
   { label: "Event Detail", target: "event-order" },
   { label: "Dress Code", target: "dress-code" },
   { label: "RSVP", target: "rsvp" },
@@ -131,8 +131,8 @@ const Header = () => {
   };
 
   const lineBase = `absolute left-0 block h-[2px] w-full rounded-full transition-colors duration-300 ${
-  iconOpen ? "bg-[#2F2F2F]" : "bg-white"
-}`;
+    iconOpen ? "bg-[#2F2F2F]" : "bg-white"
+  }`;
 
   return (
     <>
@@ -172,25 +172,25 @@ const Header = () => {
             <ul className="flex flex-col gap-[16px]">
               {MENU.map((item, i) => (
                 <motion.li
-  key={item.target}
-  custom={i}
-  variants={itemVariants}
-  initial="hidden"
-  animate={itemsShown ? "show" : "hidden"}
->
-  <button
-    type="button"
-    onClick={() => handleSelect(item.target)}
-    className="group relative flex items-center text-left text-[14px] uppercase tracking-wide"
-  >
-    <span className="absolute left-0 opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 group-active:opacity-100 group-focus-visible:opacity-100">
-      →
-    </span>
-    <span className="transition-all duration-300 ease-out group-hover:translate-x-[22px] group-active:translate-x-[22px] group-focus-visible:translate-x-[22px]">
-      {item.label}
-    </span>
-  </button>
-</motion.li>
+                  key={item.target}
+                  custom={i}
+                  variants={itemVariants}
+                  initial="hidden"
+                  animate={itemsShown ? "show" : "hidden"}
+                >
+                  <button
+                    type="button"
+                    onClick={() => handleSelect(item.target)}
+                    className="group relative flex items-center text-left text-[14px] uppercase tracking-wide"
+                  >
+                    <span className="absolute left-0 opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 group-active:opacity-100 group-focus-visible:opacity-100">
+                      →
+                    </span>
+                    <span className="transition-all duration-300 ease-out group-hover:translate-x-[22px] group-active:translate-x-[22px] group-focus-visible:translate-x-[22px]">
+                      {item.label}
+                    </span>
+                  </button>
+                </motion.li>
               ))}
             </ul>
 
