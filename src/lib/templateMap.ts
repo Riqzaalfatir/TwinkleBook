@@ -27,8 +27,9 @@ export const TEMPLATE_MAP: Record<string, string> = {
   //  David - Natasha Template,
   "bebad810-f3f9-4252-b922-ad8603c9a9d0" : "David-Natasha",
 
-  //  Lincoln - Laurensia Template,
+    //  Lincoln - Laurensia Template,
   "9af91c9b-e6aa-4f2a-a03e-111f13b33ae5": "Lincoln-Laurensia",
+  "37e174fd-60eb-4575-81e9-b0ada30be7f3": "Lincoln-Laurensia",
 
 };
 

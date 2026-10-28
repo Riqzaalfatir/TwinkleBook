@@ -231,6 +231,13 @@ export default function EventPage() {
     ? getTemplateNameFromId(eventByUrl.templateId as string)
     : DEFAULT_TEMPLATE;
 
+      console.log("DEBUG template:", {
+    eventId: eventByUrl.id,
+    templateId: eventByUrl.templateId,
+    templateName,
+    inRegistry: !!TEMPLATE_REGISTRY[templateName],
+  });
+  
   const TemplateComponent =
     TEMPLATE_REGISTRY[templateName] ?? TEMPLATE_REGISTRY[DEFAULT_TEMPLATE];
 
