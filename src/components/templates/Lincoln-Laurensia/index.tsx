@@ -1,5 +1,6 @@
 "use client";
 
+import moment from "moment";
 import React, { useState, useEffect, useMemo } from "react";
 import { poppins, overpass } from "./fonts/fonts";
 import Header from "./Header";
@@ -25,14 +26,14 @@ type LincolnLaurensiaProps = {
   dataValidation?: unknown;
 };
 
+const DEFAULT_EVENT_DATE = "Saturday, 19 September 2026";
+
 const LincolnLaurensia = ({ data }: LincolnLaurensiaProps) => {
   const [start, setStart] = useState(false);
   const [showLoading, setShowLoading] = useState(true);
 
   const galleryData = data?.dataContent?.galleryImageData;
 
-  // Foto galeri dari API -> ikut di-preload.
-  // Tambahkan .slice(0, 3) kalau mau preload 3 foto pertama saja.
   const galleryImages = useMemo(() => {
     if (!Array.isArray(galleryData)) return [];
     return galleryData
@@ -61,6 +62,10 @@ const LincolnLaurensia = ({ data }: LincolnLaurensiaProps) => {
 
   const groomName = data?.dataEvent?.groomName ?? "Lincoln";
   const brideName = data?.dataEvent?.brideName ?? "Laurensia";
+
+  const eventDate = data?.dataEvent?.date
+    ? moment(data.dataEvent.date).format("dddd, DD MMMM YYYY")
+    : DEFAULT_EVENT_DATE;
 
   const hashTagRaw = data?.dataEvent?.hashTag;
   const hashTag =
@@ -91,6 +96,7 @@ const LincolnLaurensia = ({ data }: LincolnLaurensiaProps) => {
           namaTamu={namaTamu}
           groomName={groomName}
           brideName={brideName}
+          eventDate={eventDate}
           popUpIconImageData={data?.dataContent?.popUpIconImageData}
           hashTag={hashTag}
         />
@@ -104,6 +110,9 @@ const LincolnLaurensia = ({ data }: LincolnLaurensiaProps) => {
         <LoadingScreen
           progress={progress}
           onDone={() => setShowLoading(false)}
+          groomName={groomName}
+          brideName={brideName}
+          date={data?.dataEvent?.date}
         />
       )}
     </div>
