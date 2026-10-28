@@ -30,6 +30,15 @@ const RsvpSection = ({ data }: { data?: any }) => {
     "6285183354835"
   ).replace(/\D/g, "");
 
+  // BARU: wording otomatis di chat support (nama tamu + nama acara dari API)
+  const supportGuestName = guestData?.name ?? "Guest";
+  const supportEventName =
+    data?.dataEvent?.name ??
+    `The Wedding of ${data?.dataEvent?.groomName ?? "Lincoln"} & ${
+      data?.dataEvent?.brideName ?? "Laurensia"
+    }`;
+  const supportMessage = `Hi Provite Team, i need help with my RSVP with invitation name ${supportGuestName} for The Event: ${supportEventName}`;
+
   // Batas RSVP: dari data tamu, lalu data event
   const closeDate = guestData?.closeRSVPDate ?? data?.dataEvent?.closeRSVPDate;
   const closeLabel = closeDate
@@ -119,8 +128,7 @@ initial="hidden"
 whileInView="show"
 viewport={{ once: true, amount: 0.3 }}
 transition={{ duration: 1.5, ease: "easeOut" }} className="">
-          <SmartRsvpForm.SubmitButton className="mx-auto mt-[5.64vw] flex h-[9.23vw] w-[41.28vw] items-center justify-center rounded-[1.54vw] bg-white text-[3.59vw] uppercase leading-none text-[#30201E] lg:mt-[0.99vw] lg:h-[3.44vw] lg:w-[14.55vw] lg:rounded-[0.33vw] lg:text-[1.19vw]" />
-          </motion.div>
+<SmartRsvpForm.SubmitButton className="mx-auto mt-[5.64vw] flex h-[9.23vw] w-[41.28vw] items-center justify-center rounded-[1.54vw] bg-white text-[3.59vw] uppercase leading-[1] text-[#30201E] lg:mt-[0.99vw] lg:h-[3.44vw] lg:w-[14.55vw] lg:rounded-[0.33vw] lg:text-[1.19vw]" />          </motion.div>
         </div>
 
         <div className="mt-[11vw] lg:mt-[5.29vw]">
@@ -140,7 +148,7 @@ initial="hidden"
 whileInView="show"
 viewport={{ once: true, amount: 0.3 }}
 transition={{ duration: 1.5, ease: "easeOut" }}
-            href={`https://wa.me/${waHref}`}
+            href={`https://wa.me/${waHref}?text=${encodeURIComponent(supportMessage)}`} // BARU
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center w-[41.28vw] h-[7.69vw] lg:w-[14.55vw] lg:h-[2.78vw] bg-[#12877B] rounded-[1.54vw] lg:rounded-[0.33vw] text-[3.59vw] lg:text-[1.19vw] text-white gap-[1.28vw] lg:gap-[0.7vw] mt-[3.59vw] lg:mt-[0.99vw] mx-auto"

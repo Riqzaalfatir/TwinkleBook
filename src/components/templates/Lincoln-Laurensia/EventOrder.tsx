@@ -141,7 +141,7 @@ const EventOrder = ({ data }: EventOrderProps) => {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            href={mapUrl}
+            href="https://maps.app.goo.gl/TeiJ4jWigZJFo9x79"
             target="_blank"
             rel="noopener noreferrer"
            className="mt-[0vw] lg:mt-[0.5vw] inline-block font-overpass text-[3.08vw] font-medium italic uppercase lg:text-[1.32vw] text-white/80 underline decoration-[#E2E2E2]/80 decoration-1 underline-offset-[1vw] lg:underline-offset-[0.5vw]">
