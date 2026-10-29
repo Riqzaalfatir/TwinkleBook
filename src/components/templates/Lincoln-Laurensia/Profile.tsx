@@ -230,7 +230,7 @@ const Profile = () => {
               transition={{ duration: 1.5, ease: "easeOut" }}
               className="text-[3.59vw] font-extralight leading-[5.13vw] mt-[12.5px] lg:mt-[10px] lg:text-[1.46vw] lg:leading-[2.2vw] text-white/80 lg:text-black/80"
             >
-              Ken calls her Lien. She&apos;s the one he can{" "}
+              Ken calls her Cen. She&apos;s the one he can{" "}
               <br className="lg:hidden" />
               talk to about <br className="hidden lg:block" />
               anything, dream about everything with, and count on{" "}
