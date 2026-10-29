@@ -77,7 +77,7 @@ className="fixed inset-0 z-[100] flex justify-center items-center px-[4.103vw] l
           <div className="absolute inset-0 z-0 bg-[#2F2F2F]">
             <div className="relative aspect-[390/844] w-full lg:hidden">
               <Image
-                src="/images/Lincoln-Laurensia/Opening/BgMobile.webp"
+                src="/images/Lincoln-Laurensia/Opening/BgMobilee.webp"
                 alt="Opening background"
                 fill
                 priority
