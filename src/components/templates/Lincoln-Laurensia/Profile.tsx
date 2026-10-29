@@ -200,7 +200,7 @@ const Profile = () => {
               transition={{ duration: 1.5, ease: "easeOut" }}
               className="pt-[0.5px] lg:pt-[1px] text-[5.13vw] font-light italic uppercase lg:text-[1.72vw]"
             >
-              Leonie Kusuma
+              Leonnie Kusuma
             </motion.p>
             <motion.p
               variants={fadeUp}
