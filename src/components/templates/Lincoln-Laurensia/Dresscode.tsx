@@ -36,7 +36,7 @@ const DressCode = ({ guestData }: DressCodeProps) => {
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        className="relative mt-[8.5vw] h-[41.03vw] w-full max-w-[103.33vw] lg:mt-[3.9vw] lg:h-[16.8vw] lg:max-w-[37.3vw]"
+        className="relative w-full mt-[4.1vw] h-[16.8vw] max-w-[37.3vw] hidden lg:block"
       >
         <Image
           src="/images/Lincoln-Laurensia/Dresscode/NewDC.webp"
@@ -52,7 +52,23 @@ const DressCode = ({ guestData }: DressCodeProps) => {
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        className="mt-[0.75vw] lg:mt-[1.7vw]"
+        className="relative mt-[9vw] h-[44vw] w-[120vw] max-w-none lg:hidden"
+      >
+        <Image
+          src="/images/Lincoln-Laurensia/Dresscode/NewDCMobilee.webp"
+          alt="Dress code"
+          fill
+          className="object-contain"
+        />
+      </motion.div>
+
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="mt-[6.65vw] lg:mt-[2.7vw]"
       >
         <p className="text-[3.08vw] font-bold uppercase lg:text-[1.46vw] text-[#2F2F2F]">
           Gentlemen :

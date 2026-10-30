@@ -15,6 +15,9 @@ const IMAGES_MOBILE: string[] = [
   //   EVENTORDER
   "/images/Lincoln-Laurensia/EventOrder/RumahMobile.webp",
 
+  // DRESSCODE
+  "/images/Lincoln-Laurensia/Dresscode/NewDCMobilee.webp",
+
   // THANKYOU
   "/images/Lincoln-Laurensia/Thankyou/AsetMobile.webp",
 ];
@@ -29,6 +32,10 @@ const IMAGES_DESKTOP: string[] = [
 
   // EVENTORDER
   "/images/Lincoln-Laurensia/EventOrder/RumahDekstop.webp",
+
+  // DRESSCODE
+  // DRESSCODE
+  "/images/Lincoln-Laurensia/Dresscode/NewDC.webp",
 
   // THANKYOU
   "/images/Lincoln-Laurensia/Thankyou/AsetDekstop.webp",
@@ -45,7 +52,6 @@ const IMAGES_COMMON: string[] = [
   "/images/Lincoln-Laurensia/Gallery/AsetSatu.webp",
 
   // DRESSCODE
-  "/images/Lincoln-Laurensia/Dresscode/NewDC.webp.webp",
   "/images/Lincoln-Laurensia/Dresscode/NoWhite.webp",
   "/images/Lincoln-Laurensia/Dresscode/NoBatik.webp",
 ];
