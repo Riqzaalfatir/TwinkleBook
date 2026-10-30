@@ -36,10 +36,10 @@ const DressCode = ({ guestData }: DressCodeProps) => {
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        className="relative mt-[7.3vw] h-[35.64vw] w-full max-w-[103.33vw] lg:mt-[3.9vw] lg:h-[12.9vw] lg:max-w-[37.3vw]"
+        className="relative mt-[8.5vw] h-[41.03vw] w-full max-w-[103.33vw] lg:mt-[3.9vw] lg:h-[16.8vw] lg:max-w-[37.3vw]"
       >
         <Image
-          src="/images/Lincoln-Laurensia/Dresscode/Orang.webp"
+          src="/images/Lincoln-Laurensia/Dresscode/NewDC.webp"
           alt="Dress code"
           fill
           className="object-contain"
@@ -52,7 +52,7 @@ const DressCode = ({ guestData }: DressCodeProps) => {
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        className="mt-[3vw] lg:mt-[2.31vw]"
+        className="mt-[0.75vw] lg:mt-[1.7vw]"
       >
         <p className="text-[3.08vw] font-bold uppercase lg:text-[1.46vw] text-[#2F2F2F]">
           Gentlemen :

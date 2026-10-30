@@ -45,7 +45,7 @@ const IMAGES_COMMON: string[] = [
   "/images/Lincoln-Laurensia/Gallery/AsetSatu.webp",
 
   // DRESSCODE
-  "/images/Lincoln-Laurensia/Dresscode/Orang.webp",
+  "/images/Lincoln-Laurensia/Dresscode/NewDC.webp.webp",
   "/images/Lincoln-Laurensia/Dresscode/NoWhite.webp",
   "/images/Lincoln-Laurensia/Dresscode/NoBatik.webp",
 ];
